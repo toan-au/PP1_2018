@@ -6,3 +6,10 @@ Homy
 
 ## Authors
 Duong Bao Toan Au - s3589104
+
+### About
+TODO
+
+### Setup instructions
+TODO
+
