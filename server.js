@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'production') {
     const path = require('path');
     app.use(express.static('./client/build'));
     // send them the react bundle
-    res.sendFile(path.resolve(__dirname, 'client', 'build'));
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
