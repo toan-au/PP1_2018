@@ -8,7 +8,15 @@ app.get('/api/cats', (req, res) => {
   res.send(cats);
 });
 
-const port = 5000;
-app.listen(port, () => {
-  console.log('server started on port' + port);
+// if the user's request reaches this point, it means that it is not an api call
+// so they want to actually VIEW our app (react app)
+app.get('*', (req, res) => {
+  const path = require('path');
+  app.use(express.static('./client/build'));
+  // send them the react bundle
+  res.sendFile(path.resolve(__dirname, 'client', 'build'));
 });
+
+// listen to whatever port heroku serves our app on
+// OR port 5000 (in dev environment)
+app.listen(process.env.PORT || 5000);
