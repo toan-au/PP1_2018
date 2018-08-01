@@ -11,7 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix client",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "setup": "npm install && npm install --prefix client"
   },
   "repository": {
     "type": "git",
