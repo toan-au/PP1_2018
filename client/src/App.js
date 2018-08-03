@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
+// layout components
+import Navbar from './components/Navbar';
+import Body from './components/Body';
+import Footer from './components/Footer';
+
 class App extends Component {
   constructor() {
     super();
@@ -20,9 +25,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Switch>
-            <Route path="/" component={() => <h1>tiger</h1>} />
-          </Switch>
+          <Navbar />
+          <Body />
+          <Footer />
         </div>
       </Router>
     );
