@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
 class App extends Component {
@@ -17,9 +18,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <ul>{this.state.cats.map(cat => <li>{cat}</li>)}</ul>
-      </div>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/" component={() => <h1>tiger</h1>} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
