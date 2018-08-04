@@ -22,9 +22,9 @@
     "redux": "^4.0.0"
   },
   "scripts": {
-    "sass": "sass --watch ./src/styles/scss/:./src/styles/css/",
+    "sass": "./node_modules/.bin/node-sass --watch ./src/styles/scss/:./src/styles/css/",
     "start": "react-scripts start",
-    "build": "sass ./src/styles/scss/master.scss:./src/styles/css/master.css && react-scripts build",
+    "build": "./node_modules/.bin/node-sass ./src/styles/scss/master.scss:./src/styles/css/master.css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
