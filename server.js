@@ -11,9 +11,9 @@ app.get('/api/cats', (req, res) => {
 // if the user's request reaches this point, it means that it is not an api call
 // so they want to actually VIEW our app (react app)
 if (process.env.NODE_ENV === 'production') {
+  const path = require('path');
+  app.use(express.static('./client/build'));
   app.get('*', (req, res) => {
-    const path = require('path');
-    app.use(express.static('./client/build'));
     // send them the react bundle
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
