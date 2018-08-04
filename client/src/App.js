@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
+
+// Styles
+import './styles/css/master.css';
+
+// layout components
+import Navbar from './components/Navbar';
+import Content from './components/Content';
+import Footer from './components/Footer';
 
 class App extends Component {
   constructor() {
@@ -17,9 +26,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <ul>{this.state.cats.map(cat => <li>{cat}</li>)}</ul>
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Content />
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
