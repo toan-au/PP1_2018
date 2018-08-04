@@ -24,7 +24,7 @@
   "scripts": {
     "sass": "sass --watch ./src/styles/scss/:./src/styles/css/",
     "start": "react-scripts start",
-    "build": "react-scripts build && sass ./src/styles/scss/:./src/styles/css/",
+    "build": "sass ./src/styles/scss/master.scss:./src/styles/css/master.css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
