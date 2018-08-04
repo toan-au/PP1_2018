@@ -20,7 +20,7 @@
     "redux": "^4.0.0"
   },
   "scripts": {
-    "sass": "sass --watch ./src/styles/scss/:./src/styles/",
+    "sass": "sass --watch ./src/styles/scss/:./src/styles/css/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
