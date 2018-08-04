@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 
 // Styles
@@ -7,7 +7,7 @@ import './styles/css/master.css';
 
 // layout components
 import Navbar from './components/Navbar';
-import Body from './components/Body';
+import Content from './components/Content';
 import Footer from './components/Footer';
 
 class App extends Component {
@@ -29,7 +29,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <Body />
+          <Content />
           <Footer />
         </div>
       </Router>

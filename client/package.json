@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "material-react-icons": "^2.1.0",
     "node-sass": "^4.9.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -23,7 +24,7 @@
   "scripts": {
     "sass": "sass --watch ./src/styles/scss/:./src/styles/css/",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && sass ./src/styles/scss/:./src/styles/css/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
