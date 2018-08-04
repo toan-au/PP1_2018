@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 class Footer extends Component {
   render() {
     return (
-      <nav className="Navbar">
+      <footer className="Footer">
         Footer
         <Link to="/">copy write terror wrists</Link>
-      </nav>
+      </footer>
     );
   }
 }
