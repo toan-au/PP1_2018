@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
+// Styles
+import './styles/master.css';
+
 // layout components
 import Navbar from './components/Navbar';
 import Body from './components/Body';
