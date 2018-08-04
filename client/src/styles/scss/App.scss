@@ -1,0 +1,11 @@
+@import 'variables';
+
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: $navbar_height 1fr $footer_height;
+}
+
+.float-right {
+  float: right;
+}
