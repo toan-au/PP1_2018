@@ -13,7 +13,8 @@
     "sass": "npm run sass --prefix client",
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run sass\"",
-    "setup": "npm install && npm install --prefix client"
+    "setup": "npm install && npm install --prefix client",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
