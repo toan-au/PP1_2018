@@ -3,5 +3,5 @@
 "mappings": "AAAA,iCAAiC;AAEjC,YAAY;AAGZ,WAAW;AAEX,aAAa;ACLb,OAAQ;EACN,UAAU,EDAN,GAAG",
 "sources": ["../scss/_variables.scss","../scss/Navbar.scss"],
 "names": [],
-"file": "master.css"
+"file": "Navbar.css"
 }

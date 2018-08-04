@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
 // Styles
-import './styles/master.css';
+import './styles/css/master.css';
 
 // layout components
 import Navbar from './components/Navbar';
