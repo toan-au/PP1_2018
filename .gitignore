@@ -1,4 +1,4 @@
 node_modules
 package-lock.json
-client/.sass-cache
+.sass-cache
 client/src/styles/css/*
