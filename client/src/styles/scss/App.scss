@@ -6,6 +6,11 @@
   grid-template-rows: $navbar_height 1fr $footer_height;
 }
 
-.float-right {
-  float: right;
+a {
+  color: none;
+  text-decoration: none;
+}
+
+.container {
+  padding: 12px 20px;
 }

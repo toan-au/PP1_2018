@@ -7,7 +7,7 @@ import Home from '../pages/Home';
 class Content extends Component {
   render() {
     return (
-      <main className="Content">
+      <main className="Content container">
         <Switch>
           <Route path="/" component={Home} />
         </Switch>

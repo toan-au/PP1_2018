@@ -11,14 +11,16 @@ class Navbar extends Component {
         </Link>
         <div className="right-nav">
           <Link to="/">
-            <Home />
+            <Home viewBox="10 10 10 10" className="icon" />
           </Link>
-          <Link to="/messages">htr</Link>
+          <Link to="/messages">
+            <SupervisorAccount viewBox="10 10 10 10" className="icon" />
+          </Link>
           <Link to="/requests">
-            <SupervisorAccount />
+            <SupervisorAccount viewBox="10 10 10 10" className="icon" />
           </Link>
           <Link to="/">
-            <Build />
+            <Build viewBox="10 10 13 13" className="icon" />
           </Link>
         </div>
       </nav>

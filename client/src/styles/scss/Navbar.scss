@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 10px 20px;
+  padding: 20px 20px;
   background: $blue;
 
   .logo {
@@ -13,5 +13,12 @@
 
   .right-nav {
     display: inline;
+  }
+
+  .right-nav {
+    .icon {
+      display: inline-block;
+      padding: 20px;
+    }
   }
 }
