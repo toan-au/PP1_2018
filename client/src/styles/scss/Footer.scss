@@ -1,5 +1,20 @@
 @import 'variables';
 
 .Footer {
-  background: $red;
+  display: flex;
+  background: $footer_background;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2em;
+  .left-footer {
+  }
+
+  .right-footer {
+    nav {
+      a {
+        display: inline-block;
+        padding: 3px 7px;
+      }
+    }
+  }
 }
