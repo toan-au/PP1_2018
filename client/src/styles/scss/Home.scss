@@ -1,0 +1,13 @@
+@import 'variables';
+
+.Home {
+  .banner {
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  .matches {
+    display: grid;
+    grid-template-columns: $match_columns;
+  }
+}

@@ -14,3 +14,12 @@ a {
 .container {
   padding: $container_padding_height $container_padding_width;
 }
+
+/* buttons */
+
+button {
+  padding: 10px 30px;
+  font-size: 1.3em;
+  background: none;
+  border-radius: 3px;
+}

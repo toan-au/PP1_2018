@@ -1,11 +1,16 @@
 const express = require('express');
-
+const { potentialMatches } = require('./matchingAlgorithm/dummyData');
 const app = express();
 
 // routes
 app.get('/api/cats', (req, res) => {
   cats = ['toan'];
   res.send(cats);
+});
+
+app.get('/api/match/:id', (req, res) => {
+  const matches = potentialMatches;
+  res.send(potentialMatches);
 });
 
 // if the user's request reaches this point, it means that it is not an api call
