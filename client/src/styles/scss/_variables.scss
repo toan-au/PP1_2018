@@ -11,12 +11,21 @@ $navbar_height: 100px;
 $footer_height: 100px;
 
 $match_columns: 1fr 1fr 1fr 1fr;
+$match_column_gap: 40px;
+$match_row_gap: 40px;
+$match_border: 1px solid $light_grey;
 
 /* backgrounds */
 $footer_background: $light_grey;
 
 /* paddings */
-$container_padding_width: 20px;
+$container_padding_width: 80px;
 $container_padding_height: 12px;
+
+$match_card_padding: 20px;
+$match_card_name_size: 1.4em;
+
+/* border */
+$match_card_border: 1px solid $light_grey;
 
 /* kittens */

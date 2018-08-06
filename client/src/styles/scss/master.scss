@@ -1,6 +1,14 @@
+/* util */
 @import 'reset';
+
+/* layout */
 @import 'App';
 @import 'Navbar';
 @import 'Content';
-@import 'Home';
 @import 'Footer';
+
+/* pages */
+@import 'Home';
+
+/* components */
+@import 'MatchCard';

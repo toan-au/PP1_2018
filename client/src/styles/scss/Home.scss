@@ -9,5 +9,7 @@
   .matches {
     display: grid;
     grid-template-columns: $match_columns;
+    grid-column-gap: $match_column_gap;
+    grid-row-gap: $match_row_gap;
   }
 }
