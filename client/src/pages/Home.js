@@ -2,32 +2,24 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import MatchCard from '../components/MatchCard';
 import { connect } from 'react-redux';
+import { getMatches } from '../redux/actions/matches';
 
 class Home extends Component {
-  state = {
-    matches: []
-  };
+  state = { matches: [] };
 
   loadMatches = async () => {
-    console.log(this.props.user);
-    // API call to fetch list of matches for this user
-    const res = await axios.get('/api/match/' + this.props.user.id);
-    let matches = res.data;
+    // get matches from the API
+    await this.props.getMatches(this.props.user.id);
 
-    // create list of react components for each match
-    matches = matches.map(match => {
+    // create list of each match
+    const matches = this.props.matches.map(match => {
       return <MatchCard key={match.id} match={match} />;
     });
 
-    // change state of the component
     this.setState({ matches });
   };
 
-  renderMatches = () => {
-    this.state.matches.map(match => {
-      return <li>match</li>;
-    });
-  };
+  renderMatches = () => {};
 
   render() {
     const { user } = this.props;
@@ -44,7 +36,11 @@ class Home extends Component {
 }
 
 const mapeStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  matches: state.matches
 });
 
-export default connect(mapeStateToProps)(Home);
+export default connect(
+  mapeStateToProps,
+  { getMatches }
+)(Home);
