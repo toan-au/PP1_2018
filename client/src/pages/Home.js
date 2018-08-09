@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MatchCard from '../components/MatchCard';
+import { connect } from 'react-redux';
 
 class Home extends Component {
   state = {
-    user: {
-      id: 1,
-      display_name: 'kmariaud0',
-      email: 'bianinotti0@symantec.com'
-    },
     matches: []
   };
 
   loadMatches = async () => {
+    console.log(this.props.user);
     // API call to fetch list of matches for this user
-    const res = await axios.get('/api/match/' + this.state.user.id);
+    const res = await axios.get('/api/match/' + this.props.user.id);
     let matches = res.data;
 
     // create list of react components for each match
@@ -33,10 +30,11 @@ class Home extends Component {
   };
 
   render() {
+    const { user } = this.props;
     return (
       <div className="Home">
         <div className="banner">
-          <h1>Welcome back {this.state.user.display_name}</h1>
+          <h1>Welcome back {user.display_name}</h1>
           <button onClick={this.loadMatches}>match me!</button>
         </div>
         <div className="matches">{this.state.matches}</div>
@@ -45,4 +43,8 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapeStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(mapeStateToProps)(Home);
