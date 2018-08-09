@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { getUser } from './redux/actions/user';
 
 // Styles
 import './styles/css/master.css';
@@ -11,17 +12,8 @@ import Content from './components/Content';
 import Footer from './components/Footer';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      cats: []
-    };
-  }
-
   async componentDidMount() {
-    const res = await axios.get('/api/cats');
-    const cats = res.data;
-    this.setState({ cats });
+    this.props.getUser();
   }
 
   render() {
@@ -37,4 +29,10 @@ class App extends Component {
   }
 }
 
-export default App;
+// maping the state(redux) to this.props within this component
+const mapStateToProps = () => ({});
+
+export default connect(
+  mapStateToProps,
+  { getUser }
+)(App);

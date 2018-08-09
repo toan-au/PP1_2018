@@ -9,7 +9,6 @@ app.get('/api/cats', (req, res) => {
 });
 
 app.get('/api/match/:id', (req, res) => {
-  const matches = potentialMatches;
   res.send(potentialMatches);
 });
 
