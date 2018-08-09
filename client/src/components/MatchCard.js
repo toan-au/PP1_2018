@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MatchCard = props => {
-  const { display_name, email, bio } = props.match;
+  const { display_name, bio } = props.match;
   const score = Math.ceil(1 + Math.random() * 100);
   return (
     <div className="MatchCard">

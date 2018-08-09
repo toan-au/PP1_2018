@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import MatchCard from '../components/MatchCard';
 import { connect } from 'react-redux';
 import { getMatches } from '../redux/actions/matches';
