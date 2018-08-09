@@ -1,11 +1,10 @@
-import {GET_USER} from '../actions/types';
+import { GET_USER } from '../actions/types';
 
-export default (state={}, action) => {
-  const 
+export default (state = {}, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user;
     default:
-      return state
+      return state;
   }
-}
+};
