@@ -7,8 +7,12 @@ const data = require ('./dummyData.js')
 const matchCalc = require ('./matchCalculate.js')
 
 
+
+
+var findMatches = function() {
+
 //Filter out the data set for users with at least 1 matching game.
-var relevantUsers = []
+var relevantUsers = [];
 
 //Iterates through all users
 for(var matchCounter = 0; matchCounter < data.potentialMatches.length; matchCounter++){
@@ -38,3 +42,7 @@ function orderDesc(b,a){
 relevantUsers.sort(orderDesc);
 
 return relevantUsers;
+}
+
+
+module.exports = {findMatches};
