@@ -1,10 +1,11 @@
 const express = require('express');
-const { potentialMatches } = require('../matchingAlgorithm/dummyData');
+const matching = require('../matchingAlgorithm/match');
 
 const router = express.Router();
 
 router.get('/match/:id', (req, res) => {
-  res.send(potentialMatches);
+  const matches = matching.findMatches();
+  res.send(matches);
 });
 
 module.exports = router;
