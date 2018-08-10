@@ -4,6 +4,20 @@ const passport = require('passport');
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const keys = require('../config/keys');
 
+// serialize the user into the session
+passport.serializeUser((user, done) => {
+  // temporarily set id to 0
+  user.id = 0;
+  done(null, user.id);
+});
+
+// deserialize a user from the session
+passport.deserializeUser((id, done) => {
+  // ideally should find user from database with given id
+  user = {};
+  done(null, user);
+});
+
 // setup passport to use the google OAuth2 strategy
 passport.use(
   new googleStrategy(
