@@ -1,16 +1,11 @@
 const express = require('express');
-const { potentialMatches } = require('./matchingAlgorithm/dummyData');
 const app = express();
 
 // routes
 const authRoutes = require('./routes/auth');
 const apiRoutes = require('./routes/api');
-app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
-
-app.get('/api/match/:id', (req, res) => {
-  res.send(potentialMatches);
-});
+app.use('/auth', authRoutes);
 
 // if the user's request reaches this point, it means that it is not an api call
 // so they want to actually VIEW our app (react app)

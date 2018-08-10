@@ -1,8 +1,10 @@
 const express = require('express');
+const { potentialMatches } = require('../matchingAlgorithm/dummyData');
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  console.log('api route');
+router.get('/match/:id', (req, res) => {
+  res.send(potentialMatches);
 });
 
 module.exports = router;

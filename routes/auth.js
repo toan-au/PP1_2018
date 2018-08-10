@@ -13,21 +13,24 @@ passport.use(
       callbackURL: '/auth/google/callback'
     },
     (accessToken, refreshToken, profile, done) => {
-      return done();
+      let user = {};
+
+      // search for existing user here
+      console.log('wow');
+      // if no existing user, create new user here
+      done(null, user);
     }
   )
 );
 
 // user authenticates with google
-router.get('/google', (req, res) => {
-  passport.authenticate('google', { scope: ['openid', 'profile', 'email'] });
-});
+router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 
 // callback
 router.get(
-  '/auth/google/callback',
+  '/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
+  (req, res) => {
     res.redirect('/');
   }
 );
