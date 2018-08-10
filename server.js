@@ -1,16 +1,26 @@
 const express = require('express');
-const { potentialMatches } = require('./matchingAlgorithm/dummyData');
+const passport = require('passport');
+const cookieSession = require('cookie-session');
+const keys = require('./config/keys');
+
 const app = express();
 
-// routes
-app.get('/api/cats', (req, res) => {
-  cats = ['toan'];
-  res.send(cats);
-});
+// middleware
+// configure cookie settings
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.get('/api/match/:id', (req, res) => {
-  res.send(potentialMatches);
-});
+// routes
+const authRoutes = require('./routes/auth');
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes);
+app.use('/auth', authRoutes);
 
 // if the user's request reaches this point, it means that it is not an api call
 // so they want to actually VIEW our app (react app)
