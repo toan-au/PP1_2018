@@ -3,10 +3,10 @@ const { potentialMatches } = require('./matchingAlgorithm/dummyData');
 const app = express();
 
 // routes
-app.get('/api/cats', (req, res) => {
-  cats = ['toan'];
-  res.send(cats);
-});
+const authRoutes = require('./routes/auth');
+const apiRoutes = require('./routes/api');
+app.use('/auth', authRoutes);
+app.use('/api', apiRoutes);
 
 app.get('/api/match/:id', (req, res) => {
   res.send(potentialMatches);
