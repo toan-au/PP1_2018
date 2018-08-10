@@ -1,0 +1,244 @@
+/* util */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol,
+ul {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* layout */
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr 100px; }
+
+a {
+  color: none;
+  text-decoration: none; }
+
+.container {
+  padding: 12px 80px; }
+
+/* buttons */
+button {
+  padding: 10px 30px;
+  font-size: 1.3em;
+  background: none;
+  border-radius: 3px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 20px 20px;
+  background: white; }
+  .Navbar .logo {
+    font-size: 2.7em; }
+  .Navbar .right-nav {
+    display: inline; }
+  .Navbar .right-nav .icon {
+    display: inline-block;
+    padding: 20px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Content {
+  background: white; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Footer {
+  display: flex;
+  background: #ccc;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2em; }
+  .Footer .right-footer nav a {
+    display: inline-block;
+    padding: 3px 7px; }
+
+/* pages */
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Home .banner {
+  width: 500px;
+  margin: 0 auto; }
+
+.Home .matches {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 40px;
+  grid-row-gap: 40px; }
+
+/* components */
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.MatchCard {
+  padding: 20px;
+  border: 1px solid #ccc; }
+  .MatchCard .profile-pic {
+    display: block;
+    width: 100%;
+    height: 200px;
+    border: 1px solid red; }
+  .MatchCard .display-name {
+    padding: 7px 0px;
+    font-weight: bold;
+    font-size: 1.4em; }
+  .MatchCard .bio {
+    margin-bottom: 10px; }
