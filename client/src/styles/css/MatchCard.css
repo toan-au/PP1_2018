@@ -1,0 +1,21 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.MatchCard {
+  padding: 20px;
+  border: 1px solid #ccc; }
+  .MatchCard .profile-pic {
+    display: block;
+    width: 100%;
+    height: 200px;
+    border: 1px solid red; }
+  .MatchCard .display-name {
+    padding: 7px 0px;
+    font-weight: bold;
+    font-size: 1.4em; }
+  .MatchCard .bio {
+    margin-bottom: 10px; }

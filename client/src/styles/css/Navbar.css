@@ -1,0 +1,20 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 20px 20px;
+  background: white; }
+  .Navbar .logo {
+    font-size: 2.7em; }
+  .Navbar .right-nav {
+    display: inline; }
+  .Navbar .right-nav .icon {
+    display: inline-block;
+    padding: 20px; }

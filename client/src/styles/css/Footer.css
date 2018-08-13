@@ -1,0 +1,18 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Footer {
+  display: flex;
+  background: #37323E;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9em;
+  box-shadow: 0px -2px 5px; }
+
+.right-footer nav a {
+  display: inline-block;
+  padding: 3px 20px; }
