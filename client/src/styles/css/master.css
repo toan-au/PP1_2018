@@ -138,7 +138,7 @@ table {
 .App {
   height: 100vh;
   display: grid;
-  grid-template-rows: 100px 1fr 100px; }
+  grid-template-rows: 80px 1fr 80px; }
 
 a {
   color: none;
@@ -194,10 +194,11 @@ button {
 /* kittens */
 .Footer {
   display: flex;
-  background: #ccc;
+  background: #37323E;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.2em; }
+  font-size: 1.2em;
+  box-shadow: 0px -5px 5px 1px; }
   .Footer .right-footer nav a {
     display: inline-block;
     padding: 3px 7px; }
