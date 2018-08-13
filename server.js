@@ -3,7 +3,6 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
 
-
 const app = express();
 
 // middleware
@@ -17,10 +16,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-//models
-const dbModel = require('./models/database');
-dbModel.initialize();
-
+const test = require('./models').Users;
+console.log(test);
 
 // routes
 const authRoutes = require('./routes/auth');

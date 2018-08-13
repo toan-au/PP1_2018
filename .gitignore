@@ -2,4 +2,4 @@ node_modules
 package-lock.json
 .sass-cache
 config/dev.js
-config.json
+db/config/config.json
