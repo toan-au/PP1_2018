@@ -102,8 +102,6 @@ not-in-install
 not-in-install.cmd
 not-in-publish
 not-in-publish.cmd
-package-lock.json
-package.json
 rc
 rc.cmd
 react-scripts
