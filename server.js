@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
-const Sequelize = require('sequelize');
+
 
 const app = express();
 
@@ -17,14 +17,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// setup DB connection
-const sequelize = new Sequelize(keys.dbString);
-sequelize
-  .authenticate()
-  .then(() => console.log('connection to DB established'))
-  .catch(err => console.log(err));
+//models
+const dbModel = require('./models/database');
+dbModel.initialize();
 
-// models
 
 // routes
 const authRoutes = require('./routes/auth');
