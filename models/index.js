@@ -3,11 +3,11 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(`${__dirname}/../config/config.json`)[env];
+const keys = require('../config/keys');
 const db = {};
 
-const sequelize = new Sequelize(process.env[config.use_env_variable], {
-  dialect: config.dialect
+const sequelize = new Sequelize(keys.dbString, {
+  dialect: 'postgres'
 });
 
 fs.readdirSync(__dirname)
