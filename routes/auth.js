@@ -7,15 +7,13 @@ const Users = require('../models').users;
 
 // serialize the user into the session
 passport.serializeUser((user, done) => {
-  // temporarily set id to 0
-  user.id = 0;
   done(null, user.id);
 });
 
 // deserialize a user from the session
-passport.deserializeUser((id, done) => {
+passport.deserializeUser(async (id, done) => {
   // ideally should find user from database with given id
-  user = {};
+  const user = await Users.findById(id);
   done(null, user);
 });
 
@@ -28,14 +26,32 @@ passport.use(
       callbackURL: '/auth/google/callback'
     },
     async (accessToken, refreshToken, profile, done) => {
-      let user = {};
+      const { id, emails, displayName, language } = profile;
 
       // search for existing user here
-      const response = await Users.findAll({});
-      console.log(response);
+      const existingUser = await Users.findOne({
+        where: { googleId: id }
+      });
+
+      // console.log(process.env.DB_STRING);
+      if (existingUser) {
+        console.log(existingUser.id);
+        return done(null, existingUser);
+      }
+
+      const user = Users.build({
+        googleId: id,
+        email: emails[0].value,
+        displayName,
+        language: language || 'en',
+        dob: new Date()
+      });
+
+      const newUser = await user.save();
+      console.log(newUser);
 
       // if no existing user, create new user here
-      done(null, user);
+      return done(null, newUser);
     }
   )
 );
