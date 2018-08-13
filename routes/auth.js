@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const keys = require('../config/keys');
+const Users = require('../models').users;
 
 // serialize the user into the session
 passport.serializeUser((user, done) => {
@@ -26,11 +27,13 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback'
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       let user = {};
 
       // search for existing user here
-      console.log('wow');
+      const response = await Users.findAll({});
+      console.log(response);
+
       // if no existing user, create new user here
       done(null, user);
     }
@@ -38,7 +41,10 @@ passport.use(
 );
 
 // user authenticates with google
-router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
+router.get(
+  '/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
 
 // callback
 router.get(

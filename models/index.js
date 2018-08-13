@@ -1,16 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
+const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
-const keys = require('../config/keys');
+const config = require(`${__dirname}/../config/config.json`)[env];
 const db = {};
 
-const sequelize = new Sequelize(keys.dbString);
-sequelize
-  .authenticate()
-  .then(() => console.log('connection to DB established'))
-  .catch(err => console.log(err));
+const sequelize = new Sequelize(process.env[config.use_env_variable], {
+  dialect: config.dialect
+});
 
 fs.readdirSync(__dirname)
   .filter(file => {
