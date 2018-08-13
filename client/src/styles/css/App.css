@@ -11,7 +11,10 @@
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
-p, a {
+h2 {
+  font-size: large; }
+
+h2, p, a {
   font-family: 'Andika', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #BFBDC1;
