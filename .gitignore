@@ -1,5 +1,5 @@
 node_modules
 package-lock.json
 .sass-cache
-client/src/styles/css/*
 config/dev.js
+db/config/config.json

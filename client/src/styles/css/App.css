@@ -1,0 +1,25 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr 100px; }
+
+a {
+  color: none;
+  text-decoration: none; }
+
+.container {
+  padding: 12px 80px; }
+
+/* buttons */
+button {
+  padding: 10px 30px;
+  font-size: 1.3em;
+  background: none;
+  border-radius: 3px; }
