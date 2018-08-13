@@ -16,8 +16,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-const test = require('./models').Users;
-console.log(test);
+// test that model works
+const test = require('./models').users;
+console.log(test.all());
 
 // routes
 const authRoutes = require('./routes/auth');
