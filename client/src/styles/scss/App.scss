@@ -1,4 +1,5 @@
 @import 'variables';
+@import url(//fonts.googleapis.com/css?family=Andika);
 
 .App {
   height: 100vh;
@@ -6,9 +7,15 @@
   grid-template-rows: $navbar_height 1fr $footer_height;
 }
 
-a {
-  color: none;
+p, a {
+  font-family: 'Andika', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: #BFBDC1;
   text-decoration: none;
+}
+
+a:hover {
+  text-shadow: 0px 0px 5px #DE9E36;
 }
 
 .container {

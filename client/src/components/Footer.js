@@ -6,12 +6,12 @@ class Footer extends Component {
     return (
       <footer className="Footer container">
         <div className="left-footer">
-          <Link to="/">copy write terror wrists</Link>
+          <p>© The Terror Wrists 2018</p>
         </div>
         <div className="right-footer">
           <nav>
             <Link to="/">Home</Link>
-            <Link to="/">FAQ</Link>
+            <Link to="/">About Us</Link>
             <Link to="/">Privacy</Link>
             <Link to="/">Contact</Link>
           </nav>
