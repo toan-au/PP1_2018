@@ -6,6 +6,7 @@ Homy
 
 ## Authors
 Duong Bao Toan Au - s3589104
+Ronald Rinaldy    - s3496839
 
 ### About
 TODO
