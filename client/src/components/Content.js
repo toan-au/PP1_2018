@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // pages
 import Home from '../pages/Home';
@@ -18,4 +19,6 @@ class Content extends Component {
   }
 }
 
-export default Content;
+const mapStateToProps = state => ({ user: state.user });
+
+export default connect(mapStateToProps)(Content);

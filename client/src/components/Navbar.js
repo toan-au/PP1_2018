@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Build, SupervisorAccount, Home } from 'material-react-icons';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 class Navbar extends Component {
@@ -57,4 +58,6 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = state => ({ user: state.user });
+
+export default connect(mapStateToProps)(Navbar);
