@@ -5,11 +5,6 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../redux/actions/user';
 
 class Navbar extends Component {
-  logOut() {
-    console.log('test');
-    this.props.logoutUser();
-  }
-
   renderLoggedIn() {
     return (
       <div className="right-nav">
@@ -22,9 +17,10 @@ class Navbar extends Component {
         <Link to="/requests">
           <SupervisorAccount viewBox="10 10 10 10" className="icon" />
         </Link>
-        <a onClick={this.logOut.bind(this)}>
+        {/* <a href="/auth/logout">
           <Build viewBox="10 10 13 13" className="icon" />
-        </a>
+        </a> */}
+        <a href="/auth/logout">Logout</a>
       </div>
     );
   }
@@ -32,9 +28,7 @@ class Navbar extends Component {
   renderLoggedOut() {
     return (
       <div className="right-nav">
-        <Link to="/">
-          <Home viewBox="10 10 10 10" className="icon" />
-        </Link>
+        <a href="/auth/google">Sign in with google</a>
       </div>
     );
   }
