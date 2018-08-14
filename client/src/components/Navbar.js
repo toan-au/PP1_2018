@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Build, SupervisorAccount, Home } from 'material-react-icons';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import { logoutUser } from '../redux/actions/user';
 
 class Navbar extends Component {
-  googleSignin() {
-    axios.get('/auth/google');
+  logOut() {
+    console.log('test');
+    this.props.logoutUser();
   }
 
   renderLoggedIn() {
@@ -21,7 +22,7 @@ class Navbar extends Component {
         <Link to="/requests">
           <SupervisorAccount viewBox="10 10 10 10" className="icon" />
         </Link>
-        <a href="/auth/google">
+        <a onClick={this.logOut.bind(this)}>
           <Build viewBox="10 10 13 13" className="icon" />
         </a>
       </div>
@@ -60,4 +61,7 @@ class Navbar extends Component {
 
 const mapStateToProps = state => ({ user: state.user });
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Navbar);

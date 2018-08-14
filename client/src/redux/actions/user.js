@@ -9,6 +9,10 @@ export const getUser = () => {
   };
 };
 
-export const logoutUser = dispatch => {
-  dispatch({ type: LOGOUT_USER });
+export const logoutUser = () => {
+  return async dispatch => {
+    // log out server side
+    await axios.get('/auth/logout');
+    dispatch({ type: LOGOUT_USER });
+  };
 };
