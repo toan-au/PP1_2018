@@ -1,5 +1,5 @@
 @import 'variables';
-@import url(//fonts.googleapis.com/css?family=Andika);
+@import url(//fonts.googleapis.com/css?family=Alegreya+Sans:300);
 
 .App {
   height: 100vh;
@@ -7,11 +7,20 @@
   grid-template-rows: $navbar_height 1fr $footer_height;
 }
 
-h3, p, a {
-  font-family: 'Andika', Helvetica, Arial, sans-serif;
+h2, h3, p, a {
+  font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #BFBDC1;
+
+  //remove the underlink from a tag
   text-decoration: none;
+}
+
+h2 {
+  font-size: 3em;
+  color: #DE9E36;
+  text-shadow: 0px 0px 2px #BFBDC1;
+
 }
 
 a:hover {
