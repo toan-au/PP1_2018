@@ -11,7 +11,7 @@ class Landing extends Component {
             <p>The beautifully designed matching application that will match you with your destined gaming compatriots through our top-tier matching algorithm!</p>
             <br></br>
             <p>Register or sign in now with a Google Account.</p>
-            <img src="../PP1/client/src/pages/landing.jpg" alt="Group of children playing arcade games"></img>
+            <img src="../images/landing.jpg" alt="Group of children playing arcade games"></img>
           </div>
         </div>
       </div>
