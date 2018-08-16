@@ -240,11 +240,6 @@ button {
 /* paddings */
 /* border */
 /* kittens */
-/*.landing {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}*/
 .outer {
   display: table;
   height: 100%;
@@ -258,8 +253,10 @@ button {
   margin-left: auto;
   margin-right: auto;
   width: 1000px;
-  text-align: center;
-  /*whatever width you want*/ }
+  text-align: center; }
+
+h2 {
+  padding-bottom: 10px; }
 
 /* components */
 /* Chuck your variables in here*/
