@@ -7,12 +7,14 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       displayName: DataTypes.STRING,
       dob: DataTypes.DATE,
-      language: DataTypes.STRING
+      language: DataTypes.STRING,
+      firstTime: DataTypes.BOOLEAN
     },
     {}
   );
   users.associate = function(models) {
-    // associations go here
+    users.hasMany(models.prefGames)
+    users.hasOne(models.questionnaires)
   };
   return users;
 };
