@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   users.associate = function(models) {
-    // associations go here
+    users.hasMany(models.prefGames)
+    users.hasOne(models.questionnaires)
   };
   return users;
 };
