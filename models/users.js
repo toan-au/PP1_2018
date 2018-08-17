@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       displayName: DataTypes.STRING,
       dob: DataTypes.DATE,
-      language: DataTypes.STRING
+      language: DataTypes.STRING,
+      firstTime: DataTypes.BOOLEAN
     },
     {}
   );
