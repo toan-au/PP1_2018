@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Home extends Component {
+class FormThree extends Component {
 
     state= 
     {
@@ -43,7 +43,10 @@ class Home extends Component {
     {
         return(
             <form>
-              <div className="Home">
+             <div className="banner">
+                <h1>Sign Up</h1>
+            </div>
+              <div className="Form">
               <label>Game1: </label>
                 <input
                     name="Game 1"
@@ -53,7 +56,7 @@ class Home extends Component {
                 />
                 <br/>
                 <br />
-                <label>Game1: </label>
+                <label>Game 2: </label>
                 <input
                     name="Game 2"
                     placeHolder="text"
@@ -62,7 +65,7 @@ class Home extends Component {
                 />
                 <br/>
                 <br />
-                <label>Game1: </label>
+                <label>Game 3: </label>
                 <input
                     name="Game 3"
                     placeHolder="text"
@@ -71,7 +74,7 @@ class Home extends Component {
                 />
                 <br/>
                 <br />
-                <label>Game1: </label>
+                <label>Game 4: </label>
                 <input
                     name="Game 4"
                     placeHolder="text"
@@ -79,24 +82,20 @@ class Home extends Component {
                     onChange={e => this.change(e)}
                 />
                 <br/>
-                </div>
-                <div className="Home">
                 <br />
                 <label>Casual or Competitive?</label>
-                <div className="radio">
-                    <label>
-                        <input type="radio" value="Casual" checked={true} />
-                        Casual
-                    </label>
+                <br/>
+                <div>
+                    <label><input name="Casual" type="radio" value="Casual" checked={this.state.selectedOption === 'Casual'} onChange={this.handleOptionChange}/>Casual</label>
                 </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" value="Competitive" />
-                        Competitive
-                    </label>
+                <div>
+                    <label><input name="Competitive" type="radio" value="Competitive" checked={this.state.selectedOption === 'Competitive'} onChange={this.handleOptionChange}/>Competitive</label>
                 </div>
-
-                <button > Next</button>
+                <div className= "next">
+                <Link to="/FormFour">
+                    <button >Next</button>
+                </Link>
+                </div>
                 </div>
             </form>
             
@@ -104,4 +103,4 @@ class Home extends Component {
         )
     }
 }
-export default Home;
+export default FormThree;

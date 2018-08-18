@@ -3,7 +3,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url(//fonts.googleapis.com/css?family=Andika);
+@import url(//fonts.googleapis.com/css?family=Alegreya+Sans:300);
 html,
 body,
 div,
@@ -141,14 +141,27 @@ table {
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
+<<<<<<< HEAD
 h3, p, a {
   font-family: 'Andika', Helvetica, Arial, sans-serif;
+=======
+h2,
+h3,
+p,
+a {
+  font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
+>>>>>>> 1a74278d6df0d5bb4c047887d339510fe509669c
   font-weight: bold;
-  color: #BFBDC1;
+  color: #bfbdc1;
   text-decoration: none; }
 
+h2 {
+  font-size: 3em;
+  color: #de9e36;
+  text-shadow: 0px 0px 2px #bfbdc1; }
+
 a:hover {
-  text-shadow: 0px 0px 5px #DE9E36; }
+  text-shadow: 0px 0px 5px #de9e36; }
 
 .container {
   padding: 12px 80px; }
@@ -172,13 +185,22 @@ button {
   justify-content: space-between;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 20px 20px;
-  background: white; }
+  background: #1E1E2B;
+  color: #E5E5E5; }
   .Navbar .logo {
     font-size: 2.7em; }
   .Navbar .right-nav {
-    display: inline; }
+    padding: 15px; }
+    .Navbar .right-nav .button1 {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 17px;
+      padding-right: 17px;
+      border-radius: 40px;
+      border: solid #E5E5E5 2px;
+      color: #E5E5E5;
+      background: #1E1E2B; }
   .Navbar .right-nav .icon {
-    display: inline-block;
     padding: 20px; }
 
 /* Chuck your variables in here*/
@@ -188,8 +210,71 @@ button {
 /* paddings */
 /* border */
 /* kittens */
+form .banner {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  color: #E5E5E5;
+  padding-top: 100px;
+  padding-bottom: 20px; }
+  form .banner h1 {
+    font-size: 80px; }
+
+form .Form {
+  margin: 0px auto;
+  padding: 25px;
+  position: center;
+  background: #E5E5E5;
+  color: #1E1E2B;
+  width: 250px;
+  border-radius: 15px; }
+  form .Form label {
+    color: #1E1E2B;
+    text-align: right; }
+  form .Form input {
+    background: #BFBDC1;
+    margin-top: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: 95%;
+    text-align: left;
+    color: #E5E5E5; }
+  form .Form select {
+    margin-top: 10px;
+    background: #BFBDC1;
+    width: 100%;
+    color: #6D6A75; }
+  form .Form textarea {
+    background: #BFBDC1;
+    margin-top: 10px;
+    border: solid #E5E5E5 1px;
+    border-radius: 5px;
+    width: 100%; }
+
+form .next {
+  text-align: right; }
+  form .next button {
+    border-style: outset;
+    border-radius: 10px;
+    border: #C82128 2px;
+    color: #E5E5E5;
+    background: #C82128;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px; }
+  form .next button:hover {
+    background: #AB1E24; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
 .Content {
-  background: #37323E; }
+  background: #1E1E2B; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -200,7 +285,7 @@ button {
 /* kittens */
 .Footer {
   display: flex;
-  background: #37323E;
+  background: #1E1E2B;
   align-items: center;
   justify-content: space-between;
   font-size: 0.9em;
@@ -219,14 +304,58 @@ button {
 /* border */
 /* kittens */
 .Home .banner {
+<<<<<<< HEAD
   width: 240px;
   margin: 0 auto; }
+=======
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  color: #E5E5E5;
+  padding-top: 100px; }
+  .Home .banner h1 {
+    font-size: 80px; }
+  .Home .banner .match {
+    margin: 50px;
+    border-radius: 10px;
+    border: #C82128 2px;
+    color: #E5E5E5;
+    background: #C82128;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px; }
+>>>>>>> 1a74278d6df0d5bb4c047887d339510fe509669c
 
 .Home .matches {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 40px;
   grid-row-gap: 40px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.outer {
+  display: table;
+  height: 100%;
+  width: 100%; }
+
+.middle {
+  display: table-cell;
+  vertical-align: middle; }
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  text-align: center; }
+
+h2 {
+  padding-bottom: 10px; }
 
 /* components */
 /* Chuck your variables in here*/
@@ -238,7 +367,7 @@ button {
 /* kittens */
 .MatchCard {
   padding: 20px;
-  border: 1px solid #ccc; }
+  border: 1px solid #BFBDC1; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;

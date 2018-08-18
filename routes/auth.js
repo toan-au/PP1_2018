@@ -71,6 +71,12 @@ router.get(
   }
 );
 
+// logout the current user
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
 // returns the current user object
 router.get('/current', (req, res) => res.send(req.user));
 

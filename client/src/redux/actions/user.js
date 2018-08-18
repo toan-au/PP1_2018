@@ -1,12 +1,18 @@
-import { GET_USER } from './types';
+import axios from 'axios';
+import { GET_USER, LOGOUT_USER } from './types';
 
 export const getUser = () => {
   return async dispatch => {
-    const user = {
-      id: 1,
-      display_name: 'kmariaud0',
-      email: 'bianinotti0@symantec.com'
-    };
+    const response = await axios.get('/auth/current');
+    const user = response.data;
     dispatch({ type: GET_USER, user });
+  };
+};
+
+export const logoutUser = () => {
+  return async dispatch => {
+    // log out server side
+    await axios.get('/auth/logout');
+    dispatch({ type: LOGOUT_USER });
   };
 };

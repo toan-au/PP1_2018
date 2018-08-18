@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-class Home extends Component {
+class FormOne extends Component {
 
     state= 
     {
@@ -41,9 +42,14 @@ class Home extends Component {
     render() 
     {
         return(
+            
             <form>
-              <div className="Home">
+            <div className="banner">
+                <h1>Sign Up</h1>
+            </div>
+              <div className="Form">
               <label>DisplayName: </label>
+              <br/>
                 <input
                     name="DisplayName"
                     placeHolder="text"
@@ -53,33 +59,63 @@ class Home extends Component {
                 <br/>
                 <br />
                 <label>Region: </label>
-                <input
+                <br/>
+                {/* <option
                     name="Region"
                     placeHolder="text"
                     value={this.state.Region}
                     onChange={e => this.change(e)}
-                />
+                /> */}
+                <select>
+                    <option value="North America">North America</option>
+                    <option value="Oceania">Oceania</option>
+                    <option value="Europe">Europe</option>
+                    <option value="China">China</option>
+                    <option value="Korea">Korea</option>
+                    <option value="Japan">Japan</option>
+
+                </select>
                 <br/>
                 <br />
                 <label>Language: </label>
-                <input
+                <br/>
+                {/* <input
                     name="Language"
                     placeHolder="text"
                     value={this.state.Language}
                     onChange={e => this.change(e)}
-                />
+                /> */}
+                <select>
+                    <option value="English">English</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Korean">Korean</option>
+                </select>
                 <br/>
                 <br />
                 <label>Age: </label>
-                <input
+                <br/>
+                {/* <input
                     name="Age"
-                    placeHolder="Number"
+                    placeHolder="number"
                     value={this.state.ge}
                     onChange={e => this.change(e)}
-                />
+                /> */}
+                <select>
+                    <option value="18-20">18-20</option>
+                    <option value="21-25">21-25</option>
+                    <option value="26-30">26-30</option>
+                    <option value="31-35">31-35</option>
+                    <option value="36+">36+</option>
+                </select>
                 <br/>
                 <br />
-                <button > Next</button>
+                <div className= "next">
+                <Link to="/FormTwo">
+                    <button > Next</button>
+                </Link>
+                </div>
                 </div>
             </form>
             
@@ -87,4 +123,4 @@ class Home extends Component {
         )
     }
 }
-export default Home;
+export default FormOne;

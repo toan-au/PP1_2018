@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Home extends Component {
+class FormFour extends Component {
 
     state= 
     {
@@ -34,24 +34,31 @@ class Home extends Component {
     {
         return(
             <form>
-              <div className="Home">
+            <div className="banner">
+                <h1>Sign Up</h1>
+            </div>
+              <div className="Form">
               <label>Bio: </label>
-                <input
+              <br/>
+                <textarea className="text" rows="25" cols="50"
                     name="Bio"
-                    placeHolder="text"
+                    placeHolder="Biography"
                     value={this.state.Bio}
                     onChange={e => this.change(e)}
                 />
                 <br/>
                 <br/>
+                
+                <div className= "next">
+                <Link to="/">
+                    <button >Submit</button>
+                </Link>
                 </div>
-                
-                <button > Next</button>
-                
+                </div>
             </form>
             
 
         )
     }
 }
-export default Home;
+export default FormFour;

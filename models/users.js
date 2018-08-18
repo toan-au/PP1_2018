@@ -6,13 +6,16 @@ module.exports = (sequelize, DataTypes) => {
       googleId: DataTypes.STRING,
       email: DataTypes.STRING,
       displayName: DataTypes.STRING,
-      dob: DataTypes.DATE,
-      language: DataTypes.STRING
+      age: DataTypes.INTEGER,
+      language: DataTypes.STRING,
+      bio: DataTypes.STRING,
+      firstTime: DataTypes.BOOLEAN
     },
     {}
   );
   users.associate = function(models) {
-    // associations go here
+    users.hasMany(models.prefGames)
+    users.hasOne(models.questionnaires)
   };
   return users;
 };

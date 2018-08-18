@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Home extends Component {
+class FormTwo extends Component {
 
     state= 
     {
@@ -45,53 +45,60 @@ class Home extends Component {
     {
         return(
             <form>
-              <div className="Home">
-              <label>DisplayName: </label>
+             <div className="banner">
+                <h1>Sign Up</h1>
+            </div>
+              <div className="Form">
+              <label>Steam: </label>
                 <input
                     name="Steam"
-                    placeHolder="text"
+                    placeHolder="Steam"
                     value={this.state.Steam}
                     onChange={e => this.change(e)}
                 />
                 <br/>
                 <br />
-                <label>Region: </label>
+                <label>Playstation: </label>
                 <input
                     name="Playstation"
-                    placeHolder="text"
+                    placeHolder="PSN"
                     value={this.state.Playstation}
                     onChange={e => this.change(e)}
                 />
                 <br/>
                 <br />
-                <label>Language: </label>
+                <label>Xbox: </label>
                 <input
                     name="Xbox"
-                    placeHolder="text"
+                    placeHolder="Xbox live"
                     value={this.state.Xbox}
                     onChange={e => this.change(e)}
                 />
                 <br/>
                 <br />
-                <label>Age: </label>
+                <label>Nintendo: </label>
                 <input
                     name="Nintendo"
-                    placeHolder="text"
+                    placeHolder="Nintendo"
                     value={this.state.Nintendo}
                     onChange={e => this.change(e)}
                 />
                 <br/>
                 <br />
-                <label>Age: </label>
+                <label>Discord: </label>
                 <input
                     name="Discord"
-                    placeHolder="text"
+                    placeHolder="Discord"
                     value={this.state.Discord}
                     onChange={e => this.change(e)}
                 />
                 <br/>
                 <br/>
-                <button > Next</button>
+                <div className= "next">
+                <Link to="/FormThree">
+                    <button > Next</button>
+                </Link>
+                </div>
                 </div>
             </form>
             
@@ -99,4 +106,4 @@ class Home extends Component {
         )
     }
 }
-export default Home;
+export default FormTwo;
