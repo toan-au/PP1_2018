@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import RegistrationForm from '../components/RegistrationForm';
 
-class Register extends Component {
+class Registration extends Component {
+  handleSubmit(values) {
+    console.log(values);
+  }
   render() {
     return (
       <div className="Register">
         registration page
-        <RegistrationForm />
+        <RegistrationForm onSubmit={this.handleSubmit} />
       </div>
     );
   }
 }
 
-export default Register;
+export default Registration;
