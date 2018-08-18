@@ -4,8 +4,27 @@
   .banner {
     width: 500px;
     margin: 0 auto;
+    text-align: center;
+    color: $white;
+    padding-top: 100px;
+    h1{
+      font-size: 80px;
+    }
+    
+    
+    .match {
+      margin:50px;
+      border-radius: 10px;
+      border: $light_red 2px;
+      
+      color: $white;
+      background: $light_red;
+      font-size:20px;
+      padding-left:50px;
+      padding-right:50px;
+    }
   }
-
+    
   .matches {
     display: grid;
     grid-template-columns: $match_columns;

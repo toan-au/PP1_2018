@@ -26,7 +26,7 @@ class Home extends Component {
       <div className="Home">
         <div className="banner">
           <h1>Welcome back {user.display_name}</h1>
-          <button onClick={this.loadMatches}>match me!</button>
+          <button className= "match" onClick={this.loadMatches}>Match</button>
         </div>
         <div className="matches">{this.state.matches}</div>
       </div>

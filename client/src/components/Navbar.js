@@ -1,61 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Build, SupervisorAccount, Home } from 'material-react-icons';
-import { connect } from 'react-redux';
-import { logoutUser } from '../redux/actions/user';
+import axios from 'axios';
+
+
 
 class Navbar extends Component {
-  renderLoggedIn() {
-    return (
-      <div className="right-nav">
-        <Link to="/">
-          <Home viewBox="10 10 10 10" className="icon" />
-        </Link>
-        <Link to="/messages">
-          <SupervisorAccount viewBox="10 10 10 10" className="icon" />
-        </Link>
-        <Link to="/requests">
-          <SupervisorAccount viewBox="10 10 10 10" className="icon" />
-        </Link>
-        {/* <a href="/auth/logout">
-          <Build viewBox="10 10 13 13" className="icon" />
-        </a> */}
-        <a href="/auth/logout">Logout</a>
-      </div>
-    );
+  googleSignin() {
+    axios.get('/auth/google');
   }
 
-  renderLoggedOut() {
-    return (
-      <div className="right-nav">
-        <a href="/auth/google">Sign in with google</a>
-      </div>
-    );
-  }
-
-  render() {
-    let rightNav;
-    if (this.props.user) {
-      rightNav = this.renderLoggedIn();
-    } else {
-      rightNav = this.renderLoggedOut();
-    }
-
+  render() 
+  {
     return (
       <nav className="Navbar">
         <Link to="/" className="logo">
-          Game Search Match
+          GameSearchMatch
         </Link>
-        {/* Conditional rendering of right-nav */}
-        {rightNav}
+        <div className="right-nav">
+        <Link to="/FormOne" className="login">
+        <a href="/auth/google" class="button1" onClick={ () => {console.log('success'); }}>G Login</a>
+        </Link>
+        </div>
       </nav>
-    );
+    ); 
   }
 }
 
-const mapStateToProps = state => ({ user: state.user });
-
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(Navbar);
+export default Navbar;
