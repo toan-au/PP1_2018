@@ -44,7 +44,7 @@ class FormOne extends Component {
         return(
             
             <form>
-            <div className="banner">
+            <div className="sign">
                 <h1>Sign Up</h1>
             </div>
               <div className="Form">

@@ -141,16 +141,11 @@ table {
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
-<<<<<<< HEAD
-h3, p, a {
-  font-family: 'Andika', Helvetica, Arial, sans-serif;
-=======
 h2,
 h3,
 p,
 a {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
->>>>>>> 1a74278d6df0d5bb4c047887d339510fe509669c
   font-weight: bold;
   color: #bfbdc1;
   text-decoration: none; }
@@ -210,14 +205,14 @@ button {
 /* paddings */
 /* border */
 /* kittens */
-form .banner {
+form .sign {
   width: 500px;
   margin: 0 auto;
   text-align: center;
   color: #E5E5E5;
   padding-top: 100px;
   padding-bottom: 20px; }
-  form .banner h1 {
+  form .sign h1 {
     font-size: 80px; }
 
 form .Form {
@@ -304,11 +299,7 @@ form .next {
 /* border */
 /* kittens */
 .Home .banner {
-<<<<<<< HEAD
-  width: 240px;
-  margin: 0 auto; }
-=======
-  width: 500px;
+  width: 0px auto;
   margin: 0 auto;
   text-align: center;
   color: #E5E5E5;
@@ -324,7 +315,8 @@ form .next {
     font-size: 20px;
     padding-left: 50px;
     padding-right: 50px; }
->>>>>>> 1a74278d6df0d5bb4c047887d339510fe509669c
+  .Home .banner button:hover {
+    background: #AB1E24; }
 
 .Home .matches {
   display: grid;

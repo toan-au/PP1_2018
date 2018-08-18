@@ -6,11 +6,7 @@
 /* border */
 /* kittens */
 .Home .banner {
-<<<<<<< HEAD
-  width: 240px;
-  margin: 0 auto; }
-=======
-  width: 500px;
+  width: 0px auto;
   margin: 0 auto;
   text-align: center;
   color: #E5E5E5;
@@ -26,7 +22,8 @@
     font-size: 20px;
     padding-left: 50px;
     padding-right: 50px; }
->>>>>>> 1a74278d6df0d5bb4c047887d339510fe509669c
+  .Home .banner button:hover {
+    background: #AB1E24; }
 
 .Home .matches {
   display: grid;
