@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var preferences = sequelize.define('preferences', {
+    qId: DataTypes.INTEGER,
     pref1: DataTypes.STRING,
     pref2: DataTypes.STRING,
     pref3: DataTypes.STRING,

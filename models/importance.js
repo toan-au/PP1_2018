@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var importance = sequelize.define('importance', {
+    qId: DataTypes.INTEGER,
     imp1: DataTypes.INTEGER,
     imp2: DataTypes.INTEGER,
     imp3: DataTypes.INTEGER,
@@ -13,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     imp10: DataTypes.INTEGER
   }, {});
   importance.associate = function(models) {
-    // associations can be defined here
+    preferences.belongsTo(models.questionnaires)
   };
   return importance;
 };
