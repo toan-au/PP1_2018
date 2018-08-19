@@ -5,11 +5,6 @@ import { connect } from 'react-redux';
 // pages
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
-import FormOne from '../pages/FormOne';
-import FormTwo from '../pages/FormTwo';
-import FormThree from '../pages/FormThree';
-import FormFour from '../pages/FormFour';
-
 import Registration from '../pages/Registration';
 import FormOne from '../pages/FormOne';
 import FormTwo from '../pages/FormTwo';
