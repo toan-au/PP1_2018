@@ -5,19 +5,30 @@
   justify-content: space-between;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 20px 20px;
-  background: $blue;
+  background: $gunmetal;
+  color: $white;
 
   .logo {
     font-size: 2.7em;
   }
 
   .right-nav {
-    display: inline;
+    padding:15px;
+    .button1{
+      padding-top:5px;
+      padding-bottom:5px;
+      padding-left: 17px;
+      padding-right:17px;
+      border-radius: 40px;
+      border: solid $white 2px;
+      color: $white;
+      background: $gunmetal;
+    }
   }
 
   .right-nav {
     .icon {
-      display: inline-block;
+      
       padding: 20px;
     }
   }
