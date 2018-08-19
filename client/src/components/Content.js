@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 // pages
 import Home from '../pages/Home';
-import AboutUs from '../pages/AboutUs';
+import Landing from '../pages/Landing';
+import Registration from '../pages/Registration';
 
 class Content extends Component {
   render() {
@@ -12,7 +13,8 @@ class Content extends Component {
       <main className="Content container">
         <Switch>
           {this.props.user && <Route path="/" component={Home} />}
-          <Route path="/" component={AboutUs} />
+          <Route path="/register" component={Registration} />
+          <Route path="/" component={Landing} />
         </Switch>
       </main>
     );
