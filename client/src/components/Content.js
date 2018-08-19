@@ -14,7 +14,7 @@ import Registration from '../pages/Registration';
 class Content extends Component {
   render() {
     return (
-      <main className="Content container">
+      <main className="Content">
         <Switch>
           <Route exact path="/register" component={Registration} />
           <Route exact path="/FormOne" component={FormOne} />
