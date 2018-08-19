@@ -141,13 +141,17 @@ table {
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
-h2, h3, p, a {
+h2,
+h3,
+p,
+a {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #bfbdc1;
   text-decoration: none; }
 
-p, a {
+p,
+a {
   font-size: medium; }
 
 a:hover {
@@ -162,6 +166,16 @@ button {
   font-size: 1.3em;
   background: none;
   border-radius: 3px; }
+
+.button1 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 17px;
+  padding-right: 17px;
+  border-radius: 40px;
+  border: solid #E5E5E5 2px;
+  color: #E5E5E5;
+  background: #1E1E2B; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -181,15 +195,6 @@ button {
     font-size: 2.7em; }
   .Navbar .right-nav {
     padding: 15px; }
-    .Navbar .right-nav .button1 {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      padding-left: 17px;
-      padding-right: 17px;
-      border-radius: 40px;
-      border: solid #E5E5E5 2px;
-      color: #E5E5E5;
-      background: #1E1E2B; }
   .Navbar .right-nav .icon {
     padding: 20px; }
 
@@ -346,20 +351,24 @@ h3 {
 .Landing {
   display: table;
   height: 100%;
-  width: 100%; }
-
-.middle {
-  display: table-cell;
-  vertical-align: middle; }
-
-.inner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 1000px;
-  text-align: center; }
-
-h2 {
-  padding-bottom: 10px; }
+  width: 100vw;
+  background: url("../../images/landing.jpg");
+  background-size: cover; }
+  .Landing .landing-title {
+    font-size: 4em;
+    font-weight: bold; }
+  .Landing .middle {
+    display: table-cell;
+    vertical-align: middle; }
+  .Landing .inner {
+    padding: 50px 7px;
+    background: rgba(26, 25, 25, 0.879);
+    text-align: center; }
+  .Landing h2 {
+    padding-bottom: 10px; }
+  .Landing .button1 {
+    position: relative;
+    top: 20px; }
 
 /* Chuck your variables in here*/
 /* colors */
