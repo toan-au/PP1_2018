@@ -1,0 +1,62 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+form .sign {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  color: #E5E5E5;
+  padding-top: 100px;
+  padding-bottom: 20px; }
+  form .sign h1 {
+    font-size: 80px; }
+
+form .Form {
+  margin: 0px auto;
+  padding: 25px;
+  position: center;
+  background: #E5E5E5;
+  color: #1E1E2B;
+  width: 250px;
+  border-radius: 15px; }
+  form .Form label {
+    color: #1E1E2B;
+    text-align: right; }
+  form .Form input {
+    background: #BFBDC1;
+    margin-top: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: 95%;
+    text-align: left;
+    color: #E5E5E5; }
+  form .Form select {
+    margin-top: 10px;
+    background: #BFBDC1;
+    width: 100%;
+    color: #6D6A75; }
+  form .Form textarea {
+    background: #BFBDC1;
+    margin-top: 10px;
+    border: solid #E5E5E5 1px;
+    border-radius: 5px;
+    width: 100%; }
+
+form .next {
+  text-align: right; }
+  form .next button {
+    border-style: outset;
+    border-radius: 10px;
+    border: #C82128 2px;
+    color: #E5E5E5;
+    background: #C82128;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px; }
+  form .next button:hover {
+    background: #AB1E24; }
