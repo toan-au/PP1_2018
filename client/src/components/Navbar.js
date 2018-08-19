@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-
 class Navbar extends Component {
   googleSignin() {
     axios.get('/auth/google');
@@ -28,8 +27,7 @@ class Navbar extends Component {
     );
   }
 
-  render() 
-  {
+  render() {
     let rightNav;
     if (this.props.user) {
       rightNav = this.renderLoggedIn();
@@ -41,13 +39,9 @@ class Navbar extends Component {
         <Link to="/" className="logo">
           GameSearchMatch
         </Link>
-        <div className="right-nav">
-        <Link to="/register" className="login">
-        <a href="/auth/google" class="button1" onClick={ () => {console.log('success'); }}>G Login</a>
-        </Link>
-        </div>
+        {rightNav}
       </nav>
-    ); 
+    );
   }
 }
 
@@ -56,4 +50,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Navbar);
-
