@@ -10,6 +10,7 @@ import FormTwo from '../pages/FormTwo';
 import FormThree from '../pages/FormThree';
 import FormFour from '../pages/FormFour';
 
+import Registration from '../pages/Registration';
 
 class Content extends Component {
   render() {
@@ -22,6 +23,7 @@ class Content extends Component {
           <Route exact path="/FormFour" component={FormFour}/>
           {this.props.user && <Route path="/" component={Home} />}
           
+          <Route path="/register" component={Registration} />
           <Route path="/" component={Landing} />
         </Switch>
       </main>
