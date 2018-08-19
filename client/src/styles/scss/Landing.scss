@@ -7,12 +7,18 @@
   background: url('../../images/landing.jpg');
   background-size: cover;
 
+  .landing-title {
+    font-size: 4em;
+    font-weight: bold;
+  }
   .middle {
     display: table-cell;
     vertical-align: middle;
   }
 
   .inner {
+    padding: 50px 7px;
+    background: rgba(26, 25, 25, 0.879);
     text-align: center;
   }
 

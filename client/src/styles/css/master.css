@@ -349,10 +349,15 @@ h3 {
   width: 100vw;
   background: url("../../images/landing.jpg");
   background-size: cover; }
+  .Landing .landing-title {
+    font-size: 4em;
+    font-weight: bold; }
   .Landing .middle {
     display: table-cell;
     vertical-align: middle; }
   .Landing .inner {
+    padding: 50px 7px;
+    background: rgba(26, 25, 25, 0.879);
     text-align: center; }
   .Landing h2 {
     padding-bottom: 10px; }

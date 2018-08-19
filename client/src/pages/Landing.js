@@ -6,7 +6,7 @@ class Landing extends Component {
       <div className="Landing">
         <div className="middle">
           <div className="inner">
-            <h2>WELCOME TO GAMESEARCHMATCH</h2>
+            <h2 className="landing-title">GAME SEARCH MATCH</h2>
             <p>
               The beautifully designed matching application that will match you
               with your destined gaming compatriots through our top-tier
