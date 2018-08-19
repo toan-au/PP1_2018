@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class PrivacyPolicy extends Component {
   render() {
     return (
-      <div className="AboutUs">
+      <div className="Privacy">
         <div className="middle">
           <div className="inner">
             <h3>Our Privacy Policy</h3>

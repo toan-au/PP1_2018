@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // pages
 import Home from '../pages/Home';
-import Landing from '../pages/Landing';
+import Privacy from '../pages/Privacy';
 
 class Content extends Component {
   render() {
@@ -12,7 +12,7 @@ class Content extends Component {
       <main className="Content container">
         <Switch>
           {this.props.user && <Route path="/" component={Home} />}
-          <Route path="/" component={Landing} />
+          <Route path="/" component={Privacy} />
         </Switch>
       </main>
     );
