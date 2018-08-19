@@ -11,13 +11,17 @@
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
-h2, h3, p, a {
+h2,
+h3,
+p,
+a {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #bfbdc1;
   text-decoration: none; }
 
-p, a {
+p,
+a {
   font-size: medium; }
 
 a:hover {
@@ -32,3 +36,13 @@ button {
   font-size: 1.3em;
   background: none;
   border-radius: 3px; }
+
+.button1 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 17px;
+  padding-right: 17px;
+  border-radius: 40px;
+  border: solid #E5E5E5 2px;
+  color: #E5E5E5;
+  background: #1E1E2B; }
