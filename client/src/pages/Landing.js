@@ -14,6 +14,9 @@ class Landing extends Component {
             </p>
             <br />
             <p>Register or sign in now with a Google Account.</p>
+            <a href="/auth/google" className="button1">
+              Google login
+            </a>
           </div>
         </div>
       </div>
