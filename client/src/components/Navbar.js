@@ -17,7 +17,7 @@ class Navbar extends Component {
           GameSearchMatch
         </Link>
         <div className="right-nav">
-        <Link to="/FormOne" className="login">
+        <Link to="/register" className="login">
         <a href="/auth/google" class="button1" onClick={ () => {console.log('success'); }}>G Login</a>
         </Link>
         </div>
