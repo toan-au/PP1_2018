@@ -4,12 +4,16 @@
 /* layout */
 @import 'App';
 @import 'Navbar';
+@import 'Form';
 @import 'Content';
 @import 'Footer';
+@import 'page-title';
 
 /* pages */
 @import 'Home';
 @import 'Landing';
+@import 'AboutUs';
+@import 'Privacy';
 
 /* components */
 @import 'MatchCard';

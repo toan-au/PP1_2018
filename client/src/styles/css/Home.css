@@ -6,8 +6,24 @@
 /* border */
 /* kittens */
 .Home .banner {
-  width: 500px;
-  margin: 0 auto; }
+  width: 0px auto;
+  margin: 0 auto;
+  text-align: center;
+  color: #E5E5E5;
+  padding-top: 100px; }
+  .Home .banner h1 {
+    font-size: 80px; }
+  .Home .banner .match {
+    margin: 50px;
+    border-radius: 10px;
+    border: #C82128 2px;
+    color: #E5E5E5;
+    background: #C82128;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px; }
+  .Home .banner button:hover {
+    background: #AB1E24; }
 
 .Home .matches {
   display: grid;

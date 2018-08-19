@@ -6,8 +6,9 @@ module.exports = (sequelize, DataTypes) => {
       googleId: DataTypes.STRING,
       email: DataTypes.STRING,
       displayName: DataTypes.STRING,
-      dob: DataTypes.DATE,
+      age: DataTypes.INTEGER,
       language: DataTypes.STRING,
+      bio: DataTypes.STRING,
       firstTime: DataTypes.BOOLEAN
     },
     {}
