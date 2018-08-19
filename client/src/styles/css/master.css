@@ -243,7 +243,7 @@ button {
 /* paddings */
 /* border */
 /* kittens */
-.outer {
+.AboutUs {
   display: table;
   height: 100%;
   width: 100%; }
@@ -260,6 +260,28 @@ button {
 
 h2 {
   padding-bottom: 10px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.outer {
+  display: table;
+  height: 100%;
+  width: 100%; }
+
+.middle {
+  display: table-cell;
+  vertical-align: middle; }
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  text-align: center; }
 
 /* components */
 /* Chuck your variables in here*/
