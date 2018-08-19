@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // pages
 import Home from '../pages/Home';
-import Landing from '../pages/Landing';
+import Contact from '../pages/Contact';
 import Registration from '../pages/Registration';
 import FormOne from '../pages/FormOne';
 import FormTwo from '../pages/FormTwo';
@@ -22,7 +22,7 @@ class Content extends Component {
           <Route exact path="/FormFour" component={FormFour} />
           {this.props.user && <Route path="/" component={Home} />}
           <Route path="/register" component={Registration} />
-          <Route path="/" component={Landing} />
+          <Route path="/" component={Contact} />
         </Switch>
       </main>
     );

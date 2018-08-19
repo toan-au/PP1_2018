@@ -141,11 +141,14 @@ table {
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
-h2, h3, p, a {
+h2, h3, p, a, form {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #bfbdc1;
   text-decoration: none; }
+
+textarea, input {
+  font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif; }
 
 p, a {
   font-size: medium; }
@@ -404,6 +407,21 @@ h2 {
   margin-right: auto;
   width: 1000px;
   text-align: center; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.contact-title {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+
+input {
+  margin-bottom: 10px; }
 
 /* components */
 /* Chuck your variables in here*/
