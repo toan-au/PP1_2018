@@ -141,19 +141,14 @@ table {
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
-h2,
-h3,
-p,
-a {
+h2, h3, p, a {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #bfbdc1;
   text-decoration: none; }
 
-h2 {
-  font-size: 3em;
-  color: #de9e36;
-  text-shadow: 0px 0px 2px #bfbdc1; }
+p, a {
+  font-size: medium; }
 
 a:hover {
   text-shadow: 0px 0px 5px #de9e36; }
@@ -290,6 +285,23 @@ form .next {
   display: inline-block;
   padding: 3px 20px; }
 
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+h2 {
+  font-size: 3em;
+  color: #de9e36;
+  text-shadow: 0px 0px 2px #bfbdc1; }
+
+h3 {
+  font-size: x-large;
+  font-weight: 600;
+  color: #de9e36; }
+
 /* pages */
 /* Chuck your variables in here*/
 /* colors */
@@ -331,7 +343,7 @@ form .next {
 /* paddings */
 /* border */
 /* kittens */
-.AboutUs {
+.Landing {
   display: table;
   height: 100%;
   width: 100%; }
@@ -356,7 +368,29 @@ h2 {
 /* paddings */
 /* border */
 /* kittens */
-.outer {
+.AboutUs {
+  display: table;
+  height: 100%;
+  width: 100%; }
+
+.middle {
+  display: table-cell;
+  vertical-align: middle; }
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  text-align: center; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Privacy {
   display: table;
   height: 100%;
   width: 100%; }

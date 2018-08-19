@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Landing extends Component {
   render() {
     return (
-      <div className="outer">
+      <div className="Landing">
         <div className="middle">
           <div className="inner">
             <h2>WELCOME TO GAMESEARCHMATCH</h2>
