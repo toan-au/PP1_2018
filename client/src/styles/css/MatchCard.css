@@ -7,7 +7,8 @@
 /* kittens */
 .MatchCard {
   padding: 20px;
-  border: 1px solid #BFBDC1; }
+  border: 1px solid #bfbdc1;
+  background: #e5e5e5; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;

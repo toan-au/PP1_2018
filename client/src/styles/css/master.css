@@ -173,9 +173,9 @@ button {
   padding-left: 17px;
   padding-right: 17px;
   border-radius: 40px;
-  border: solid #E5E5E5 2px;
-  color: #E5E5E5;
-  background: #1E1E2B; }
+  border: solid #e5e5e5 2px;
+  color: #e5e5e5;
+  background: #1e1e2b; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -189,8 +189,8 @@ button {
   justify-content: space-between;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 20px 20px;
-  background: #1E1E2B;
-  color: #E5E5E5; }
+  background: #1e1e2b;
+  color: #e5e5e5; }
   .Navbar .logo {
     font-size: 2.7em; }
   .Navbar .right-nav {
@@ -209,7 +209,7 @@ form .sign {
   width: 500px;
   margin: 0 auto;
   text-align: center;
-  color: #E5E5E5;
+  color: #e5e5e5;
   padding-top: 100px;
   padding-bottom: 20px; }
   form .sign h1 {
@@ -219,31 +219,31 @@ form .Form {
   margin: 0px auto;
   padding: 25px;
   position: center;
-  background: #E5E5E5;
-  color: #1E1E2B;
+  background: #e5e5e5;
+  color: #1e1e2b;
   width: 250px;
   border-radius: 15px; }
   form .Form label {
-    color: #1E1E2B;
+    color: #1e1e2b;
     text-align: right; }
   form .Form input {
-    background: #BFBDC1;
+    background: #bfbdc1;
     margin-top: 5px;
     border-style: solid;
     border-radius: 5px;
     padding: 5px;
     width: 95%;
     text-align: left;
-    color: #E5E5E5; }
+    color: #e5e5e5; }
   form .Form select {
     margin-top: 10px;
-    background: #BFBDC1;
+    background: #bfbdc1;
     width: 100%;
-    color: #6D6A75; }
+    color: #6d6a75; }
   form .Form textarea {
-    background: #BFBDC1;
+    background: #bfbdc1;
     margin-top: 10px;
-    border: solid #E5E5E5 1px;
+    border: solid #e5e5e5 1px;
     border-radius: 5px;
     width: 100%; }
 
@@ -252,14 +252,14 @@ form .next {
   form .next button {
     border-style: outset;
     border-radius: 10px;
-    border: #C82128 2px;
-    color: #E5E5E5;
-    background: #C82128;
+    border: #c82128 2px;
+    color: #e5e5e5;
+    background: #c82128;
     font-size: 20px;
     padding-left: 20px;
     padding-right: 20px; }
   form .next button:hover {
-    background: #AB1E24; }
+    background: #ab1e24; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -269,7 +269,7 @@ form .next {
 /* border */
 /* kittens */
 .Content {
-  background: #1E1E2B; }
+  background: #1e1e2b; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -280,7 +280,7 @@ form .next {
 /* kittens */
 .Footer {
   display: flex;
-  background: #1E1E2B;
+  background: #1e1e2b;
   align-items: center;
   justify-content: space-between;
   font-size: 0.9em;
@@ -319,21 +319,21 @@ h3 {
   width: 0px auto;
   margin: 0 auto;
   text-align: center;
-  color: #E5E5E5;
+  color: #e5e5e5;
   padding-top: 100px; }
   .Home .banner h1 {
     font-size: 80px; }
   .Home .banner .match {
     margin: 50px;
     border-radius: 10px;
-    border: #C82128 2px;
-    color: #E5E5E5;
-    background: #C82128;
+    border: #c82128 2px;
+    color: #e5e5e5;
+    background: #c82128;
     font-size: 20px;
     padding-left: 50px;
     padding-right: 50px; }
   .Home .banner button:hover {
-    background: #AB1E24; }
+    background: #ab1e24; }
 
 .Home .matches {
   display: grid;
@@ -424,7 +424,8 @@ h3 {
 /* kittens */
 .MatchCard {
   padding: 20px;
-  border: 1px solid #BFBDC1; }
+  border: 1px solid #bfbdc1;
+  background: #e5e5e5; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;
