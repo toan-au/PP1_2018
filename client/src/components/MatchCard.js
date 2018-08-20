@@ -1,5 +1,6 @@
 import React from 'react';
 import defaultPfp from '../images/default_pfp.jpg';
+import MatchMeter from './MatchMeter';
 
 const MatchCard = props => {
   const { pfp, display_name, bio, matchingScore } = props.match;
@@ -19,7 +20,7 @@ const MatchCard = props => {
       </div>
       <div className="button-group">
         <button>Like</button>
-        <button>{matchingScore}%</button>
+        <MatchMeter percent={matchingScore} />
         <button>Dislike</button>
       </div>
     </div>
