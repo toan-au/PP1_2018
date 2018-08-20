@@ -11,17 +11,17 @@
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
-h2,
-h3,
-p,
-a {
+
+h2, h3, p, a, form {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #bfbdc1;
   text-decoration: none; }
 
-p,
-a {
+textarea, input {
+  font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif; }
+
+p, a {
   font-size: medium; }
 
 a:hover {

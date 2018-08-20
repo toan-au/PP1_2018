@@ -7,10 +7,8 @@
   grid-template-rows: $navbar_height 1fr $footer_height;
 }
 
-h2,
-h3,
-p,
-a {
+
+h2, h3, p, a, form {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #bfbdc1;
@@ -18,9 +16,11 @@ a {
   //remove the underlink from a tag
   text-decoration: none;
 }
+textarea, input {
+  font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
+}
 
-p,
-a {
+p, a {
   font-size: medium;
 }
 
