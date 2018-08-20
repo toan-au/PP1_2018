@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // pages
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
-import FormOne from '../pages/FormOne';
-import FormTwo from '../pages/FormTwo';
-import FormThree from '../pages/FormThree';
-import FormFour from '../pages/FormFour';
 import AboutUs from '../pages/AboutUs';
 import Contact from '../pages/Contact';
 import Privacy from '../pages/Privacy';
@@ -20,15 +16,10 @@ class Content extends Component {
       <main className="Content">
         <Switch>
           <Route exact path="/register" component={Registration} />
-          <Route exact path="/FormOne" component={FormOne} />
-          <Route exact path="/FormTwo" component={FormTwo} />
-          <Route exact path="/FormThree" component={FormThree} />
-          <Route exact path="/FormFour" component={FormFour} />
-          <Route exact path="/AboutUs" component={AboutUs} />
-          <Route exact path="/Privacy" component={Privacy} />
-          <Route exact path="/Contact" component={Contact} />
+          <Route exact path="/aboutus" component={AboutUs} />
+          <Route exact path="/privacy" component={Privacy} />
+          <Route exact path="/contact" component={Contact} />
           {this.props.user && <Route path="/" component={Home} />}
-
           <Route path="/" component={Landing} />
         </Switch>
       </main>
@@ -38,4 +29,4 @@ class Content extends Component {
 
 const mapStateToProps = state => ({ user: state.user });
 
-export default connect(mapStateToProps)(Content);
+export default withRouter(connect(mapStateToProps)(Content));

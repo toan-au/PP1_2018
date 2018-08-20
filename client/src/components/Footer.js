@@ -10,10 +10,10 @@ class Footer extends Component {
         </div>
         <div className="right-footer">
           <nav>
-            <Link to={"/Home"}>Home</Link>
-            <Link to={"/AboutUs"}>About Us</Link>
-            <Link to={"/Privacy"}>Privacy</Link>
-            <Link to={"/Contact"}>Contact</Link>
+            <Link to="/">Home</Link>
+            <Link to="/aboutus">About Us</Link>
+            <Link to="/privacy">Privacy</Link>
+            <Link to="/contact">Contact</Link>
           </nav>
         </div>
       </footer>
