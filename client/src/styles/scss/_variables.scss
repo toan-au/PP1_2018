@@ -3,16 +3,16 @@
 /* colors */
 $blue: white;
 $green: white;
-$white: #E5E5E5;
-$yellow: #DEB841;
-$dark_yellow: #DE9E36;
-$light_grey: #BFBDC1;
-$dim_grey: #6D6A75;
-$dark_grey: #37323E;
-$gunmetal: #1E1E2B;
-$maroon: #7B1115;
-$red: #AB1E24;
-$light_red: #C82128;
+$white: #e5e5e5;
+$yellow: #deb841;
+$dark_yellow: #de9e36;
+$light_grey: #bfbdc1;
+$dim_grey: #6d6a75;
+$dark_grey: #37323e;
+$gunmetal: #1e1e2b;
+$maroon: #7b1115;
+$red: #ab1e24;
+$light_red: #c82128;
 /* sizes */
 $navbar_height: 80px;
 $footer_height: 80px;
@@ -23,14 +23,15 @@ $match_row_gap: 40px;
 $match_border: 1px solid $light_grey;
 
 /* backgrounds */
-$background: #37323E;
+$background: #37323e;
+$match_card_background: $white;
 
 /* paddings */
 $container_padding_width: 80px;
 $container_padding_height: 12px;
 
 $match_card_padding: 20px;
-$match_card_name_size: 1.4em;
+$match_card_name_size: 2em;
 
 /* border */
 $match_card_border: 1px solid $light_grey;

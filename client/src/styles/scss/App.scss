@@ -7,6 +7,7 @@
   grid-template-rows: $navbar_height 1fr $footer_height;
 }
 
+
 h2, h3, p, a, form {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -15,7 +16,6 @@ h2, h3, p, a, form {
   //remove the underlink from a tag
   text-decoration: none;
 }
-
 textarea, input {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
 }
@@ -39,4 +39,15 @@ button {
   font-size: 1.3em;
   background: none;
   border-radius: 3px;
+}
+
+.button1 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 17px;
+  padding-right: 17px;
+  border-radius: 40px;
+  border: solid $white 2px;
+  color: $white;
+  background: $gunmetal;
 }

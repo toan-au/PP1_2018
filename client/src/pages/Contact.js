@@ -30,7 +30,6 @@ class Contact extends Component {
 
           </div>
         </form>
-
       </div>
     );
   }

@@ -8,7 +8,7 @@ class Registration extends Component {
   render() {
     return (
       <div className="Register">
-        registration page
+        
         <RegistrationForm onSubmit={this.handleSubmit} />
       </div>
     );

@@ -11,6 +11,7 @@
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
+
 h2, h3, p, a, form {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -35,3 +36,13 @@ button {
   font-size: 1.3em;
   background: none;
   border-radius: 3px; }
+
+.button1 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 17px;
+  padding-right: 17px;
+  border-radius: 40px;
+  border: solid #e5e5e5 2px;
+  color: #e5e5e5;
+  background: #1e1e2b; }

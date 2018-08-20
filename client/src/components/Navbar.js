@@ -7,11 +7,10 @@ class Navbar extends Component {
   googleSignin() {
     axios.get('/auth/google');
   }
-
   renderLoggedIn() {
     return (
       <div className="right-nav">
-        <a href="/auth/logout" class="button1">
+        <a href="/auth/logout" className="button1">
           Logout
         </a>
       </div>
@@ -21,7 +20,7 @@ class Navbar extends Component {
   renderLoggedOut() {
     return (
       <div className="right-nav">
-        <a href="/auth/google" class="button1">
+        <a href="/auth/google" className="button1">
           Google login
         </a>
       </div>
