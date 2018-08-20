@@ -423,8 +423,9 @@ h3 {
 /* border */
 /* kittens */
 .MatchCard {
-  border: 1px solid #bfbdc1;
-  background: #e5e5e5; }
+  background: #e5e5e5;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #deb841; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%; }
@@ -435,9 +436,16 @@ h3 {
   .MatchCard .bio {
     padding: 20px;
     margin-bottom: 10px; }
+  .MatchCard .button-group {
+    width: 100px;
+    margin: auto auto; }
+
+.MatchCard:hover {
+  cursor: pointer; }
 
 .MatchMeter {
-  display: inline-block; }
+  display: inline-block;
+  margin: 0 auto; }
   .MatchMeter .heart-fill {
     mask: url("../../images/heart_mask.png");
     mask-size: cover; }

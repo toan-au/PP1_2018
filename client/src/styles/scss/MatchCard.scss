@@ -1,8 +1,9 @@
 @import 'variables';
 
 .MatchCard {
-  border: $match_card_border;
   background: $match_card_background;
+  padding-bottom: 18px;
+  border-bottom: 2px solid $yellow;
 
   .profile-pic {
     display: block;
@@ -19,4 +20,13 @@
     padding: $match_card_padding;
     margin-bottom: 10px;
   }
+
+  .button-group {
+    width: 100px;
+    margin: auto auto;
+  }
+}
+
+.MatchCard:hover {
+  cursor: pointer;
 }

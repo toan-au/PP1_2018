@@ -19,9 +19,9 @@ const MatchCard = props => {
         ...
       </div>
       <div className="button-group">
-        <button>Like</button>
+        {/* <button>Like</button> */}
         <MatchMeter percent={matchingScore} />
-        <button>Dislike</button>
+        {/* <button>Dislike</button> */}
       </div>
     </div>
   );
