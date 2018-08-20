@@ -1,7 +1,8 @@
 .MatchMeter {
   display: inline-block; }
+  .MatchMeter .heart-fill {
+    mask: url("../../images/heart_mask.png");
+    mask-size: cover; }
   .MatchMeter .heart {
-    height: 94px;
-    width: 94px;
-    background: url("../../images//pixel_heart.png");
+    background: url("../../images/pixel_heart.png");
     background-size: cover; }
