@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     gameId: DataTypes.STRING
   }, {});
   prefGames.associate = function(models) {
-    prefGames.belongsTo(models.users)
+    prefGames.belongsTo(models.users, {foreignKey: 'userId'})
   };
   return prefGames;
 };
