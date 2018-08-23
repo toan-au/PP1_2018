@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('users', 
-      [{googleId:'',email:'hcowthart0@uol.com.br',displayName:'avautier0',regionId:4,localeId:4,age:43,bio:'Inverse bandwidth-monitored encoding',firstTime:false,createdAt:new Date(),updatedAt:new Date()},
+[{googleId:'',email:'hcowthart0@uol.com.br',displayName:'avautier0',regionId:4,localeId:4,age:43,bio:'Inverse bandwidth-monitored encoding',firstTime:false,createdAt:new Date(),updatedAt:new Date()},
 {googleId:'',email:'hhumble1@seesaa.net',displayName:'boduane1',regionId:5,localeId:1,age:43,bio:'Implemented bandwidth-monitored superstructure',firstTime:false,createdAt:new Date(),updatedAt:new Date()},
 {googleId:'',email:'tgiorgioni2@plala.or.jp',displayName:'owilkin2',regionId:3,localeId:3,age:37,bio:'Profound analyzing encryption',firstTime:false,createdAt:new Date(),updatedAt:new Date()},
 {googleId:'',email:'sjocelyn3@com.com',displayName:'bstrothers3',regionId:2,localeId:1,age:31,bio:'Networked hybrid algorithm',firstTime:false,createdAt:new Date(),updatedAt:new Date()},

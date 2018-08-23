@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     preference: DataTypes.STRING
   }, {});
   responses.associate = function(models) {
-    responses.belongsTo(models.users, {foreignKey: 'userId'})
+    responses.belongsTo(models.users, {foriegnKey: 'userId'})
     responses.belongsTo(models.questions, {foreignKey: 'questionId'})
   };
   return responses;

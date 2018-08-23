@@ -5,33 +5,54 @@ const app = express();
 //Imports required functions and data.
 const data = require ('./dummyData.js')
 const matchCalc = require ('./matchCalculate.js')
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+const fn = Sequelize.fn;
+
+//Imports db models
+const users = require('../models').users;
+const prefGames = require('../models').prefGames;
+const responses = require('../models').responses;
+const matches = require('../models').matches;
 
 
+var findMatches = async function()  {
 
+//Test ID while writing algorithm
+var dummyId = 1;
 
-var findMatches = function() {
+//Queries for User searching for matches
+var matchingUser = await users.findOne({where: {id: dummyId}, include: [
+    {model: prefGames},
+    {model: responses},
+    {model: matches}
+], plain: true});
 
-//Filter out the data set for users with at least 1 matching game.
-var relevantUsers = [];
+//Convert the user to JSON format
+matchingUser = matchingUser.toJSON()
 
-//Iterates through all users
-for(var matchCounter = 0; matchCounter < data.potentialMatches.length; matchCounter++){
-    
-    //iterates and checks if a potential match has any matching games.
-    for(var gameCounter = 0; gameCounter < data.matchingUser.pref_games.length; gameCounter++){
-
-        //Adds all relevant matches with at least one matching game to the relevant users array that isnt the same element.
-        if(data.potentialMatches[matchCounter].pref_games.includes(data.matchingUser.pref_games[gameCounter]) === true && 
-            data.potentialMatches[matchCounter].id !== data.matchingUser.id){
-
-            relevantUsers.push(data.potentialMatches[matchCounter]);
-            break;
-        }
-    }
+//Create array for use in finding users with matching game preferences
+var relevantGames = [];
+for(var i = 0; i < matchingUser.prefGames.length; i++){
+    var filterArray = matchingUser.prefGames[i].gameId
+    relevantGames.push(filterArray);
 }
 
-//calculate a matching score.
-matchCalc.calculateMatches(data.matchingUser, relevantUsers);
+//Find all users who have at least one matching game to intiating user
+var relevantUsers = await users.findAll({where: {id: {[Op.ne]: dummyId}}, limit: 30, include: [
+    {model: prefGames, where: {gameId: {[Op.or]: relevantGames}}},
+    {model: responses},
+    {model: matches}
+]});
+
+
+//Converts all matches to JSON standard format.
+for(var i = 0; i < relevantUsers.length; i++){
+    relevantUsers[i] = relevantUsers[i].toJSON();
+}
+
+//calculate matching scores for all relevant users, and add them to each relevant user.
+matchCalc.calculateMatches(matchingUser, relevantUsers);
 
 //function to sort by matching scores.
 function orderDesc(b,a){
@@ -40,9 +61,8 @@ function orderDesc(b,a){
 
 //sorts array by descending matching scores.
 relevantUsers.sort(orderDesc);
-
+console.log(relevantUsers[0])
 return relevantUsers;
 }
-
 
 module.exports = {findMatches};
