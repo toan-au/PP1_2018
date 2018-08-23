@@ -3,7 +3,7 @@ import defaultPfp from '../images/default_pfp.jpg';
 import MatchMeter from './MatchMeter';
 
 const MatchCard = props => {
-  const { pfp, display_name, bio, matchingScore } = props.match;
+  const { pfp, displayName, bio, matchingScore } = props.match;
   const bioLength = 250;
   const shortBio = bio.substring(0, bioLength);
   return (
@@ -12,7 +12,7 @@ const MatchCard = props => {
         <img className="profile-pic" src={defaultPfp} />
       </div>
       <div className="display-name">
-        <h3>{display_name}</h3>
+        <h3>{displayName}</h3>
       </div>
       <div className="bio">
         {shortBio}
