@@ -61,7 +61,6 @@ function orderDesc(b,a){
 
 //sorts array by descending matching scores.
 relevantUsers.sort(orderDesc);
-console.log(relevantUsers[0])
 return relevantUsers;
 }
 
