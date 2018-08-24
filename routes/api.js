@@ -3,8 +3,8 @@ const matching = require('../matchingAlgorithm/match');
 
 const router = express.Router();
 
-router.get('/match/:id', (req, res) => {
-  const matches = matching.findMatches();
+router.get('/match/:id', async (req, res) => {
+  const matches = await matching.findMatches();
   res.send(matches);
 });
 
