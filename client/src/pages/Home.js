@@ -22,7 +22,6 @@ class Home extends Component {
 
   render() {
     const { user } = this.props;
-    console.log(user);
     return (
       <div className="Home container">
         <div className="banner">
