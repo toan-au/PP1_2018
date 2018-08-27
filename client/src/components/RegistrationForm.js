@@ -1,7 +1,41 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
+import axios from 'axios';
 
 class RegistrationForm extends Component {
+  state = {
+    regions: [],
+    locales: []
+  };
+
+  componentDidMount() {
+    this.getRegionsList();
+    this.getLocalesList();
+  }
+
+  async getRegionsList() {
+    const response = await axios.get('/api/regions');
+    this.setState({ regions: response.data });
+  }
+
+  async getLocalesList() {
+    const response = await axios.get('/api/locales');
+    this.setState({ locales: response.data });
+  }
+
+  renderRegions() {
+    const regionItems = this.state.regions.map(region => {
+      return <option value={region.id}>{region.region}</option>;
+    });
+    return regionItems;
+  }
+
+  renderLocales() {
+    const localeItems = this.state.locales.map(locale => {
+      return <option value={locale.id}>{locale.locale}</option>;
+    });
+  }
+
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -19,25 +53,12 @@ class RegistrationForm extends Component {
               <br />
               <label>Region: </label>
               <br />
-              <select>
-                <option value="North America">North America</option>
-                <option value="Oceania">Oceania</option>
-                <option value="Europe">Europe</option>
-                <option value="China">China</option>
-                <option value="Korea">Korea</option>
-                <option value="Japan">Japan</option>
-              </select>
+              <select>{this.renderRegions()}</select>
               <br />
               <br />
               <label>Language: </label>
               <br />
-              <select>
-                <option value="English">English</option>
-                <option value="Chinese">Chinese</option>
-                <option value="Spanish">Spanish</option>
-                <option value="Japanese">Japanese</option>
-                <option value="Korean">Korean</option>
-              </select>
+              <select>{this.renderLocales()}</select>
               <br />
               <br />
               <label>Age: </label>
