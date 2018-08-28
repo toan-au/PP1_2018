@@ -193,9 +193,13 @@ button {
   .Navbar .logo {
     font-size: 2.7em; }
   .Navbar .right-nav {
-    padding: 15px; }
-  .Navbar .right-nav .icon {
-    padding: 20px; }
+    padding: 15px;
+    margin-right: 50px; }
+    .Navbar .right-nav nav a {
+      display: inline-block;
+      padding: 3px 20px; }
+    .Navbar .right-nav .icon {
+      padding: 20px; }
 
 /* Chuck your variables in here*/
 /* colors */

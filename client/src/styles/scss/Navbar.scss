@@ -14,11 +14,20 @@
 
   .right-nav {
     padding: 15px;
-  }
+    margin-right: 50px;
 
-  .right-nav {
+    nav
+    {
+      a
+      {
+        display: inline-block;
+        padding: 3px 20px;
+      }
+    }
+
     .icon {
       padding: 20px;
     }
   }
+
 }
