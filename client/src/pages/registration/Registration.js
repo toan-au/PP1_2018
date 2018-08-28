@@ -41,7 +41,7 @@ class Registration extends Component {
         <QuestionAnswerForm
           key={question.id}
           question={question}
-          onSubmit={(lastQuestion && this.nextPage) || this.nextQuestion}
+          onSubmit={(lastQuestion && this.handleSubmit) || this.nextQuestion}
         />
       );
     });
