@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import axios from 'axios';
 
 class RegistrationForm extends Component {
@@ -34,120 +34,90 @@ class RegistrationForm extends Component {
     const localeItems = this.state.locales.map(locale => {
       return <option value={locale.id}>{locale.locale}</option>;
     });
+    return localeItems;
   }
 
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div>
+      <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>
           <div className="sign">
             <h1>Sign Up</h1>
           </div>
           <div className="Form">
-            <p>
-              <label>DisplayName: </label>
-              <br />
-              <input name="DisplayName" placeHolder="text" />
-              <br />
-              <br />
-              <label>Region: </label>
-              <br />
-              <select>{this.renderRegions()}</select>
-              <br />
-              <br />
-              <label>Language: </label>
-              <br />
-              <select>{this.renderLocales()}</select>
-              <br />
-              <br />
-              <label>Age: </label>
-              <br />
-              <select>
-                <option value="18-20">18-20</option>
-                <option value="21-25">21-25</option>
-                <option value="26-30">26-30</option>
-                <option value="31-35">31-35</option>
-                <option value="36+">36+</option>
-              </select>
-              <br />
-              <br />
-              <label>Steam: </label>
-              <input name="Steam" placeHolder="Steam" />
-              <br />
-              <br />
-              <label>Playstation: </label>
-              <input name="Playstation" placeHolder="PSN" />
-              <br />
-              <br />
-              <label>Xbox: </label>
-              <input name="Xbox" placeHolder="Xbox live" />
-              <br />
-              <br />
-              <label>Nintendo: </label>
-              <input name="Nintendo" placeHolder="Nintendo" />
-              <br />
-              <br />
-              <label>Discord: </label>
-              <input name="Discord" placeHolder="Discord" />
-              <br />
-              <br />
-              <label>Game1: </label>
-              <input name="Game 1" placeHolder="text" />
-              <br />
-              <br />
-              <label>Game 2: </label>
-              <input name="Game 2" placeHolder="text" />
-              <br />
-              <br />
-              <label>Game 3: </label>
-              <input name="Game 3" placeHolder="text" />
-              <br />
-              <br />
-              <label>Game 4: </label>
-              <input name="Game 4" placeHolder="text" />
-              <br />
-              <br />
-              <label>Casual or Competitive?</label>
-              <br />
-              <div>
-                <label>
-                  <input
-                    name="Casual"
-                    type="radio"
-                    value="Casual"
-                    checked={true}
-                    onChange={this.handleOptionChange}
-                  />
-                  Casual
-                </label>
-              </div>
-              <div>
-                <label>
-                  <input
-                    name="Competitive"
-                    type="radio"
-                    value="Competitive"
-                    checked={false}
-                    onChange={this.handleOptionChange}
-                  />
-                  Competitive
-                </label>
-              </div>
+            <label>DisplayName: </label>
 
-              <label>Bio: </label>
-              <br />
-              <textarea
-                className="text"
-                rows="15"
-                cols="50"
-                name="Bio"
-                placeHolder="Biography"
+            <Field name="DisplayName" component="input" placeholder="text" />
+
+            <label>Region: </label>
+
+            <select>{this.renderRegions()}</select>
+
+            <label>Language: </label>
+
+            <select>{this.renderLocales()}</select>
+
+            <label>Age: </label>
+
+            <select>
+              <option value="18-20">18-20</option>
+              <option value="21-25">21-25</option>
+              <option value="26-30">26-30</option>
+              <option value="31-35">31-35</option>
+              <option value="36+">36+</option>
+            </select>
+
+            <label>Steam: </label>
+            <Field component="input" name="Steam" placeholder="Steam" />
+
+            <label>Playstation: </label>
+            <Field component="input" name="Playstation" placeholder="PSN" />
+
+            <label>Xbox: </label>
+            <Field component="input" name="Xbox" placeholder="Xbox live" />
+
+            <label>Nintendo: </label>
+            <Field component="input" name="Nintendo" placeholder="Nintendo" />
+
+            <label>Discord: </label>
+            <Field component="input" name="Discord" placeholder="Discord" />
+
+            <label>Game1: </label>
+            <input name="Game 1" placeholder="text" />
+
+            <label>Game 2: </label>
+            <input name="Game 2" placeholder="text" />
+
+            <label>Game 3: </label>
+            <input name="Game 3" placeholder="text" />
+
+            <label>Game 4: </label>
+            <input name="Game 4" placeholder="text" />
+
+            <label>What is your playstyle?</label>
+
+            <div>
+              <Field
+                name="playstyle"
+                component="input"
+                type="radio"
+                value="casual"
               />
-              <br />
-              <br />
-            </p>
+              <label>Casual</label>
 
+              <Field
+                name="playstyle"
+                component="input"
+                type="radio"
+                value="competitive"
+              />
+              <label>Competitive</label>
+            </div>
+
+            <label>Bio: </label>
+
+            <Field component="textarea" placeholder="Biography" />
             <div className="next">
               <button type="submit">Submit</button>
             </div>

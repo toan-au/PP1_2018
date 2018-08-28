@@ -244,7 +244,9 @@ form .Form {
     margin-top: 10px;
     border: solid #e5e5e5 1px;
     border-radius: 5px;
-    width: 100%; }
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 200px; }
 
 form .next {
   text-align: right; }
@@ -424,9 +426,8 @@ h3 {
   margin-left: auto;
   margin-right: auto;
   text-align: center; }
-
-input {
-  margin-bottom: 10px; }
+  .contact-title input {
+    margin-bottom: 10px; }
 
 /* components */
 /* Chuck your variables in here*/
