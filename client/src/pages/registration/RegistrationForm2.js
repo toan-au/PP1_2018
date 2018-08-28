@@ -7,54 +7,47 @@ import axios from 'axios';
 class RegistrationForm1 extends Component {
   state = {
     currentQuestion: 0,
-    questions: []
+    questions: [],
+    questionForms: []
   };
 
   async componentDidMount() {
     const response = await axios.get('/api/questions');
     this.setState({ questions: response.data });
+    this.renderQuestions();
   }
 
   nextQuestion = () => {
     this.setState({ currentQuestion: this.state.currentQuestion + 1 });
   };
 
+  // render all questions as multipage form components
+  // if it is not the last question then make the submit action go to the next question
   renderQuestions() {
-    const questions = this.state.questions.map(question => {
-      // render all questions as multipage form components
-      // if it is not the last question then make the submit action go to the next question
-      if (this.state.currentQuestion == this.state.questions.length)
-        <QuestionAnswerForm
-          key={question.id}
-          question={question}
-          onSubmit={this.props.handleSubmit}
-        />;
-      return (
-        <QuestionAnswerForm
-          key={question.id}
-          question={question}
-          onSubmit={this.nextQuestion}
-        />
-      );
-    });
-    return questions;
+    const { questions, currentQuestion } = this.state;
+    const lastQuestion = currentQuestion == questions.length - 1;
+    const questionForms = questions.map(question => (
+      <QuestionAnswerForm
+        key={question.id}
+        question={question}
+        onSubmit={
+          (lastQuestion && this.props.handleSubmit) || this.nextQuestion
+        }
+      />
+    ));
+    return this.setState({ questionForms });
   }
 
   render() {
     const { handleSubmit, user } = this.props;
     return (
       <div className="RegistrationForm">
-        <div>
+        <form onSubmit={this.handleSubmit}>
           <div className="sign">
             <h1>Sign Up</h1>
           </div>
-          <div className="Form">
-            {this.renderQuestions()}
-            <div className="next">
-              <button type="submit">Next page</button>
-            </div>
-          </div>
-        </div>
+          {this.state.questionForms[this.state.currentQuestion]}
+        </form>
       </div>
     );
   }
