@@ -8,7 +8,7 @@ const db = {};
 
 const sequelize = new Sequelize(keys.dbString, {
   dialect: 'postgres',
-  logging: true
+  logging: false
 });
 
 fs.readdirSync(__dirname)
