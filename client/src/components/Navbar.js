@@ -10,9 +10,15 @@ class Navbar extends Component {
   renderLoggedIn() {
     return (
       <div className="right-nav">
-        <a href="/auth/logout" className="button1">
-          Logout
-        </a>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/matches">Matches</Link>
+          <Link to="/pending">Pending</Link>
+          <Link to="/settings">Settings</Link>
+          <a href="/auth/logout" className="button1">
+            Logout
+          </a>
+          </nav>
       </div>
     );
   }
