@@ -8,7 +8,7 @@ import Landing from '../pages/Landing';
 import AboutUs from '../pages/AboutUs';
 import Contact from '../pages/Contact';
 import Privacy from '../pages/Privacy';
-import Registration from '../pages/Registration';
+import Registration from '../pages/registration/Registration';
 
 class Content extends Component {
   render() {

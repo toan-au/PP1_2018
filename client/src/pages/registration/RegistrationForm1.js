@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
-class RegistrationForm extends Component {
+class RegistrationForm1 extends Component {
   state = {
     regions: [],
     locales: []
   };
 
-  componentDidMount() {
-    this.getRegionsList();
-    this.getLocalesList();
+  async componentDidMount() {
+    // this.getRegionsList();
+    // this.getLocalesList();
+    const { user } = this.props;
+    this.props.initialize({ displayName: user.displayName });
+    console.log(5);
   }
 
   async getRegionsList() {
@@ -38,7 +42,7 @@ class RegistrationForm extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, user } = this.props;
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>
@@ -48,7 +52,11 @@ class RegistrationForm extends Component {
           <div className="Form">
             <label>DisplayName: </label>
 
-            <Field name="DisplayName" component="input" placeholder="text" />
+            <Field
+              name="displayName"
+              component="input"
+              placeholder="display name"
+            />
 
             <label>Region: </label>
 
@@ -67,36 +75,6 @@ class RegistrationForm extends Component {
               <option value="31-35">31-35</option>
               <option value="36+">36+</option>
             </select>
-
-            <label>Steam: </label>
-            <Field component="input" name="Steam" placeholder="Steam" />
-
-            <label>Playstation: </label>
-            <Field component="input" name="Playstation" placeholder="PSN" />
-
-            <label>Xbox: </label>
-            <Field component="input" name="Xbox" placeholder="Xbox live" />
-
-            <label>Nintendo: </label>
-            <Field component="input" name="Nintendo" placeholder="Nintendo" />
-
-            <label>Discord: </label>
-            <Field component="input" name="Discord" placeholder="Discord" />
-
-            <label>Game1: </label>
-            <input name="Game 1" placeholder="text" />
-
-            <label>Game 2: </label>
-            <input name="Game 2" placeholder="text" />
-
-            <label>Game 3: </label>
-            <input name="Game 3" placeholder="text" />
-
-            <label>Game 4: </label>
-            <input name="Game 4" placeholder="text" />
-
-            <label>What is your playstyle?</label>
-
             <div>
               <Field
                 name="playstyle"
@@ -117,9 +95,9 @@ class RegistrationForm extends Component {
 
             <label>Bio: </label>
 
-            <Field component="textarea" placeholder="Biography" />
+            <Field component="textarea" placeholder="Biography" name="bio" />
             <div className="next">
-              <button type="submit">Submit</button>
+              <button type="submit">Next page</button>
             </div>
           </div>
         </form>
@@ -128,4 +106,10 @@ class RegistrationForm extends Component {
   }
 }
 
-export default reduxForm({ form: 'registration' })(RegistrationForm);
+const mapStateToProps = state => ({ user: state.user });
+
+let registrationForm1 = reduxForm({
+  form: 'registration'
+})(RegistrationForm1);
+registrationForm1 = connect(mapStateToProps)(registrationForm1);
+export default registrationForm1;
