@@ -12,11 +12,13 @@ router.get('/match/:id', async (req, res) => {
 
 router.get('/locales', async (req, res) => {
   const locales = await locale.findAll();
+  locales = locales.toJSON();
   res.send(locales);
 });
 
 router.get('/regions', async (req, res) => {
   const regions = await region.findAll();
+  regions = regions.toJSON();
   res.send(regions);
 });
 
