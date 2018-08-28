@@ -23,9 +23,9 @@ class Registration extends Component {
     const { page } = this.state;
     return (
       <div className="Register">
-        {page == 1 && <RegistrationForm1 onSubmit={this.nextPage} />}
-        {page == 2 && <RegistrationForm2 onSubmit={this.nextPage} />}
-        {page == 3 && <RegistrationForm3 onSubmit={this.handleSubmit} />}
+        {page === 1 && <RegistrationForm1 onSubmit={this.nextPage} />}
+        {page === 2 && <RegistrationForm2 onSubmit={this.nextPage} />}
+        {page === 3 && <RegistrationForm3 onSubmit={this.handleSubmit} />}
       </div>
     );
   }

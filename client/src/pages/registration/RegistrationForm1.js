@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import PfpInput from './PfpInput';
 
 class RegistrationForm1 extends Component {
   state = {
@@ -12,9 +13,6 @@ class RegistrationForm1 extends Component {
   async componentDidMount() {
     // this.getRegionsList();
     // this.getLocalesList();
-    const { user } = this.props;
-    this.props.initialize({ displayName: user.displayName });
-    console.log(5);
   }
 
   async getRegionsList() {
@@ -50,8 +48,8 @@ class RegistrationForm1 extends Component {
             <h1>Sign Up</h1>
           </div>
           <div className="Form">
-            <label>DisplayName: </label>
-
+            <Field name="pfp" component={PfpInput} />
+            <label>Display Name: </label>
             <Field
               name="displayName"
               component="input"
@@ -109,7 +107,9 @@ class RegistrationForm1 extends Component {
 const mapStateToProps = state => ({ user: state.user });
 
 let registrationForm1 = reduxForm({
-  form: 'registration'
+  form: 'registration',
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true
 })(RegistrationForm1);
 registrationForm1 = connect(mapStateToProps)(registrationForm1);
 export default registrationForm1;
