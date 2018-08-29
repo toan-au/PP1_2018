@@ -14,14 +14,16 @@ class AnswerChoices extends Component {
         {answers.map(answer => {
           return (
             <div className="choice" key={answer.id}>
-              <input
-                name="answers"
-                id={answer.id}
-                type="radio"
-                value={answer.answerKey}
-                onChange={onChange}
-              />
-              <label htmlFor={answer.id}>{answer.answerText}</label>
+              <label htmlFor={answer.id}>
+                <input
+                  name="answers"
+                  id={answer.id}
+                  type="radio"
+                  value={answer.answerKey}
+                  onChange={onChange}
+                />
+                {answer.answerText}
+              </label>
             </div>
           );
         })}
@@ -37,7 +39,7 @@ const QuestionAnswerForm = props => {
     question: { answers }
   } = props;
   return (
-    <div className="RegistrationForm">
+    <div className="RegistrationForm QuestionAnswerForm">
       <form onSubmit={handleSubmit}>
         <h4 className="question">{question.questionText}</h4>
         <Field
@@ -45,7 +47,11 @@ const QuestionAnswerForm = props => {
           component={AnswerChoices}
           answers={answers}
         />
-        <button type="submit">Next Question</button>
+        <div className="footer-buttons">
+          <button className="next" type="submit">
+            Next Question
+          </button>
+        </div>
       </form>
     </div>
   );

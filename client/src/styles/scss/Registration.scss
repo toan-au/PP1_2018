@@ -3,6 +3,7 @@
 .Registration {
   background: url('../../images/rego_bg.jpg');
   background-size: cover;
+  height: 100%;
   padding: 40px;
 
   .title {
@@ -15,12 +16,13 @@
     max-width: 720px;
     padding: 20px;
     margin: 0 auto;
-    background: $light_grey;
+    background: $rego_form_background;
   }
 
   .form-body {
     display: grid;
     grid-template: 100% 1fr / 1fr 4fr;
+    margin-bottom: 10px;
 
     .left {
       grid-area: 1 / 1 / 1 / 1;
@@ -42,7 +44,12 @@
     }
   }
 
-  .next {
+  .footer-buttons {
+    background: red;
+    width: 100%;
+    .next {
+      float: right;
+    }
   }
 
   .field {
