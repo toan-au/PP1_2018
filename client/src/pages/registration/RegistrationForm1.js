@@ -112,8 +112,10 @@ class RegistrationForm1 extends Component {
               <Field component="textarea" placeholder="Biography" name="bio" />
             </div>
           </div>
-          <div className="next">
-            <button type="submit">Next page</button>
+          <div className="footer-buttons">
+            <button className="next" type="submit">
+              Next Page
+            </button>
           </div>
         </form>
       </div>

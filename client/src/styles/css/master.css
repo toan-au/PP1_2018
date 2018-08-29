@@ -447,10 +447,10 @@ h3 {
         max-width: 100%;
         min-height: 300px; }
   .Registration .footer-buttons {
-    background: red;
-    width: 100%; }
+    display: flex;
+    justify-content: flex-end; }
     .Registration .footer-buttons .next {
-      float: right; }
+      width: 200px; }
   .Registration .field {
     width: 100%;
     display: flex;

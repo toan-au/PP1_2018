@@ -45,10 +45,10 @@
   }
 
   .footer-buttons {
-    background: red;
-    width: 100%;
+    display: flex;
+    justify-content: flex-end;
     .next {
-      float: right;
+      width: 200px;
     }
   }
 
