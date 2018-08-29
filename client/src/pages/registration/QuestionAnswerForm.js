@@ -36,6 +36,7 @@ const QuestionAnswerForm = props => {
   const {
     question,
     handleSubmit,
+    prevQuestion,
     question: { answers }
   } = props;
   return (
@@ -48,8 +49,11 @@ const QuestionAnswerForm = props => {
           answers={answers}
         />
         <div className="footer-buttons">
+          <button className="previous" type="button" onClick={prevQuestion}>
+            Previous
+          </button>
           <button className="next" type="submit">
-            Next Question
+            Next
           </button>
         </div>
       </form>

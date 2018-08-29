@@ -448,9 +448,13 @@ h3 {
         min-height: 300px; }
   .Registration .footer-buttons {
     display: flex;
-    justify-content: flex-end; }
+    justify-content: space-between; }
+    .Registration .footer-buttons .previous {
+      width: 200px; }
     .Registration .footer-buttons .next {
       width: 200px; }
+    .Registration .footer-buttons button:hover {
+      cursor: pointer; }
   .Registration .field {
     width: 100%;
     display: flex;

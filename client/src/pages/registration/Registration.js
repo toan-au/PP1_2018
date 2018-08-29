@@ -36,16 +36,22 @@ class Registration extends Component {
     const { questions, currentQuestion } = this.state;
     const questionForms = questions.map((question, index) => {
       const lastQuestion = index === questions.length - 1;
+      const firstQuestion = index === 0;
       return (
         <QuestionAnswerForm
           key={question.id}
           question={question}
+          prevQuestion={(firstQuestion && this.prevPage) || this.prevQuestion}
           onSubmit={(lastQuestion && this.handleSubmit) || this.nextQuestion}
         />
       );
     });
     return this.setState({ questionForms });
   }
+
+  prevQuestion = () => {
+    this.setState({ currentQuestion: this.state.currentQuestion - 1 });
+  };
 
   nextQuestion = () => {
     this.setState({ currentQuestion: this.state.currentQuestion + 1 });

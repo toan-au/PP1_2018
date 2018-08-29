@@ -46,9 +46,18 @@
 
   .footer-buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+
+    .previous {
+      width: 200px;
+    }
+
     .next {
       width: 200px;
+    }
+
+    button:hover {
+      cursor: pointer;
     }
   }
 
