@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 
 class App extends Component {
   async componentDidMount() {
-    this.props.getUser();
+    await this.props.getUser();
   }
 
   render() {

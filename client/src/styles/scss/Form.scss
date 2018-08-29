@@ -1,83 +1,72 @@
 @import 'variables';
 
-form
-{
-    .sign {
-        width: 500px;
-        margin: 0 auto;
-        text-align: center;
-        color: $white;
-        padding-top: 100px;
-        padding-bottom:20px;
-        h1{
-          font-size: 80px;
-        }
+form {
+  .sign {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    color: $white;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    h1 {
+      font-size: 80px;
     }
-    .Form
-    {
-        
-        margin: 0px auto;
-        padding: 25px;
-        position: center;
-        background: $white;
-        color: $gunmetal;
-        width:250px;
-        border-radius: 15px;
+  }
+  .Form {
+    margin: 0px auto;
+    padding: 25px;
+    position: center;
+    background: $white;
+    color: $gunmetal;
+    width: 250px;
+    border-radius: 15px;
 
-
-        label
-        {
-            color: $gunmetal;
-            text-align: right;
-        } 
-        input
-        {
-            background: $light_grey;
-            margin-top: 5px;
-            border-style: solid;
-            border-radius: 5px;
-            padding:5px;
-            width:95%;
-            text-align: left;
-            color: $white;
-
-        }
-        select 
-        {
-            margin-top:10px;
-            background: $light_grey;
-            width:100%;
-            color: $dim_grey;
-        }
-        textarea
-        {
-            background: $light_grey;
-            margin-top:10px;
-            border: solid $white 1px;
-            border-radius: 5px;
-            width: 100%;
-        }
+    label {
+      color: $gunmetal;
+      text-align: right;
     }
+    input {
+      background: $light_grey;
+      margin-top: 5px;
+      border-style: solid;
+      border-radius: 5px;
+      padding: 5px;
+      width: 95%;
+      text-align: left;
+      color: $white;
+    }
+    select {
+      margin-top: 10px;
+      background: $light_grey;
+      width: 100%;
+      color: $dim_grey;
+    }
+    textarea {
+      background: $light_grey;
+      margin-top: 10px;
+      border: solid $white 1px;
+      border-radius: 5px;
+      min-width: 100%;
+      max-width: 100%;
+      min-height: 200px;
+    }
+  }
 
-    .next{
+  .next {
     text-align: right;
 
-    button{
-        border-style: outset;
-        border-radius: 10px;
-        border: $light_red 2px;
-        color: $white;
-        background: $light_red;
-        font-size:20px;
-        padding-left:20px;
-        padding-right:20px;
+    button {
+      border-style: outset;
+      border-radius: 10px;
+      border: $light_red 2px;
+      color: $white;
+      background: $light_red;
+      font-size: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
-    button:hover
-    {
-        background: $red;
+    button:hover {
+      background: $red;
     }
-
+  }
 }
-}
-
-
