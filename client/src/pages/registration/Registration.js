@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import RegistrationForm1 from './RegistrationForm1';
-import RegistrationForm2 from './RegistrationForm2';
 import RegistrationForm3 from './RegistrationForm3';
 import QuestionAnswerForm from './QuestionAnswerForm';
 import axios from 'axios';
