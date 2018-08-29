@@ -6,7 +6,8 @@
 /* border */
 /* kittens */
 .Registration {
-  background: white;
+  background: url("../../images/rego_bg.jpg");
+  background-size: cover;
   padding: 40px; }
   .Registration .title {
     text-align: center;
@@ -19,18 +20,19 @@
     background: #bfbdc1; }
   .Registration .form-body {
     display: grid;
-    grid-template: 1fr 1fr / 1fr 4fr; }
+    grid-template: 100% 1fr / 1fr 4fr; }
     .Registration .form-body .left {
       grid-area: 1 / 1 / 1 / 1; }
     .Registration .form-body .right {
-      width: 100%;
       padding: 12px 20px;
       grid-area: 1 / 2 / 1 / 2; }
     .Registration .form-body .bio {
       grid-area: 2 / 1 / 2 / 3; }
       .Registration .form-body .bio textarea {
+        font-size: 1.3em;
         min-width: 100%;
-        max-width: 100%; }
+        max-width: 100%;
+        min-height: 300px; }
   .Registration .field {
     width: 100%;
     display: flex;

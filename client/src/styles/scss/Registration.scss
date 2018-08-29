@@ -1,7 +1,8 @@
 @import 'variables';
 
 .Registration {
-  background: white;
+  background: url('../../images/rego_bg.jpg');
+  background-size: cover;
   padding: 40px;
 
   .title {
@@ -19,14 +20,13 @@
 
   .form-body {
     display: grid;
-    grid-template: 1fr 1fr / 1fr 4fr;
+    grid-template: 100% 1fr / 1fr 4fr;
 
     .left {
       grid-area: 1 / 1 / 1 / 1;
     }
 
     .right {
-      width: 100%;
       padding: 12px 20px;
       grid-area: 1 / 2 / 1 / 2;
     }
@@ -34,10 +34,15 @@
     .bio {
       grid-area: 2 / 1 / 2 / 3;
       textarea {
+        font-size: 1.3em;
         min-width: 100%;
         max-width: 100%;
+        min-height: 300px;
       }
     }
+  }
+
+  .next {
   }
 
   .field {
