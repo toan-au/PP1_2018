@@ -21,15 +21,20 @@ router.get('/questions', async (req, res) => {
 });
 
 router.get('/locales', async (req, res) => {
-  const locales = await locale.findAll();
-  console.log(locales);
-  locales = locales.toJSON();
+  const locales = await locale.findAll({attributes: ['id','locale']});
+    
+  for(var i = 0; i < locale.length; i++){
+    locales[i] = locales[i].toJSON();
+  }
   res.send(locales);
 });
 
 router.get('/regions', async (req, res) => {
-  const regions = await region.findAll();
-  regions = regions.toJSON();
+  const regions = await region.findAll({attributes: ['id','region']});
+    
+  for(var i = 0; i < regions.length; i++){
+    regions[i] = regions[i].toJSON();
+  }
   res.send(regions);
 });
 
