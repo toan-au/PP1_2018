@@ -14,14 +14,16 @@ class AnswerChoices extends Component {
         {answers.map(answer => {
           return (
             <div className="choice" key={answer.id}>
-              <input
-                name="answers"
-                id={answer.id}
-                type="radio"
-                value={answer.id}
-                onChange={onChange}
-              />
-              <label htmlFor={answer.id}>{answer.answerText}</label>
+              <label htmlFor={answer.id}>
+                <input
+                  name="answers"
+                  id={answer.id}
+                  type="radio"
+                  value={answer.answerKey}
+                  onChange={onChange}
+                />
+                {answer.answerText}
+              </label>
             </div>
           );
         })}
@@ -34,10 +36,11 @@ const QuestionAnswerForm = props => {
   const {
     question,
     handleSubmit,
+    prevQuestion,
     question: { answers }
   } = props;
   return (
-    <div className="QuestionAnswerForm">
+    <div className="RegistrationForm QuestionAnswerForm">
       <form onSubmit={handleSubmit}>
         <h4 className="question">{question.questionText}</h4>
         <Field
@@ -45,7 +48,14 @@ const QuestionAnswerForm = props => {
           component={AnswerChoices}
           answers={answers}
         />
-        <button type="submit">Next Question</button>
+        <div className="footer-buttons">
+          <button className="previous" type="button" onClick={prevQuestion}>
+            Previous
+          </button>
+          <button className="next" type="submit">
+            Next
+          </button>
+        </div>
       </form>
     </div>
   );
@@ -54,6 +64,5 @@ const QuestionAnswerForm = props => {
 export default reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true,
-  initialValues: { answers: {} }
+  forceUnregisterOnUnmount: true
 })(QuestionAnswerForm);
