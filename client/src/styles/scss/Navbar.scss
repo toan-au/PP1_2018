@@ -30,4 +30,32 @@
     }
   }
 
+  //Styling for the drop down box
+  .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #bfbdc1;
+      z-index: 1;
+      border-radius: 5px;
+      margin-top: 1px;
+  }
+
+  .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
+
+  .dropdown:hover .dropdown-content {
+      display: block;
+      text-align: center;
+  }
+
 }

@@ -11,7 +11,6 @@
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
-
 h2, h3, p, a, form {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -25,7 +24,7 @@ p, a {
   font-size: medium; }
 
 a:hover {
-  text-shadow: 0px 0px 5px #de9e36; }
+  text-shadow: 0px 0px 5px #c82128; }
 
 .container {
   padding: 12px 80px; }
