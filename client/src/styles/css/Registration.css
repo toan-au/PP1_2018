@@ -1,0 +1,54 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Registration {
+  background: white;
+  padding: 40px; }
+  .Registration .title {
+    text-align: center;
+    font-size: 2em;
+    color: #1e1e2b; }
+  .Registration .RegistrationForm {
+    max-width: 720px;
+    padding: 20px;
+    margin: 0 auto;
+    background: #bfbdc1; }
+  .Registration .form-body {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 4fr; }
+    .Registration .form-body .left {
+      grid-area: 1 / 1 / 1 / 1; }
+    .Registration .form-body .right {
+      width: 100%;
+      padding: 12px 20px;
+      grid-area: 1 / 2 / 1 / 2; }
+    .Registration .form-body .bio {
+      grid-area: 2 / 1 / 2 / 3; }
+      .Registration .form-body .bio textarea {
+        min-width: 100%;
+        max-width: 100%; }
+  .Registration .field {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-end;
+    padding: 2px 5px;
+    margin-bottom: 7px; }
+    .Registration .field label {
+      position: relative;
+      top: 3px;
+      flex: 1;
+      color: #1e1e2b;
+      text-align: left;
+      font-size: 1.3em; }
+    .Registration .field input,
+    .Registration .field select {
+      box-sizing: border-box;
+      flex: 3;
+      font-size: 1.2em;
+      padding: 3px; }

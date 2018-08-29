@@ -18,7 +18,7 @@ class AnswerChoices extends Component {
                 name="answers"
                 id={answer.id}
                 type="radio"
-                value={answer.id}
+                value={answer.answerKey}
                 onChange={onChange}
               />
               <label htmlFor={answer.id}>{answer.answerText}</label>
@@ -37,7 +37,7 @@ const QuestionAnswerForm = props => {
     question: { answers }
   } = props;
   return (
-    <div className="QuestionAnswerForm">
+    <div className="RegistrationForm">
       <form onSubmit={handleSubmit}>
         <h4 className="question">{question.questionText}</h4>
         <Field
@@ -54,6 +54,5 @@ const QuestionAnswerForm = props => {
 export default reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true,
-  initialValues: { answers: {} }
+  forceUnregisterOnUnmount: true
 })(QuestionAnswerForm);

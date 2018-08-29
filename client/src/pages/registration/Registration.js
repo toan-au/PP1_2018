@@ -54,7 +54,7 @@ class Registration extends Component {
   render() {
     const { page } = this.state;
     return (
-      <div className="Register">
+      <div className="Registration">
         {page === 1 && <RegistrationForm1 onSubmit={this.nextPage} />}
         {page === 2 && this.state.questionForms[this.state.currentQuestion]}
         {page === 3 && <RegistrationForm3 onSubmit={this.handleSubmit} />}
