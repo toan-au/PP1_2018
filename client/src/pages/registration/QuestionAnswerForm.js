@@ -2,7 +2,37 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 
 class AnswerChoices extends Component {
+  render() {
+    const {
+      answers,
+      input: { onChange }
+    } = this.props;
+    return (
+      <div className="AnswerChoices">
+        {answers.map(answer => {
+          return (
+            <div className="choice" key={answer.id}>
+              <label htmlFor={'answer' + answer.id}>
+                <input
+                  name="answers"
+                  id={'answer' + answer.id}
+                  type="radio"
+                  value={answer.answerKey}
+                  onChange={onChange}
+                />
+                {answer.answerText}
+              </label>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+}
+
+class PreferenceChoices extends Component {
   state = { selection: '', limit: 1 };
+
   render() {
     const {
       answers,
@@ -14,12 +44,12 @@ class AnswerChoices extends Component {
         {answers.map(answer => {
           return (
             <div className="choice" key={answer.id}>
-              <label htmlFor={answer.id}>
+              <label htmlFor={'preference' + answer.id}>
                 <input
-                  name="answers"
-                  id={answer.id}
-                  type="radio"
-                  value={answer.answerKey}
+                  name="preferences"
+                  id={'preference' + answer.id}
+                  type="checkbox"
+                  value={answer.answerKey + 50}
                   onChange={onChange}
                 />
                 {answer.answerText}
@@ -37,6 +67,10 @@ class QuestionAnswerForm extends Component {
     showPreferences: false
   };
 
+  handleAnswerSelection = () => {
+    this.setState({ showPreferences: true });
+  };
+
   render() {
     const {
       question,
@@ -52,7 +86,15 @@ class QuestionAnswerForm extends Component {
             name={'answers.' + question.id}
             component={AnswerChoices}
             answers={answers}
+            onChange={this.handleAnswerSelection}
           />
+          {this.state.showPreferences && (
+            <Field
+              name={'preferences.' + question.id}
+              component={PreferenceChoices}
+              answers={answers}
+            />
+          )}
           <div className="footer-buttons">
             <button className="previous" type="button" onClick={prevQuestion}>
               Previous

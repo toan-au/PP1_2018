@@ -133,7 +133,7 @@ let registrationForm1 = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  initialValues: { answers: {} }
+  initialValues: { answers: {}, preferences: {} }
 })(RegistrationForm1);
 registrationForm1 = connect(mapStateToProps)(registrationForm1);
 export default registrationForm1;
