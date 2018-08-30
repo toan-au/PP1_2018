@@ -32,34 +32,36 @@ class AnswerChoices extends Component {
   }
 }
 
-const QuestionAnswerForm = props => {
-  const {
-    question,
-    handleSubmit,
-    prevQuestion,
-    question: { answers }
-  } = props;
-  return (
-    <div className="RegistrationForm QuestionAnswerForm">
-      <form onSubmit={handleSubmit}>
-        <h4 className="question">{question.questionText}</h4>
-        <Field
-          name={'answers.' + question.id}
-          component={AnswerChoices}
-          answers={answers}
-        />
-        <div className="footer-buttons">
-          <button className="previous" type="button" onClick={prevQuestion}>
-            Previous
-          </button>
-          <button className="next" type="submit">
-            Next
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-};
+class QuestionAnswerForm extends Component {
+  render() {
+    const {
+      question,
+      handleSubmit,
+      prevQuestion,
+      question: { answers }
+    } = this.props;
+    return (
+      <div className="RegistrationForm QuestionAnswerForm">
+        <form onSubmit={handleSubmit}>
+          <h4 className="question">{question.questionText}</h4>
+          <Field
+            name={'answers.' + question.id}
+            component={AnswerChoices}
+            answers={answers}
+          />
+          <div className="footer-buttons">
+            <button className="previous" type="button" onClick={prevQuestion}>
+              Previous
+            </button>
+            <button className="next" type="submit">
+              Next
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+}
 
 export default reduxForm({
   form: 'registration',
