@@ -10,7 +10,7 @@ class RegistrationForm1 extends Component {
     locales: []
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.getRegionsList();
     this.getLocalesList();
   }
@@ -133,7 +133,7 @@ let registrationForm1 = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  initialValues: { answers: {}, preferences: {} }
+  initialValues: { answers: {}, preferences: {}, importances: {} }
 })(RegistrationForm1);
 registrationForm1 = connect(mapStateToProps)(registrationForm1);
 export default registrationForm1;

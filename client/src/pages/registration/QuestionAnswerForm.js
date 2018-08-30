@@ -49,7 +49,7 @@ class PreferenceChoices extends Component {
                   name="preferences"
                   id={'preference' + answer.id}
                   type="checkbox"
-                  value={answer.answerKey + 50}
+                  value={answer.answerKey}
                   onChange={onChange}
                 />
                 {answer.answerText}
@@ -83,7 +83,7 @@ class QuestionAnswerForm extends Component {
         />
         <h4 className="question">How important is this to you?</h4>
         <Field
-          name={'preferences.' + question.id + '.importance'}
+          name={'importances.' + question.id}
           component="input"
           type="range"
         />
