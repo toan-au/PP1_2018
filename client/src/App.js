@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUser } from './redux/actions/user';
 
@@ -10,6 +10,7 @@ import './styles/css/master.css';
 import Navbar from './components/Navbar';
 import Content from './components/Content';
 import Footer from './components/Footer';
+import AppSwitch from './routes';
 
 class App extends Component {
   async componentDidMount() {
@@ -18,13 +19,15 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div className="App">
           <Navbar />
-          <Content />
+          <Content>
+            <AppSwitch />
+          </Content>
           <Footer />
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
