@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-class Navbar extends Component {
-  googleSignin() {
+const Navbar = ({ user }) => {
+  // TODO: is this needed here?
+  const googleSignin = () => {
     axios.get('/auth/google');
-  }
-  renderLoggedIn() {
+  };
+
+  const NavRightLoggedIn = () => {
     return (
       <div className="right-nav">
         <nav>
@@ -30,9 +32,9 @@ class Navbar extends Component {
         </nav>
       </div>
     );
-  }
+  };
 
-  renderLoggedOut() {
+  const NavRightLoggedOut = () => {
     return (
       <div className="right-nav">
         <a href="/auth/google" className="button1">
@@ -40,25 +42,17 @@ class Navbar extends Component {
         </a>
       </div>
     );
-  }
+  };
 
-  render() {
-    let rightNav;
-    if (this.props.user) {
-      rightNav = this.renderLoggedIn();
-    } else {
-      rightNav = this.renderLoggedOut();
-    }
-    return (
-      <nav className="Navbar">
-        <Link to="/" className="logo">
-          GameSearchMatch
-        </Link>
-        {rightNav}
-      </nav>
-    );
-  }
-}
+  return (
+    <nav className="Navbar">
+      <Link to="/" className="logo">
+        GameSearchMatch
+      </Link>
+      {user ? NavRightLoggedIn() : NavRightLoggedOut()}
+    </nav>
+  );
+};
 
 const mapStateToProps = state => ({
   user: state.user
