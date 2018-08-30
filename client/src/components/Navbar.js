@@ -16,18 +16,18 @@ class Navbar extends Component {
           <Link to="/pending">Pending</Link>
           {/* <Link to="/settings">Settings</Link> */}
           <div className="dropdown">
-            <Link to="/settings" className="dropbtn">Settings</Link>
+            <Link to="/settings" className="dropbtn">
+              Settings
+            </Link>
             <div className="dropdown-content">
               <Link to="/profile">Profile</Link>
-              <a href="/auth/logout" >
-                Logout
-              </a>
+              <a href="/auth/logout">Logout</a>
             </div>
           </div>
           {/* <a href="/auth/logout" className="button1">
             Logout
           </a> */}
-          </nav>
+        </nav>
       </div>
     );
   }
