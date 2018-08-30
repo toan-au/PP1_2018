@@ -47,9 +47,8 @@ const PublicRoutes = () => {
 const ProtectedRoutes = () => {
   return (
     <Switch>
-      <Route exact path="/register" render={() => <Redirect to="/" />} />
-
       <Route exact path="/" component={Home} />
+      <Route exact path="/register" component={Registration} />
       {/* TODO: Implement routes bellow */}
       {/* <Route exact path="/matches" component={Mathes} />
         <Route exact path="/pending" component={Pending} />
