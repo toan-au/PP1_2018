@@ -3,3 +3,4 @@ package-lock.json
 .sass-cache
 config/dev.js
 db/config/config.json
+.DS_Store
