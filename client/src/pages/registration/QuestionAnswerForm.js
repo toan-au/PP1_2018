@@ -33,6 +33,10 @@ class AnswerChoices extends Component {
 }
 
 class QuestionAnswerForm extends Component {
+  state = {
+    showPreferences: false
+  };
+
   render() {
     const {
       question,

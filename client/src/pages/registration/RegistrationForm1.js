@@ -69,12 +69,16 @@ class RegistrationForm1 extends Component {
 
               <div className="field">
                 <label>Region: </label>
-                <select>{this.renderRegions()}</select>
+                <Field name="region" component="select">
+                  {this.renderRegions()}
+                </Field>
               </div>
 
               <div className="field">
                 <label>Language: </label>
-                <select>{this.renderLocales()}</select>
+                <Field name="locale" component="select">
+                  {this.renderLocales()}
+                </Field>
               </div>
 
               <div className="field">
