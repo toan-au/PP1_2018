@@ -4,11 +4,6 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 const Navbar = ({ user }) => {
-  // TODO: is this needed here?
-  const googleSignin = () => {
-    axios.get('/auth/google');
-  };
-
   const NavRightLoggedIn = () => {
     return (
       <div className="right-nav">
