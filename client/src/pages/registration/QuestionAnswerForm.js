@@ -72,17 +72,20 @@ class QuestionAnswerForm extends Component {
   };
 
   renderPreferenceChoices = () => {
-    const {
-      question,
-      question: { answers }
-    } = this.props;
+    const { question } = this.props;
     return (
       <div>
         <h4 className="question">Your gaming buddy would ideally choose...</h4>
         <Field
           name={'preferences.' + question.id}
           component={PreferenceChoices}
-          answers={answers}
+          answers={question.answers}
+        />
+        <h4 className="question">How important is this to you?</h4>
+        <Field
+          name={'preferences.' + question.id + '.importance'}
+          component="input"
+          type="range"
         />
       </div>
     );
