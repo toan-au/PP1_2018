@@ -49,7 +49,7 @@ const Navbar = ({ user }) => {
       <Link to="/" className="logo">
         GameSearchMatch
       </Link>
-      {user ? NavRightLoggedIn() : NavRightLoggedOut()}
+      {user ? <NavRightLoggedIn /> : <NavRightLoggedOut />}
     </nav>
   );
 };
