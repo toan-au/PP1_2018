@@ -141,17 +141,19 @@ table {
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
-h2, h3, p, a, form {
+h2,
+h3,
+p,
+a,
+form {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #bfbdc1;
   text-decoration: none; }
 
-textarea, input {
+textarea,
+input {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif; }
-
-p, a {
-  font-size: medium; }
 
 a:hover {
   text-shadow: 0px 0px 5px #c82128; }
@@ -219,69 +221,6 @@ button {
   .Navbar .dropdown:hover .dropdown-content {
     display: block;
     text-align: center; }
-
-/* Chuck your variables in here*/
-/* colors */
-/* sizes */
-/* backgrounds */
-/* paddings */
-/* border */
-/* kittens */
-form .sign {
-  width: 500px;
-  margin: 0 auto;
-  text-align: center;
-  color: #e5e5e5;
-  padding-top: 100px;
-  padding-bottom: 20px; }
-  form .sign h1 {
-    font-size: 80px; }
-
-form .Form {
-  margin: 0px auto;
-  padding: 25px;
-  position: center;
-  background: #e5e5e5;
-  color: #1e1e2b;
-  width: 250px;
-  border-radius: 15px; }
-  form .Form label {
-    color: #1e1e2b;
-    text-align: right; }
-  form .Form input {
-    background: #bfbdc1;
-    margin-top: 5px;
-    border-style: solid;
-    border-radius: 5px;
-    padding: 5px;
-    width: 95%;
-    text-align: left;
-    color: #e5e5e5; }
-  form .Form select {
-    margin-top: 10px;
-    background: #bfbdc1;
-    width: 100%;
-    color: #6d6a75; }
-  form .Form textarea {
-    background: #bfbdc1;
-    margin-top: 10px;
-    border: solid #e5e5e5 1px;
-    border-radius: 5px;
-    width: 100%; }
-
-form .next {
-  text-align: right; }
-  form .next button {
-    border-style: outset;
-    border-radius: 10px;
-    border: #c82128 2px;
-    color: #e5e5e5;
-    background: #c82128;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right: 20px; }
-  form .next button:hover {
-    background: #ab1e24; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -488,3 +427,96 @@ h3 {
   .MatchMeter .heart {
     background: url("../../images/pixel_heart.png");
     background-size: cover; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Registration {
+  background: url("../../images/rego_bg.jpg");
+  background-size: cover;
+  height: 100%;
+  padding: 40px; }
+  .Registration .title {
+    text-align: center;
+    font-size: 2em;
+    color: #1e1e2b; }
+  .Registration .RegistrationForm {
+    max-width: 720px;
+    padding: 20px;
+    margin: 0 auto;
+    background: #bfbdc1; }
+  .Registration .form-body {
+    display: grid;
+    grid-template: 100% 1fr / 1fr 4fr;
+    margin-bottom: 10px; }
+    .Registration .form-body .left {
+      grid-area: 1 / 1 / 1 / 1; }
+    .Registration .form-body .right {
+      padding: 12px 20px;
+      grid-area: 1 / 2 / 1 / 2; }
+    .Registration .form-body .bio {
+      grid-area: 2 / 1 / 2 / 3; }
+      .Registration .form-body .bio textarea {
+        font-size: 1.3em;
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 300px; }
+  .Registration .footer-buttons {
+    display: flex;
+    justify-content: space-between; }
+    .Registration .footer-buttons .previous {
+      width: 200px; }
+    .Registration .footer-buttons .next {
+      width: 200px; }
+    .Registration .footer-buttons button:hover {
+      cursor: pointer; }
+  .Registration .field {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-end;
+    padding: 2px 5px;
+    margin-bottom: 7px; }
+    .Registration .field label {
+      position: relative;
+      top: 3px;
+      flex: 1;
+      color: #1e1e2b;
+      text-align: left;
+      font-size: 1.3em; }
+    .Registration .field input,
+    .Registration .field select {
+      box-sizing: border-box;
+      flex: 3;
+      font-size: 1.2em;
+      padding: 3px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.QuestionAnswerForm .question {
+  font-size: 1.5em;
+  color: #1e1e2b; }
+
+.QuestionAnswerForm .AnswerChoices {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  grid-gap: 10px 10px;
+  margin: 20px 0px; }
+  .QuestionAnswerForm .AnswerChoices label {
+    color: #1e1e2b;
+    display: block;
+    background: #ffffff;
+    padding: 15px 10px;
+    box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4); }
+  .QuestionAnswerForm .AnswerChoices label:hover {
+    cursor: pointer; }

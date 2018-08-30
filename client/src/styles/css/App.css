@@ -17,11 +17,9 @@ h2, h3, p, a, form {
   color: #bfbdc1;
   text-decoration: none; }
 
-textarea, input {
+textarea,
+input {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif; }
-
-p, a {
-  font-size: medium; }
 
 a:hover {
   text-shadow: 0px 0px 5px #c82128; }

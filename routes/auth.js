@@ -67,6 +67,9 @@ router.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {
+    if (req.user.firstTime) {
+      res.redirect('/register');
+    }
     res.redirect('/');
   }
 );
