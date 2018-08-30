@@ -71,6 +71,23 @@ class QuestionAnswerForm extends Component {
     this.setState({ showPreferences: true });
   };
 
+  renderPreferenceChoices = () => {
+    const {
+      question,
+      question: { answers }
+    } = this.props;
+    return (
+      <div>
+        <h4 className="question">Your gaming buddy would ideally choose...</h4>
+        <Field
+          name={'preferences.' + question.id}
+          component={PreferenceChoices}
+          answers={answers}
+        />
+      </div>
+    );
+  };
+
   render() {
     const {
       question,
@@ -88,13 +105,7 @@ class QuestionAnswerForm extends Component {
             answers={answers}
             onChange={this.handleAnswerSelection}
           />
-          {this.state.showPreferences && (
-            <Field
-              name={'preferences.' + question.id}
-              component={PreferenceChoices}
-              answers={answers}
-            />
-          )}
+          {this.state.showPreferences && this.renderPreferenceChoices()}
           <div className="footer-buttons">
             <button className="previous" type="button" onClick={prevQuestion}>
               Previous
