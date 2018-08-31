@@ -1,63 +1,58 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import logo from '../images/Favicon.png';
 
 console.log(logo);
-
-class Navbar extends Component {
-  googleSignin() {
-    axios.get('/auth/google');
-  }
-  renderLoggedIn() {
+const Navbar = ({ user }) => {
+  const NavRightLoggedIn = () => {
     return (
       <div className="right-nav">
-        <a href="/auth/logout" class="button1">
-          Logout
-        </a>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/matches">Matches</Link>
+          <Link to="/pending">Pending</Link>
+          {/* <Link to="/settings">Settings</Link> */}
+          <div className="dropdown">
+            <Link to="/settings" className="dropbtn">
+              Settings
+            </Link>
+            <div className="dropdown-content">
+              <Link to="/profile">Profile</Link>
+              <a href="/auth/logout">Logout</a>
+            </div>
+          </div>
+          {/* <a href="/auth/logout" className="button1">
+            Logout
+          </a> */}
+        </nav>
       </div>
     );
-  }
+  };
 
-  renderLoggedOut() {
+  const NavRightLoggedOut = () => {
     return (
       <div className="right-nav">
-        <a href="/auth/google" class="button1">
+        <a href="/auth/google" className="button1">
           Google login
         </a>
       </div>
     );
-  }
+  };
 
-  render() 
-  {
-    let rightNav;
-    if (this.props.user) {
-      rightNav = this.renderLoggedIn();
-    } else {
-      rightNav = this.renderLoggedOut();
-    }
-
-    return (
-      <nav className="Navbar">
-        
-        <Link to="/" className="logo"><img src={logo} alt="Game Search Match"/>
+  return (
+    <nav className="Navbar">
+      <Link to="/" className="logo"><img src={logo} alt="Game Search Match"/>
           GameSearchMatch
         </Link>
-        <div className="right-nav">
-        <Link to="/register" className="login">
-        <a href="/auth/google" class="button1" onClick={ () => {console.log('success'); }}>G Login</a>
-        </Link>
-        </div>
-      </nav>
-    ); 
-  }
-}
+      {user ? <NavRightLoggedIn /> : <NavRightLoggedOut />}
+    </nav>
+  );
+};
 
 const mapStateToProps = state => ({
   user: state.user
 });
 
 export default connect(mapStateToProps)(Navbar);
-

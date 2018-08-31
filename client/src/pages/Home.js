@@ -23,10 +23,12 @@ class Home extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div className="Home">
+      <div className="Home container">
         <div className="banner">
-          <h1>Welcome back {user.display_name}</h1>
-          <button className= "match" onClick={this.loadMatches}>Match</button>
+          <h1>Welcome back {user.displayName}</h1>
+          <button className="match" onClick={this.loadMatches}>
+            Match
+          </button>
         </div>
         <div className="matches">{this.state.matches}</div>
       </div>

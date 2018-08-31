@@ -1,18 +1,31 @@
 import React from 'react';
+import defaultPfp from '../images/default_pfp.jpg';
+import MatchMeter from './MatchMeter';
 
 const MatchCard = props => {
-  const { display_name, bio, matchingScore } = props.match;
+  const { displayName, bio, matchingScore } = props.match;
+  const bioLength = 250;
+  const shortBio = bio.substring(0, bioLength);
   return (
     <div className="MatchCard">
-      <div className="profile-pic" />
-      <div className="display-name">
-        <h3>{display_name}</h3>
+      <div>
+        <img
+          className="profile-pic"
+          src={defaultPfp}
+          alt={displayName + "'s profile picture"}
+        />
       </div>
-      <div className="bio">{bio}</div>
+      <div className="display-name">
+        <h3>{displayName}</h3>
+      </div>
+      <div className="bio">
+        {shortBio}
+        ...
+      </div>
       <div className="button-group">
-        <button>Like</button>
-        <button>{matchingScore}%</button>
-        <button>Dislike</button>
+        {/* <button>Like</button> */}
+        <MatchMeter percent={matchingScore} />
+        {/* <button>Dislike</button> */}
       </div>
     </div>
   );

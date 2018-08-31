@@ -5,26 +5,28 @@
 /* paddings */
 /* border */
 /* kittens */
-.AboutUs {
+.Landing {
   display: table;
   height: 100%;
-  width: 100%; }
-
-.middle {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  float: left; }
-
-.maskot {
-  width: 300px;
-  padding-bottom: 10px; }
-
-.inner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 1000px;
-  text-align: center; }
-
-h2 {
-  padding-bottom: 20px; }
+  width: 100vw;
+  background-size: cover; }
+  .Landing .landing-title {
+    font-size: 4em;
+    font-weight: bold; }
+  .Landing .middle {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center; }
+  .Landing .maskot {
+    width: 300px;
+    padding-bottom: 10px; }
+  .Landing .inner {
+    padding: 50px 7px;
+    text-align: center; }
+  .Landing h2 {
+    padding-bottom: 10px;
+    color: #ab1e24;
+    text-shadow: 0px 0px 2px #c82128; }
+  .Landing .button1 {
+    position: relative;
+    top: 20px; }

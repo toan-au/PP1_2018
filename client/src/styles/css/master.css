@@ -144,19 +144,19 @@ table {
 h2,
 h3,
 p,
-a {
+a,
+form {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #bfbdc1;
   text-decoration: none; }
 
-h2 {
-  font-size: 3em;
-  color: #AB1E24;
-  text-shadow: 0px 0px 2px #C82128; }
+textarea,
+input {
+  font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif; }
 
 a:hover {
-  text-shadow: 0px 0px 5px #C82128; }
+  text-shadow: 0px 0px 5px #c82128; }
 
 .container {
   padding: 12px 80px; }
@@ -167,6 +167,16 @@ button {
   font-size: 1.3em;
   background: none;
   border-radius: 3px; }
+
+.button1 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 17px;
+  padding-right: 17px;
+  border-radius: 40px;
+  border: solid #e5e5e5 2px;
+  color: #e5e5e5;
+  background: #1e1e2b; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -180,8 +190,8 @@ button {
   justify-content: space-between;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 20px 20px;
-  background: #1E1E2B;
-  color: #E5E5E5; }
+  background: #1e1e2b;
+  color: #e5e5e5; }
   .Navbar img {
     float: left;
     width: 60px;
@@ -190,20 +200,34 @@ button {
     float: left;
     font-size: 2.7em;
     padding-top: 3px;
-    color: #E5E5E5; }
+    color: #e5e5e5; }
   .Navbar .right-nav {
-    padding: 15px; }
-    .Navbar .right-nav .button1 {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      padding-left: 17px;
-      padding-right: 17px;
-      border-radius: 40px;
-      border: solid #E5E5E5 2px;
-      color: #E5E5E5;
-      background: #1E1E2B; }
-  .Navbar .right-nav .icon {
-    padding: 20px; }
+    padding: 15px;
+    margin-right: 50px; }
+    .Navbar .right-nav nav a {
+      display: inline-block;
+      padding: 3px 20px; }
+    .Navbar .right-nav .icon {
+      padding: 20px; }
+  .Navbar .dropdown {
+    position: relative;
+    display: inline-block; }
+  .Navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #bfbdc1;
+    z-index: 1;
+    border-radius: 5px;
+    margin-top: 1px; }
+  .Navbar .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; }
+  .Navbar .dropdown:hover .dropdown-content {
+    display: block;
+    text-align: center; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -216,8 +240,8 @@ form .sign {
   width: 500px;
   margin: 0 auto;
   text-align: center;
-  color: #E5E5E5;
-  padding-top: 40px;
+  color: #e5e5e5;
+  padding-top: 100px;
   padding-bottom: 20px; }
   form .sign h1 {
     font-size: 80px; }
@@ -226,47 +250,49 @@ form .Form {
   margin: 0px auto;
   padding: 25px;
   position: center;
-  background: #E5E5E5;
-  color: #1E1E2B;
+  background: #e5e5e5;
+  color: #1e1e2b;
   width: 250px;
   border-radius: 15px; }
   form .Form label {
-    color: #1E1E2B;
+    color: #1e1e2b;
     text-align: right; }
   form .Form input {
-    background: #BFBDC1;
+    background: #bfbdc1;
     margin-top: 5px;
     border-style: solid;
     border-radius: 5px;
     padding: 5px;
     width: 95%;
     text-align: left;
-    color: #E5E5E5; }
+    color: #e5e5e5; }
   form .Form select {
     margin-top: 10px;
-    background: #BFBDC1;
+    background: #bfbdc1;
     width: 100%;
-    color: #6D6A75; }
+    color: #6d6a75; }
   form .Form textarea {
-    background: #BFBDC1;
+    background: #bfbdc1;
     margin-top: 10px;
-    border: solid #E5E5E5 1px;
+    border: solid #e5e5e5 1px;
     border-radius: 5px;
-    width: 100%; }
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 200px; }
 
 form .next {
   text-align: right; }
   form .next button {
     border-style: outset;
     border-radius: 10px;
-    border: #C82128 2px;
-    color: #E5E5E5;
-    background: #C82128;
+    border: #c82128 2px;
+    color: #e5e5e5;
+    background: #c82128;
     font-size: 20px;
     padding-left: 20px;
     padding-right: 20px; }
   form .next button:hover {
-    background: #AB1E24; }
+    background: #ab1e24; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -276,7 +302,7 @@ form .next {
 /* border */
 /* kittens */
 .Content {
-  background: #1E1E2B; }
+  background: #1e1e2b; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -287,7 +313,7 @@ form .next {
 /* kittens */
 .Footer {
   display: flex;
-  background: #1E1E2B;
+  background: #1e1e2b;
   align-items: center;
   justify-content: space-between;
   font-size: 0.9em;
@@ -296,6 +322,23 @@ form .next {
 .right-footer nav a {
   display: inline-block;
   padding: 3px 20px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+h2 {
+  font-size: 3em;
+  color: #de9e36;
+  text-shadow: 0px 0px 2px #bfbdc1; }
+
+h3 {
+  font-size: x-large;
+  font-weight: 600;
+  color: #de9e36; }
 
 /* pages */
 /* Chuck your variables in here*/
@@ -309,27 +352,60 @@ form .next {
   width: 0px auto;
   margin: 0 auto;
   text-align: center;
-  color: #E5E5E5;
+  color: #e5e5e5;
   padding-top: 100px; }
   .Home .banner h1 {
     font-size: 80px; }
   .Home .banner .match {
     margin: 50px;
     border-radius: 10px;
-    border: #C82128 2px;
-    color: #E5E5E5;
-    background: #C82128;
+    border: #c82128 2px;
+    color: #e5e5e5;
+    background: #c82128;
     font-size: 20px;
     padding-left: 50px;
     padding-right: 50px; }
   .Home .banner button:hover {
-    background: #AB1E24; }
+    background: #ab1e24; }
 
 .Home .matches {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 40px;
   grid-row-gap: 40px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Landing {
+  display: table;
+  height: 100%;
+  width: 100vw;
+  background-size: cover; }
+  .Landing .landing-title {
+    font-size: 4em;
+    font-weight: bold; }
+  .Landing .middle {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center; }
+  .Landing .maskot {
+    width: 300px;
+    padding-bottom: 10px; }
+  .Landing .inner {
+    padding: 50px 7px;
+    text-align: center; }
+  .Landing h2 {
+    padding-bottom: 10px;
+    color: #ab1e24;
+    text-shadow: 0px 0px 2px #c82128; }
+  .Landing .button1 {
+    position: relative;
+    top: 20px; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -345,22 +421,13 @@ form .next {
 
 .middle {
   display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  float: left; }
-
-.maskot {
-  width: 300px;
-  padding-bottom: 10px; }
+  vertical-align: middle; }
 
 .inner {
   margin-left: auto;
   margin-right: auto;
   width: 1000px;
   text-align: center; }
-
-h2 {
-  padding-bottom: 20px; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -369,7 +436,7 @@ h2 {
 /* paddings */
 /* border */
 /* kittens */
-.outer {
+.Privacy {
   display: table;
   height: 100%;
   width: 100%; }
@@ -384,6 +451,20 @@ h2 {
   width: 1000px;
   text-align: center; }
 
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.contact-title {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+  .contact-title input {
+    margin-bottom: 10px; }
+
 /* components */
 /* Chuck your variables in here*/
 /* colors */
@@ -393,16 +474,136 @@ h2 {
 /* border */
 /* kittens */
 .MatchCard {
-  padding: 20px;
-  border: 1px solid #BFBDC1; }
+  background: #e5e5e5;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #deb841; }
   .MatchCard .profile-pic {
     display: block;
-    width: 100%;
-    height: 200px;
-    border: 1px solid red; }
+    width: 100%; }
   .MatchCard .display-name {
-    padding: 7px 0px;
+    padding: 20px 0px 0px 20px;
     font-weight: bold;
-    font-size: 1.4em; }
+    font-size: 2em; }
   .MatchCard .bio {
+    padding: 20px;
     margin-bottom: 10px; }
+  .MatchCard .button-group {
+    width: 100px;
+    margin: auto auto; }
+
+.MatchCard:hover {
+  cursor: pointer; }
+
+.MatchMeter {
+  display: inline-block;
+  margin: 0 auto; }
+  .MatchMeter .heart-fill {
+    mask: url("../../images/heart_mask.png");
+    mask-size: cover; }
+  .MatchMeter .heart {
+    background: url("../../images/pixel_heart.png");
+    background-size: cover; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Registration {
+  background-size: cover;
+  height: 100%;
+  padding: 40px; }
+  .Registration .title {
+    text-align: center;
+    font-size: 2em;
+    color: #1e1e2b;
+    padding-bottom: 5px; }
+  .Registration .RegistrationForm {
+    max-width: 720px;
+    padding: 20px;
+    margin: 0 auto;
+    background: #e5e5e5;
+    border-radius: 15px; }
+  .Registration .form-body {
+    display: grid;
+    grid-template: 100% 1fr / 1fr 4fr;
+    margin-bottom: 10px; }
+    .Registration .form-body .left {
+      grid-area: 1 / 1 / 1 / 1; }
+    .Registration .form-body .right {
+      padding: 12px 20px;
+      grid-area: 1 / 2 / 1 / 2; }
+    .Registration .form-body .bio {
+      grid-area: 2 / 1 / 2 / 3; }
+      .Registration .form-body .bio textarea {
+        font-size: 1.3em;
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 300px;
+        border-radius: 8px; }
+  .Registration .footer-buttons {
+    display: flex;
+    justify-content: space-between; }
+    .Registration .footer-buttons .previous {
+      width: 150px;
+      border-radius: 15px;
+      color: #e5e5e5;
+      background: #ab1e24;
+      text-align: center; }
+    .Registration .footer-buttons .next {
+      width: 150px;
+      border-radius: 15px;
+      color: #e5e5e5;
+      background: #ab1e24;
+      text-align: center; }
+    .Registration .footer-buttons button:hover {
+      cursor: pointer; }
+  .Registration .field {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-end;
+    padding: 2px 5px;
+    margin-bottom: 7px; }
+    .Registration .field label {
+      position: relative;
+      top: 3px;
+      flex: 1;
+      color: #1e1e2b;
+      text-align: left;
+      font-size: 1.3em; }
+    .Registration .field input,
+    .Registration .field select {
+      box-sizing: border-box;
+      flex: 3;
+      font-size: 1.2em;
+      padding: 3px;
+      border-radius: 6px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.QuestionAnswerForm .question {
+  font-size: 1.5em;
+  color: #1e1e2b; }
+
+.QuestionAnswerForm .AnswerChoices {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  grid-gap: 10px 10px;
+  margin: 20px 0px; }
+  .QuestionAnswerForm .AnswerChoices label {
+    color: #1e1e2b;
+    display: block;
+    background: #ffffff;
+    padding: 15px 10px;
+    box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4); }
+  .QuestionAnswerForm .AnswerChoices label:hover {
+    cursor: pointer; }
