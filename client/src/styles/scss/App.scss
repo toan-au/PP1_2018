@@ -21,12 +21,13 @@ a {
 
 h2 {
   font-size: 3em;
-  color: #de9e36;
-  text-shadow: 0px 0px 2px #bfbdc1;
+  // color: #de9e36;
+  color: $red;
+  text-shadow: 0px 0px 2px $light_red;
 }
 
 a:hover {
-  text-shadow: 0px 0px 5px #de9e36;
+  text-shadow: 0px 0px 5px $light_red;
 }
 
 .container {

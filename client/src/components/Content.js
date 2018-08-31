@@ -23,8 +23,6 @@ class Content extends Component {
           <Route exact path="/FormThree" component={FormThree}/>
           <Route exact path="/FormFour" component={FormFour}/>
           {this.props.user && <Route path="/" component={Home} />}
-          
-          
           <Route path="/" component={Landing} />
         </Switch>
       </main>

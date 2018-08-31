@@ -22,11 +22,11 @@ a {
 
 h2 {
   font-size: 3em;
-  color: #de9e36;
-  text-shadow: 0px 0px 2px #bfbdc1; }
+  color: #AB1E24;
+  text-shadow: 0px 0px 2px #C82128; }
 
 a:hover {
-  text-shadow: 0px 0px 5px #de9e36; }
+  text-shadow: 0px 0px 5px #C82128; }
 
 .container {
   padding: 12px 80px; }

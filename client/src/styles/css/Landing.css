@@ -12,7 +12,13 @@
 
 .middle {
   display: table-cell;
-  vertical-align: middle; }
+  vertical-align: middle;
+  text-align: center;
+  float: left; }
+
+.maskot {
+  width: 300px;
+  padding-bottom: 10px; }
 
 .inner {
   margin-left: auto;
@@ -21,4 +27,4 @@
   text-align: center; }
 
 h2 {
-  padding-bottom: 10px; }
+  padding-bottom: 20px; }

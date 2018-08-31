@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import logo from '../images/Favicon.png';
 
+console.log(logo);
 
 class Navbar extends Component {
   googleSignin() {
@@ -36,9 +38,11 @@ class Navbar extends Component {
     } else {
       rightNav = this.renderLoggedOut();
     }
+
     return (
       <nav className="Navbar">
-        <Link to="/" className="logo">
+        
+        <Link to="/" className="logo"><img src={logo} alt="Game Search Match"/>
           GameSearchMatch
         </Link>
         <div className="right-nav">

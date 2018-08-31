@@ -5,19 +5,24 @@
   height: 100%;
   width: 100%;
 }
-
 .middle {
   display: table-cell;
   vertical-align: middle;
+  text-align: center;
+  
+  float: left;
 }
-
+.maskot{
+  width: 300px;
+  padding-bottom: 10px;
+}
 .inner {
+
   margin-left: auto;
   margin-right: auto;
   width: 1000px;
   text-align: center;
 }
-
 h2 {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
