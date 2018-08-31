@@ -8,10 +8,13 @@
 .MatchCard {
   background: #e5e5e5;
   padding-bottom: 18px;
-  border-bottom: 2px solid #deb841; }
+  border-bottom: 5px solid #deb841;
+  border-radius: 7px; }
   .MatchCard .profile-pic {
     display: block;
-    width: 100%; }
+    width: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px; }
   .MatchCard .display-name {
     padding: 20px 0px 0px 20px;
     font-weight: bold;
@@ -21,7 +24,8 @@
     margin-bottom: 10px; }
   .MatchCard .button-group {
     width: 100px;
-    margin: auto auto; }
+    margin: auto auto;
+    text-align: center; }
 
 .MatchCard:hover {
   cursor: pointer; }

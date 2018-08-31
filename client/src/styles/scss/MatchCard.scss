@@ -3,11 +3,14 @@
 .MatchCard {
   background: $match_card_background;
   padding-bottom: 18px;
-  border-bottom: 2px solid $yellow;
+  border-bottom: 5px solid $yellow;
+  border-radius: 7px;
 
   .profile-pic {
     display: block;
     width: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
   }
 
   .display-name {
@@ -24,6 +27,7 @@
   .button-group {
     width: 100px;
     margin: auto auto;
+    text-align: center;
   }
 }
 

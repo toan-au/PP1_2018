@@ -236,71 +236,6 @@ button {
 /* paddings */
 /* border */
 /* kittens */
-form .sign {
-  width: 500px;
-  margin: 0 auto;
-  text-align: center;
-  color: #e5e5e5;
-  padding-top: 100px;
-  padding-bottom: 20px; }
-  form .sign h1 {
-    font-size: 80px; }
-
-form .Form {
-  margin: 0px auto;
-  padding: 25px;
-  position: center;
-  background: #e5e5e5;
-  color: #1e1e2b;
-  width: 250px;
-  border-radius: 15px; }
-  form .Form label {
-    color: #1e1e2b;
-    text-align: right; }
-  form .Form input {
-    background: #bfbdc1;
-    margin-top: 5px;
-    border-style: solid;
-    border-radius: 5px;
-    padding: 5px;
-    width: 95%;
-    text-align: left;
-    color: #e5e5e5; }
-  form .Form select {
-    margin-top: 10px;
-    background: #bfbdc1;
-    width: 100%;
-    color: #6d6a75; }
-  form .Form textarea {
-    background: #bfbdc1;
-    margin-top: 10px;
-    border: solid #e5e5e5 1px;
-    border-radius: 5px;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 200px; }
-
-form .next {
-  text-align: right; }
-  form .next button {
-    border-style: outset;
-    border-radius: 10px;
-    border: #c82128 2px;
-    color: #e5e5e5;
-    background: #c82128;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right: 20px; }
-  form .next button:hover {
-    background: #ab1e24; }
-
-/* Chuck your variables in here*/
-/* colors */
-/* sizes */
-/* backgrounds */
-/* paddings */
-/* border */
-/* kittens */
 .Content {
   background: #1e1e2b; }
 
@@ -476,10 +411,13 @@ h3 {
 .MatchCard {
   background: #e5e5e5;
   padding-bottom: 18px;
-  border-bottom: 2px solid #deb841; }
+  border-bottom: 5px solid #deb841;
+  border-radius: 7px; }
   .MatchCard .profile-pic {
     display: block;
-    width: 100%; }
+    width: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px; }
   .MatchCard .display-name {
     padding: 20px 0px 0px 20px;
     font-weight: bold;
@@ -489,7 +427,8 @@ h3 {
     margin-bottom: 10px; }
   .MatchCard .button-group {
     width: 100px;
-    margin: auto auto; }
+    margin: auto auto;
+    text-align: center; }
 
 .MatchCard:hover {
   cursor: pointer; }

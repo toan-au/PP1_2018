@@ -1,5 +1,6 @@
 import React from 'react';
-import defaultPfp from '../images/default_pfp.jpg';
+import defaultPfp from '../images/fortnite_drift_.png';
+// import defaultPfp from '../images/Ronald_devil.png';
 import MatchMeter from './MatchMeter';
 
 const MatchCard = props => {
