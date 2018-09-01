@@ -83,9 +83,12 @@ class QuestionAnswerForm extends Component {
         />
         <h4 className="question">How important is this to you?</h4>
         <Field
+          className="range"
           name={'importances.' + question.id}
           component="input"
           type="range"
+          min={0}
+          max={3}
         />
       </div>
     );

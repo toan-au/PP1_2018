@@ -24,4 +24,11 @@
       cursor: pointer;
     }
   }
+
+  .range {
+    box-sizing: border-box;
+    background: red;
+    padding: 13px;
+    width: 100%;
+  }
 }
