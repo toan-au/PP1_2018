@@ -22,3 +22,9 @@
     box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4); }
   .QuestionAnswerForm .AnswerChoices label:hover {
     cursor: pointer; }
+
+.QuestionAnswerForm .range {
+  box-sizing: border-box;
+  background: red;
+  padding: 13px;
+  width: 100%; }
