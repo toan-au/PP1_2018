@@ -418,9 +418,12 @@ h3 {
     border-top-left-radius: 7px;
     border-top-right-radius: 7px; }
   .MatchCard .display-name {
-    padding: 20px 0px 0px 20px;
     font-weight: bold;
-    font-size: 2em; }
+    font-size: 2em;
+    padding-top: 5px; }
+    .MatchCard .display-name h3 {
+      color: #ab1e24;
+      text-align: center; }
   .MatchCard .bio {
     padding: 20px;
     margin-bottom: 10px; }
