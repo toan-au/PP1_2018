@@ -35,7 +35,7 @@ const Navbar = ({ user }) => {
     return (
       <div className="right-nav">
         <a href="/auth/google" className="button1">
-          Google login
+          Google Login
         </a>
       </div>
     );

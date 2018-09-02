@@ -18,7 +18,7 @@ const Landing = () => {
           <br />
           <p>Register or sign in now with a Google Account.</p>
           <a href="/auth/google" className="button1">
-            Google login
+            Google Login
           </a>
         </div>
       </div>
