@@ -8,10 +8,19 @@
   background: $gunmetal;
   color: $white;
 
-  .logo {
-    font-size: 2.7em;
+  img{
+    float: left;
+    width: 60px;
+    padding: 3px;
+    
   }
-
+  .logo {
+    float:left;
+    font-size: 2.7em;
+    padding-top: 3px;
+    color: $white;
+  }
+  
   .right-nav {
     padding: 15px;
     margin-right: 50px;

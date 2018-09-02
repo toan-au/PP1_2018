@@ -4,7 +4,7 @@
   display: table;
   height: 100%;
   width: 100vw;
-  background: url('../../images/landing.jpg');
+  // background: url('../../images/landing.jpg');
   background-size: cover;
 
   .landing-title {
@@ -14,16 +14,23 @@
   .middle {
     display: table-cell;
     vertical-align: middle;
+    text-align: center;
+  }
+  .maskot{
+    width: 300px;
+    
   }
 
   .inner {
-    padding: 50px 7px;
-    background: rgba(26, 25, 25, 0.879);
+    padding: 20px 7px;
+    // background: rgba(26, 25, 25, 0.879);
     text-align: center;
   }
 
   h2 {
     padding-bottom: 10px;
+    color: $red;
+    text-shadow: 0px 0px 2px $light_red; 
   }
 
   .button1 {

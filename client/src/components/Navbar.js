@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import logo from '../images/Favicon.png';
 
+console.log(logo);
 const Navbar = ({ user }) => {
   const NavRightLoggedIn = () => {
     return (
@@ -33,7 +35,7 @@ const Navbar = ({ user }) => {
     return (
       <div className="right-nav">
         <a href="/auth/google" className="button1">
-          Google login
+          Google Login
         </a>
       </div>
     );
@@ -41,9 +43,9 @@ const Navbar = ({ user }) => {
 
   return (
     <nav className="Navbar">
-      <Link to="/" className="logo">
-        GameSearchMatch
-      </Link>
+      <Link to="/" className="logo"><img src={logo} alt="Game Search Match"/>
+          GameSearchMatch
+        </Link>
       {user ? <NavRightLoggedIn /> : <NavRightLoggedOut />}
     </nav>
   );

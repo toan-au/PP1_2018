@@ -156,7 +156,7 @@ input {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif; }
 
 a:hover {
-  text-shadow: 0px 0px 5px #de9e36; }
+  text-shadow: 0px 0px 5px #c82128; }
 
 .container {
   padding: 12px 80px; }
@@ -192,8 +192,15 @@ button {
   padding: 20px 20px;
   background: #1e1e2b;
   color: #e5e5e5; }
+  .Navbar img {
+    float: left;
+    width: 60px;
+    padding: 3px; }
   .Navbar .logo {
-    font-size: 2.7em; }
+    float: left;
+    font-size: 2.7em;
+    padding-top: 3px;
+    color: #e5e5e5; }
   .Navbar .right-nav {
     padding: 15px;
     margin-right: 50px; }
@@ -313,20 +320,23 @@ h3 {
   display: table;
   height: 100%;
   width: 100vw;
-  background: url("../../images/landing.jpg");
   background-size: cover; }
   .Landing .landing-title {
     font-size: 4em;
     font-weight: bold; }
   .Landing .middle {
     display: table-cell;
-    vertical-align: middle; }
+    vertical-align: middle;
+    text-align: center; }
+  .Landing .maskot {
+    width: 300px; }
   .Landing .inner {
-    padding: 50px 7px;
-    background: rgba(26, 25, 25, 0.879);
+    padding: 20px 7px;
     text-align: center; }
   .Landing h2 {
-    padding-bottom: 10px; }
+    padding-bottom: 10px;
+    color: #ab1e24;
+    text-shadow: 0px 0px 2px #c82128; }
   .Landing .button1 {
     position: relative;
     top: 20px; }
@@ -400,20 +410,27 @@ h3 {
 .MatchCard {
   background: #e5e5e5;
   padding-bottom: 18px;
-  border-bottom: 2px solid #deb841; }
+  border-bottom: 5px solid #deb841;
+  border-radius: 7px; }
   .MatchCard .profile-pic {
     display: block;
-    width: 100%; }
+    width: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px; }
   .MatchCard .display-name {
-    padding: 20px 0px 0px 20px;
     font-weight: bold;
-    font-size: 2em; }
+    font-size: 2em;
+    padding-top: 5px; }
+    .MatchCard .display-name h3 {
+      color: #ab1e24;
+      text-align: center; }
   .MatchCard .bio {
     padding: 20px;
     margin-bottom: 10px; }
   .MatchCard .button-group {
     width: 100px;
-    margin: auto auto; }
+    margin: auto auto;
+    text-align: center; }
 
 .MatchCard:hover {
   cursor: pointer; }
@@ -436,19 +453,25 @@ h3 {
 /* border */
 /* kittens */
 .Registration {
-  background: url("../../images/rego_bg.jpg");
   background-size: cover;
   height: 100%;
   padding: 40px; }
   .Registration .title {
     text-align: center;
     font-size: 2em;
-    color: #1e1e2b; }
+    color: #1e1e2b;
+    padding-bottom: 5px; }
   .Registration .RegistrationForm {
     max-width: 720px;
     padding: 20px;
     margin: 0 auto;
-    background: #bfbdc1; }
+    background: #e5e5e5;
+    border-radius: 15px;
+    border-bottom: 5px solid #deb841; }
+    .Registration .RegistrationForm h2 {
+      color: #ab1e24;
+      font-size: 50px;
+      padding-bottom: 15px; }
   .Registration .form-body {
     display: grid;
     grid-template: 100% 1fr / 1fr 4fr;
@@ -459,19 +482,31 @@ h3 {
       padding: 12px 20px;
       grid-area: 1 / 2 / 1 / 2; }
     .Registration .form-body .bio {
-      grid-area: 2 / 1 / 2 / 3; }
+      grid-area: 2 / 1 / 2 / 3;
+      color: #1e1e2b;
+      font-size: 1.3em; }
       .Registration .form-body .bio textarea {
         font-size: 1.3em;
         min-width: 100%;
         max-width: 100%;
-        min-height: 300px; }
+        min-height: 200px;
+        border-radius: 8px;
+        border: solid #bfbdc1 1px; }
   .Registration .footer-buttons {
     display: flex;
     justify-content: space-between; }
     .Registration .footer-buttons .previous {
-      width: 200px; }
+      width: 150px;
+      border-radius: 15px;
+      color: #e5e5e5;
+      background: #ab1e24;
+      text-align: center; }
     .Registration .footer-buttons .next {
-      width: 200px; }
+      width: 150px;
+      border-radius: 15px;
+      color: #e5e5e5;
+      background: #ab1e24;
+      text-align: center; }
     .Registration .footer-buttons button:hover {
       cursor: pointer; }
   .Registration .field {
@@ -482,6 +517,8 @@ h3 {
     align-content: flex-end;
     padding: 2px 5px;
     margin-bottom: 7px; }
+    .Registration .field input {
+      border: solid #bfbdc1 1px; }
     .Registration .field label {
       position: relative;
       top: 3px;
@@ -494,7 +531,9 @@ h3 {
       box-sizing: border-box;
       flex: 3;
       font-size: 1.2em;
-      padding: 3px; }
+      padding: 3px;
+      border-radius: 6px;
+      border: solid #bfbdc1 1px; }
 
 /* Chuck your variables in here*/
 /* colors */

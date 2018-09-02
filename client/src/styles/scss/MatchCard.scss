@@ -3,17 +3,26 @@
 .MatchCard {
   background: $match_card_background;
   padding-bottom: 18px;
-  border-bottom: 2px solid $yellow;
+  border-bottom: 5px solid $yellow;
+  border-radius: 7px;
 
   .profile-pic {
     display: block;
     width: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
   }
 
   .display-name {
-    padding: 20px 0px 0px 20px;
+    // padding: 20px 0px 0px 20px;
     font-weight: bold;
     font-size: $match_card_name_size;
+    padding-top:5px;
+
+    h3{
+      color: $red;
+      text-align: center;
+    }
   }
 
   .bio {
@@ -24,6 +33,7 @@
   .button-group {
     width: 100px;
     margin: auto auto;
+    text-align: center;
   }
 }
 

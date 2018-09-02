@@ -52,7 +52,7 @@ class RegistrationForm1 extends Component {
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>
-          <h1 className="title">Sign Up</h1>
+          <h2 className="title">Sign Up</h2>
           <div className="form-body">
             <div className="left">
               <Field name="pfp" component={PfpInput} />
@@ -63,7 +63,8 @@ class RegistrationForm1 extends Component {
                 <Field
                   name="displayName"
                   component="input"
-                  placeholder="display name"
+                  placeholder=" Display name"
+                  required="required"
                 />
               </div>
 
@@ -99,6 +100,7 @@ class RegistrationForm1 extends Component {
                   component="input"
                   type="radio"
                   value="casual"
+                  required="required"
                 />
               </div>
               <div className="field">
@@ -108,17 +110,23 @@ class RegistrationForm1 extends Component {
                   component="input"
                   type="radio"
                   value="competitive"
+                  required="required"
                 />
               </div>
             </div>
             <div className="bio">
               <label>Bio: </label>
-              <Field component="textarea" placeholder="Biography" name="bio" />
+              <Field component="textarea" 
+                    placeholder="Biography" 
+                    name="bio" 
+                    required="required" />
+                    
+                    
             </div>
           </div>
           <div className="footer-buttons">
             <button className="next" type="submit">
-              Next Page
+              Next
             </button>
           </div>
         </form>

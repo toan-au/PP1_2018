@@ -1,9 +1,13 @@
 import React from 'react';
+import maskot from '../images/maskot.png';
+
+console.log(maskot); 
 
 const Landing = () => {
   return (
     <div className="Landing">
       <div className="middle">
+      <img className="maskot" src={maskot} alt="TerrorWrist"/>
         <div className="inner">
           <h2 className="landing-title">GAME SEARCH MATCH</h2>
           <p>
@@ -14,7 +18,7 @@ const Landing = () => {
           <br />
           <p>Register or sign in now with a Google Account.</p>
           <a href="/auth/google" className="button1">
-            Google login
+            Google Login
           </a>
         </div>
       </div>

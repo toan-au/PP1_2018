@@ -1,7 +1,7 @@
 @import 'variables';
 
 .Registration {
-  background: url('../../images/rego_bg.jpg');
+  // background: url('../../images/rego_bg.jpg');
   background-size: cover;
   height: 100%;
   padding: 40px;
@@ -10,13 +10,22 @@
     text-align: center;
     font-size: 2em;
     color: $gunmetal;
+    padding-bottom: 5px;
   }
 
   .RegistrationForm {
     max-width: 720px;
     padding: 20px;
     margin: 0 auto;
-    background: $rego_form_background;
+    background: $white;
+    border-radius: 15px;
+    border-bottom: 5px solid $yellow;
+
+    h2{
+      color: $red;
+      font-size: 50px;
+      padding-bottom: 15px;
+    }
   }
 
   .form-body {
@@ -35,11 +44,16 @@
 
     .bio {
       grid-area: 2 / 1 / 2 / 3;
+      color: $gunmetal;
+      font-size: 1.3em;
+      
       textarea {
         font-size: 1.3em;
         min-width: 100%;
         max-width: 100%;
-        min-height: 300px;
+        min-height: 200px;
+        border-radius: 8px;
+        border: solid $light_grey 1px;
       }
     }
   }
@@ -49,11 +63,21 @@
     justify-content: space-between;
 
     .previous {
-      width: 200px;
+      
+      width: 150px;
+      border-radius: 15px;
+      color:$white;
+      background: $red;
+      text-align: center;
+      
     }
 
     .next {
-      width: 200px;
+      width: 150px;
+      border-radius: 15px;
+      color:$white;
+      background: $red;
+      text-align: center;
     }
 
     button:hover {
@@ -70,6 +94,11 @@
     padding: 2px 5px;
     margin-bottom: 7px;
 
+    input{
+      border: solid $light_grey 1px;
+      
+    }
+
     label {
       position: relative;
       top: 3px;
@@ -85,6 +114,8 @@
       flex: 3;
       font-size: 1.2em;
       padding: 3px;
+      border-radius: 6px;
+      border: solid $light_grey 1px;
     }
   }
 }
