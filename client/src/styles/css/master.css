@@ -141,6 +141,7 @@ table {
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
+h1,
 h2,
 h3,
 p,
@@ -287,10 +288,10 @@ h3 {
   width: 0px auto;
   margin: 0 auto;
   text-align: center;
-  color: #e5e5e5;
   padding-top: 100px; }
   .Home .banner h1 {
-    font-size: 80px; }
+    font-size: 80px;
+    color: white; }
   .Home .banner .match {
     margin: 50px;
     border-radius: 10px;
@@ -410,13 +411,13 @@ h3 {
 .MatchCard {
   background: #e5e5e5;
   padding-bottom: 18px;
-  border-bottom: 5px solid #deb841;
-  border-radius: 7px; }
+  border-bottom: 7px solid #deb841;
+  border-radius: 15px; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px; }
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; }
   .MatchCard .display-name {
     font-weight: bold;
     font-size: 2em;

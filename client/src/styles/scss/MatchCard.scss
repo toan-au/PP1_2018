@@ -3,14 +3,17 @@
 .MatchCard {
   background: $match_card_background;
   padding-bottom: 18px;
-  border-bottom: 5px solid $yellow;
-  border-radius: 7px;
+  border-bottom: 7px solid $yellow;
+  // border-left: 1px solid $yellow;
+  // border-right: 1px solid $yellow;
+  // border-top: 3px solid $yellow;
+  border-radius: 15px;
 
   .profile-pic {
     display: block;
     width: 100%;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
 
   .display-name {
