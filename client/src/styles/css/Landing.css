@@ -9,6 +9,7 @@
   display: table;
   height: 100%;
   width: 100vw;
+  background: url("../../images/background.png");
   background-size: cover; }
   .Landing .landing-title {
     font-size: 4em;
