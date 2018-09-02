@@ -29,7 +29,7 @@ const MatchCard = props => {
         {/* <button>Dislike</button> */}
       </div>
       <div className="region">
-      {region} test
+      {region}
       </div>
     </div>
   );

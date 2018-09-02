@@ -10,7 +10,7 @@ class RegistrationForm1 extends Component {
     locales: []
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.getRegionsList();
     this.getLocalesList();
   }
@@ -69,12 +69,16 @@ class RegistrationForm1 extends Component {
 
               <div className="field">
                 <label>Region: </label>
-                <select>{this.renderRegions()}</select>
+                <Field name="region" component="select">
+                  {this.renderRegions()}
+                </Field>
               </div>
 
               <div className="field">
                 <label>Language: </label>
-                <select>{this.renderLocales()}</select>
+                <Field name="locale" component="select">
+                  {this.renderLocales()}
+                </Field>
               </div>
 
               <div className="field">
@@ -129,7 +133,7 @@ let registrationForm1 = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  initialValues: { answers: {} }
+  initialValues: { answers: {}, preferences: {}, importances: {} }
 })(RegistrationForm1);
 registrationForm1 = connect(mapStateToProps)(registrationForm1);
 export default registrationForm1;
