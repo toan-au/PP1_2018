@@ -19,7 +19,12 @@
     padding: 20px;
     margin: 0 auto;
     background: #e5e5e5;
-    border-radius: 15px; }
+    border-radius: 15px;
+    border-bottom: 5px solid #deb841; }
+    .Registration .RegistrationForm h2 {
+      color: #ab1e24;
+      font-size: 50px;
+      padding-bottom: 15px; }
   .Registration .form-body {
     display: grid;
     grid-template: 100% 1fr / 1fr 4fr;
@@ -30,13 +35,16 @@
       padding: 12px 20px;
       grid-area: 1 / 2 / 1 / 2; }
     .Registration .form-body .bio {
-      grid-area: 2 / 1 / 2 / 3; }
+      grid-area: 2 / 1 / 2 / 3;
+      color: #1e1e2b;
+      font-size: 1.3em; }
       .Registration .form-body .bio textarea {
         font-size: 1.3em;
         min-width: 100%;
         max-width: 100%;
-        min-height: 300px;
-        border-radius: 8px; }
+        min-height: 200px;
+        border-radius: 8px;
+        border: solid #bfbdc1 1px; }
   .Registration .footer-buttons {
     display: flex;
     justify-content: space-between; }
@@ -62,6 +70,8 @@
     align-content: flex-end;
     padding: 2px 5px;
     margin-bottom: 7px; }
+    .Registration .field input {
+      border: solid #bfbdc1 1px; }
     .Registration .field label {
       position: relative;
       top: 3px;
@@ -75,4 +85,5 @@
       flex: 3;
       font-size: 1.2em;
       padding: 3px;
-      border-radius: 6px; }
+      border-radius: 6px;
+      border: solid #bfbdc1 1px; }

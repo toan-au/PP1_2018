@@ -19,6 +19,13 @@
     margin: 0 auto;
     background: $white;
     border-radius: 15px;
+    border-bottom: 5px solid $yellow;
+
+    h2{
+      color: $red;
+      font-size: 50px;
+      padding-bottom: 15px;
+    }
   }
 
   .form-body {
@@ -37,13 +44,16 @@
 
     .bio {
       grid-area: 2 / 1 / 2 / 3;
+      color: $gunmetal;
+      font-size: 1.3em;
+      
       textarea {
         font-size: 1.3em;
         min-width: 100%;
         max-width: 100%;
-        min-height: 300px;
+        min-height: 200px;
         border-radius: 8px;
-        
+        border: solid $light_grey 1px;
       }
     }
   }
@@ -83,7 +93,11 @@
     align-content: flex-end;
     padding: 2px 5px;
     margin-bottom: 7px;
-    
+
+    input{
+      border: solid $light_grey 1px;
+      
+    }
 
     label {
       position: relative;
@@ -101,6 +115,7 @@
       font-size: 1.2em;
       padding: 3px;
       border-radius: 6px;
+      border: solid $light_grey 1px;
     }
   }
 }
