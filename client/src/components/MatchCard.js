@@ -4,7 +4,7 @@ import defaultPfp from '../images/fortnite_drift_.png';
 import MatchMeter from './MatchMeter';
 
 const MatchCard = props => {
-  const { displayName, bio, matchingScore } = props.match;
+  const { displayName, bio, matchingScore, region } = props.match;
   const bioLength = 250;
   const shortBio = bio.substring(0, bioLength);
   return (
@@ -27,6 +27,9 @@ const MatchCard = props => {
         {/* <button>Like</button> */}
         <MatchMeter percent={matchingScore} />
         {/* <button>Dislike</button> */}
+      </div>
+      <div className="region">
+      {region} test
       </div>
     </div>
   );
