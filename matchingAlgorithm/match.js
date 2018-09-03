@@ -19,7 +19,6 @@ const region = require('../models').region;
 
 
 var findMatches = async function()  {
-    //, where: {[Op.not]: {[Op.or]: [{userId: dummyId}, {matchId: dummyId, matchResponse:{[Op.or]: ['L','R']}}]}}
 //Test ID while writing algorithm
 var dummyId = 1;
 
