@@ -29,6 +29,8 @@ const Navbar = ({ user }) => {
            <a href="/auth/logout" className="button1">
             Logout
           </a> */}
+          </div>
+          </div>
         </nav>
       </div>
     );
@@ -46,9 +48,12 @@ const Navbar = ({ user }) => {
 
   return (
     <nav className="Navbar">
-      <Link to="/" className="logo"><img src={logo} alt="Game Search Match"/>
-          GameSearchMatch
+    <div>
+      <Link to="/"><img src={logo} alt="Game Search Match"/>
         </Link>
+        <Link to="/" className="logo">GameSearchMatch
+        </Link>
+      </div>
       {user ? <NavRightLoggedIn /> : <NavRightLoggedOut />}
     </nav>
   );

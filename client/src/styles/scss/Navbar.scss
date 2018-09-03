@@ -4,25 +4,24 @@
   display: flex;
   justify-content: space-between;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 20px 20px;
   background: $gunmetal;
   
 
   img{
     float: left;
-    width: 60px;
-    padding: 3px;
-    
+    width: 50px;
+    padding-top: 10px;
+    padding-left: 20px;
   }
   .logo {
     float:left;
+    padding-top: 15px;
     font-size: 2.7em;
-    padding-top: 3px;
-   
+    text-align: left;
+    
   }
-  
   .right-nav {
-    padding: 15px;
+    padding-top: 30px;
     margin-right: 50px;
 
     nav
