@@ -29,6 +29,8 @@ const Navbar = ({ user }) => {
            <a href="/auth/logout" className="button1">
             Logout
           </a> */}
+          </div>
+          </div>
         </nav>
       </div>
     );
