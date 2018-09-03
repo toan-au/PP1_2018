@@ -7,8 +7,8 @@ const keys = require('../config/keys');
 const db = {};
 
 const sequelize = new Sequelize(keys.dbString, {
-  dialect: 'postgres'
-  //logging: false
+  dialect: 'postgres',
+  logging: false
 });
 
 fs.readdirSync(__dirname)
