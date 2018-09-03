@@ -292,7 +292,8 @@ h3 {
   padding-top: 100px; }
   .Home .banner h1 {
     font-size: 80px;
-    color: white; }
+    color: white; 
+    margin-bottom: 30px; }
   .Home .banner .match {
     margin: 50px;
     border-radius: 10px;
@@ -310,6 +311,10 @@ h3 {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 40px;
   grid-row-gap: 40px; }
+
+.Home .spinner {
+  width: 150px;
+  margin: 0 auto; }
 
 /* Chuck your variables in here*/
 /* colors */

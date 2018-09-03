@@ -6,34 +6,38 @@
     margin: 0 auto;
     text-align: center;
     padding-top: 100px;
-    
-    h1{
+    h1 {
       font-size: 80px;
+      margin-bottom: 30px;
       color: white;
     }
-    
-    
+
     .match {
-      margin:50px;
+      margin: 50px;
       border-radius: 10px;
       border: $light_red 2px;
-      
+
       color: $white;
       background: $light_red;
-      font-size:20px;
-      padding-left:50px;
-      padding-right:50px;
+      font-size: 20px;
+      padding-left: 50px;
+      padding-right: 50px;
     }
-    button:hover
-    {
-        background: $red;
+    button:hover {
+      background: $red;
     }
   }
-    
+
   .matches {
     display: grid;
     grid-template-columns: $match_columns;
     grid-column-gap: $match_column_gap;
     grid-row-gap: $match_row_gap;
+  }
+
+  .spinner {
+    width: 150px;
+    margin: 0 auto;
+    // background: red;
   }
 }

@@ -79,6 +79,7 @@ function calculateMatches(matchingUser, relevantUsers) {
     }
 
     //calculate the matching score and attach it to each user's JSON entry.
-    relevantUsers.forEach(calcScore)
+    relevantUsers.forEach(calcScore);
+    
 }
 module.exports = {calculateMatches};
