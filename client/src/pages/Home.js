@@ -6,6 +6,10 @@ import { getMatches } from '../redux/actions/matches';
 class Home extends Component {
   state = { matches: [] };
 
+  async componentDidMount() {
+    await this.loadMatches();
+  }
+
   loadMatches = async () => {
     // get matches from the API
     await this.props.getMatches(this.props.user.id);
@@ -17,8 +21,6 @@ class Home extends Component {
 
     this.setState({ matches });
   };
- 
-  renderMatches = () => {};
 
   render() {
     const { user } = this.props;
@@ -26,9 +28,9 @@ class Home extends Component {
       <div className="Home container">
         <div className="banner">
           <h1>Welcome back {user.displayName}</h1>
-          <button className="match" onClick={this.loadMatches}>
+          {/* <button className="match" onClick={this.loadMatches}>
             Match
-          </button>
+          </button> */}
         </div>
         <div className="matches">{this.state.matches}</div>
       </div>
