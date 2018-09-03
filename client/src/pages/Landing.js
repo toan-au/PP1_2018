@@ -5,9 +5,9 @@ console.log(maskot);
 
 const Landing = () => {
   return (
-    <div className="Landing">
+    <div className="landing">
       <div className="middle">
-      <img className="maskot" src={maskot} alt="TerrorWrist"/>
+      
         <div className="inner">
           <h2 className="landing-title">GAME SEARCH MATCH</h2>
           <p>
@@ -21,6 +21,7 @@ const Landing = () => {
             Google Login
           </a>
         </div>
+        <img className="maskot" src={maskot} alt="TerrorWrist"/>
       </div>
     </div>
   );
