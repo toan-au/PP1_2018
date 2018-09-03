@@ -14,10 +14,12 @@ const users = require('../models').users;
 const prefGames = require('../models').prefGames;
 const responses = require('../models').responses;
 const matches = require('../models').matches;
+const locale = require('../models').locale;
+const region = require('../models').region;
 
 
 var findMatches = async function()  {
-
+    //, where: {[Op.not]: {[Op.or]: [{userId: dummyId}, {matchId: dummyId, matchResponse:{[Op.or]: ['L','R']}}]}}
 //Test ID while writing algorithm
 var dummyId = 1;
 
@@ -38,11 +40,30 @@ for(var i = 0; i < matchingUser.prefGames.length; i++){
     relevantGames.push(filterArray);
 }
 
+//Create a set of blacklisted users, who the user has already interacted with
+var interactedUsers = []
+for(var i = 0; i < matchingUser.matches.length; i++){
+    if(
+        matchingUser.usersmatches.matchId == matchingUser.id &&
+        (matchingUser.matches.matchResponse.localeCompare("L") == 0 || matchingUser.matches.matchResponse.localeCompare("P") == 0)){
+            var filterArray = matchingUser.matches[i].id
+            interactedUsers.push(filterArray)
+        }
+    if(matchingUser.usersmatches.userId == matchingUser.id)
+    {
+        var filterArray = matchingUser.matches[i].id
+        interactedUsers.push(filterArray)
+    }
+}
+
+
 //Find all users who have at least one matching game to intiating user
 var relevantUsers = await users.findAll({where: {id: {[Op.ne]: dummyId}}, limit: 30, include: [
     {model: prefGames, where: {gameId: {[Op.or]: relevantGames}}},
     {model: responses},
-    {model: matches}
+    {model: matches, through: {
+        where: {[Op.not]: {matchingId: {[Op.or]: interactedUsers}}}
+    }}
 ]});
 
 
@@ -63,5 +84,7 @@ function orderDesc(b,a){
 relevantUsers.sort(orderDesc);
 return relevantUsers;
 }
+
+    
 
 module.exports = {findMatches};
