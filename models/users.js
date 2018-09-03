@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     localeId: DataTypes.INTEGER,
     age: DataTypes.INTEGER,
     bio: DataTypes.STRING,
-    firstTime: DataTypes.BOOLEAN
+    finishedRegistration: DataTypes.BOOLEAN
   }, {});
   users.associate = function(models) {
     users.hasMany(models.responses, {foriegnKey: 'userId'})
