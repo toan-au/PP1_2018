@@ -12,7 +12,7 @@ const Navbar = ({ user }) => {
         <nav>
           <Link to="/">Home</Link>
           <Link to="/matches">Matches</Link>
-          <div className="dropdown">
+          
             <Link to="/pending" className="dropbtn">
               Pending
             </Link>
@@ -21,16 +21,14 @@ const Navbar = ({ user }) => {
             <Link to="/settings" className="dropbtn">
               Settings
             </Link>
-            {/*}<div className="dropdown-content">
+            <div className="dropdown-content">
               <Link to="/profile">Profile</Link>
               <a href="/auth/logout">Logout</a>
             </div>
           </div>
-           <a href="/auth/logout" className="button1">
+           {/* <a href="/auth/logout" className="button1">
             Logout
           </a> */}
-          </div>
-          </div>
         </nav>
       </div>
     );
