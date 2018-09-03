@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MatchCard from '../components/MatchCard';
 import { connect } from 'react-redux';
 import { getMatches } from '../redux/actions/matches';
-import { PacmanLoader } from 'react-spinners';
+import PacmanSpinner from '../components/PacmanSpinner';
 
 class Home extends Component {
   state = { matches: [], loading: true };
@@ -28,21 +28,13 @@ class Home extends Component {
     return this.state.matches;
   };
 
-  renderSpinner = () => {
-    return (
-      <div className="spinner">
-        <PacmanLoader />
-      </div>
-    );
-  };
-
   render() {
     const { user } = this.props;
     return (
       <div className="Home container">
         <div className="banner">
           <h1>Welcome back {user.displayName}</h1>
-          {this.state.loading && this.renderSpinner()}
+          {this.state.loading && <PacmanSpinner />}
         </div>
         <div className="matches">{this.renderMatches()}</div>
       </div>

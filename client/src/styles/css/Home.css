@@ -12,7 +12,8 @@
   color: #e5e5e5;
   padding-top: 100px; }
   .Home .banner h1 {
-    font-size: 80px; }
+    font-size: 80px;
+    margin-bottom: 30px; }
   .Home .banner .match {
     margin: 50px;
     border-radius: 10px;
@@ -33,5 +34,4 @@
 
 .Home .spinner {
   width: 150px;
-  margin: 0 auto;
-  background: red; }
+  margin: 0 auto; }
