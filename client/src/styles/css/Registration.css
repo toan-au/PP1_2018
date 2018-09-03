@@ -18,7 +18,7 @@
     max-width: 720px;
     padding: 20px;
     margin: 0 auto;
-    background: #e5e5e5;
+    background: #e8e8e8;
     border-radius: 15px;
     border-bottom: 5px solid #deb841; }
     .Registration .RegistrationForm h2 {
@@ -51,13 +51,13 @@
     .Registration .footer-buttons .previous {
       width: 150px;
       border-radius: 15px;
-      color: #e5e5e5;
+      color: #e8e8e8;
       background: #ab1e24;
       text-align: center; }
     .Registration .footer-buttons .next {
       width: 150px;
       border-radius: 15px;
-      color: #e5e5e5;
+      color: #e8e8e8;
       background: #ab1e24;
       text-align: center; }
     .Registration .footer-buttons button:hover {

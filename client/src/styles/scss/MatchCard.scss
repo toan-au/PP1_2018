@@ -1,16 +1,17 @@
 @import 'variables';
 
 .MatchCard {
-  background: $match_card_background;
+  background: $dark_grey;
   padding-bottom: 18px;
-  border-bottom: 5px solid $yellow;
-  border-radius: 7px;
+  border: 2px solid $red;
+  border-radius: 2px;
+  margin-bottom: 20px;
 
   .profile-pic {
     display: block;
     width: 100%;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
   }
 
   .display-name {
@@ -18,16 +19,17 @@
     font-weight: bold;
     font-size: $match_card_name_size;
     padding-top:5px;
+    text-transform: uppercase;
 
     h3{
-      color: $red;
+      color: $light_red;
       text-align: center;
     }
   }
 
   .bio {
     padding: $match_card_padding;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .button-group {
