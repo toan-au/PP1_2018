@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import MatchCard from '../components/MatchCard';
 import { connect } from 'react-redux';
 import { getMatches } from '../redux/actions/matches';
+import { PacmanLoader } from 'react-spinners';
 
 class Home extends Component {
-  state = { matches: [] };
+  state = { matches: [], loading: true };
 
   async componentDidMount() {
     await this.loadMatches();
@@ -19,7 +20,20 @@ class Home extends Component {
       return <MatchCard key={match.id} match={match} />;
     });
 
-    this.setState({ matches });
+    // store matches in a list, set loading to false to hide spinner
+    this.setState({ matches, loading: false });
+  };
+
+  renderMatches = () => {
+    return this.state.matches;
+  };
+
+  renderSpinner = () => {
+    return (
+      <div className="spinner">
+        <PacmanLoader />
+      </div>
+    );
   };
 
   render() {
@@ -28,11 +42,9 @@ class Home extends Component {
       <div className="Home container">
         <div className="banner">
           <h1>Welcome back {user.displayName}</h1>
-          {/* <button className="match" onClick={this.loadMatches}>
-            Match
-          </button> */}
+          {this.state.loading && this.renderSpinner()}
         </div>
-        <div className="matches">{this.state.matches}</div>
+        <div className="matches">{this.renderMatches()}</div>
       </div>
     );
   }

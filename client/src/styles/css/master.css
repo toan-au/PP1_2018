@@ -309,6 +309,11 @@ h3 {
   grid-column-gap: 40px;
   grid-row-gap: 40px; }
 
+.Home .spinner {
+  width: 150px;
+  margin: 0 auto;
+  background: red; }
+
 /* Chuck your variables in here*/
 /* colors */
 /* sizes */
