@@ -12,7 +12,10 @@ const Navbar = ({ user }) => {
         <nav>
           <Link to="/">Home</Link>
           <Link to="/matches">Matches</Link>
-          <Link to="/pending">Pending</Link>
+          
+            <Link to="/pending" className="dropbtn">
+              Pending
+            </Link>
           {/* <Link to="/settings">Settings</Link> */}
           <div className="dropdown">
             <Link to="/settings" className="dropbtn">
@@ -23,7 +26,7 @@ const Navbar = ({ user }) => {
               <a href="/auth/logout">Logout</a>
             </div>
           </div>
-          {/* <a href="/auth/logout" className="button1">
+           {/* <a href="/auth/logout" className="button1">
             Logout
           </a> */}
         </nav>
@@ -43,9 +46,12 @@ const Navbar = ({ user }) => {
 
   return (
     <nav className="Navbar">
-      <Link to="/" className="logo"><img src={logo} alt="Game Search Match"/>
-          GameSearchMatch
+    <div>
+      <Link to="/"><img src={logo} alt="Game Search Match"/>
         </Link>
+        <Link to="/" className="logo">GameSearchMatch
+        </Link>
+      </div>
       {user ? <NavRightLoggedIn /> : <NavRightLoggedOut />}
     </nav>
   );

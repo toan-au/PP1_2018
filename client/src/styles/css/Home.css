@@ -9,11 +9,6 @@
   width: 0px auto;
   margin: 0 auto;
   text-align: center;
-  color: #e8e8e8;
-  padding-top: 50px; }
-  .Home .banner h1 {
-    font-size: 80px;
-    margin-bottom: 50px; }
   .Home .banner .match {
     margin: 50px;
     border-radius: 10px;
@@ -33,5 +28,6 @@
   grid-row-gap: 40px; }
 
 .Home .spinner {
+  padding-top: 120px;
   width: 150px;
   margin: 0 auto; }
