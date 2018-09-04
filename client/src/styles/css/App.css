@@ -11,6 +11,7 @@
   display: grid;
   grid-template-rows: 80px 1fr 80px; }
 
+h1,
 h2,
 h3,
 p,

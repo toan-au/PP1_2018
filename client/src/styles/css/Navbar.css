@@ -12,14 +12,14 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #32323E;
+  background-color: #e8e8e8;
   z-index: 1;
   border-radius: 2px;
   margin-top: 1px; }
 
 .dropdown-content a {
   float: none;
-  color: #e8e8e8;
+  color: #1e1e2b;
   margin: 1px;
   text-decoration: none;
   display: block;

@@ -6,7 +6,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: $dark_grey;
+    background-color: $white;
     z-index: 1;
     border-radius: 2px;
     margin-top: 1px;
@@ -14,7 +14,7 @@
 
 .dropdown-content a {
     float: none;
-    color: $white;
+    color: $gunmetal;
     margin: 1px;
     text-decoration: none;
     display: block;
@@ -34,5 +34,4 @@
 .dropdown:hover .dropdown-content {
     display: block;
     text-align: center;
-
 }
