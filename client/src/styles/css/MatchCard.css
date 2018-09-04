@@ -6,6 +6,16 @@
 /* border */
 /* kittens */
 .MatchCard {
+  background: #d1d1d1;
+  padding-bottom: 21px;
+  border-bottom: 10px solid #de9e36;
+  border-radius: 5px;
+  margin-bottom: 20px; }
+  .MatchCard .profile-pic {
+    display: block;
+    width: 100%;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px; }
   .MatchCard .display-name {
     font-weight: bold;
     font-size: 2em;

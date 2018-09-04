@@ -23,7 +23,7 @@ passport.use(
     {
       clientID: keys.googleClientId,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
+      callbackURL: '/api/auth/google/callback'
     },
     async (accessToken, refreshToken, profile, done) => {
       const { id, emails, displayName, language } = profile;
@@ -67,8 +67,8 @@ router.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {
-    if (req.user.finishedRegistration == false) {
-      res.redirect('/register');
+    if (!req.user.finishedRegistration) {
+      return res.redirect('/register');
     }
     res.redirect('/');
   }
