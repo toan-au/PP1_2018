@@ -31,7 +31,7 @@ class Home extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div className="Home container">
+      <div className="Home container-custom">
         <div className="banner">
           <h1>Welcome Back {user.displayName}</h1>
           {this.state.loading && <PacmanSpinner />}
