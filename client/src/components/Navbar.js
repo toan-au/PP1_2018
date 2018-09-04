@@ -76,7 +76,7 @@ const NavbarLinks = ({ user }) => {
 
   const NavRightLoggedOut = () => {
     return (
-      <div className="right-nav">
+      <div className="navbar-nav ml-auto">
         <a href="/auth/google" className="button1">
           Google Login
         </a>
@@ -88,22 +88,6 @@ const NavbarLinks = ({ user }) => {
     return <NavRightLoggedIn />;
   }
   return <NavRightLoggedOut />;
-};
-
-const NavbarOLD = ({ user }) => {
-  return (
-    <nav className="Navbar">
-      <div>
-        <Link to="/">
-          <img src={logo} alt="Game Search Match" />
-        </Link>
-        <Link to="/" className="logo">
-          GameSearchMatch
-        </Link>
-      </div>
-      <NavbarLinks user={user} />
-    </nav>
-  );
 };
 
 const mapStateToProps = state => ({
