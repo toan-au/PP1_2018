@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="Footer container">
+    <footer className="Footer container-custom">
       <div className="left-footer">
         <p>© The Terror Wrists 2018</p>
       </div>

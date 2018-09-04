@@ -5,6 +5,16 @@
 /* paddings */
 /* border */
 /* kittens */
+.navbar {
+  background: #1e1e2b; }
+  .navbar .logo {
+    float: left;
+    padding-top: 15px;
+    font-size: 2.7em;
+    text-align: left; }
+  .navbar a {
+    color: #bfbdc1 !important; }
+
 .Navbar {
   display: flex;
   justify-content: space-between;
