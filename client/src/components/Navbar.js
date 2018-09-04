@@ -65,7 +65,7 @@ const NavbarLinks = ({ user }) => {
             <Link className="dropdown-item" to="/profile">
               Profile
             </Link>
-            <a className="dropdown-item" href="/auth/logout">
+            <a className="dropdown-item" href="/api/auth/logout">
               Logout
             </a>
           </div>
@@ -77,7 +77,7 @@ const NavbarLinks = ({ user }) => {
   const NavRightLoggedOut = () => {
     return (
       <div className="navbar-nav ml-auto">
-        <a href="/auth/google" className="button1">
+        <a href="/api/auth/google" className="button1">
           Google Login
         </a>
       </div>
