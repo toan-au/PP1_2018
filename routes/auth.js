@@ -23,7 +23,7 @@ passport.use(
     {
       clientID: keys.googleClientId,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
+      callbackURL: '/api/auth/google/callback'
     },
     async (accessToken, refreshToken, profile, done) => {
       const { id, emails, displayName, language } = profile;
@@ -76,6 +76,7 @@ router.get(
 
 // logout the current user
 router.get('/logout', (req, res) => {
+  console.log(req.user);
   req.logout();
   res.redirect('/');
 });
