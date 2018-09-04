@@ -67,8 +67,8 @@ router.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {
-    if (req.user.finishedRegistration == false) {
-      res.redirect('/register');
+    if (!req.user.finishedRegistration) {
+      return res.redirect('/register');
     }
     res.redirect('/');
   }
@@ -76,7 +76,6 @@ router.get(
 
 // logout the current user
 router.get('/logout', (req, res) => {
-  console.log(req.user);
   req.logout();
   res.redirect('/');
 });
