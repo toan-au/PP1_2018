@@ -24,7 +24,7 @@ app.use(passport.session());
 const authRoutes = require('./routes/auth');
 const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
-app.use('/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 
 // if the user's request reaches this point, it means that it is not an api call
 // so they want to actually VIEW our app (react app)
