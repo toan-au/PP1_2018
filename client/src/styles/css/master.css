@@ -190,11 +190,17 @@ button {
 .navbar {
   background: #1e1e2b; }
   .navbar .logo {
-    float: left;
     padding-top: 15px;
     font-size: 2.7em;
-    text-align: left; }
-  .navbar a {
+    text-decoration: none;
+    color: #bfbdc1; }
+  .navbar .nav-item {
+    padding-left: 1.5em !important; }
+  .navbar .dropdown-menu {
+    min-width: 30px !important;
+    left: auto !important; }
+  .navbar .nav-item,
+  .navbar .nav-link {
     color: #bfbdc1 !important; }
 
 .Navbar {

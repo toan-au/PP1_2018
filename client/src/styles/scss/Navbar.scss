@@ -4,13 +4,23 @@
   background: $gunmetal;
 
   .logo {
-    float: left;
     padding-top: 15px;
     font-size: 2.7em;
-    text-align: left;
+    text-decoration: none;
+    color: #bfbdc1;
   }
 
-  a {
+  .nav-item {
+    padding-left: 1.5em !important;
+  }
+
+  .dropdown-menu {
+    min-width: 30px !important;
+    left: auto !important;
+  }
+
+  .nav-item,
+  .nav-link {
     color: #bfbdc1 !important;
   }
 }
