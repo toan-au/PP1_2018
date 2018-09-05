@@ -1,9 +1,14 @@
 import React from 'react';
 import maskot from '../images/maskot.png';
+import { connect } from 'react-redux';
+import Redirect from 'react-router-dom/Redirect';
 
 console.log(maskot);
 
-const Landing = () => {
+const Landing = ({ user }) => {
+  if (user) {
+    return <Redirect to="/register" />;
+  }
   return (
     <div className="landing">
       <div className="middle">
@@ -26,4 +31,8 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(Landing);
