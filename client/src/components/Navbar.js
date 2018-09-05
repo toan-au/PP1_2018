@@ -32,6 +32,29 @@ const Navbar = ({ user }) => {
 };
 
 const NavbarLinks = ({ user }) => {
+  const NavRightLoggedOut = () => {
+    return (
+      <div className="navbar-nav ml-auto">
+        <a href="/api/auth/google" className="button1">
+          Google Login
+        </a>
+      </div>
+    );
+  };
+
+  const NavRightUnfinReg = () => {
+    return (
+      <div className="navbar-nav ml-auto">
+        <Link className="nav-item nav-link" to="/">
+          Complete Registration
+        </Link>
+        <a className="nav-item nav-link" href="/api/auth/logout">
+          Logout
+        </a>
+      </div>
+    );
+  };
+
   const NavRightLoggedIn = () => {
     return (
       <div className="navbar-nav ml-auto">
@@ -74,20 +97,13 @@ const NavbarLinks = ({ user }) => {
     );
   };
 
-  const NavRightLoggedOut = () => {
-    return (
-      <div className="navbar-nav ml-auto">
-        <a href="/api/auth/google" className="button1">
-          Google Login
-        </a>
-      </div>
-    );
-  };
-
-  if (user) {
-    return <NavRightLoggedIn />;
+  if (user === null) {
+    return <NavRightLoggedOut />;
   }
-  return <NavRightLoggedOut />;
+  if (!user.finishedRegistration) {
+    return <NavRightUnfinReg />;
+  }
+  return <NavRightLoggedIn />;
 };
 
 const mapStateToProps = state => ({
