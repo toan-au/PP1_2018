@@ -45,9 +45,12 @@ const NavbarLinks = ({ user }) => {
   const NavRightUnfinReg = () => {
     return (
       <div className="navbar-nav ml-auto">
-        <Link to="/register" className="button1">
+        <Link className="nav-item nav-link" to="/">
           Complete Registration
         </Link>
+        <a className="nav-item nav-link" href="/api/auth/logout">
+          Logout
+        </a>
       </div>
     );
   };
@@ -94,7 +97,7 @@ const NavbarLinks = ({ user }) => {
     );
   };
 
-  if (!user) {
+  if (user === null) {
     return <NavRightLoggedOut />;
   }
   if (!user.finishedRegistration) {
