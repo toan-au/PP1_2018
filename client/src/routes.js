@@ -12,14 +12,13 @@ import Contact from './pages/Contact';
 import Home from './pages/Home';
 
 const AppSwitch = ({ user }) => {
-  if (user === null) {
-    return <PublicRoutes />;
+  if (user) {
+    return <ProtectedRoutes />;
   }
-  if (!user.finishedRegistration) {
-    return <UnfinRegRoutes />;
-  }
-  return <ProtectedRoutes />;
+  return <PublicRoutes />;
 };
+
+const mapStateToProps = state => ({ user: state.user });
 
 /**
  * PublicRoutes - routes available to an unathenticated user.
@@ -28,21 +27,6 @@ const PublicRoutes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Landing} />
-
-      {/* Common Routes */}
-      <Route exact path="/aboutus" component={AboutUs} />
-      <Route exact path="/privacy" component={Privacy} />
-      <Route exact path="/contact" component={Contact} />
-
-      {/* TODO: Remove when 404 page is implemented */}
-      <Redirect to="/" />
-    </Switch>
-  );
-};
-
-const UnfinRegRoutes = () => {
-  return (
-    <Switch>
       <Route exact path="/register" component={Registration} />
 
       {/* Common Routes */}
@@ -50,8 +34,7 @@ const UnfinRegRoutes = () => {
       <Route exact path="/privacy" component={Privacy} />
       <Route exact path="/contact" component={Contact} />
 
-      {/* TODO: Remove when 404 page is implemented */}
-      <Redirect to="/register" />
+      <Redirect to="/" />
     </Switch>
   );
 };
@@ -65,6 +48,7 @@ const ProtectedRoutes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/register" component={Registration} />
       {/* TODO: Implement routes bellow */}
       {/* <Route exact path="/matches" component={Mathes} />
         <Route exact path="/pending" component={Pending} />
@@ -77,12 +61,8 @@ const ProtectedRoutes = () => {
 
       {/* TODO: Implement 404 page */}
       {/* <Route path="*" component={NotFoundView} /> */}
-
-      {/* TODO: Remove when 404 page is implemented */}
-      <Redirect to="/" />
     </Switch>
   );
 };
 
-const mapStateToProps = state => ({ user: state.user });
 export default withRouter(connect(mapStateToProps)(AppSwitch));
