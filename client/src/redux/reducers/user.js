@@ -1,6 +1,6 @@
 import { GET_USER, LOGOUT_USER } from '../actions/types';
 
-export default (state = {}, action) => {
+export default (state = null, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user;
