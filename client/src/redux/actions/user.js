@@ -5,11 +5,6 @@ export const getUser = () => {
   return async dispatch => {
     const response = await axios.get('/api/auth/current');
     const user = response.data;
-
-    if (user === '') {
-      dispatch({ type: GET_USER, user: null });
-      return;
-    }
     dispatch({ type: GET_USER, user });
   };
 };
