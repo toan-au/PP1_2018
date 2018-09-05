@@ -31,9 +31,9 @@ class Home extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div className="Home container">
+      <div className="Home container-custom">
         <div className="banner">
-          <h1>Welcome back {user.displayName}</h1>
+          <h1>Welcome Back {user.displayName}</h1>
           {this.state.loading && <PacmanSpinner />}
         </div>
         <div className="matches">{this.renderMatches()}</div>

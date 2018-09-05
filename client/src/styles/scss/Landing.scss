@@ -45,11 +45,37 @@
     margin:50px;
     border-radius: 10px;
     border: $light_red 2px;
-    
     color: $white;
     background: $light_red;
     font-size:20px;
     padding-left:50px;
     padding-right:50px;
   }
+  .facebook {
+    position: relative;
+    top: 30px;
+    margin:50px;
+    border-radius: 10px;
+    border: $light_red 2px;
+    color: $white;
+    background: $facebook;
+    font-size:20px;
+    padding:5px;
+    padding-left:50px;
+    padding-right:50px;
+  }
+  .discord {
+    position: relative;
+    top: 30px;
+    margin:50px;
+    border-radius: 10px;
+    border: $light_red 2px;
+    padding:5px;
+    color: $white;
+    background: $discord;
+    font-size:20px;
+    padding-left:50px;
+    padding-right:50px;
+  }
+
 }

@@ -36,8 +36,32 @@
     margin: 50px;
     border-radius: 10px;
     border: #c82128 2px;
-    color: #e5e5e5;
+    color: #e8e8e8;
     background: #c82128;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px; }
+  .landing .facebook {
+    position: relative;
+    top: 30px;
+    margin: 50px;
+    border-radius: 10px;
+    border: #c82128 2px;
+    color: #e8e8e8;
+    background: #3B5998;
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px; }
+  .landing .discord {
+    position: relative;
+    top: 30px;
+    margin: 50px;
+    border-radius: 10px;
+    border: #c82128 2px;
+    padding: 5px;
+    color: #e8e8e8;
+    background: #7289DA;
     font-size: 20px;
     padding-left: 50px;
     padding-right: 50px; }

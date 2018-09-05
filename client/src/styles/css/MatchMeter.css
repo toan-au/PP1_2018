@@ -1,9 +1,0 @@
-.MatchMeter {
-  display: inline-block;
-  margin: 0 auto; }
-  .MatchMeter .heart-fill {
-    mask: url("../../images/heart_mask.png");
-    mask-size: cover; }
-  .MatchMeter .heart {
-    background: url("../../images/pixel_heart.png");
-    background-size: cover; }

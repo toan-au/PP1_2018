@@ -146,21 +146,28 @@ h2,
 h3,
 p,
 a,
-form {
+form,
+.bio {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
-  color: #bfbdc1;
+  color: #e8e8e8;
   text-decoration: none; }
 
 textarea,
 input {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif; }
 
-a:hover {
-  text-shadow: 0px 0px 5px #c82128;
-  color: white; }
+a {
+  -o-transition: .1s;
+  -ms-transition: .1s;
+  -moz-transition: .1s;
+  -webkit-transition: .1s;
+  transition: .2s; }
 
-.container {
+a:hover {
+  color: #ab1e24; }
+
+.container-custom {
   padding: 12px 80px; }
 
 /* buttons */
@@ -176,8 +183,8 @@ button {
   padding-left: 17px;
   padding-right: 17px;
   border-radius: 40px;
-  border: solid #e5e5e5 2px;
-  color: #e5e5e5;
+  border: solid #e8e8e8 2px;
+  color: #e8e8e8;
   background: #1e1e2b; }
 
 /* Chuck your variables in here*/
@@ -187,6 +194,53 @@ button {
 /* paddings */
 /* border */
 /* kittens */
+.dropdown {
+  position: relative;
+  display: inline-block; }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #e8e8e8;
+  z-index: 1;
+  border-radius: 2px;
+  margin-top: 1px; }
+
+.dropdown-content a {
+  float: none;
+  color: #1e1e2b;
+  margin: 1px;
+  text-decoration: none;
+  display: block;
+  -o-transition: .1s;
+  -ms-transition: .1s;
+  -moz-transition: .1s;
+  -webkit-transition: .1s;
+  transition: .2s; }
+
+.dropdown-content a:hover {
+  color: #ab1e24; }
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  text-align: center; }
+
+.navbar {
+  background: #1e1e2b; }
+  .navbar .logo {
+    padding-top: 15px;
+    font-size: 2.7em;
+    text-decoration: none;
+    color: #bfbdc1; }
+  .navbar .nav-item {
+    padding-left: 1.5em !important; }
+  .navbar .dropdown-menu {
+    min-width: 30px !important;
+    left: auto !important; }
+  .navbar .nav-item,
+  .navbar .nav-link {
+    color: #bfbdc1 !important; }
+
 .Navbar {
   display: flex;
   justify-content: space-between;
@@ -194,9 +248,8 @@ button {
   background: #1e1e2b; }
   .Navbar img {
     float: left;
-    width: 50px;
-    padding-top: 10px;
-    padding-left: 20px; }
+    width: 60px;
+    padding: 3px; }
   .Navbar .logo {
     float: left;
     padding-top: 15px;
@@ -204,7 +257,8 @@ button {
     text-align: left; }
   .Navbar .right-nav {
     padding-top: 30px;
-    margin-right: 50px; }
+    margin-right: 50px;
+    font-size: 1em; }
     .Navbar .right-nav nav a {
       display: inline-block;
       padding: 3px 20px; }
@@ -254,7 +308,7 @@ button {
   background: #1e1e2b;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.9em;
+  font-size: 1em;
   box-shadow: 0px -2px 5px; }
 
 .right-footer nav a {
@@ -276,7 +330,7 @@ h2 {
 h3 {
   font-size: x-large;
   font-weight: 600;
-  color: #de9e36; }
+  color: #ab1e24; }
 
 /* pages */
 /* Chuck your variables in here*/
@@ -290,16 +344,16 @@ h3 {
   width: 0px auto;
   margin: 0 auto;
   text-align: center;
-  padding-top: 100px; }
+  color: #e8e8e8;
+  padding-top: 50px; }
   .Home .banner h1 {
     font-size: 80px;
-    margin-bottom: 30px;
-    color: white; }
+    margin-bottom: 50px; }
   .Home .banner .match {
     margin: 50px;
     border-radius: 10px;
     border: #c82128 2px;
-    color: #e5e5e5;
+    color: #e8e8e8;
     background: #c82128;
     font-size: 20px;
     padding-left: 50px;
@@ -356,8 +410,32 @@ h3 {
     margin: 50px;
     border-radius: 10px;
     border: #c82128 2px;
-    color: #e5e5e5;
+    color: #e8e8e8;
     background: #c82128;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px; }
+  .landing .facebook {
+    position: relative;
+    top: 30px;
+    margin: 50px;
+    border-radius: 10px;
+    border: #c82128 2px;
+    color: #e8e8e8;
+    background: #3B5998;
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px; }
+  .landing .discord {
+    position: relative;
+    top: 30px;
+    margin: 50px;
+    border-radius: 10px;
+    border: #c82128 2px;
+    padding: 5px;
+    color: #e8e8e8;
+    background: #7289DA;
     font-size: 20px;
     padding-left: 50px;
     padding-right: 50px; }
@@ -429,25 +507,28 @@ h3 {
 /* border */
 /* kittens */
 .MatchCard {
-  background: #e5e5e5;
-  padding-bottom: 18px;
-  border-bottom: 10px solid #5EB1BF;
-  border-radius: 15px; }
+  background: #d1d1d1;
+  padding-bottom: 21px;
+  border-bottom: 10px solid #de9e36;
+  border-radius: 5px;
+  margin-bottom: 20px; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px; }
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px; }
   .MatchCard .display-name {
     font-weight: bold;
     font-size: 2em;
-    padding-top: 5px; }
+    padding-top: 5px;
+    text-transform: uppercase; }
     .MatchCard .display-name h3 {
-      color: #ab1e24;
+      color: #c82128;
       text-align: center; }
   .MatchCard .bio {
     padding: 20px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    color: #1e1e2b !important; }
   .MatchCard .button-group {
     width: 100px;
     margin: auto auto;
@@ -486,7 +567,7 @@ h3 {
     max-width: 720px;
     padding: 20px;
     margin: 0 auto;
-    background: #e5e5e5;
+    background: #e8e8e8;
     border-radius: 15px;
     border-bottom: 10px solid #deb841; }
     .Registration .RegistrationForm h2 {
@@ -519,13 +600,13 @@ h3 {
     .Registration .footer-buttons .previous {
       width: 150px;
       border-radius: 15px;
-      color: #e5e5e5;
+      color: #e8e8e8;
       background: #ab1e24;
       text-align: center; }
     .Registration .footer-buttons .next {
       width: 150px;
       border-radius: 15px;
-      color: #e5e5e5;
+      color: #e8e8e8;
       background: #ab1e24;
       text-align: center; }
     .Registration .footer-buttons button:hover {
