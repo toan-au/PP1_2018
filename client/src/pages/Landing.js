@@ -16,8 +16,14 @@ const Landing = () => {
           </p>
           <br />
           <p>Register or sign in now with a Google Account.</p>
+          <a href="/api/auth/facebook" className="facebook">
+            Facebook
+          </a>
           <a href="/api/auth/google" className="button1">
-            Google Login
+            Google
+          </a>
+          <a href="/api/auth/discord" className="discord">
+            Discord
           </a>
         </div>
         <img className="maskot" src={maskot} alt="TerrorWrist" />

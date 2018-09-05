@@ -1,0 +1,89 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Registration {
+  background-size: cover;
+  height: 100%;
+  padding: 40px; }
+  .Registration .title {
+    text-align: center;
+    font-size: 2em;
+    color: #1e1e2b;
+    padding-bottom: 5px; }
+  .Registration .RegistrationForm {
+    max-width: 720px;
+    padding: 20px;
+    margin: 0 auto;
+    background: #e8e8e8;
+    border-radius: 15px;
+    border-bottom: 10px solid #deb841; }
+    .Registration .RegistrationForm h2 {
+      color: #ab1e24;
+      font-size: 50px;
+      padding-bottom: 15px; }
+  .Registration .form-body {
+    display: grid;
+    grid-template: 100% 1fr / 1fr 4fr;
+    margin-bottom: 10px; }
+    .Registration .form-body .left {
+      grid-area: 1 / 1 / 1 / 1; }
+    .Registration .form-body .right {
+      padding: 12px 20px;
+      grid-area: 1 / 2 / 1 / 2; }
+    .Registration .form-body .bio {
+      grid-area: 2 / 1 / 2 / 3;
+      color: #1e1e2b;
+      font-size: 1.3em; }
+      .Registration .form-body .bio textarea {
+        font-size: 1.3em;
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 200px;
+        border-radius: 8px;
+        border: solid #bfbdc1 1px; }
+  .Registration .footer-buttons {
+    display: flex;
+    justify-content: space-between; }
+    .Registration .footer-buttons .previous {
+      width: 150px;
+      border-radius: 15px;
+      color: #e8e8e8;
+      background: #ab1e24;
+      text-align: center; }
+    .Registration .footer-buttons .next {
+      width: 150px;
+      border-radius: 15px;
+      color: #e8e8e8;
+      background: #ab1e24;
+      text-align: center; }
+    .Registration .footer-buttons button:hover {
+      cursor: pointer; }
+  .Registration .field {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-end;
+    padding: 2px 5px;
+    margin-bottom: 7px; }
+    .Registration .field input {
+      border: solid #bfbdc1 1px; }
+    .Registration .field label {
+      position: relative;
+      top: 3px;
+      flex: 1;
+      color: #1e1e2b;
+      text-align: left;
+      font-size: 1.3em; }
+    .Registration .field input,
+    .Registration .field select {
+      box-sizing: border-box;
+      flex: 3;
+      font-size: 1.2em;
+      padding: 3px;
+      border-radius: 6px;
+      border: solid #bfbdc1 1px; }

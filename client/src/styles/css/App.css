@@ -34,6 +34,8 @@ a {
   -webkit-transition: .1s;
   transition: .2s; }
 
+a:hover {
+  color: #ab1e24; }
 
 .container-custom {
   padding: 12px 80px; }

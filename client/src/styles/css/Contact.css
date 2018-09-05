@@ -1,0 +1,13 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.contact-title {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+  .contact-title input {
+    margin-bottom: 10px; }

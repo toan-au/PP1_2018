@@ -1,0 +1,67 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.landing {
+  display: table;
+  height: 100%;
+  width: 100vw;
+  background: url("../../images/background2.png");
+  background-size: cover; }
+  .landing .maskot {
+    width: 350px;
+    text-align: center;
+    padding-top: 50px; }
+  .landing .landing-title {
+    font-size: 4em;
+    font-weight: bold;
+    text-align: center; }
+  .landing .middle {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center; }
+  .landing .inner {
+    padding: 20px 7px;
+    text-align: center; }
+  .landing h2 {
+    padding-bottom: 10px;
+    color: #ab1e24;
+    text-shadow: 0px 0px 2px #c82128; }
+  .landing .button1 {
+    position: relative;
+    top: 30px;
+    margin: 50px;
+    border-radius: 10px;
+    border: #c82128 2px;
+    color: #e8e8e8;
+    background: #c82128;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px; }
+  .landing .facebook {
+    position: relative;
+    top: 30px;
+    margin: 50px;
+    border-radius: 10px;
+    border: #c82128 2px;
+    color: #e8e8e8;
+    background: #3B5998;
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px; }
+  .landing .discord {
+    position: relative;
+    top: 30px;
+    margin: 50px;
+    border-radius: 10px;
+    border: #c82128 2px;
+    padding: 5px;
+    color: #e8e8e8;
+    background: #7289DA;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px; }
