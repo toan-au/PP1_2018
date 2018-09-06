@@ -49,15 +49,38 @@ const PreferenceChoices = ({ answers, questionId }) => {
           );
         })}
       </div>
-      <h4 className="question">How important is this to you?</h4>
-      <Field
-        className="range"
-        name={`importances.${questionId}`}
-        component="input"
-        type="range"
-        min={0}
-        max={3}
-      />
+    </div>
+  );
+};
+
+const RadioGroup = ({
+  options,
+  identifier,
+  labelName,
+  name,
+  onSelection = () => {}
+}) => {
+  return (
+    <div className="AnswerChoices">
+      <div className="choices">
+        {options.map(option => {
+          return (
+            <div className="choice" key={option[identifier]}>
+              <label htmlFor={`${name}.${option[identifier]}`}>
+                <Field
+                  name={`${name}`}
+                  component="input"
+                  id={`${name}.${option[identifier]}`}
+                  type="radio"
+                  value={option[identifier]}
+                  onChange={onSelection}
+                />
+                {option[labelName]}
+              </label>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -78,6 +101,11 @@ class QuestionAnswerForm extends Component {
       prevQuestion,
       question: { answers }
     } = this.props;
+    const importances = [
+      { name: 'none', value: 0 },
+      { name: 'medium', value: 1 },
+      { name: 'high', value: 3 }
+    ];
     return (
       <div className="RegistrationForm QuestionAnswerForm">
         <form onSubmit={handleSubmit}>
@@ -93,6 +121,14 @@ class QuestionAnswerForm extends Component {
           {this.state.showPreferences && (
             <PreferenceChoices answers={answers} questionId={question.id} />
           )}
+
+          {/* Important */}
+          <RadioGroup
+            name={`importances.${question.id}`}
+            options={importances}
+            identifier="name"
+            labelName="name"
+          />
 
           {/* footer */}
           <div className="footer-buttons">
