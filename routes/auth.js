@@ -37,7 +37,7 @@ passport.use(
       console.log('existing user:' + existingUser);
       // console.log(process.env.DB_STRING);
       if (existingUser) {
-        console.log(existingUser.id);
+        console.log(existingUser);
         return done(null, existingUser);
       }
 
