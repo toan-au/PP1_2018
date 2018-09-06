@@ -10,7 +10,7 @@ const RadioGroup = ({
   onSelection = () => {}
 }) => {
   return (
-    <div className="AnswerChoices">
+    <div className="RadioGroup">
       <div className="choices">
         {options.map(option => {
           return (
@@ -21,7 +21,7 @@ const RadioGroup = ({
                   component="input"
                   id={`${name}.${option[identifier]}`}
                   type="radio"
-                  value={option[identifier]}
+                  value={option[valueName]}
                   onChange={onSelection}
                 />
                 {option[labelName]}

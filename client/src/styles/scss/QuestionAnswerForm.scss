@@ -5,33 +5,4 @@
     font-size: 1.5em;
     color: $gunmetal;
   }
-
-  .AnswerChoices {
-    margin: 20px 0px;
-
-    .choices {
-      display: grid;
-      grid-template: 1fr 1fr / 1fr 1fr;
-      grid-gap: 10px 10px;
-    }
-
-    label {
-      color: $gunmetal;
-      display: block;
-      background: #ffffff;
-      padding: 15px 10px;
-      box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4);
-    }
-
-    label:hover {
-      cursor: pointer;
-    }
-  }
-
-  .range {
-    box-sizing: border-box;
-    background: red;
-    padding: 13px;
-    width: 100%;
-  }
 }
