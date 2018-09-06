@@ -665,6 +665,15 @@ h3 {
       padding: 3px;
       border-radius: 6px;
       border: solid #bfbdc1 1px; }
+    .Registration .field .SelectWithError {
+      display: flex;
+      flex: 3;
+      flex-direction: column; }
+    .Registration .field .error {
+      padding-left: 7px;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      background: red; }
 
 /* Chuck your variables in here*/
 /* colors */

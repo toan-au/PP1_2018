@@ -4,6 +4,19 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import PfpInput from './PfpInput';
 
+const SelectWithError = ({
+  input,
+  type,
+  meta: { touched, error, warning },
+  children
+}) => (
+  <div class="SelectWithError">
+    {(touched && (error && <span className="error">{error}</span>)) ||
+      (warning && <span>{warning}</span>)}
+    <select {...input}>{children}</select>
+  </div>
+);
+
 class RegistrationForm1 extends Component {
   state = {
     regions: [],
@@ -11,7 +24,7 @@ class RegistrationForm1 extends Component {
   };
 
   // validation for select fields
-  selected = value => (value != -1 ? undefined : true);
+  selected = value => (value != -1 ? undefined : 'Please select an option');
 
   componentDidMount() {
     this.getRegionsList();
@@ -77,7 +90,7 @@ class RegistrationForm1 extends Component {
                 <label>Region: </label>
                 <Field
                   name="region"
-                  component="select"
+                  component={SelectWithError}
                   validate={this.selected}
                 >
                   <option value="-1" disabled>
@@ -91,7 +104,7 @@ class RegistrationForm1 extends Component {
                 <label>Language: </label>
                 <Field
                   name="locale"
-                  component="select"
+                  component={SelectWithError}
                   validate={this.selected}
                 >
                   <option value="-1" disabled>
@@ -103,7 +116,11 @@ class RegistrationForm1 extends Component {
 
               <div className="field">
                 <label>Age: </label>
-                <Field name="age" component="select" validate={this.selected}>
+                <Field
+                  name="age"
+                  component={SelectWithError}
+                  validate={this.selected}
+                >
                   <option value="-1" disabled>
                     Please select an option
                   </option>
