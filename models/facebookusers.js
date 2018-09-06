@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var facebookUsers = sequelize.define(
     'facebookUsers',
     {
-      facebookId: DataTypes.STRING
+      facebookId: { type: DataTypes.STRING, primaryKey: true }
     },
     {}
   );

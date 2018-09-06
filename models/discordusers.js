@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var discordUsers = sequelize.define(
     'discordUsers',
     {
-      discordId: DataTypes.STRING
+      discordId: { type: DataTypes.STRING, primaryKey: true }
     },
     {}
   );
