@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var facebookUsers = sequelize.define('facebookUser', {
+  var facebookUsers = sequelize.define('facebookUsers', {
     facebookId: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {});
