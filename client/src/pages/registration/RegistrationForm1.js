@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import PfpInput from './PfpInput';
@@ -9,6 +9,9 @@ class RegistrationForm1 extends Component {
     regions: [],
     locales: []
   };
+
+  // validation for select fields
+  selected = value => (value != -1 ? undefined : true);
 
   componentDidMount() {
     this.getRegionsList();
@@ -50,7 +53,7 @@ class RegistrationForm1 extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, age, region } = this.props;
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>
@@ -72,27 +75,44 @@ class RegistrationForm1 extends Component {
 
               <div className="field">
                 <label>Region: </label>
-                <Field name="region" component="select">
+                <Field
+                  name="region"
+                  component="select"
+                  validate={this.selected}
+                >
+                  <option value="-1" disabled>
+                    Please select an option
+                  </option>
                   {this.renderRegions()}
                 </Field>
               </div>
 
               <div className="field">
                 <label>Language: </label>
-                <Field name="locale" component="select">
+                <Field
+                  name="locale"
+                  component="select"
+                  validate={this.selected}
+                >
+                  <option value="-1" disabled>
+                    Please select an option
+                  </option>
                   {this.renderLocales()}
                 </Field>
               </div>
 
               <div className="field">
                 <label>Age: </label>
-                <select>
-                  <option value="18-20">18-20</option>
-                  <option value="21-25">21-25</option>
-                  <option value="26-30">26-30</option>
-                  <option value="31-35">31-35</option>
-                  <option value="36+">36+</option>
-                </select>
+                <Field name="age" component="select" validate={this.selected}>
+                  <option value="-1" disabled>
+                    Please select an option
+                  </option>
+                  <option value="1">18-20</option>
+                  <option value="2">21-25</option>
+                  <option value="3">26-30</option>
+                  <option value="4">31-35</option>
+                  <option value="5">36+</option>
+                </Field>
               </div>
 
               <div className="field">
@@ -137,14 +157,28 @@ class RegistrationForm1 extends Component {
   }
 }
 
-const mapStateToProps = state => ({ user: state.user });
+const selector = formValueSelector('registration');
+const mapStateToProps = state => {
+  const age = selector(state, 'age');
+  const region = selector(state, 'region');
+  const locale = selector(state, 'locale');
+
+  return { age, region, locale };
+};
 
 // hook up with red-form
 let registrationForm1 = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  initialValues: { answers: {}, preferences: {}, importances: {} }
+  initialValues: {
+    answers: {},
+    preferences: {},
+    importances: {},
+    age: -1,
+    region: -1,
+    locale: -1
+  }
 })(RegistrationForm1);
 
 // connect to the redux store
