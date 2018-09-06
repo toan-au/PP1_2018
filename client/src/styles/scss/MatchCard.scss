@@ -6,12 +6,14 @@
   border-bottom: 10px solid $dark_yellow;
   border-radius: 5px;
   margin-bottom: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 
   .profile-pic {
     display: block;
     width: 100%;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
 
   .display-name {
