@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var googleUsers = sequelize.define(
     'googleUsers',
     {
-      googleId: DataTypes.STRING
+      googleId: { type: DataTypes.STRING, primaryKey: true }
     },
     {}
   );

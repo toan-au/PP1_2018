@@ -34,7 +34,6 @@ passport.use(
         where: { googleId: id }
       });
 
-      console.log('existing user:' + existingUser);
       // console.log(process.env.DB_STRING);
       if (existingUser) {
         console.log(existingUser);
@@ -42,11 +41,15 @@ passport.use(
       }
 
       const user = Users.build({
-        googleId: id,
         email: emails[0].value,
         displayName,
         language: language || 'en',
         dob: new Date()
+      });
+
+      const googleUser = GoogleUsers.build({
+        googleId: id,
+        users: user
       });
 
       const newUser = await user.save();
