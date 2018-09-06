@@ -1,31 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-
-const AnswerChoices = ({ answers, questionId, onSelection }) => {
-  return (
-    <div className="AnswerChoices">
-      <div className="choices">
-        {answers.map(answer => {
-          return (
-            <div className="choice" key={answer.id}>
-              <label htmlFor={'answer' + answer.id}>
-                <Field
-                  name={`answers.${String(questionId)}`}
-                  component="input"
-                  id={'answer' + answer.id}
-                  type="radio"
-                  value={answer.answerKey}
-                  onChange={onSelection}
-                />
-                {answer.answerText}
-              </label>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
+import RadioGroup from '../../components/RadioGroup';
 
 const PreferenceChoices = ({ answers, questionId }) => {
   return (
@@ -44,38 +19,6 @@ const PreferenceChoices = ({ answers, questionId }) => {
                   value={answer.answerKey}
                 />
                 {answer.answerText}
-              </label>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-const RadioGroup = ({
-  options,
-  identifier,
-  labelName,
-  name,
-  onSelection = () => {}
-}) => {
-  return (
-    <div className="AnswerChoices">
-      <div className="choices">
-        {options.map(option => {
-          return (
-            <div className="choice" key={option[identifier]}>
-              <label htmlFor={`${name}.${option[identifier]}`}>
-                <Field
-                  name={`${name}`}
-                  component="input"
-                  id={`${name}.${option[identifier]}`}
-                  type="radio"
-                  value={option[identifier]}
-                  onChange={onSelection}
-                />
-                {option[labelName]}
               </label>
             </div>
           );
@@ -111,9 +54,12 @@ class QuestionAnswerForm extends Component {
         <form onSubmit={handleSubmit}>
           {/* Answer section */}
           <h4 className="question">{question.questionText}</h4>
-          <AnswerChoices
-            answers={answers}
-            questionId={question.id}
+          <RadioGroup
+            options={answers}
+            name={`answers.${question.id}`}
+            identifier="answerKey"
+            valueName="answerKey"
+            labelName="answerText"
             onSelection={this.handleAnswerSelection}
           />
 
@@ -128,6 +74,7 @@ class QuestionAnswerForm extends Component {
             options={importances}
             identifier="name"
             labelName="name"
+            valueName="name"
           />
 
           {/* footer */}
