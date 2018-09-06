@@ -72,8 +72,9 @@
     font-size: 1em; }
     .Navbar .right-nav nav a {
       display: inline-block;
-      padding: 3px 20px;
-      text-decoration: none; }
+      padding: 3px 20px; }
+    .Navbar .right-nav .navbar-nav ml-auto:hover {
+      color: white; }
     .Navbar .right-nav .icon {
       padding: 20px; }
   .Navbar .dropdown {

@@ -267,8 +267,9 @@ button {
     font-size: 1em; }
     .Navbar .right-nav nav a {
       display: inline-block;
-      padding: 3px 20px;
-      text-decoration: none; }
+      padding: 3px 20px; }
+    .Navbar .right-nav .navbar-nav ml-auto:hover {
+      color: white; }
     .Navbar .right-nav .icon {
       padding: 20px; }
   .Navbar .dropdown {
@@ -353,13 +354,14 @@ h3 {
   margin: 0 auto;
   text-align: center;
   color: #e8e8e8;
-  padding-top: 50px; }
+  padding-top: 50px;
+  padding-bottom: 30px; }
   .Home .banner h1 {
     font-size: 80px;
     margin-bottom: 50px; }
   .Home .banner .match {
     margin: 50px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: #c82128 2px;
     color: #e8e8e8;
     background: #c82128;
@@ -373,7 +375,8 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 40px;
-  grid-row-gap: 40px; }
+  grid-row-gap: 40px;
+  padding-bottom: 40px; }
 
 .Home .spinner {
   padding-top: 120px;
@@ -530,12 +533,14 @@ h3 {
   padding-bottom: 21px;
   border-bottom: 10px solid #de9e36;
   border-radius: 5px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px; }
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; }
   .MatchCard .display-name {
     font-weight: bold;
     font-size: 2em;
