@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 
-class AnswerChoices extends Component {
-  render() {
-    const {
-      answers,
-      input: { onChange }
-    } = this.props;
-    return (
-      <div className="AnswerChoices">
+const AnswerChoices = ({ answers, questionId, onSelection }) => {
+  return (
+    <div className="AnswerChoices">
+      <div className="choices">
         {answers.map(answer => {
           return (
             <div className="choice" key={answer.id}>
               <label htmlFor={'answer' + answer.id}>
-                <input
-                  name="answers"
+                <Field
+                  name={`answers.${String(questionId)}`}
+                  component="input"
                   id={'answer' + answer.id}
                   type="radio"
                   value={answer.answerKey}
-                  onChange={onChange}
+                  onChange={onSelection}
                 />
                 {answer.answerText}
               </label>
@@ -26,18 +23,15 @@ class AnswerChoices extends Component {
           );
         })}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-class PreferenceChoices extends Component {
-  state = { selection: '', limit: 1 };
-
-  render() {
-    const { answers, questionId } = this.props;
-    // console.log(input);
-    return (
-      <div className="AnswerChoices">
+const PreferenceChoices = ({ answers, questionId }) => {
+  return (
+    <div className="AnswerChoices">
+      <h4 className="question">Your gaming buddy would ideally choose...</h4>
+      <div className="choices">
         {answers.map(answer => {
           return (
             <div className="choice" key={answer.id}>
@@ -55,9 +49,18 @@ class PreferenceChoices extends Component {
           );
         })}
       </div>
-    );
-  }
-}
+      <h4 className="question">How important is this to you?</h4>
+      <Field
+        className="range"
+        name={`importances.${questionId}`}
+        component="input"
+        type="range"
+        min={0}
+        max={3}
+      />
+    </div>
+  );
+};
 
 class QuestionAnswerForm extends Component {
   state = {
@@ -66,28 +69,6 @@ class QuestionAnswerForm extends Component {
 
   handleAnswerSelection = () => {
     this.setState({ showPreferences: true });
-  };
-
-  renderPreferenceChoices = () => {
-    const { question } = this.props;
-    return (
-      <div>
-        <h4 className="question">Your gaming buddy would ideally choose...</h4>
-        <PreferenceChoices
-          answers={question.answers}
-          questionId={question.id}
-        />
-        <h4 className="question">How important is this to you?</h4>
-        <Field
-          className="range"
-          name={'importances.' + question.id}
-          component="input"
-          type="range"
-          min={0}
-          max={3}
-        />
-      </div>
-    );
   };
 
   render() {
@@ -100,14 +81,20 @@ class QuestionAnswerForm extends Component {
     return (
       <div className="RegistrationForm QuestionAnswerForm">
         <form onSubmit={handleSubmit}>
+          {/* Answer section */}
           <h4 className="question">{question.questionText}</h4>
-          <Field
-            name={'answers.' + question.id}
-            component={AnswerChoices}
+          <AnswerChoices
             answers={answers}
-            onChange={this.handleAnswerSelection}
+            questionId={question.id}
+            onSelection={this.handleAnswerSelection}
           />
-          {this.state.showPreferences && this.renderPreferenceChoices()}
+
+          {/* Preferences section */}
+          {this.state.showPreferences && (
+            <PreferenceChoices answers={answers} questionId={question.id} />
+          )}
+
+          {/* footer */}
           <div className="footer-buttons">
             <button className="previous" type="button" onClick={prevQuestion}>
               Previous

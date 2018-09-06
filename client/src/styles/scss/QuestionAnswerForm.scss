@@ -7,10 +7,13 @@
   }
 
   .AnswerChoices {
-    display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr;
-    grid-gap: 10px 10px;
     margin: 20px 0px;
+
+    .choices {
+      display: grid;
+      grid-template: 1fr 1fr / 1fr 1fr;
+      grid-gap: 10px 10px;
+    }
 
     label {
       color: $gunmetal;
