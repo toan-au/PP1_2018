@@ -19,7 +19,6 @@ class AnswerChoices extends Component {
                   type="radio"
                   value={answer.answerKey}
                   onChange={onChange}
-                  required="required"
                 />
                 {answer.answerText}
               </label>
@@ -110,7 +109,6 @@ class QuestionAnswerForm extends Component {
             name={'answers.' + question.id}
             component={AnswerChoices}
             answers={answers}
-            required="required"
             onChange={this.handleAnswerSelection}
           />
           {this.state.showPreferences && this.renderPreferenceChoices()}
