@@ -347,7 +347,8 @@ h3 {
   margin: 0 auto;
   text-align: center;
   color: #e8e8e8;
-  padding-top: 50px; }
+  padding-top: 50px;
+  padding-bottom: 30px; }
   .Home .banner h1 {
     font-size: 80px;
     margin-bottom: 50px; }
