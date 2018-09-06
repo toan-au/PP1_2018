@@ -77,9 +77,7 @@ const NavbarLinks = ({ user }) => {
   const NavRightLoggedOut = () => {
     return (
       <div className="navbar-nav ml-auto">
-        <a href="/api/auth/google" className="button1">
-          Google Login
-        </a>
+
       </div>
     );
   };
