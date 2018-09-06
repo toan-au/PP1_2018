@@ -116,12 +116,12 @@ class RegistrationForm1 extends Component {
             </div>
             <div className="bio">
               <label>Bio: </label>
-              <Field component="textarea" 
-                    placeholder="Biography" 
-                    name="bio" 
-                    required="required" />
-                    
-                    
+              <Field
+                component="textarea"
+                placeholder="Biography"
+                name="bio"
+                required="required"
+              />
             </div>
           </div>
           <div className="footer-buttons">
@@ -141,7 +141,7 @@ let registrationForm1 = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  initialValues: { answers: {}, preferences: {}, importances: {} }
+  initialValues: { answers: {}, preference: {}, importances: {} }
 })(RegistrationForm1);
 registrationForm1 = connect(mapStateToProps)(registrationForm1);
 export default registrationForm1;

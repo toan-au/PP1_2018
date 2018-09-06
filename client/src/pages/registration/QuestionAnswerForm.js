@@ -34,10 +34,7 @@ class PreferenceChoices extends Component {
   state = { selection: '', limit: 1 };
 
   render() {
-    const {
-      answers,
-      input: { onChange }
-    } = this.props;
+    const { answers, questionId } = this.props;
     // console.log(input);
     return (
       <div className="AnswerChoices">
@@ -45,12 +42,12 @@ class PreferenceChoices extends Component {
           return (
             <div className="choice" key={answer.id}>
               <label htmlFor={'preference' + answer.id}>
-                <input
-                  name="preferences"
+                <Field
+                  name={`preference.${questionId}.${answer.answerKey}`}
+                  component="input"
                   id={'preference' + answer.id}
                   type="checkbox"
                   value={answer.answerKey}
-                  onChange={onChange}
                 />
                 {answer.answerText}
               </label>
@@ -76,10 +73,9 @@ class QuestionAnswerForm extends Component {
     return (
       <div>
         <h4 className="question">Your gaming buddy would ideally choose...</h4>
-        <Field
-          name={'preferences.' + question.id}
-          component={PreferenceChoices}
+        <PreferenceChoices
           answers={question.answers}
+          questionId={question.id}
         />
         <h4 className="question">How important is this to you?</h4>
         <Field
