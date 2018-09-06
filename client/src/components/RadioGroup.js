@@ -24,6 +24,7 @@ const RadioGroup = ({
                   type="radio"
                   value={option[valueName]}
                   onChange={onSelection}
+                  required
                 />
                 {option[labelName]}
               </label>

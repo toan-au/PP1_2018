@@ -10,7 +10,7 @@ const SelectWithError = ({
   meta: { touched, error, warning },
   children
 }) => (
-  <div class="SelectWithError">
+  <div className="SelectWithError">
     {(touched && (error && <span className="error">{error}</span>)) ||
       (warning && <span>{warning}</span>)}
     <select {...input}>{children}</select>
