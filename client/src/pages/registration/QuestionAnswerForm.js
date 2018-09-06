@@ -45,8 +45,8 @@ class QuestionAnswerForm extends Component {
       question: { answers }
     } = this.props;
     const importances = [
-      { name: 'none', value: 0 },
-      { name: 'medium', value: 1 },
+      { name: 'low', value: 1 },
+      { name: 'medium', value: 2 },
       { name: 'high', value: 3 }
     ];
     return (
@@ -70,14 +70,17 @@ class QuestionAnswerForm extends Component {
 
           {/* Important */}
           {this.state.showPreferences && (
-            <RadioGroup
-              className="importance"
-              name={`importances.${question.id}`}
-              options={importances}
-              identifier="name"
-              labelName="name"
-              valueName="name"
-            />
+            <div>
+              <h4 className="question">How important is this for you?</h4>
+              <RadioGroup
+                className="importance"
+                name={`importances.${question.id}`}
+                options={importances}
+                identifier="name"
+                labelName="name"
+                valueName="name"
+              />
+            </div>
           )}
 
           {/* footer */}

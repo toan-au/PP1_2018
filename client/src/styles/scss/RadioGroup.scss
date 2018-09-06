@@ -24,3 +24,10 @@
     cursor: pointer;
   }
 }
+
+.RadioGroup.importance {
+  .choices {
+    grid-template: 1fr / 1fr 1fr 1fr;
+    grid-gap: 10px 10px;
+  }
+}

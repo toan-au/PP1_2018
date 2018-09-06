@@ -267,7 +267,8 @@ button {
     font-size: 1em; }
     .Navbar .right-nav nav a {
       display: inline-block;
-      padding: 3px 20px; }
+      padding: 3px 20px;
+      text-decoration: none; }
     .Navbar .right-nav .navbar-nav ml-auto:hover {
       color: white; }
     .Navbar .right-nav .icon {
@@ -682,6 +683,9 @@ h3 {
     display: grid;
     grid-template: 1fr 1fr / 1fr 1fr;
     grid-gap: 10px 10px; }
+  .RadioGroup .choices .three-col {
+    grid-template: 1fr 1fr / 1fr 1fr / 1fr 1fr;
+    grid-gap: 5px 5px; }
   .RadioGroup label {
     color: #1e1e2b;
     display: block;
@@ -691,8 +695,6 @@ h3 {
   .RadioGroup label:hover {
     cursor: pointer; }
 
-.range {
-  box-sizing: border-box;
-  background: red;
-  padding: 13px;
-  width: 100%; }
+.RadioGroup.importance .choices {
+  grid-template: 1fr / 1fr 1fr 1fr;
+  grid-gap: 10px 10px; }

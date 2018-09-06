@@ -7,10 +7,11 @@ const RadioGroup = ({
   labelName,
   valueName,
   name,
+  className,
   onSelection = () => {}
 }) => {
   return (
-    <div className="RadioGroup">
+    <div className={`RadioGroup ${className}`}>
       <div className="choices">
         {options.map(option => {
           return (
