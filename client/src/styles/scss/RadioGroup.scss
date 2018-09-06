@@ -1,0 +1,33 @@
+.RadioGroup {
+  margin: 20px 0px;
+
+  .choices {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-gap: 10px 10px;
+  }
+
+  .choices .three-col {
+    grid-template: 1fr 1fr / 1fr 1fr / 1fr 1fr;
+    grid-gap: 5px 5px;
+  }
+
+  label {
+    color: $gunmetal;
+    display: block;
+    background: #ffffff;
+    padding: 15px 10px;
+    box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+  }
+
+  label:hover {
+    cursor: pointer;
+  }
+}
+
+.RadioGroup.importance {
+  .choices {
+    grid-template: 1fr / 1fr 1fr 1fr;
+    grid-gap: 10px 10px;
+  }
+}

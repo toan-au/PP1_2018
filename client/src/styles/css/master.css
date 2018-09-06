@@ -267,7 +267,8 @@ button {
     font-size: 1em; }
     .Navbar .right-nav nav a {
       display: inline-block;
-      padding: 3px 20px; }
+      padding: 3px 20px;
+      text-decoration: none; }
     .Navbar .right-nav .navbar-nav ml-auto:hover {
       color: white; }
     .Navbar .right-nav .icon {
@@ -664,6 +665,15 @@ h3 {
       padding: 3px;
       border-radius: 6px;
       border: solid #bfbdc1 1px; }
+    .Registration .field .SelectWithError {
+      display: flex;
+      flex: 3;
+      flex-direction: column; }
+    .Registration .field .error {
+      padding-left: 7px;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      background: red; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -676,22 +686,24 @@ h3 {
   font-size: 1.5em;
   color: #1e1e2b; }
 
-.QuestionAnswerForm .AnswerChoices {
-  display: grid;
-  grid-template: 1fr 1fr / 1fr 1fr;
-  grid-gap: 10px 10px;
+.RadioGroup {
   margin: 20px 0px; }
-  .QuestionAnswerForm .AnswerChoices label {
+  .RadioGroup .choices {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-gap: 10px 10px; }
+  .RadioGroup .choices .three-col {
+    grid-template: 1fr 1fr / 1fr 1fr / 1fr 1fr;
+    grid-gap: 5px 5px; }
+  .RadioGroup label {
     color: #1e1e2b;
     display: block;
     background: #ffffff;
     padding: 15px 10px;
     box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4); }
-  .QuestionAnswerForm .AnswerChoices label:hover {
+  .RadioGroup label:hover {
     cursor: pointer; }
 
-.QuestionAnswerForm .range {
-  box-sizing: border-box;
-  background: red;
-  padding: 13px;
-  width: 100%; }
+.RadioGroup.importance .choices {
+  grid-template: 1fr / 1fr 1fr 1fr;
+  grid-gap: 10px 10px; }

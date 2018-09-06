@@ -1,56 +1,22 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import RadioGroup from '../../components/RadioGroup';
 
-class AnswerChoices extends Component {
-  render() {
-    const {
-      answers,
-      input: { onChange }
-    } = this.props;
-    return (
-      <div className="AnswerChoices">
-        {answers.map(answer => {
-          return (
-            <div className="choice" key={answer.id}>
-              <label htmlFor={'answer' + answer.id}>
-                <input
-                  name="answers"
-                  id={'answer' + answer.id}
-                  type="radio"
-                  value={answer.answerKey}
-                  onChange={onChange}
-                />
-                {answer.answerText}
-              </label>
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
-}
-
-class PreferenceChoices extends Component {
-  state = { selection: '', limit: 1 };
-
-  render() {
-    const {
-      answers,
-      input: { onChange }
-    } = this.props;
-    // console.log(input);
-    return (
-      <div className="AnswerChoices">
+const PreferenceChoices = ({ answers, questionId }) => {
+  return (
+    <div className="RadioGroup">
+      <h4 className="question">Your gaming buddy would ideally choose...</h4>
+      <div className="choices">
         {answers.map(answer => {
           return (
             <div className="choice" key={answer.id}>
               <label htmlFor={'preference' + answer.id}>
-                <input
-                  name="preferences"
+                <Field
+                  name={`preferences.${questionId}.${answer.answerKey}`}
+                  component="input"
                   id={'preference' + answer.id}
                   type="checkbox"
                   value={answer.answerKey}
-                  onChange={onChange}
                 />
                 {answer.answerText}
               </label>
@@ -58,9 +24,9 @@ class PreferenceChoices extends Component {
           );
         })}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 class QuestionAnswerForm extends Component {
   state = {
@@ -71,29 +37,6 @@ class QuestionAnswerForm extends Component {
     this.setState({ showPreferences: true });
   };
 
-  renderPreferenceChoices = () => {
-    const { question } = this.props;
-    return (
-      <div>
-        <h4 className="question">Your gaming buddy would ideally choose...</h4>
-        <Field
-          name={'preferences.' + question.id}
-          component={PreferenceChoices}
-          answers={question.answers}
-        />
-        <h4 className="question">How important is this to you?</h4>
-        <Field
-          className="range"
-          name={'importances.' + question.id}
-          component="input"
-          type="range"
-          min={0}
-          max={3}
-        />
-      </div>
-    );
-  };
-
   render() {
     const {
       question,
@@ -101,17 +44,46 @@ class QuestionAnswerForm extends Component {
       prevQuestion,
       question: { answers }
     } = this.props;
+    const importances = [
+      { name: 'low', value: 1 },
+      { name: 'medium', value: 2 },
+      { name: 'high', value: 3 }
+    ];
     return (
       <div className="RegistrationForm QuestionAnswerForm">
         <form onSubmit={handleSubmit}>
+          {/* Answer section */}
           <h4 className="question">{question.questionText}</h4>
-          <Field
-            name={'answers.' + question.id}
-            component={AnswerChoices}
-            answers={answers}
-            onChange={this.handleAnswerSelection}
+          <RadioGroup
+            options={answers}
+            name={`answers.${question.id}`}
+            identifier="answerKey"
+            valueName="answerKey"
+            labelName="answerText"
+            onSelection={this.handleAnswerSelection}
           />
-          {this.state.showPreferences && this.renderPreferenceChoices()}
+
+          {/* Preferences section */}
+          {this.state.showPreferences && (
+            <PreferenceChoices answers={answers} questionId={question.id} />
+          )}
+
+          {/* Important */}
+          {this.state.showPreferences && (
+            <div>
+              <h4 className="question">How important is this for you?</h4>
+              <RadioGroup
+                className="importance"
+                name={`importances.${question.id}`}
+                options={importances}
+                identifier="name"
+                labelName="name"
+                valueName="name"
+              />
+            </div>
+          )}
+
+          {/* footer */}
           <div className="footer-buttons">
             <button className="previous" type="button" onClick={prevQuestion}>
               Previous

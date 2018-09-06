@@ -21,7 +21,7 @@
     border-radius: 15px;
     border-bottom: 10px solid $yellow;
 
-    h2{
+    h2 {
       color: $red;
       font-size: 50px;
       padding-bottom: 15px;
@@ -46,7 +46,7 @@
       grid-area: 2 / 1 / 2 / 3;
       color: $gunmetal;
       font-size: 1.3em;
-      
+
       textarea {
         font-size: 1.3em;
         min-width: 100%;
@@ -63,19 +63,17 @@
     justify-content: space-between;
 
     .previous {
-      
       width: 150px;
       border-radius: 15px;
-      color:$white;
+      color: $white;
       background: $red;
       text-align: center;
-      
     }
 
     .next {
       width: 150px;
       border-radius: 15px;
-      color:$white;
+      color: $white;
       background: $red;
       text-align: center;
     }
@@ -87,7 +85,8 @@
   .previous:hover,
   .next:hover {
     background-color: $light_red;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
   }
 
   .field {
@@ -99,9 +98,8 @@
     padding: 2px 5px;
     margin-bottom: 7px;
 
-    input{
+    input {
       border: solid $light_grey 1px;
-      
     }
 
     label {
@@ -121,6 +119,19 @@
       padding: 3px;
       border-radius: 6px;
       border: solid $light_grey 1px;
+    }
+
+    .SelectWithError {
+      display: flex;
+      flex: 3;
+      flex-direction: column;
+    }
+
+    .error {
+      padding-left: 7px;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      background: red;
     }
   }
 }
