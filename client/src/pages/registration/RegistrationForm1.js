@@ -25,6 +25,7 @@ class RegistrationForm1 extends Component {
     this.setState({ locales: response.data });
   }
 
+  // renders a list of drop down options for locles from API
   renderRegions() {
     const regionItems = this.state.regions.map(region => {
       return (
@@ -36,6 +37,7 @@ class RegistrationForm1 extends Component {
     return regionItems;
   }
 
+  // renders a list of drop down options for locles from API
   renderLocales() {
     const localeItems = this.state.locales.map(locale => {
       return (
@@ -137,11 +139,16 @@ class RegistrationForm1 extends Component {
 
 const mapStateToProps = state => ({ user: state.user });
 
+// hook up with red-form
 let registrationForm1 = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  initialValues: { answers: {}, preference: {}, importances: {} }
+  initialValues: { answers: {}, preferences: {}, importances: {} }
 })(RegistrationForm1);
+
+// connect to the redux store
 registrationForm1 = connect(mapStateToProps)(registrationForm1);
+
+// export HOC
 export default registrationForm1;

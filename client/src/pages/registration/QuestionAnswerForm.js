@@ -43,7 +43,7 @@ class PreferenceChoices extends Component {
             <div className="choice" key={answer.id}>
               <label htmlFor={'preference' + answer.id}>
                 <Field
-                  name={`preference.${questionId}.${answer.answerKey}`}
+                  name={`preferences.${questionId}.${answer.answerKey}`}
                   component="input"
                   id={'preference' + answer.id}
                   type="checkbox"
