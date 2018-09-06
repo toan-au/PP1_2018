@@ -4,6 +4,7 @@ const passport = require('passport');
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const keys = require('../config/keys');
 const Users = require('../models').users;
+const GoogleUsers = require('../models').googleUsers;
 
 // serialize the user into the session
 passport.serializeUser((user, done) => {
@@ -29,10 +30,11 @@ passport.use(
       const { id, emails, displayName, language } = profile;
 
       // search for existing user here
-      const existingUser = await Users.findOne({
+      const existingUser = await GoogleUsers.findOne({
         where: { googleId: id }
       });
 
+      console.log('existing user:' + existingUser);
       // console.log(process.env.DB_STRING);
       if (existingUser) {
         console.log(existingUser.id);
@@ -81,6 +83,9 @@ router.get('/logout', (req, res) => {
 });
 
 // returns the current user object
-router.get('/current', (req, res) => res.send(req.user));
+router.get('/current', (req, res) => {
+  console.log(req.user);
+  res.send(req.user);
+});
 
 module.exports = router;
