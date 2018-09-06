@@ -4,7 +4,7 @@ import RadioGroup from '../../components/RadioGroup';
 
 const PreferenceChoices = ({ answers, questionId }) => {
   return (
-    <div className="AnswerChoices">
+    <div className="RadioGroup">
       <h4 className="question">Your gaming buddy would ideally choose...</h4>
       <div className="choices">
         {answers.map(answer => {
@@ -69,13 +69,16 @@ class QuestionAnswerForm extends Component {
           )}
 
           {/* Important */}
-          <RadioGroup
-            name={`importances.${question.id}`}
-            options={importances}
-            identifier="name"
-            labelName="name"
-            valueName="name"
-          />
+          {this.state.showPreferences && (
+            <RadioGroup
+              className="importance"
+              name={`importances.${question.id}`}
+              options={importances}
+              identifier="name"
+              labelName="name"
+              valueName="name"
+            />
+          )}
 
           {/* footer */}
           <div className="footer-buttons">
