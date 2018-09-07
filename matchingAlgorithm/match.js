@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 
 //Imports required functions and data.
-const data = require ('./dummyData.js')
 const matchCalc = require ('./matchCalculate.js')
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
