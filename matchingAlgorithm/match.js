@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 
 //Imports required functions and data.
-const data = require ('./dummyData.js')
 const matchCalc = require ('./matchCalculate.js')
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -37,22 +36,6 @@ var relevantGames = [];
 for(var i = 0; i < matchingUser.prefGames.length; i++){
     var filterArray = matchingUser.prefGames[i].gameId
     relevantGames.push(filterArray);
-}
-
-//Create a set of blacklisted users, who the user has already interacted with
-var interactedUsers = []
-for(var i = 0; i < matchingUser.matches.length; i++){
-    if(
-        matchingUser.usersmatches.matchId == matchingUser.id &&
-        (matchingUser.matches.matchResponse.localeCompare("L") == 0 || matchingUser.matches.matchResponse.localeCompare("P") == 0)){
-            var filterArray = matchingUser.matches[i].id
-            interactedUsers.push(filterArray)
-        }
-    if(matchingUser.usersmatches.userId == matchingUser.id)
-    {
-        var filterArray = matchingUser.matches[i].id
-        interactedUsers.push(filterArray)
-    }
 }
 
 

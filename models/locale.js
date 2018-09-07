@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     locale: DataTypes.STRING
   }, {});
   locale.associate = function(models) {
-    locale.belongsTo(models.users, {foreignKey:'localeId'})
+    locale.belongsTo(models.users)
   };
   return locale;
 };
