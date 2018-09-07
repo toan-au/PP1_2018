@@ -4,10 +4,11 @@ const passport = require('passport');
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const keys = require('../config/keys');
 const Users = require('../models').users;
+const GoogleUsers = require('../models').googleUsers;
 
 // serialize the user into the session
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user.userId);
 });
 
 // deserialize a user from the session
@@ -29,29 +30,39 @@ passport.use(
       const { id, emails, displayName, language } = profile;
 
       // search for existing user here
-      const existingUser = await Users.findOne({
+      const existingUser = await GoogleUsers.findOne({
         where: { googleId: id }
       });
 
-      // console.log(process.env.DB_STRING);
       if (existingUser) {
-        console.log(existingUser.id);
+        console.log(
+          `existing user found: ${existingUser.googleId} ${existingUser.userId}`
+        );
         return done(null, existingUser);
       }
 
+      // build a generic User object
       const user = Users.build({
-        googleId: id,
         email: emails[0].value,
         displayName,
         language: language || 'en',
         dob: new Date()
       });
 
-      const newUser = await user.save();
-      console.log(newUser);
+      await user.save();
+
+      // associate googleUser object with bew generic user object
+      const googleUser = GoogleUsers.build({
+        googleId: id,
+        userId: user.id
+      });
+
+      // persist to DB
+      googleUser.save();
 
       // if no existing user, create new user here
-      return done(null, newUser);
+      console.log('new user created id:' + googleUser.googleId, ', ' + user.id);
+      return done(null, googleUser);
     }
   )
 );
@@ -81,6 +92,9 @@ router.get('/logout', (req, res) => {
 });
 
 // returns the current user object
-router.get('/current', (req, res) => res.send(req.user));
+router.get('/current', (req, res) => {
+  //console.log('user: ' + req.user.id);
+  res.send(req.user);
+});
 
 module.exports = router;

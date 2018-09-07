@@ -7,6 +7,7 @@
     text-align: center;
     color: $white;
     padding-top: 50px;
+    padding-bottom: 30px;
 
     h1 {
       font-size: 80px;
@@ -15,7 +16,7 @@
 
     .match {
       margin: 50px;
-      border-radius: 10px;
+      border-radius: 5px;
       border: $light_red 2px;
       color: $white;
       background: $light_red;
@@ -33,6 +34,7 @@
     grid-template-columns: $match_columns;
     grid-column-gap: $match_column_gap;
     grid-row-gap: $match_row_gap;
+    padding-bottom: 40px;
   }
 
   .spinner {

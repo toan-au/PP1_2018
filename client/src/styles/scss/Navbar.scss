@@ -37,9 +37,30 @@
     padding-right: 10px;
   }
 
-  div.dropdown-item:active {
-    // background-color: rgba(190, 65, 65, 0.65);
-    background-color: white;
+  .right-nav {
+    padding-top: 30px;
+    margin-right: 50px;
+    font-size: 1em;
+
+    nav {
+      a {
+        display: inline-block;
+        padding: 3px 20px;
+        text-decoration: none;
+      }
+    }
+    .navbar-nav ml-auto:hover {
+      color: white;
+    }
+
+    .icon {
+      padding: 20px;
+    }
+  }
+  //Styling for the drop down box
+  .dropdown {
+    position: relative;
+    display: inline-block;
   }
 
   .pending-item-text.no-matches {
@@ -52,8 +73,12 @@
     font-weight: 500;
   }
 
-  div.dropdown-item i {
-    flex: 1;
-    color: $red;
+  .dropdown:hover .dropdown-content {
+    display: block;
+    text-align: center;
+    a:hover {
+      color: $red;
+      text-decoration: none;
+    }
   }
 }

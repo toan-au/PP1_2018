@@ -33,7 +33,7 @@ class Registration extends Component {
   // render all questions as multipage form components
   // if it is not the last question then make the submit action go to the next question
   renderQuestions() {
-    const { questions, currentQuestion } = this.state;
+    const { questions } = this.state;
     const questionForms = questions.map((question, index) => {
       const lastQuestion = index === questions.length - 1;
       const firstQuestion = index === 0;

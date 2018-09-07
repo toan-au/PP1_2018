@@ -162,6 +162,7 @@ a {
   -ms-transition: .1s;
   -moz-transition: .1s;
   -webkit-transition: .1s;
+  text-decoration: none;
   transition: .2s; }
 
 a:hover {
@@ -186,6 +187,11 @@ button {
   border: solid #e8e8e8 2px;
   color: #e8e8e8;
   background: #1e1e2b; }
+
+.button1:hover {
+  color: #1e1e2b;
+  background-color: #e8e8e8;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -247,17 +253,33 @@ button {
     text-decoration: none;
     padding-left: 10px;
     padding-right: 10px; }
-  .navbar div.dropdown-item:active {
-    background-color: white; }
+  .navbar .right-nav {
+    padding-top: 30px;
+    margin-right: 50px;
+    font-size: 1em; }
+    .navbar .right-nav nav a {
+      display: inline-block;
+      padding: 3px 20px;
+      text-decoration: none; }
+    .navbar .right-nav .navbar-nav ml-auto:hover {
+      color: white; }
+    .navbar .right-nav .icon {
+      padding: 20px; }
+  .navbar .dropdown {
+    position: relative;
+    display: inline-block; }
   .navbar .pending-item-text.no-matches {
     text-align: center; }
   .navbar div.dropdown-item .pending-item-text {
     flex: 8;
     color: black;
     font-weight: 500; }
-  .navbar div.dropdown-item i {
-    flex: 1;
-    color: #ab1e24; }
+  .navbar .dropdown:hover .dropdown-content {
+    display: block;
+    text-align: center; }
+    .navbar .dropdown:hover .dropdown-content a:hover {
+      color: #ab1e24;
+      text-decoration: none; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -318,13 +340,14 @@ h3 {
   margin: 0 auto;
   text-align: center;
   color: #e8e8e8;
-  padding-top: 50px; }
+  padding-top: 50px;
+  padding-bottom: 30px; }
   .Home .banner h1 {
     font-size: 80px;
     margin-bottom: 50px; }
   .Home .banner .match {
     margin: 50px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: #c82128 2px;
     color: #e8e8e8;
     background: #c82128;
@@ -338,7 +361,8 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 40px;
-  grid-row-gap: 40px; }
+  grid-row-gap: 40px;
+  padding-bottom: 40px; }
 
 .Home .spinner {
   padding-top: 120px;
@@ -377,6 +401,8 @@ h3 {
     padding-bottom: 10px;
     color: #ab1e24;
     text-shadow: 0px 0px 2px #c82128; }
+  .landing a {
+    text-decoration: none; }
   .landing .button1 {
     position: relative;
     top: 30px;
@@ -384,10 +410,13 @@ h3 {
     border-radius: 10px;
     border: #c82128 2px;
     color: #e8e8e8;
-    background: #c82128;
+    background: #ab1e24;
     font-size: 20px;
     padding-left: 50px;
     padding-right: 50px; }
+  .landing .button1:hover {
+    background-color: #c82128;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
   .landing .facebook {
     position: relative;
     top: 30px;
@@ -400,6 +429,9 @@ h3 {
     padding: 5px;
     padding-left: 50px;
     padding-right: 50px; }
+  .landing .facebook:hover {
+    background-color: #4C68A1;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
   .landing .discord {
     position: relative;
     top: 30px;
@@ -412,6 +444,9 @@ h3 {
     font-size: 20px;
     padding-left: 50px;
     padding-right: 50px; }
+  .landing .discord:hover {
+    background-color: #7E93DD;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -484,12 +519,14 @@ h3 {
   padding-bottom: 21px;
   border-bottom: 10px solid #de9e36;
   border-radius: 5px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px; }
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; }
   .MatchCard .display-name {
     font-weight: bold;
     font-size: 2em;
@@ -584,6 +621,10 @@ h3 {
       text-align: center; }
     .Registration .footer-buttons button:hover {
       cursor: pointer; }
+  .Registration .previous:hover,
+  .Registration .next:hover {
+    background-color: #c82128;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
   .Registration .field {
     width: 100%;
     display: flex;
@@ -609,6 +650,15 @@ h3 {
       padding: 3px;
       border-radius: 6px;
       border: solid #bfbdc1 1px; }
+    .Registration .field .SelectWithError {
+      display: flex;
+      flex: 3;
+      flex-direction: column; }
+    .Registration .field .error {
+      padding-left: 7px;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      background: red; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -621,22 +671,24 @@ h3 {
   font-size: 1.5em;
   color: #1e1e2b; }
 
-.QuestionAnswerForm .AnswerChoices {
-  display: grid;
-  grid-template: 1fr 1fr / 1fr 1fr;
-  grid-gap: 10px 10px;
+.RadioGroup {
   margin: 20px 0px; }
-  .QuestionAnswerForm .AnswerChoices label {
+  .RadioGroup .choices {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-gap: 10px 10px; }
+  .RadioGroup .choices .three-col {
+    grid-template: 1fr 1fr / 1fr 1fr / 1fr 1fr;
+    grid-gap: 5px 5px; }
+  .RadioGroup label {
     color: #1e1e2b;
     display: block;
     background: #ffffff;
     padding: 15px 10px;
     box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4); }
-  .QuestionAnswerForm .AnswerChoices label:hover {
+  .RadioGroup label:hover {
     cursor: pointer; }
 
-.QuestionAnswerForm .range {
-  box-sizing: border-box;
-  background: red;
-  padding: 13px;
-  width: 100%; }
+.RadioGroup.importance .choices {
+  grid-template: 1fr / 1fr 1fr 1fr;
+  grid-gap: 10px 10px; }

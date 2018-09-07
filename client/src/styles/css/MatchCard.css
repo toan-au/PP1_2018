@@ -10,12 +10,14 @@
   padding-bottom: 21px;
   border-bottom: 10px solid #de9e36;
   border-radius: 5px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px; }
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; }
   .MatchCard .display-name {
     font-weight: bold;
     font-size: 2em;

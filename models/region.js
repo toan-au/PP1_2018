@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   region.associate = function(models) {
-    region.belongsTo(models.users, { foreignKey: 'regionId' });
+    region.belongsTo(models.users);
   };
   return region;
 };
