@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
       localeId: DataTypes.INTEGER,
       age: DataTypes.INTEGER,
       bio: DataTypes.STRING,
-      finishedRegistration: DataTypes.BOOLEAN
+      finishedRegistration: DataTypes.BOOLEAN,
+      pfpUrl: DataTypes.STRING
     },
     {}
   );

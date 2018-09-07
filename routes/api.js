@@ -11,6 +11,7 @@ const User = require('../models').users;
 
 const router = express.Router();
 
+//finds all matches for a user
 router.get('/match/:id', async (req, res) => {
   const matches = await matching.findMatches();
   res.send(matches);
@@ -34,6 +35,7 @@ router.get('/questions', async (req, res) => {
   res.send(questions);
 });
 
+// return a list of locales
 router.get('/locales', async (req, res) => {
   const locales = await Locale.findAll({ attributes: ['id', 'locale'] });
 
@@ -43,6 +45,7 @@ router.get('/locales', async (req, res) => {
   res.send(locales);
 });
 
+//return a list of regions
 router.get('/regions', async (req, res) => {
   const regions = await Region.findAll({ attributes: ['id', 'region'] });
 
