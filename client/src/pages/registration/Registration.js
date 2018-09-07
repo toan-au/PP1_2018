@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+
+// redux actions
+import { updateUser } from '../../redux/actions/user';
+
+// registration forms
 import RegistrationForm1 from './RegistrationForm1';
 import RegistrationForm3 from './RegistrationForm3';
 import QuestionAnswerForm from './QuestionAnswerForm';
-import axios from 'axios';
 
 class Registration extends Component {
   state = {
@@ -12,15 +18,15 @@ class Registration extends Component {
     questionForms: []
   };
 
-  async componentDidMount() {
+  componentDidMount = async () => {
     const response = await axios.get('/api/questions');
     this.setState({ questions: response.data });
     this.renderQuestions();
-  }
+  };
 
-  handleSubmit(values) {
-    console.log(values);
-  }
+  handleSubmit = async values => {
+    await this.props.updateUser(this.props.user.id, values);
+  };
 
   nextPage = () => {
     this.setState({ page: this.state.page + 1 });
@@ -69,4 +75,8 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+const mapStateToProps = state => ({ user: state.user });
+export default connect(
+  mapStateToProps,
+  { updateUser }
+)(Registration);
