@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
-import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import axios from 'axios';
 import PfpInput from './PfpInput';
 
 const SelectWithError = ({
   input,
-  type,
   meta: { touched, error, warning },
   children
 }) => (
@@ -24,7 +22,7 @@ class RegistrationForm1 extends Component {
   };
 
   // validation for select fields
-  selected = value => (value != -1 ? undefined : 'Please select an option');
+  selected = value => (value !== '-1' ? undefined : 'Please select an option');
 
   componentDidMount() {
     this.getRegionsList();
@@ -174,15 +172,6 @@ class RegistrationForm1 extends Component {
   }
 }
 
-const selector = formValueSelector('registration');
-const mapStateToProps = state => {
-  const age = selector(state, 'age');
-  const region = selector(state, 'region');
-  const locale = selector(state, 'locale');
-
-  return { age, region, locale };
-};
-
 // hook up with red-form
 let registrationForm1 = reduxForm({
   form: 'registration',
@@ -197,9 +186,6 @@ let registrationForm1 = reduxForm({
     locale: -1
   }
 })(RegistrationForm1);
-
-// connect to the redux store
-registrationForm1 = connect(mapStateToProps)(registrationForm1);
 
 // export HOC
 export default registrationForm1;
