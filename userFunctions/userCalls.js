@@ -81,7 +81,7 @@ var getSuccessfulMatches = async function(){
     }
 
     //find the matching users as user objects
-    var matchingUsers = await users.findAll({where: {id:  {[Op.or]: matchingUserIds}}, include: [{model: regions}, {model: locales}]});
+    var matchingUsers = await users.findAll({where: {id:  {[Op.or]: matchingUserIds}}, include: [{model: region}, {model: locale}]});
 
     //transform the objects to a more reasonable form
     for(var i = 0; i < matchingUsers.length; i++){
