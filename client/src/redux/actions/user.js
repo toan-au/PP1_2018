@@ -9,6 +9,8 @@ export const getUser = () => {
   };
 };
 
+// update the user
+// given user's id and object containing values to update
 export const updateUser = (id, newUser) => {
   return async dispatch => {
     const response = await axios.post('/api/user/update/' + id);
