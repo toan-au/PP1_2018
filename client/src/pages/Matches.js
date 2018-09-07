@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getMatched } from '../redux/actions/matches';
+import { getMatched } from '../redux/actions/matched';
 
 class Matches extends Component {
   componentDidMount = async () => {
     await this.props.getMatched(this.props.user.id);
+    console.log(this.props.matched);
   };
 
   renderMatched = () => {
-    return this.props.matches.map(match => (
+    return this.props.matched.map(match => (
       <li key={match.id}>{match.displayName}</li>
     ));
   };
 
   render() {
-    const { matches } = this.props;
+    const { matched } = this.props;
     return (
       <div className="Matches container">
         <div>
@@ -22,7 +23,7 @@ class Matches extends Component {
         </div>
         <div>
           <ul className="matches-list">
-            {!matches && <li>The princess is in another castle!</li>}
+            {matched.length < 1 && <li>The princess is in another castle!</li>}
             {this.renderMatched()}
           </ul>
         </div>
@@ -31,7 +32,7 @@ class Matches extends Component {
   }
 }
 const mapStateToProps = state => ({
-  matches: state.matches,
+  matched: state.matched,
   user: state.user
 });
 export default connect(
