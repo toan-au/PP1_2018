@@ -35,10 +35,9 @@ passport.use(
       });
 
       // console.log(process.env.DB_STRING);
-      if (existingUser) {
-        console.log(existingUser);
-        return done(null, existingUser);
-      }
+      // if (existingUser) {
+      //   return done(null, existingUser);
+      // }
 
       const user = Users.build({
         email: emails[0].value,
@@ -47,16 +46,20 @@ passport.use(
         dob: new Date()
       });
 
-      const googleUser = GoogleUsers.build({
-        googleId: id,
-        users: user
-      });
+      // const newUser = await user.save();
 
-      const newUser = await user.save();
-      console.log(newUser);
+      const googleUser = GoogleUsers.build({
+        googleId: id
+      });
+      console.log('before set');
+      await googleUser.setUser(user);
+
+      const response = await googleUser.getUser();
+      console.log(response);
+      console.log('after set');
 
       // if no existing user, create new user here
-      return done(null, newUser);
+      return done(null, user);
     }
   )
 );
@@ -87,7 +90,6 @@ router.get('/logout', (req, res) => {
 
 // returns the current user object
 router.get('/current', (req, res) => {
-  console.log(req.user);
   res.send(req.user);
 });
 
