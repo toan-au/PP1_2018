@@ -7,7 +7,6 @@ import { updateUser } from '../../redux/actions/user';
 
 // registration forms
 import RegistrationForm1 from './RegistrationForm1';
-import RegistrationForm3 from './RegistrationForm3';
 import QuestionAnswerForm from './QuestionAnswerForm';
 
 class Registration extends Component {
@@ -25,6 +24,7 @@ class Registration extends Component {
   };
 
   handleSubmit = async values => {
+    console.log('user:' + this.props.user.id);
     await this.props.updateUser(this.props.user.id, values);
   };
 
@@ -69,7 +69,6 @@ class Registration extends Component {
       <div className="Registration">
         {page === 1 && <RegistrationForm1 onSubmit={this.nextPage} />}
         {page === 2 && this.state.questionForms[this.state.currentQuestion]}
-        {page === 3 && <RegistrationForm3 onSubmit={this.handleSubmit} />}
       </div>
     );
   }

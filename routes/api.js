@@ -1,6 +1,7 @@
 const express = require('express');
 const matching = require('../matchingAlgorithm/match');
 const multer = require('multer');
+const pfpUpload = multer({ storage: '/imgs/pfps/' });
 
 // models
 const Questions = require('../models').questions;
@@ -17,12 +18,14 @@ router.get('/match/:id', async (req, res) => {
   res.send(matches);
 });
 
-router.post('/user/update/:id', async (req, res) => {
+router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
+  console.log(req.params.id);
   const user = await User.findById(req.params.id);
 
   // get the posted data
   const body = req.body;
   console.log(body);
+  console.log(req.file);
 
   res.send(user);
 });

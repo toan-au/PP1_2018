@@ -93,7 +93,7 @@ router.get('/logout', (req, res) => {
 
 // returns the current user object
 router.get('/current', (req, res) => {
-  //console.log('user: ' + req.user.id);
+  console.log('user: ' + req.user);
   res.send(req.user);
 });
 
