@@ -13,7 +13,7 @@ export const getUser = () => {
 // given user's id and object containing values to update
 export const updateUser = (id, newUser) => {
   return async dispatch => {
-    const response = await axios.post('/api/user/update/' + id);
+    const response = await axios.post('/api/user/update/' + id, newUser);
     const user = response.data;
     dispatch({ type: UPDATE_USER, user });
   };
