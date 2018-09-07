@@ -15,13 +15,13 @@ router.get('/match/:id', async (req, res) => {
 });
 
 //returns a user's pending matches
-router.get('/pending/:id', async (req, res) => {
+router.get('/matches/pending/:id', async (req, res) => {
   const pendingMatches = await userCalls.getPendingMatches();
   res.send(pendingMatches);
 });
 
 //returns a user's successful matches
-router.get('/successful/:id', async (req, res) => {
+router.get('/matches/successful/:id', async (req, res) => {
   const successfulMatches = await userCalls.getSuccessfulMatches();
   res.send(successfulMatches);
 });
