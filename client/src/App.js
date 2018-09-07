@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUser } from './redux/actions/user';
+import { getPending } from './redux/actions/pending';
 
 // Styles
 import './styles/css/master.css';
@@ -13,11 +14,21 @@ import Footer from './components/Footer';
 import AppSwitch from './routes';
 
 class App extends Component {
-  async componentDidMount() {
-    await this.props.getUser();
+  state = {
+    hasUser: false
+  };
+
+  componentDidMount() {
+    this.props.getUser().then(user => {
+      this.setState({ hasUser: user !== null });
+    });
   }
 
   render() {
+    if (this.state.hasUser) {
+      this.props.getPending();
+    }
+
     return (
       <BrowserRouter>
         <div className="App">
@@ -37,5 +48,5 @@ const mapStateToProps = () => ({});
 
 export default connect(
   mapStateToProps,
-  { getUser }
+  { getUser, getPending }
 )(App);
