@@ -11,11 +11,9 @@ export const getUser = () => {
 
 export const updateUser = (id, newUser) => {
   return async dispatch => {
-    //const response = await axios.post('/api/user/update/' + id);
-    //const user = response.data;
-    console.log(id);
-    console.log(newUser);
-    // dispatch({ type: UPDATE_USER, user });
+    const response = await axios.post('/api/user/update/' + id);
+    const user = response.data;
+    dispatch({ type: UPDATE_USER, user });
   };
 };
 
