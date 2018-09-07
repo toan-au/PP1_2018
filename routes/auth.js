@@ -8,7 +8,7 @@ const GoogleUsers = require('../models').googleUsers;
 
 // serialize the user into the session
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user.userId);
 });
 
 // deserialize a user from the session
@@ -34,11 +34,14 @@ passport.use(
         where: { googleId: id }
       });
 
-      // console.log(process.env.DB_STRING);
-      // if (existingUser) {
-      //   return done(null, existingUser);
-      // }
+      if (existingUser) {
+        console.log(
+          `existing user found: ${existingUser.googleId} ${existingUser.userId}`
+        );
+        return done(null, existingUser);
+      }
 
+      // build a generic User object
       const user = Users.build({
         email: emails[0].value,
         displayName,
@@ -46,20 +49,20 @@ passport.use(
         dob: new Date()
       });
 
-      // const newUser = await user.save();
+      const newUser = await user.save();
 
+      // associate googleUser object with bew generic user object
       const googleUser = GoogleUsers.build({
-        googleId: id
+        googleId: id,
+        userId: user.id
       });
-      console.log('before set');
-      await googleUser.setUser(user);
 
-      const response = await googleUser.getUser();
-      console.log(response);
-      console.log('after set');
+      // persist to DB
+      googleUser.save();
 
       // if no existing user, create new user here
-      return done(null, user);
+      console.log('new user created id:' + googleUser.googleId, ', ' + user.id);
+      return done(null, googleUser);
     }
   )
 );
