@@ -15,7 +15,7 @@ const Landing = () => {
           </p>
           <p>Through our top-tier matching algorithm, find your perfect gaming buddies!</p>
           <br />
-          <p>Register or sign in now!</p>
+          <p>Register or log in now!</p>
           <a href="/api/auth/facebook" className="facebook">
             Facebook
           </a>
