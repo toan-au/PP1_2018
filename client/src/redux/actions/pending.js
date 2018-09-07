@@ -7,14 +7,12 @@ export const getPending = () => {
       { displayName: 'johnsmith' },
       { displayName: 'ariana-grande' }
     ];
-    console.log('pending: ', pending);
     dispatch({ type: GET_PENDING, pending });
   };
 };
 
 export const removePending = user => {
   return dispatch => {
-    console.log('what am i? ', user);
     dispatch({ type: REMOVE_PENDING, displayName: user.displayName });
   };
 };
