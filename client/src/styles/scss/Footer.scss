@@ -1,7 +1,6 @@
 @import 'variables';
 
-.Footer
-{
+.Footer {
   display: flex;
   background: $gunmetal;
   align-items: center;
@@ -10,14 +9,12 @@
   box-shadow: 0px -2px 5px;
 }
 
+.left-footer {
+}
 
-
-.right-footer
-{
-  nav
-  {
-    a
-    {
+.right-footer {
+  nav {
+    a {
       display: inline-block;
       padding: 3px 20px;
     }

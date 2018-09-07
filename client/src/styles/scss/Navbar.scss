@@ -15,85 +15,55 @@
     padding-left: 1.5em !important;
   }
 
-  .dropdown-menu {
-    min-width: 30px !important;
-    left: auto !important;
+  // right most item, padding on nav is 16px - for alignning with footer
+  .nav-rm-item {
+    padding-right: 84px !important;
   }
 
   .nav-item,
   .nav-link {
     color: #bfbdc1 !important;
   }
-}
 
-.Navbar {
-  display: flex;
-  justify-content: space-between;
-  grid-template-columns: 1fr 1fr 1fr;
-  background: $gunmetal;
-
-  img {
-    float: left;
-    width: 60px;
-    padding: 3px;
-  }
-  .logo {
-    float: left;
-    padding-top: 15px;
-    font-size: 2.7em;
-    text-align: left;
+  // Styling for the Dropdown box
+  .dropdown-menu.settings {
+    min-width: 30px !important;
+    left: auto !important;
   }
 
-  .right-nav {
-    padding-top: 30px;
-    margin-right: 50px;
-    font-size: 1em;
-
-    nav {
-      a {
-        display: inline-block;
-        padding: 3px 20px;
-        text-decoration: none;
-      }
-     
-    }
-    .navbar-nav ml-auto:hover{
-      color: white;
-    }
-
-    .icon {
-      padding: 20px;
-    }
-  }
-  //Styling for the drop down box
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #bfbdc1;
-    z-index: 1;
-    border-radius: 5px;
-    margin-top: 1px;
-  }
-
-  .dropdown-content a {
-    float: none;
-    color: $gunmetal;
-    padding: 12px 16px;
+  div.dropdown-item {
+    display: flex;
     text-decoration: none;
-    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
-  .dropdown:hover .dropdown-content {
-    display: block;
+  div.dropdown-item:active {
+    background-color: white;
+  }
+
+  .pending-item-text.no-matches {
     text-align: center;
-    a:hover {
-      color: $red;
-      text-decoration: none;
-    }
+  }
+
+  div.dropdown-item .pending-item-text {
+    flex: 8;
+    color: black;
+    font-weight: 500;
+  }
+
+  div.dropdown-item i {
+    flex: 1;
+    color: $red;
+  }
+
+  // make text unselectable
+  .unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 }
