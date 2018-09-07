@@ -15,12 +15,7 @@
     padding-left: 1.5em !important;
   }
 
-  .dropdown-menu.settings {
-    min-width: 30px !important;
-    left: auto !important;
-  }
-
-  // right most item, padding on nav is 16px
+  // right most item, padding on nav is 16px - for alignning with footer
   .nav-rm-item {
     padding-right: 84px !important;
   }
@@ -30,6 +25,12 @@
     color: #bfbdc1 !important;
   }
 
+  // Styling for the Dropdown box
+  .dropdown-menu.settings {
+    min-width: 30px !important;
+    left: auto !important;
+  }
+
   div.dropdown-item {
     display: flex;
     text-decoration: none;
@@ -37,30 +38,8 @@
     padding-right: 10px;
   }
 
-  .right-nav {
-    padding-top: 30px;
-    margin-right: 50px;
-    font-size: 1em;
-
-    nav {
-      a {
-        display: inline-block;
-        padding: 3px 20px;
-        text-decoration: none;
-      }
-    }
-    .navbar-nav ml-auto:hover {
-      color: white;
-    }
-
-    .icon {
-      padding: 20px;
-    }
-  }
-  //Styling for the drop down box
-  .dropdown {
-    position: relative;
-    display: inline-block;
+  div.dropdown-item:active {
+    background-color: white;
   }
 
   .pending-item-text.no-matches {
@@ -73,13 +52,18 @@
     font-weight: 500;
   }
 
-  .dropdown:hover .dropdown-content {
-    display: block;
-    text-align: center;
-    a:hover {
-      color: $red;
-      text-decoration: none;
-      cursor: pointer;
-    }
+  div.dropdown-item i {
+    flex: 1;
+    color: $red;
+  }
+
+  // make text unselectable
+  .unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 }
