@@ -64,7 +64,7 @@ class RegistrationForm1 extends Component {
   }
 
   render() {
-    const { handleSubmit, age, region } = this.props;
+    const { handleSubmit } = this.props;
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>

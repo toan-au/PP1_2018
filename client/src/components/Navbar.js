@@ -49,7 +49,6 @@ const NavbarLinks = ({ user }) => {
         <li className="nav-item dropdown">
           <a
             className="nav-link dropdown-toggle"
-            href="#"
             id="navbarDropdownMenuLink"
             role="button"
             data-toggle="dropdown"
@@ -75,11 +74,7 @@ const NavbarLinks = ({ user }) => {
   };
 
   const NavRightLoggedOut = () => {
-    return (
-      <div className="navbar-nav ml-auto">
-
-      </div>
-    );
+    return <div className="navbar-nav ml-auto" />;
   };
 
   if (user) {
