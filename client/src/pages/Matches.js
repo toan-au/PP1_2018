@@ -10,7 +10,11 @@ class Matches extends Component {
 
   renderMatched = () => {
     return this.props.matched.map(match => (
-      <li key={match.id}>{match.displayName}</li>
+      <li key={match.id}>
+        <h3>{match.displayName}</h3>
+        <span>{match.age}</span>
+        <div>{match.bio}</div>
+      </li>
     ));
   };
 
