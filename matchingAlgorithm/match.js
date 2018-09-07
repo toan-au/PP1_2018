@@ -39,22 +39,6 @@ for(var i = 0; i < matchingUser.prefGames.length; i++){
     relevantGames.push(filterArray);
 }
 
-//Create a set of blacklisted users, who the user has already interacted with
-var interactedUsers = []
-for(var i = 0; i < matchingUser.matches.length; i++){
-    if(
-        matchingUser.usersmatches.matchId == matchingUser.id &&
-        (matchingUser.matches.matchResponse.localeCompare("L") == 0 || matchingUser.matches.matchResponse.localeCompare("P") == 0)){
-            var filterArray = matchingUser.matches[i].id
-            interactedUsers.push(filterArray)
-        }
-    if(matchingUser.usersmatches.userId == matchingUser.id)
-    {
-        var filterArray = matchingUser.matches[i].id
-        interactedUsers.push(filterArray)
-    }
-}
-
 
 //Find all users who have at least one matching game to intiating user
 var relevantUsers = await users.findAll({where: {id: {[Op.ne]: dummyId}}, limit: 30, include: [
