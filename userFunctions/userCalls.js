@@ -42,7 +42,7 @@ var getPendingMatches = async function()  {
     
 
     //find the pending matches as user objects
-    var pendingUsers = await users.findAll({where: {id:{[Op.or]: pendingUserIds}}});
+    var pendingUsers = await users.findAll({where: {id:{[Op.or]: pendingUserIds}}, include: [{model: region}, {model: locale}]});
 
     //transform the objects to a more reasonable form
     for(var i = 0; i < pendingUsers.length; i++){
@@ -81,7 +81,7 @@ var getSuccessfulMatches = async function(){
     }
 
     //find the matching users as user objects
-    var matchingUsers = await users.findAll({where: {id:  {[Op.or]: matchingUserIds}}});
+    var matchingUsers = await users.findAll({where: {id:  {[Op.or]: matchingUserIds}}, include: [{model: regions}, {model: locales}]});
 
     //transform the objects to a more reasonable form
     for(var i = 0; i < matchingUsers.length; i++){
@@ -89,7 +89,6 @@ var getSuccessfulMatches = async function(){
     }
 
     //return the matching users
-    console.log(matchingUsers);
     return matchingUsers;
 }
 
