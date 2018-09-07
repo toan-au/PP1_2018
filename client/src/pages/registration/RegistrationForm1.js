@@ -23,6 +23,20 @@ class RegistrationForm1 extends Component {
 
   // validation for select fields
   selected = value => (value !== '-1' ? undefined : 'Please select an option');
+  validateImage = imageList => {
+    if (imageList) {
+      if (imageList.length > 1) {
+        return 'You can upload one image at a time';
+      } else if (imageList.length === 1) {
+        let selectedImage = imageList[0];
+        if (!selectedImage.type.match('image.*')) {
+          return 'Only image files are allowed';
+        } else if (selectedImage.size > 1048576) {
+          return 'Maximum file size exceeded';
+        }
+      }
+    }
+  };
 
   componentDidMount() {
     this.getRegionsList();
@@ -71,7 +85,11 @@ class RegistrationForm1 extends Component {
           <h2 className="title">Sign Up</h2>
           <div className="form-body">
             <div className="left">
-              <Field name="pfp" component={PfpInput} />
+              <Field
+                name="pfp"
+                component={PfpInput}
+                validate={this.validateImage}
+              />
             </div>
             <div className="right">
               <div className="field">

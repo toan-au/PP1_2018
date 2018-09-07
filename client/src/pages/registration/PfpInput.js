@@ -10,7 +10,7 @@ const PfpInput = props => {
         name={props.name}
         onDrop={(filesToUpload, e) => props.input.onChange(filesToUpload)}
       />
-      {props.meta.touched &&
+      {props.meta.dirty &&
         props.meta.error && <span className="error">{props.meta.error}</span>}
       {files &&
         Array.isArray(files) && (

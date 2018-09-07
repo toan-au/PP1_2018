@@ -2,8 +2,8 @@
 // do NOT commit this file to github, secret information
 const keys = {
   googleClientId:
-    '929382940078-v6mbj53716s1lfb6lfbiq5e0fp5shco3.apps.googleusercontent.com',
-  googleClientSecret: 'BThFhOIDYlcoZ7Y9BJcuajTQ',
+    '224760672447-sk3mf5kkgjfuh75auo6v4ft0j2kv2ug5.apps.googleusercontent.com',
+  googleClientSecret: 'SZRPWRJDpXU4P2CP1p8V_FVy',
   dbString:
     'postgres://ixknfqql:4iyVezPzBD1wiaCV3Y_Y1V-8J6UTYXgb@nutty-custard-apple.db.elephantsql.com:5432/ixknfqql',
   cookieKey: 'holaamiga'
