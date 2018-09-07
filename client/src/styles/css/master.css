@@ -249,6 +249,8 @@ button {
     padding-right: 10px; }
   .navbar div.dropdown-item:active {
     background-color: white; }
+  .navbar .pending-item-text.no-matches {
+    text-align: center; }
   .navbar div.dropdown-item .pending-item-text {
     flex: 8;
     color: black;

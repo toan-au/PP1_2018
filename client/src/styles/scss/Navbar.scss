@@ -42,6 +42,10 @@
     background-color: white;
   }
 
+  .pending-item-text.no-matches {
+    text-align: center;
+  }
+
   div.dropdown-item .pending-item-text {
     flex: 8;
     color: black;
