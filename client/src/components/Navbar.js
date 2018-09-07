@@ -51,6 +51,7 @@ const NavbarLinks = ({ user }) => {
             to="/profile"
             id="navbarDropdownMenuPending"
             role="button"
+            href="_"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
@@ -73,11 +74,7 @@ const NavbarLinks = ({ user }) => {
   };
 
   const NavRightLoggedOut = () => {
-    return (
-      <div className="navbar-nav ml-auto">
-
-      </div>
-    );
+    return <div className="navbar-nav ml-auto" />;
   };
 
   if (user) {
