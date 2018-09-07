@@ -25,7 +25,7 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   // get the posted data
   const body = req.body;
   console.log(body);
-  console.log(req.file);
+  console.log(req.pfp);
 
   res.send(user);
 });
