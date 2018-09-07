@@ -12,10 +12,10 @@ import Contact from './pages/Contact';
 import Home from './pages/Home';
 
 const AppSwitch = ({ user }) => {
-  if (user) {
-    return <ProtectedRoutes />;
+  if (user === null) {
+    return <PublicRoutes />;
   }
-  return <PublicRoutes />;
+  return <ProtectedRoutes />;
 };
 
 const mapStateToProps = state => ({ user: state.user });
@@ -27,7 +27,6 @@ const PublicRoutes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Landing} />
-      <Route exact path="/register" component={Registration} />
 
       {/* Common Routes */}
       <Route exact path="/aboutus" component={AboutUs} />
