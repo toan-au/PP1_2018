@@ -60,9 +60,8 @@ for(var i = 0; i < matchingUser.matches.length; i++){
 var relevantUsers = await users.findAll({where: {id: {[Op.ne]: dummyId}}, limit: 30, include: [
     {model: prefGames, where: {gameId: {[Op.or]: relevantGames}}},
     {model: responses},
-    {model: matches, through: {
-        where: {[Op.not]: {matchingId: {[Op.or]: interactedUsers}}}
-    }}
+    {model: matches}
+    
 ]});
 
 
