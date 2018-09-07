@@ -43,8 +43,6 @@ for(var i = 0; i < matchingUser.prefGames.length; i++){
 var relevantUsers = await users.findAll({where: {id: {[Op.ne]: dummyId}}, limit: 30, include: [
     {model: prefGames, where: {gameId: {[Op.or]: relevantGames}}},
     {model: responses},
-    {model: locale},
-    {model: region},
     {model: matches}
     
 ]});
