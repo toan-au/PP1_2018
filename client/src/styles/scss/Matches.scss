@@ -1,0 +1,11 @@
+@import 'variables';
+
+.Matches {
+  .matches-list {
+    li {
+      padding: 20px;
+      background: $light_grey;
+      margin-bottom: 4px;
+    }
+  }
+}

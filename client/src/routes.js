@@ -8,6 +8,7 @@ import Registration from './pages/registration/Registration';
 import AboutUs from './pages/AboutUs';
 import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
+import Matches from './pages/Matches';
 
 import Home from './pages/Home';
 
@@ -48,8 +49,9 @@ const ProtectedRoutes = () => {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Registration} />
+      <Route exact path="/matches" component={Matches} />
       {/* TODO: Implement routes bellow */}
-      {/* <Route exact path="/matches" component={Mathes} />
+      {/* 
         <Route exact path="/pending" component={Pending} />
         <Route exact path="/settings" component={Settings} /> */}
 
@@ -57,7 +59,6 @@ const ProtectedRoutes = () => {
       <Route exact path="/aboutus" component={AboutUs} />
       <Route exact path="/privacy" component={Privacy} />
       <Route exact path="/contact" component={Contact} />
-
       {/* TODO: Implement 404 page */}
       {/* <Route path="*" component={NotFoundView} /> */}
     </Switch>
