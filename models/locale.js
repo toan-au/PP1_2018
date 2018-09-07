@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     locale: DataTypes.STRING
   }, {});
   locale.associate = function(models) {
-    locale.hasMany(models.users)
+    locale.belongsTo(models.users)
   };
   return locale;
 };

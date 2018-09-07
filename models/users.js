@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     users.hasMany(models.matches, { foriegnKey: 'userId' });
 
     //user qualities
-    users.belongsTo(models.locale, { foreignKey: 'localeId' });
-    users.belongsTo(models.region, { foreignKey: 'regionId' });
+    users.hasOne(models.locale, { foreignKey: 'localeId' });
+    users.hasOne(models.region, { foreignKey: 'regionId' });
   };
   return users;
 };

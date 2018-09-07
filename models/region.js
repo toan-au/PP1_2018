@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   region.associate = function(models) {
-    region.hasMany(models.users);
+    region.belongsTo(models.users);
   };
   return region;
 };
