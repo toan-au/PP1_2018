@@ -15,7 +15,11 @@ router.get('/match/:id', async (req, res) => {
 
 router.post('/user/update/:id', async (req, res) => {
   const user = await User.findById(req.params.id);
-  console.log(user);
+
+  // get the posted data
+  const body = req.body;
+  console.log(body);
+
   res.send(user);
 });
 
