@@ -28,9 +28,7 @@ const MatchCard = props => {
         <MatchMeter percent={matchingScore} />
         {/* <button>Dislike</button> */}
       </div>
-      <div className="region">
-      {region}
-      </div>
+      <div className="region">{region.region}</div>
     </div>
   );
 };
