@@ -14,21 +14,15 @@ import Footer from './components/Footer';
 import AppSwitch from './routes';
 
 class App extends Component {
-  state = {
-    hasUser: false
-  };
-
   componentDidMount() {
     this.props.getUser().then(user => {
-      this.setState({ hasUser: user !== null });
+      if (user !== null) {
+        this.props.getPending();
+      }
     });
   }
 
   render() {
-    if (this.state.hasUser) {
-      this.props.getPending();
-    }
-
     return (
       <BrowserRouter>
         <div className="App">
