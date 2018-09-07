@@ -38,6 +38,8 @@
 
 .navbar {
   background: #1e1e2b; }
+  .navbar .navbar-brand {
+    padding-left: 50px; }
   .navbar .logo {
     padding-top: 15px;
     font-size: 2.7em;
@@ -46,7 +48,7 @@
   .navbar .nav-item {
     padding-left: 1.5em !important; }
   .navbar .nav-rm-item {
-    padding-right: 84px !important; }
+    padding-right: 70px !important; }
   .navbar .nav-item,
   .navbar .nav-link {
     color: #bfbdc1 !important; }

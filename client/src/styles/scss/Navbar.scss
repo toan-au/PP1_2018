@@ -4,6 +4,10 @@
 .navbar {
   background: $gunmetal;
 
+  .navbar-brand
+  {
+    padding-left:50px;
+  }
   .logo {
     padding-top: 15px;
     font-size: 2.7em;
@@ -17,7 +21,7 @@
 
   // right most item, padding on nav is 16px - for alignning with footer
   .nav-rm-item {
-    padding-right: 84px !important;
+    padding-right: 70px !important;
   }
 
   .nav-item,

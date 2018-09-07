@@ -233,6 +233,8 @@ button {
 
 .navbar {
   background: #1e1e2b; }
+  .navbar .navbar-brand {
+    padding-left: 50px; }
   .navbar .logo {
     padding-top: 15px;
     font-size: 2.7em;
@@ -241,7 +243,7 @@ button {
   .navbar .nav-item {
     padding-left: 1.5em !important; }
   .navbar .nav-rm-item {
-    padding-right: 84px !important; }
+    padding-right: 70px !important; }
   .navbar .nav-item,
   .navbar .nav-link {
     color: #bfbdc1 !important; }
@@ -289,6 +291,9 @@ button {
 /* paddings */
 /* border */
 /* kittens */
+.Footer container-custom {
+  border: solid white; }
+
 .Footer {
   display: flex;
   background: #1e1e2b;
@@ -298,7 +303,6 @@ button {
   box-shadow: 0px -2px 5px; }
 
 .right-footer nav a {
-  display: inline-block;
   padding: 3px 20px; }
 
 /* Chuck your variables in here*/

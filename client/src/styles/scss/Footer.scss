@@ -1,5 +1,8 @@
 @import 'variables';
 
+.Footer container-custom {
+  border: solid white;
+}
 .Footer {
   display: flex;
   background: $gunmetal;
@@ -9,13 +12,9 @@
   box-shadow: 0px -2px 5px;
 }
 
-.left-footer {
-}
-
 .right-footer {
   nav {
     a {
-      display: inline-block;
       padding: 3px 20px;
     }
   }
