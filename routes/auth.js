@@ -49,7 +49,7 @@ passport.use(
         dob: new Date()
       });
 
-      const newUser = await user.save();
+      await user.save();
 
       // associate googleUser object with bew generic user object
       const googleUser = GoogleUsers.build({
@@ -93,6 +93,7 @@ router.get('/logout', (req, res) => {
 
 // returns the current user object
 router.get('/current', (req, res) => {
+  console.log('user: ' + req.user.id);
   res.send(req.user);
 });
 
