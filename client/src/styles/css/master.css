@@ -240,47 +240,37 @@ button {
     color: #bfbdc1; }
   .navbar .nav-item {
     padding-left: 1.5em !important; }
-  .navbar .dropdown-menu.settings {
-    min-width: 30px !important;
-    left: auto !important; }
   .navbar .nav-rm-item {
     padding-right: 84px !important; }
   .navbar .nav-item,
   .navbar .nav-link {
     color: #bfbdc1 !important; }
+  .navbar .dropdown-menu.settings {
+    min-width: 30px !important;
+    left: auto !important; }
   .navbar div.dropdown-item {
     display: flex;
     text-decoration: none;
     padding-left: 10px;
     padding-right: 10px; }
-  .navbar .right-nav {
-    padding-top: 30px;
-    margin-right: 50px;
-    font-size: 1em; }
-    .navbar .right-nav nav a {
-      display: inline-block;
-      padding: 3px 20px;
-      text-decoration: none; }
-    .navbar .right-nav .navbar-nav ml-auto:hover {
-      color: white; }
-    .navbar .right-nav .icon {
-      padding: 20px; }
-  .navbar .dropdown {
-    position: relative;
-    display: inline-block; }
+  .navbar div.dropdown-item:active {
+    background-color: white; }
   .navbar .pending-item-text.no-matches {
     text-align: center; }
   .navbar div.dropdown-item .pending-item-text {
     flex: 8;
     color: black;
     font-weight: 500; }
-  .navbar .dropdown:hover .dropdown-content {
-    display: block;
-    text-align: center; }
-    .navbar .dropdown:hover .dropdown-content a:hover {
-      color: #ab1e24;
-      text-decoration: none;
-      cursor: pointer; }
+  .navbar div.dropdown-item i {
+    flex: 1;
+    color: #ab1e24; }
+  .navbar .unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
 
 /* Chuck your variables in here*/
 /* colors */
