@@ -153,6 +153,9 @@ form,
   color: #e8e8e8;
   text-decoration: none; }
 
+p {
+  font-size: 1.1em; }
+
 textarea,
 input {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif; }
@@ -163,7 +166,8 @@ a {
   -moz-transition: .1s;
   -webkit-transition: .1s;
   text-decoration: none;
-  transition: .2s; }
+  transition: .2s;
+  font-size: 1.1em; }
 
 a:hover {
   color: #ab1e24; }
@@ -470,6 +474,26 @@ h3 {
   margin-right: auto;
   width: 1000px;
   text-align: center; }
+
+.boldThis {
+  text-shadow: 0px 0.5px 0px; }
+
+.TeamImages {
+  display: block;
+  float: left;
+  margin-right: 5px;
+  width: 100%;
+  text-align: center; }
+
+.TeamImages img {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 170px;
+  border-bottom: 10px solid #de9e36;
+  border-radius: 5px; }
+
+.MemberName {
+  display: block; }
 
 /* Chuck your variables in here*/
 /* colors */

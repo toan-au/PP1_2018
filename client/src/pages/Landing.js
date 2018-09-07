@@ -11,11 +11,11 @@ const Landing = () => {
           <h2 className="landing-title">GAME SEARCH MATCH</h2>
           <p>
             The beautifully designed matching application that will match you
-            with your destined gaming compatriots through our top-tier matching
-            algorithm!
+            with your destined gaming compatriots.
           </p>
+          <p>Through our top-tier matching algorithm, find your perfect gaming buddies!</p>
           <br />
-          <p>Register or sign in now with a Google Account.</p>
+          <p>Register or sign in now!</p>
           <a href="/api/auth/facebook" className="facebook">
             Facebook
           </a>
