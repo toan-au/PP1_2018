@@ -77,10 +77,10 @@ const NavbarLinks = ({ user }) => {
     return <div className="navbar-nav ml-auto" />;
   };
 
-  if (user) {
-    return <NavRightLoggedIn />;
+  if (user === null) {
+    return <NavRightLoggedOut />;
   }
-  return <NavRightLoggedOut />;
+  return <NavRightLoggedIn />;
 };
 
 const mapStateToProps = state => ({
