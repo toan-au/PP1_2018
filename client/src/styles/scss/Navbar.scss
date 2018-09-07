@@ -55,9 +55,8 @@
         padding: 3px 20px;
         text-decoration: none;
       }
-     
     }
-    .navbar-nav ml-auto:hover{
+    .navbar-nav ml-auto:hover {
       color: white;
     }
 
@@ -94,6 +93,7 @@
     a:hover {
       color: $red;
       text-decoration: none;
+      cursor: pointer;
     }
   }
 }

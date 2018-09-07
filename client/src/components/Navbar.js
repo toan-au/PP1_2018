@@ -51,6 +51,7 @@ const NavbarLinks = ({ user }) => {
             className="nav-link dropdown-toggle"
             id="navbarDropdownMenuLink"
             role="button"
+            href="_"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
