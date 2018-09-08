@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import SearchInput, { createFilter } from 'react-search-input';
+import { getGames } from '../../redux/actions/games';
 
 const FILTER_KEYS = ['name'];
 
 class GameAndGenresForm extends Component {
   state = {
     searchTerm: '',
-    filteredResults: []
+    filteredGames: []
   };
 
   componentDidMount = () => {
@@ -17,11 +18,17 @@ class GameAndGenresForm extends Component {
 
   onGameSearch = searchTerm => {
     this.setState({ searchTerm });
-    console.log(this.state);
+
+    const filteredGames = this.props.games.filter(
+      createFilter(this.state.searchTerm, FILTER_KEYS)
+    );
+
+    this.setState({ filteredGames });
   };
 
   render() {
     const { handleSubmit, onPrevious } = this.props;
+    const { filteredGames } = this.state;
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -29,10 +36,17 @@ class GameAndGenresForm extends Component {
           <div className="form-body">
             <div>
               <h4 className="question">Which games do you enjoy playing?</h4>
-              <SearchInput
-                className="search-input"
-                onChange={this.searchUpdated}
-              />
+              <div className="game-search">
+                <SearchInput
+                  className="search-input"
+                  onChange={this.onGameSearch}
+                />
+                <ul className="results">
+                  {filteredGames.map(game => (
+                    <li>{game.name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div>
               <h4 className="question">Which genres do you enjoy playing?</h4>
@@ -59,6 +73,9 @@ let gameAndGenresForm = reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
 })(GameAndGenresForm);
-gameAndGenresForm = connect(mapStateToProps)(gameAndGenresForm);
+gameAndGenresForm = connect(
+  mapStateToProps,
+  { getGames }
+)(gameAndGenresForm);
 export default gameAndGenresForm;
 1;

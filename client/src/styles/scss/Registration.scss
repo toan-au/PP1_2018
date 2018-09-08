@@ -6,6 +6,10 @@
   height: 100%;
   padding: 40px;
 
+  .question {
+    font-size: 1.5em;
+    color: $gunmetal;
+  }
   .title {
     text-align: center;
     font-size: 2em;
@@ -28,7 +32,7 @@
     }
   }
 
-  .form-body {
+  .form-body.grid {
     display: grid;
     grid-template: 100% 1fr / 1fr 4fr;
     margin-bottom: 10px;
