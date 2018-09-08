@@ -196,6 +196,8 @@ let registrationForm1 = reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   initialValues: {
+    displayName: 'deftCorgi',
+    bio: 'cows cows cows',
     answers: {},
     preferences: {},
     importances: {},
