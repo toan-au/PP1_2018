@@ -73,7 +73,12 @@ class Registration extends Component {
       <div className="Registration">
         {page === 1 && <ProfileForm onSubmit={this.nextPage} />}
         {page === 2 && this.state.questionForms[this.state.currentQuestion]}
-        {page === 3 && <GameAndGenresForm onSubmit={this.handleSubmit} />}
+        {page === 3 && (
+          <GameAndGenresForm
+            onSubmit={this.handleSubmit}
+            onPrevious={this.prevPage}
+          />
+        )}
       </div>
     );
   }

@@ -8,5 +8,9 @@ export const GET_MATCHES = 'get_matches';
 // get list of SUCCESSFUL matches
 export const GET_MATCHED = 'get_matched';
 
+// games
+export const SEARCH_GAMES = 'get_search_games';
+
+// pending
 export const GET_PENDING = 'get_pending';
 export const REMOVE_PENDING = 'remove_pending';
