@@ -199,9 +199,9 @@ let registrationForm1 = reduxForm({
     answers: {},
     preferences: {},
     importances: {},
-    age: -1,
-    region: -1,
-    locale: -1
+    age: 1,
+    region: 1,
+    locale: 1
   }
 })(RegistrationForm1);
 
