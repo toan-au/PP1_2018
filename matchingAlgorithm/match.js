@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 
 //Imports required functions and data.
-const data = require ('./dummyData.js')
 const matchCalc = require ('./matchCalculate.js')
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -44,6 +43,8 @@ for(var i = 0; i < matchingUser.prefGames.length; i++){
 var relevantUsers = await users.findAll({where: {id: {[Op.ne]: dummyId}}, limit: 30, include: [
     {model: prefGames, where: {gameId: {[Op.or]: relevantGames}}},
     {model: responses},
+    {model: locale},
+    {model: region},
     {model: matches}
     
 ]});

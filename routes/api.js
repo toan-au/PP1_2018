@@ -4,6 +4,7 @@ const multer = require('multer');
 const pfpUpload = multer({ storage: '/imgs/pfps/' });
 
 // models
+const userCalls = require('../userFunctions/userCalls');
 const Questions = require('../models').questions;
 const Answers = require('../models').answers;
 const Locale = require('../models').locale;
@@ -28,6 +29,17 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   console.log(req.pfp);
 
   res.send(user);
+});
+//returns a user's pending matches
+router.get('/matches/pending/:id', async (req, res) => {
+  const pendingMatches = await userCalls.getPendingMatches();
+  res.send(pendingMatches);
+});
+
+//returns a user's successful matches
+router.get('/matches/successful/:id', async (req, res) => {
+  const successfulMatches = await userCalls.getSuccessfulMatches();
+  res.send(successfulMatches);
 });
 
 // return a list of all the questions

@@ -1,6 +1,6 @@
 import { GET_USER, LOGOUT_USER, UPDATE_USER } from '../actions/types';
 
-export default (state = {}, action) => {
+export default (state = null, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user;
@@ -8,7 +8,7 @@ export default (state = {}, action) => {
       return action.user;
     case LOGOUT_USER:
       // logout user, set user state to empty
-      return {};
+      return null;
     default:
       return state;
   }

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import logo from '../images/Favicon.png';
 
+import PendingDropdown from './PendingDropdown';
+
 const Navbar = ({ user }) => {
   return (
     <nav id="navbar" className="navbar navbar-expand-lg navbar-light">
@@ -41,35 +43,32 @@ const NavbarLinks = ({ user }) => {
         <Link className="nav-item nav-link" to="/matches">
           Matches
         </Link>
-        <Link className="nav-item nav-link" to="/pending">
-          Pending
-        </Link>
-        {/* <Link to="/settings">Settings</Link> */}
 
+        {/* Pending Dropdown */}
         <li className="nav-item dropdown">
-          <a
+          <Link
             className="nav-link dropdown-toggle"
-            id="navbarDropdownMenuLink"
+            to="/profile"
+            id="navbarDropdownMenuPending"
             role="button"
             href="_"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Settings
-          </a>
-          <div
-            className="dropdown-menu"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <Link className="dropdown-item" to="/profile">
-              Profile
-            </Link>
-            <a className="dropdown-item" href="/api/auth/logout">
-              Logout
-            </a>
-          </div>
+            Pending
+          </Link>
+
+          {/* DROPDOWN */}
+          <PendingDropdown />
         </li>
+
+        <Link className="nav-item nav-link" to="/profile">
+          Profile
+        </Link>
+        <a className="nav-item nav-link nav-rm-item" href="/api/auth/logout">
+          Logout
+        </a>
       </div>
     );
   };
@@ -78,10 +77,10 @@ const NavbarLinks = ({ user }) => {
     return <div className="navbar-nav ml-auto" />;
   };
 
-  if (user) {
-    return <NavRightLoggedIn />;
+  if (user === null) {
+    return <NavRightLoggedOut />;
   }
-  return <NavRightLoggedOut />;
+  return <NavRightLoggedIn />;
 };
 
 const mapStateToProps = state => ({

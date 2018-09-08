@@ -58,7 +58,7 @@ passport.use(
       });
 
       // persist to DB
-      googleUser.save();
+      await googleUser.save();
 
       // if no existing user, create new user here
       console.log('new user created id:' + googleUser.googleId, ', ' + user.id);
