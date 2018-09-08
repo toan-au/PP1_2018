@@ -666,13 +666,12 @@ h3 {
       border-top-right-radius: 6px;
       background: red; }
 
-/* Chuck your variables in here*/
-/* colors */
-/* sizes */
-/* backgrounds */
-/* paddings */
-/* border */
-/* kittens */
+.game-search .results li {
+  color: #1e1e2b; }
+
+.game-search .selected li {
+  background: #c82128; }
+
 .RadioGroup {
   margin: 20px 0px; }
   .RadioGroup .choices {

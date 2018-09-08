@@ -139,3 +139,17 @@
     }
   }
 }
+.game-search {
+  .results {
+    li {
+      color: $gunmetal;
+      // background: $grey;
+    }
+  }
+
+  .selected {
+    li {
+      background: $light_red;
+    }
+  }
+}

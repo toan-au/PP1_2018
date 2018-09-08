@@ -9,7 +9,8 @@ const FILTER_KEYS = ['name'];
 class GameAndGenresForm extends Component {
   state = {
     searchTerm: '',
-    filteredGames: []
+    filteredGames: [],
+    selectedGames: []
   };
 
   componentDidMount = () => {
@@ -26,9 +27,14 @@ class GameAndGenresForm extends Component {
     this.setState({ filteredGames });
   };
 
+  selectGame = game => {
+    if (this.state.selectedGames.filter(g => game.id === g.id).length < 1)
+      this.setState({ selectedGames: [...this.state.selectedGames, game] });
+  };
+
   render() {
     const { handleSubmit, onPrevious } = this.props;
-    const { filteredGames } = this.state;
+    const { filteredGames, selectedGames } = this.state;
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -43,7 +49,15 @@ class GameAndGenresForm extends Component {
                 />
                 <ul className="results">
                   {filteredGames.map(game => (
-                    <li>{game.name}</li>
+                    <li onClick={() => this.selectGame(game)} key={game.name}>
+                      {game.name}
+                    </li>
+                  ))}
+                </ul>
+                <h4 className="question">your games?</h4>
+                <ul className="selected">
+                  {selectedGames.map(selected => (
+                    <li key={selected.name}>{selected.name}</li>
                   ))}
                 </ul>
               </div>
