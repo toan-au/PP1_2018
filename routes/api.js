@@ -24,10 +24,12 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const user = await User.findById(req.params.id);
 
   // get the posted data
-  const body = req.body;
-  console.log(body);
-  console.log(req.file);
+  const { displayName, bio, age, region, locale, playstyle } = req.body;
 
+  // update the user
+  user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
+
+  console.log(user);
   res.send(user);
 });
 //returns a user's pending matches
