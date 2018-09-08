@@ -33,7 +33,7 @@ const PublicRoutes = () => {
       <Route exact path="/aboutus" component={AboutUs} />
       <Route exact path="/privacy" component={Privacy} />
       <Route exact path="/contact" component={Contact} />
-
+      <Route exact path="/register" />
       <Redirect to="/" />
     </Switch>
   );

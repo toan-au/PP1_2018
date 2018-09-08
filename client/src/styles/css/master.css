@@ -506,7 +506,8 @@ h3 {
 /* kittens */
 .Matches .matches-list li {
   padding: 20px;
-  background: #bfbdc1; }
+  background: #bfbdc1;
+  margin-bottom: 4px; }
 
 /* components */
 /* Chuck your variables in here*/

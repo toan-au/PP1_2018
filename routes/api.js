@@ -1,10 +1,15 @@
 const express = require('express');
 const matching = require('../matchingAlgorithm/match');
-const userCalls = require('../userFunctions/userCalls')
+const multer = require('multer');
+const pfpUpload = multer({ dest: 'imgs/pfps/' });
+
+// models
+const userCalls = require('../userFunctions/userCalls');
 const Questions = require('../models').questions;
 const Answers = require('../models').answers;
-const locale = require('../models').locale;
-const region = require('../models').region;
+const Locale = require('../models').locale;
+const Region = require('../models').region;
+const User = require('../models').users;
 
 const router = express.Router();
 
@@ -14,6 +19,19 @@ router.get('/match/:id', async (req, res) => {
   res.send(matches);
 });
 
+router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
+  console.log(req.params.id);
+  const user = await User.findById(req.params.id);
+
+  // get the posted data
+  const { displayName, bio, age, region, locale, playstyle } = req.body;
+
+  // update the user
+  user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
+
+  console.log(user);
+  res.send(user);
+});
 //returns a user's pending matches
 router.get('/matches/pending/:id', async (req, res) => {
   const pendingMatches = await userCalls.getPendingMatches();
@@ -36,9 +54,9 @@ router.get('/questions', async (req, res) => {
 
 // return a list of locales
 router.get('/locales', async (req, res) => {
-  const locales = await locale.findAll({attributes: ['id','locale']});
-    
-  for(var i = 0; i < locale.length; i++){
+  const locales = await Locale.findAll({ attributes: ['id', 'locale'] });
+
+  for (var i = 0; i < locales.length; i++) {
     locales[i] = locales[i].toJSON();
   }
   res.send(locales);
@@ -46,9 +64,9 @@ router.get('/locales', async (req, res) => {
 
 //return a list of regions
 router.get('/regions', async (req, res) => {
-  const regions = await region.findAll({attributes: ['id','region']});
-    
-  for(var i = 0; i < regions.length; i++){
+  const regions = await Region.findAll({ attributes: ['id', 'region'] });
+
+  for (var i = 0; i < regions.length; i++) {
     regions[i] = regions[i].toJSON();
   }
   res.send(regions);
