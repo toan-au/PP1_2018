@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-class RegistrationForm1 extends Component {
+class GameAndGenresForm extends Component {
   render() {
     const { handleSubmit, user } = this.props;
     return (
@@ -25,10 +25,10 @@ class RegistrationForm1 extends Component {
 
 const mapStateToProps = state => ({ user: state.user });
 
-let registrationForm1 = reduxForm({
+let gameAndGenresForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
-})(RegistrationForm1);
-registrationForm1 = connect(mapStateToProps)(registrationForm1);
-export default registrationForm1;
+})(GameAndGenresForm);
+gameAndGenresForm = connect(mapStateToProps)(gameAndGenresForm);
+export default gameAndGenresForm;

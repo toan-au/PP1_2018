@@ -15,7 +15,7 @@ const SelectWithError = ({
   </div>
 );
 
-class RegistrationForm1 extends Component {
+class ProfileForm extends Component {
   state = {
     regions: [],
     locales: []
@@ -194,7 +194,7 @@ class RegistrationForm1 extends Component {
 }
 
 // hook up with red-form
-let registrationForm1 = reduxForm({
+let profileForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
@@ -209,7 +209,7 @@ let registrationForm1 = reduxForm({
     locale: 1,
     playstyle: 'casual'
   }
-})(RegistrationForm1);
+})(ProfileForm);
 
 // export HOC
-export default registrationForm1;
+export default profileForm;
