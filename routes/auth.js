@@ -9,6 +9,7 @@ const facebookStrategy = require('passport-facebook').Strategy;
 const keys = require('../config/keys');
 const Users = require('../models').users;
 const GoogleUsers = require('../models').googleUsers;
+const FacebookUsers = require('../models').facebookUsers;
 
 // serialize the user into the session
 passport.serializeUser((user, done) => {
@@ -79,8 +80,40 @@ passport.use(
       callbackURL: '/api/auth/facebook/callback'
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-      return cb(null, profile);
+      const { id, displayName, email } = profile;
+      // search if existing user
+      const existingUser = await FacebookUsers.findById(id);
+      if (existingUser) {
+        console.log(
+          `existing user found: ${existingUser.facebookId} ${
+            existingUser.userId
+          }`
+        );
+        return done(null, existingUser);
+      }
+
+      // build a generic User object
+      const user = Users.build({
+        displayName,
+        language: 'en'
+      });
+
+      await user.save();
+
+      // associate googleUser object with bew generic user object
+      const facebookUser = FacebookUsers.build({
+        facebookId: id,
+        userId: user.id
+      });
+
+      // persist to DB
+      await facebookUser.save();
+
+      console.log(
+        'new user created id:' + facebookUser.googleId,
+        ', ' + facebookUser.userId
+      );
+      return done(null, facebookUser);
     }
   )
 );
@@ -93,7 +126,7 @@ router.get(
 
 router.get(
   '/facebook',
-  passport.authenticate('facebook', { scope: ['profile', 'email'] })
+  passport.authenticate('facebook', { scope: ['email'] })
 );
 
 // callbacks
