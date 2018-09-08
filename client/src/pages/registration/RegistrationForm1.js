@@ -77,6 +77,16 @@ class RegistrationForm1 extends Component {
     return localeItems;
   }
 
+  renderAges = () => {
+    const ages = [...Array(100).keys()];
+    const ageItems = ages.map(age => (
+      <option key={age} value={age}>
+        {age}
+      </option>
+    ));
+    return ageItems;
+  };
+
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -137,14 +147,7 @@ class RegistrationForm1 extends Component {
                   component={SelectWithError}
                   validate={this.selected}
                 >
-                  <option value="-1" disabled>
-                    Please select an option
-                  </option>
-                  <option value="1">18-20</option>
-                  <option value="2">21-25</option>
-                  <option value="3">26-30</option>
-                  <option value="4">31-35</option>
-                  <option value="5">36+</option>
+                  {this.renderAges()}
                 </Field>
               </div>
 
@@ -201,7 +204,7 @@ let registrationForm1 = reduxForm({
     answers: {},
     preferences: {},
     importances: {},
-    age: 1,
+    age: 20,
     region: 1,
     locale: 1,
     playstyle: 'casual'
