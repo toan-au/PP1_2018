@@ -2,18 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import axios from 'axios';
 import PfpInput from './PfpInput';
-
-const SelectWithError = ({
-  input,
-  meta: { touched, error, warning },
-  children
-}) => (
-  <div className="SelectWithError">
-    {(touched && (error && <span className="error">{error}</span>)) ||
-      (warning && <span>{warning}</span>)}
-    <select {...input}>{children}</select>
-  </div>
-);
+import SelectWithError from '../../components/SelectWithError';
 
 class ProfileForm extends Component {
   state = {
@@ -183,6 +172,7 @@ class ProfileForm extends Component {
             </div>
           </div>
           <div className="footer-buttons">
+            <div />
             <button className="next" type="submit">
               Next
             </button>
