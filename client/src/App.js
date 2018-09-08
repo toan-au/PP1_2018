@@ -17,7 +17,7 @@ class App extends Component {
   componentDidMount() {
     this.props.getUser().then(user => {
       if (user !== null) {
-        this.props.getPending();
+        this.props.getPending(user.id);
       }
     });
   }
