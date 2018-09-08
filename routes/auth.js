@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+
+// passport strategys
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const facebookStrategy = require('passport-facebook').Strategy;
+
 const keys = require('../config/keys');
 const Users = require('../models').users;
 const GoogleUsers = require('../models').googleUsers;
@@ -67,16 +71,46 @@ passport.use(
   )
 );
 
-// user authenticates with google
+passport.use(
+  new facebookStrategy(
+    {
+      clientID: keys.facebookClientId,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: '/api/auth/facebook/callback'
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+      return cb(null, profile);
+    }
+  )
+);
+
+// user authentication routes
 router.get(
   '/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-// callback
+router.get(
+  '/facebook',
+  passport.authenticate('facebook', { scope: ['profile', 'email'] })
+);
+
+// callbacks
 router.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
+  (req, res) => {
+    if (!req.user.finishedRegistration) {
+      return res.redirect('/register');
+    }
+    res.redirect('/');
+  }
+);
+
+router.get(
+  '/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
   (req, res) => {
     if (!req.user.finishedRegistration) {
       return res.redirect('/register');
