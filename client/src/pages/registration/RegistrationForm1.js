@@ -203,7 +203,8 @@ let registrationForm1 = reduxForm({
     importances: {},
     age: 1,
     region: 1,
-    locale: 1
+    locale: 1,
+    playstyle: 'casual'
   }
 })(RegistrationForm1);
 

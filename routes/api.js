@@ -1,7 +1,7 @@
 const express = require('express');
 const matching = require('../matchingAlgorithm/match');
 const multer = require('multer');
-const pfpUpload = multer({ storage: '/imgs/pfps/' });
+const pfpUpload = multer({ dest: 'imgs/pfps/' });
 
 // models
 const userCalls = require('../userFunctions/userCalls');
@@ -26,7 +26,7 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   // get the posted data
   const body = req.body;
   console.log(body);
-  console.log(req.pfp);
+  console.log(req.file);
 
   res.send(user);
 });

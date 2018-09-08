@@ -53,7 +53,9 @@ class Registration extends Component {
       );
     });
     // return only 1 for testing purposes
-    return this.setState({ questionForms: [questionForms[0]] });
+    return this.setState({
+      questionForms: [questionForms[questionForms.length - 1]]
+    });
   }
 
   prevQuestion = () => {
