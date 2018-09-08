@@ -8,6 +8,7 @@ import { updateUser } from '../../redux/actions/user';
 // registration forms
 import ProfileForm from './ProfileForm';
 import QuestionAnswerForm from './QuestionAnswerForm';
+import GameAndGenresForm from './GameAndGenresForm';
 
 class Registration extends Component {
   state = {
@@ -24,7 +25,8 @@ class Registration extends Component {
   };
 
   handleSubmit = async values => {
-    await this.props.updateUser(this.props.user.id, values);
+    console.log(values);
+    //await this.props.updateUser(this.props.user.id, values);
   };
 
   nextPage = () => {
@@ -47,7 +49,7 @@ class Registration extends Component {
           key={question.id}
           question={question}
           prevQuestion={(firstQuestion && this.prevPage) || this.prevQuestion}
-          onSubmit={(lastQuestion && this.handleSubmit) || this.nextQuestion}
+          onSubmit={(lastQuestion && this.nextPage) || this.nextQuestion}
         />
       );
     });
@@ -71,6 +73,7 @@ class Registration extends Component {
       <div className="Registration">
         {page === 1 && <ProfileForm onSubmit={this.nextPage} />}
         {page === 2 && this.state.questionForms[this.state.currentQuestion]}
+        {page === 3 && <GameAndGenresForm onSubmit={this.handleSubmit} />}
       </div>
     );
   }

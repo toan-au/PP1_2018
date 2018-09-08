@@ -9,10 +9,8 @@ class GameAndGenresForm extends Component {
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <div className="sign">
-            <h1>Sign Up</h1>
-          </div>
-          <div className="Form">
+          <h2 className="title">Games and Genres</h2>
+          <div className="form-body">
             <div className="next">
               <button type="submit">Submit</button>
             </div>
@@ -32,3 +30,4 @@ let gameAndGenresForm = reduxForm({
 })(GameAndGenresForm);
 gameAndGenresForm = connect(mapStateToProps)(gameAndGenresForm);
 export default gameAndGenresForm;
+1;
