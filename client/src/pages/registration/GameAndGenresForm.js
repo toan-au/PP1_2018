@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import SelectWithErrors from '../../components/SelectWithError';
+import SearchInput, { createFilter } from 'react-search-input';
+
+const FILTER_KEYS = ['name'];
 
 class GameAndGenresForm extends Component {
+  state = {
+    searchTerm: '',
+    filteredResults: []
+  };
+
+  componentDidMount = () => {
+    this.props.getGames();
+  };
+
+  onGameSearch = searchTerm => {
+    this.setState({ searchTerm });
+    console.log(this.state);
+  };
+
   render() {
     const { handleSubmit, onPrevious } = this.props;
     return (
@@ -13,6 +29,10 @@ class GameAndGenresForm extends Component {
           <div className="form-body">
             <div>
               <h4 className="question">Which games do you enjoy playing?</h4>
+              <SearchInput
+                className="search-input"
+                onChange={this.searchUpdated}
+              />
             </div>
             <div>
               <h4 className="question">Which genres do you enjoy playing?</h4>
@@ -32,7 +52,7 @@ class GameAndGenresForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({ user: state.user });
+const mapStateToProps = state => ({ games: state.games });
 
 let gameAndGenresForm = reduxForm({
   form: 'registration',

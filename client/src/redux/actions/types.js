@@ -9,7 +9,7 @@ export const GET_MATCHES = 'get_matches';
 export const GET_MATCHED = 'get_matched';
 
 // games
-export const SEARCH_GAMES = 'get_search_games';
+export const GET_GAMES = 'get_search_games';
 
 // pending
 export const GET_PENDING = 'get_pending';

@@ -1,7 +1,7 @@
-import { SEARCH_GAMES } from './types';
+import { GET_GAMES } from './types';
 import axios from 'axios';
 
-export const searchGames = () => {
+export const getGames = () => {
   return async dispatch => {
     //const res = await axios.get('/api/matches/successful/' + userId);
     //const matches = res.data;
@@ -12,6 +12,6 @@ export const searchGames = () => {
       { id: 4, name: 'Halo 3' },
       { id: 5, name: 'God of War' }
     ];
-    dispatch({ type: SEARCH_GAMES, games });
+    dispatch({ type: GET_GAMES, games });
   };
 };

@@ -1,8 +1,8 @@
-import { SEARCH_GAMES } from '../actions/types';
+import { GET_GAMES } from '../actions/types';
 
 export default (state = [], action) => {
   switch (action.type) {
-    case SEARCH_GAMES:
+    case GET_GAMES:
       return action.games;
     default:
       return state;
