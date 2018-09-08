@@ -8,24 +8,16 @@ class Home extends Component {
   state = { matches: [], loading: true };
 
   async componentDidMount() {
-    await this.loadMatches();
+    if (this.props.matches.length < 1) {
+      await this.props.getMatches(this.props.user.id);
+    }
+    this.setState({ loading: false });
   }
 
-  loadMatches = async () => {
-    // get matches from the API
-    await this.props.getMatches(this.props.user.id);
-
-    // create list of each match
-    const matches = this.props.matches.map(match => {
-      return <MatchCard key={match.id} match={match} />;
-    });
-
-    // store matches in a list, set loading to false to hide spinner
-    this.setState({ matches, loading: false });
-  };
-
   renderMatches = () => {
-    return this.state.matches;
+    return this.props.matches.map(match => (
+      <MatchCard key={match.id} match={match} />
+    ));
   };
 
   render() {
