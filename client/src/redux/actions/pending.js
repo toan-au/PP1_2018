@@ -1,12 +1,10 @@
 import { GET_PENDING, REMOVE_PENDING } from './types';
+import axios from 'axios';
 
-export const getPending = () => {
+export const getPending = id => {
   return async dispatch => {
-    const pending = [
-      { displayName: 'janedoe' },
-      { displayName: 'johnsmith' },
-      { displayName: 'ariana-grande' }
-    ];
+    const response = await axios.get('/api/matches/pending/' + id);
+    const pending = response.data;
     dispatch({ type: GET_PENDING, pending });
   };
 };
