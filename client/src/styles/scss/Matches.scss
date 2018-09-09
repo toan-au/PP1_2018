@@ -8,16 +8,18 @@
   img {
     align: left;
     width: 150px;
+    border-radius: 4px 0px 0px 0px;
   }
 
   .UserDescription {
     display: inline-block;
     vertical-align: top;
     padding-left: 10px;
+    padding-top: 10px;
   }
 
   .RemoveUser {
-    display: flex;
+    //display: flex;
     float: right;
     color: $red !important;
     padding-top: 10px;
