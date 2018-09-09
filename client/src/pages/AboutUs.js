@@ -3,9 +3,9 @@ import React from 'react';
 const AboutUs = () => {
   return (
     <div className="AboutUs">
-      <div className="middle">
-        <div className="inner">
-          <h3>Who Created GameSearchMatch?</h3>
+      <div className="AboutUs-middle">
+        <div className="AboutUs-inner">
+          <h3 className="AboutUsTitle">Who Created GameSearchMatch?</h3>
           <br />
           <p>
             GameSearchMatch was created by The Terror Wrists for their
