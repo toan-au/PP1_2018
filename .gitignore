@@ -4,3 +4,4 @@ package-lock.json
 config/dev.js
 db/config/config.json
 .DS_Store
+imgs/pfps/*

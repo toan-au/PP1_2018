@@ -46,6 +46,20 @@ a:hover {
   color: $red;
 }
 
+.banner {
+  width: 0 auto;
+  margin: 0 auto;
+  text-align: center;
+  color: $white;
+}
+
+
+  h1 {
+    font-size: 45px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
 .container-custom {
   padding: $container_padding_height $container_padding_width;
 }
@@ -69,6 +83,7 @@ button {
   color: $white;
   background: $gunmetal;
 }
+
 .button1:hover {
   color: $gunmetal;
   background-color: $white;

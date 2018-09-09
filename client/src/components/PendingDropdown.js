@@ -33,7 +33,9 @@ const PendingDropdown = ({ pending, removePending }) => {
   const NoPendingItems = () => {
     return (
       <div className="dropdown-item">
-        <p className="pending-item-text no-matches">No pending matches</p>
+        <p className="pending-item-text no-matches unselectable">
+          No pending matches
+        </p>
       </div>
     );
   };

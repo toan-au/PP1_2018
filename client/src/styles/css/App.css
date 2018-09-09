@@ -38,9 +38,22 @@ a {
   text-decoration: none;
   transition: .2s;
   font-size: 1.1em; }
+  transition: .2s; }
+}
 
 a:hover {
   color: #ab1e24; }
+
+.banner {
+  width: 0 auto;
+  margin: 0 auto;
+  text-align: center;
+  color: #e8e8e8; }
+
+h1 {
+  font-size: 45px;
+  padding-top: 50px;
+  padding-bottom: 50px; }
 
 .container-custom {
   padding: 12px 80px; }

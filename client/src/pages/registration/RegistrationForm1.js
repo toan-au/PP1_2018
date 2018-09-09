@@ -23,6 +23,20 @@ class RegistrationForm1 extends Component {
 
   // validation for select fields
   selected = value => (value !== '-1' ? undefined : 'Please select an option');
+  validateImage = imageList => {
+    if (imageList) {
+      if (imageList.length > 1) {
+        return 'You can upload one image at a time';
+      } else if (imageList.length === 1) {
+        let selectedImage = imageList[0];
+        if (!selectedImage.type.match('image.*')) {
+          return 'Only image files are allowed';
+        } else if (selectedImage.size > 1048576) {
+          return 'Maximum file size exceeded';
+        }
+      }
+    }
+  };
 
   componentDidMount() {
     this.getRegionsList();
@@ -63,6 +77,16 @@ class RegistrationForm1 extends Component {
     return localeItems;
   }
 
+  renderAges = () => {
+    const ages = [...Array(100).keys()];
+    const ageItems = ages.map(age => (
+      <option key={age} value={age}>
+        {age}
+      </option>
+    ));
+    return ageItems;
+  };
+
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -71,7 +95,11 @@ class RegistrationForm1 extends Component {
           <h2 className="title">Sign Up</h2>
           <div className="form-body">
             <div className="left">
-              <Field name="pfp" component={PfpInput} />
+              <Field
+                name="pfp"
+                component={PfpInput}
+                validate={this.validateImage}
+              />
             </div>
             <div className="right">
               <div className="field">
@@ -119,14 +147,7 @@ class RegistrationForm1 extends Component {
                   component={SelectWithError}
                   validate={this.selected}
                 >
-                  <option value="-1" disabled>
-                    Please select an option
-                  </option>
-                  <option value="1">18-20</option>
-                  <option value="2">21-25</option>
-                  <option value="3">26-30</option>
-                  <option value="4">31-35</option>
-                  <option value="5">36+</option>
+                  {this.renderAges()}
                 </Field>
               </div>
 
@@ -178,12 +199,15 @@ let registrationForm1 = reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   initialValues: {
+    displayName: 'deftCorgi',
+    bio: 'cows cows cows',
     answers: {},
     preferences: {},
     importances: {},
-    age: -1,
-    region: -1,
-    locale: -1
+    age: 20,
+    region: 1,
+    locale: 1,
+    playstyle: 'casual'
   }
 })(RegistrationForm1);
 

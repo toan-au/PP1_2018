@@ -58,7 +58,7 @@ passport.use(
       });
 
       // persist to DB
-      googleUser.save();
+      await googleUser.save();
 
       // if no existing user, create new user here
       console.log('new user created id:' + googleUser.googleId, ', ' + user.id);
@@ -93,7 +93,7 @@ router.get('/logout', (req, res) => {
 
 // returns the current user object
 router.get('/current', (req, res) => {
-  //console.log('user: ' + req.user.id);
+  //console.log('user: ' + req.user);
   res.send(req.user);
 });
 
