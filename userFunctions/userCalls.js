@@ -114,7 +114,6 @@ var likeUser = async function(requestId, targetId) {
     ) {
       //The match already exists, leave the loop
       return;
-      
     }
 
     //If the target has interacted with the requesting user, and they have responded
@@ -172,31 +171,20 @@ var dislikeUser = async function(requestId, targetId) {
       filterArray.userResponse == "L"
     ) {
       //The match is updated to become a dislike
-      await matches.update({matchResponse: 'D'}, {where: {id: filterArray.id}})
+      await matches.update({userResponse: 'D'}, {where: {id: filterArray.id}})
       return;
       
     }
 
-    //If the target has interacted with the requesting user, and they have responded
+    //If the target has interacted with the requesting user
     if( 
       filterArray.userId == targetId &&
-      filterArray.matchId == requestId &&
-      (filterArray.matchResponse == "L" || filterArray.matchResponse == "D")
+      filterArray.matchId == requestId
     ){
        //The match is updated to become a dislike
        await matches.update({matchResponse: 'D'}, {where: {id: filterArray.id}})
        return;
     }
-
-    //If the target has interacted with the requesting user, and they have not responded.
-    if(
-      filterArray.userId == targetId &&
-      filterArray.matchId == requestId &&
-      (filterArray.matchResponse == "P")){
-        //Match exists but was pending, updates to Like.
-        await matches.update({matchResponse: 'D'}, {where: {id: filterArray.id}})
-        return;
-      }
 
     //The match does not exist, either as created by the user requesting the match, or the targeted user.
   }
