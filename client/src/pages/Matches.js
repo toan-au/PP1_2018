@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMatched } from '../redux/actions/matched';
+import defaultPfp from '../images/fortnite_drift_.png';
 
 class Matches extends Component {
   componentDidMount = async () => {
@@ -11,9 +12,17 @@ class Matches extends Component {
   renderMatched = () => {
     return this.props.matched.map(match => (
       <li key={match.id}>
-        <h3>{match.displayName}</h3>
-        <span>{match.age}</span>
-        <div>{match.bio}</div>
+        <img
+          className="profile-pic"
+          src={defaultPfp}
+          alt={match.displayName + "'s profile picture"}
+        />
+        <div className="UserDescription">
+          <h3>{match.displayName}</h3>
+          <span>Age: {match.age}</span>
+          <div>{match.bio}</div>
+        </div>
+        <a href="#" className="RemoveUser">Remove</a>
       </li>
     ));
   };
@@ -22,8 +31,8 @@ class Matches extends Component {
     const { matched } = this.props;
     return (
       <div className="Matches container">
-        <div>
-          <h3>Your matches</h3>
+        <div className="banner">
+          <h1>Your Matches</h1>
         </div>
         <div>
           <ul className="matches-list">

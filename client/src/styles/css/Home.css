@@ -5,27 +5,18 @@
 /* paddings */
 /* border */
 /* kittens */
-.Home .banner {
-  width: 0px auto;
-  margin: 0 auto;
-  text-align: center;
+.Home .match {
+  margin: 50px;
+  border-radius: 5px;
+  border: #c82128 2px;
   color: #e8e8e8;
-  padding-top: 50px;
-  padding-bottom: 30px; }
-  .Home .banner h1 {
-    font-size: 80px;
-    margin-bottom: 50px; }
-  .Home .banner .match {
-    margin: 50px;
-    border-radius: 5px;
-    border: #c82128 2px;
-    color: #e8e8e8;
-    background: #c82128;
-    font-size: 20px;
-    padding-left: 50px;
-    padding-right: 50px; }
-  .Home .banner button:hover {
-    background: #ab1e24; }
+  background: #c82128;
+  font-size: 20px;
+  padding-left: 50px;
+  padding-right: 50px; }
+
+.Home button:hover {
+  background: #ab1e24; }
 
 .Home .matches {
   display: grid;

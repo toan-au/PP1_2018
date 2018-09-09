@@ -1,18 +1,6 @@
 @import 'variables';
 
 .Home {
-  .banner {
-    width: 0px auto;
-    margin: 0 auto;
-    text-align: center;
-    color: $white;
-    padding-top: 50px;
-    padding-bottom: 30px;
-
-    h1 {
-      font-size: 80px;
-      margin-bottom: 50px;
-    }
 
     .match {
       margin: 50px;
@@ -27,7 +15,7 @@
     button:hover {
       background: $red;
     }
-  }
+
 
   .matches {
     display: grid;
