@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import SearchInput, { createFilter } from 'react-search-input';
 import { getGames } from '../../redux/actions/games';
 import { getGenres } from '../../redux/actions/genres';
+import CheckboxGroup from '../../components/CheckboxGroup';
 
 const FILTER_KEYS = ['name'];
 
@@ -14,8 +15,9 @@ class GameAndGenresForm extends Component {
     selectedGames: []
   };
 
-  componentDidMount = () => {
-    this.props.getGames();
+  componentDidMount = async () => {
+    await this.props.getGames();
+    await this.props.getGenres();
   };
 
   onGameSearch = searchTerm => {
@@ -34,7 +36,7 @@ class GameAndGenresForm extends Component {
   };
 
   render() {
-    const { handleSubmit, onPrevious } = this.props;
+    const { handleSubmit, onPrevious, genres } = this.props;
     const { filteredGames, selectedGames } = this.state;
     return (
       <div className="RegistrationForm">
@@ -65,6 +67,13 @@ class GameAndGenresForm extends Component {
             </div>
             <div>
               <h4 className="question">Which genres do you enjoy playing?</h4>
+              {console.log(genres)}
+              <CheckboxGroup
+                options={genres}
+                labelName="name"
+                valueName="name"
+                name="genres"
+              />
             </div>
           </div>
           <div className="footer-buttons">
@@ -81,7 +90,7 @@ class GameAndGenresForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({ games: state.games });
+const mapStateToProps = state => ({ games: state.games, genres: state.genres });
 
 let gameAndGenresForm = reduxForm({
   form: 'registration',
@@ -90,7 +99,7 @@ let gameAndGenresForm = reduxForm({
 })(GameAndGenresForm);
 gameAndGenresForm = connect(
   mapStateToProps,
-  { getGames }
+  { getGames, getGenres }
 )(gameAndGenresForm);
 export default gameAndGenresForm;
 1;

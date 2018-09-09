@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 const CheckboxGroup = ({
   options,
-  identifier,
+  identifier = 'id',
   labelName,
   valueName,
   name,
