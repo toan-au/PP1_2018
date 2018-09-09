@@ -30,6 +30,7 @@ var matchingUser = await users.findOne({where: {id: dummyId}, include: [
 
 //Convert the user to JSON format
 matchingUser = matchingUser.toJSON()
+console.log(matchingUser)
 
 //Create array for use in finding users with matching game preferences
 var relevantGames = [];
@@ -38,9 +39,37 @@ for(var i = 0; i < matchingUser.prefGames.length; i++){
     relevantGames.push(filterArray);
 }
 
+var findMatches = await matches.findAll({
+    where: { [Op.or]: [{ userId: matchingUser.id }, { matchId: matchingUser.id }] }
+  });
+
+var invalidMatches = [];
+//Checks and stores the ids of existing matchings.
+for(var i = 0; i < matchingUser.matches.length; i++){
+    var filterArray = findMatches[i]
+    //If the user Id is equal to the requesting Id they have already interacted with that user, and will not see them
+    if (
+        filterArray.userId == matchingUser.id
+      ) {
+        invalidMatches.push(filterArray.matchId);
+      }
+      //If the user was not the initiating member of the match, it stores the initating user's id instead, if they have not reacted to a match.
+      if (
+        filterArray.matchId == matchingUser.id &&
+        filterArray.userResponse == 'L' &&
+        (filterArray.matchResponse == 'L' || filterArray.matchResponse == 'D')
+      ) {
+        invalidMatches.push(filterArray.userId);
+      }
+}
+
+//include the matching user as an invalid user to match with
+invalidMatches.push(matchingUser.id);
+
+
 
 //Find all users who have at least one matching game to intiating user
-var relevantUsers = await users.findAll({where: {id: {[Op.ne]: dummyId}}, limit: 30, include: [
+var relevantUsers = await users.findAll({where: {id: {[Op.notIn]: invalidMatches}} , limit: 30, include: [
     {model: prefGames, where: {gameId: {[Op.or]: relevantGames}}},
     {model: responses},
     {model: locale},
@@ -65,6 +94,7 @@ function orderDesc(b,a){
 
 //sorts array by descending matching scores.
 relevantUsers.sort(orderDesc);
+
 return relevantUsers;
 }
 
