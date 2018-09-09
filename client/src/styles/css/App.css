@@ -23,6 +23,9 @@ form,
   color: #e8e8e8;
   text-decoration: none; }
 
+p {
+  font-size: 1.1em; }
+
 textarea,
 input {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif; }
@@ -33,7 +36,10 @@ a {
   -moz-transition: .1s;
   -webkit-transition: .1s;
   text-decoration: none;
+  transition: .2s;
+  font-size: 1.1em; }
   transition: .2s; }
+}
 
 a:hover {
   color: #ab1e24; }

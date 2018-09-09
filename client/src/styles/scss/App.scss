@@ -22,6 +22,10 @@ form,
   text-decoration: none;
 }
 
+p {
+  font-size: 1.1em;
+}
+
 textarea,
 input {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
@@ -34,6 +38,8 @@ a {
   -webkit-transition:.1s;
   text-decoration: none;
   transition:.2s;
+
+  font-size: 1.1em;
 }
 
 a:hover {
