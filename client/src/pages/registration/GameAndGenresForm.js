@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import SearchInput, { createFilter } from 'react-search-input';
 import { getGames } from '../../redux/actions/games';
+import { getGenres } from '../../redux/actions/genres';
 
 const FILTER_KEYS = ['name'];
 
