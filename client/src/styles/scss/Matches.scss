@@ -1,11 +1,39 @@
 @import 'variables';
 
 .Matches {
+  h3 {
+    text-transform: uppercase;
+  }
+
+  img {
+    align: left;
+    width: 150px;
+  }
+
+  .UserDescription {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 10px;
+  }
+
+  .RemoveUser {
+    display: flex;
+    float: right;
+    color: $red !important;
+    padding-top: 10px;
+  }
+
   .matches-list {
+    font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    padding-bottom: 40px;
+
     li {
-      padding: 20px;
+      padding-right: 15px;
       background: $light_grey;
-      margin-bottom: 4px;
+      border-bottom: 10px solid $dark_yellow;
+      border-radius: 5px;
+      margin-bottom: 20px;
     }
   }
 }
