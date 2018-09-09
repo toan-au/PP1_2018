@@ -4,9 +4,9 @@ import image from '../images/fortnite_drift_.png'
 const AboutUs = () => {
   return (
     <div className="AboutUs">
-      <div className="middle">
-        <div className="inner">
-          <h3>Who Created GameSearchMatch?</h3>
+      <div className="AboutUs-middle">
+        <div className="AboutUs-inner">
+          <h3 className="AboutUsTitle">Who Created GameSearchMatch?</h3>
           <br />
           <p>
             GameSearchMatch was created by a group called The Terror Wrists. There Terror Wrists were formed for their

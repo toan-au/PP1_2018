@@ -10,12 +10,15 @@
   height: 100%;
   width: 100%; }
 
-.middle {
+.Privacy-middle {
   display: table-cell;
   vertical-align: middle; }
 
-.inner {
+.Privacy-inner {
   margin-left: auto;
   margin-right: auto;
   width: 1000px;
+  text-align: left; }
+
+.PrivacyTitle {
   text-align: center; }
