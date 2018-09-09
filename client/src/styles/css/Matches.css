@@ -10,15 +10,16 @@
 
 .Matches img {
   align: left;
-  width: 150px; }
+  width: 150px;
+  border-radius: 4px 0px 0px 0px; }
 
 .Matches .UserDescription {
   display: inline-block;
   vertical-align: top;
-  padding-left: 10px; }
+  padding-left: 10px;
+  padding-top: 10px; }
 
 .Matches .RemoveUser {
-  display: flex;
   float: right;
   color: #ab1e24 !important;
   padding-top: 10px; }
