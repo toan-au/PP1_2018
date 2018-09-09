@@ -27,7 +27,7 @@ var getPendingMatches = async function() {
   //extract the id values, from the matches
   for (var loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
     var filterArray = findMatches[loopCounter];
-    //If the user Id is equal to the requesting Id, and the user responded Life, while the match has not responded
+    //If the user Id is equal to the requesting Id, and the user responded Like, while the match has not responded
     if (filterArray.userResponse == 'L' && filterArray.matchResponse == 'P') {
       pendingUserIds.push(filterArray.matchId);
     }
@@ -93,4 +93,123 @@ var getSuccessfulMatches = async function() {
   return matchingUsers;
 };
 
-module.exports = { getPendingMatches, getSuccessfulMatches };
+var likeUser = async function(requestId, targetId) {
+
+  //debugging test.
+  //var requestId = 1;
+  //var targetId = 14;
+
+  //finds all matches the user has made, or made to him.
+  var findMatches = await matches.findAll({
+    where: { [Op.or]: [{ userId: requestId }, { matchId: requestId }] }
+  });
+  console.log(findMatches)
+  //extract the id values, from the matches
+  for (var loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
+    var filterArray = findMatches[loopCounter];
+    //If the current user, has already interacted with the target
+    if (
+      filterArray.userId == requestId &&
+      filterArray.matchId == targetId
+    ) {
+      //The match already exists, leave the loop
+      return;
+      
+    }
+
+    //If the target has interacted with the requesting user, and they have responded
+    if( 
+      filterArray.userId == targetId &&
+      filterArray.matchId == requestId &&
+      (filterArray.matchResponse == "L" || filterArray.matchResponse == "D")
+    ){
+       //The match already exists, leave the loop
+       return;
+    }
+
+    //If the target has interacted with the requesting user, and they have not responded.
+    if(
+      filterArray.userId == targetId &&
+      filterArray.matchId == requestId &&
+      (filterArray.matchResponse == "P")){
+        //Match exists but was pending, updates to Like.
+        await matches.update({matchResponse: 'L'}, {where: {id: filterArray.id}})
+        return;
+      }
+
+    //The match does not exist, either as created by the user requesting the match, or the targeted user.
+  }
+      //A new match is built
+      const newMatch = matches.build({
+        userId: requestId,
+        matchId: targetId,
+        userResponse: "L",
+        matchResponse: "P"
+      });
+
+      // persisted to DB
+      await newMatch.save();
+      return;
+}
+var dislikeUser = async function(requestId, targetId) {
+
+  //debugging test.
+  //var requestId = 1;
+  //var targetId = 14;
+
+  //finds all matches the user has made, or made to him.
+  var findMatches = await matches.findAll({
+    where: { [Op.or]: [{ userId: requestId }, { matchId: requestId }] }
+  });
+  console.log(findMatches)
+  //extract the id values, from the matches
+  for (var loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
+    var filterArray = findMatches[loopCounter];
+    //If the current user, has already interacted with the target, but now wishes to dislike them
+    if (
+      filterArray.userId == requestId &&
+      filterArray.matchId == targetId &&
+      filterArray.userResponse == "L"
+    ) {
+      //The match is updated to become a dislike
+      await matches.update({matchResponse: 'D'}, {where: {id: filterArray.id}})
+      return;
+      
+    }
+
+    //If the target has interacted with the requesting user, and they have responded
+    if( 
+      filterArray.userId == targetId &&
+      filterArray.matchId == requestId &&
+      (filterArray.matchResponse == "L" || filterArray.matchResponse == "D")
+    ){
+       //The match is updated to become a dislike
+       await matches.update({matchResponse: 'D'}, {where: {id: filterArray.id}})
+       return;
+    }
+
+    //If the target has interacted with the requesting user, and they have not responded.
+    if(
+      filterArray.userId == targetId &&
+      filterArray.matchId == requestId &&
+      (filterArray.matchResponse == "P")){
+        //Match exists but was pending, updates to Like.
+        await matches.update({matchResponse: 'D'}, {where: {id: filterArray.id}})
+        return;
+      }
+
+    //The match does not exist, either as created by the user requesting the match, or the targeted user.
+  }
+      //A new match is built
+      const newMatch = matches.build({
+        userId: requestId,
+        matchId: targetId,
+        userResponse: "D",
+        matchResponse: "P"
+      });
+
+      // persisted to DB
+      await newMatch.save();
+      return;
+}
+module.exports = { getPendingMatches, getSuccessfulMatches, likeUser, dislikeUser };

@@ -72,4 +72,18 @@ router.get('/regions', async (req, res) => {
   res.send(regions);
 });
 
+//must be given an object, which contains the Id's of the user who selected like,
+//and the user they liked.
+//creates/updates a like relation.
+router.get('/likeUser/:userId/:targetId', async (req, res) => {
+  await userCalls.likeUser(req.params.userId, req.params.targetId);
+});
+
+//must be given an object, which contains the Id's of the user who selected like,
+//and the user they liked.
+//creates/updates a dislike relation.
+router.get('/dislikeUser/:userId/:targetId', async (req, res) => {
+  await userCalls.dislikeUser(req.params.userId, req.params.targetId);
+});
+
 module.exports = router;

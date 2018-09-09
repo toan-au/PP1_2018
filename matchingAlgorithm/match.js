@@ -30,7 +30,6 @@ var matchingUser = await users.findOne({where: {id: dummyId}, include: [
 
 //Convert the user to JSON format
 matchingUser = matchingUser.toJSON()
-console.log(matchingUser)
 
 //Create array for use in finding users with matching game preferences
 var relevantGames = [];
