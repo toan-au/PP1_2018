@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SelectSearch = () => {
+const SelectSearch = ({}) => {
   return (
-    <div className="game-search">
+    <div className="SelectSearch">
       <SearchInput
         placeholder="Start typing to search"
         className="search-input"
