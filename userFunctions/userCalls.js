@@ -167,8 +167,7 @@ var dislikeUser = async function(requestId, targetId) {
     //If the current user, has already interacted with the target, but now wishes to dislike them
     if (
       filterArray.userId == requestId &&
-      filterArray.matchId == targetId &&
-      filterArray.userResponse == "L"
+      filterArray.matchId == targetId
     ) {
       //The match is updated to become a dislike
       await matches.update({userResponse: 'D'}, {where: {id: filterArray.id}})
