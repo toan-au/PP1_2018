@@ -23,6 +23,9 @@ class GameAndGenresForm extends Component {
   onGameSearch = searchTerm => {
     this.setState({ searchTerm });
 
+    // filteredGames should be nothing if no searchterm is provided
+    if (!searchTerm) return this.setState({ filteredGames: [] });
+
     const filteredGames = this.props.games.filter(
       createFilter(this.state.searchTerm, FILTER_KEYS)
     );
@@ -47,6 +50,7 @@ class GameAndGenresForm extends Component {
               <h4 className="question">Which games do you enjoy playing?</h4>
               <div className="game-search">
                 <SearchInput
+                  value="Start typing to search"
                   className="search-input"
                   onChange={this.onGameSearch}
                 />
@@ -67,7 +71,6 @@ class GameAndGenresForm extends Component {
             </div>
             <div>
               <h4 className="question">Which genres do you enjoy playing?</h4>
-              {console.log(genres)}
               <CheckboxGroup
                 options={genres}
                 labelName="name"

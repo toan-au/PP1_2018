@@ -197,7 +197,9 @@ let profileForm = reduxForm({
     age: 20,
     region: 1,
     locale: 1,
-    playstyle: 'casual'
+    playstyle: 'casual',
+    genres: {},
+    games: {}
   }
 })(ProfileForm);
 

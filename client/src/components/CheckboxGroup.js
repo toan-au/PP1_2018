@@ -18,13 +18,12 @@ const CheckboxGroup = ({
             <div className="choice" key={option[identifier]}>
               <label htmlFor={`${name}.${option[identifier]}`}>
                 <Field
-                  name={`${name}${option[identifier]}`}
+                  name={`${name}.${option[identifier]}`}
                   component="input"
                   id={`${name}.${option[identifier]}`}
                   type="checkbox"
                   value={option[valueName]}
                   onChange={onSelection}
-                  required
                 />
                 {option[labelName]}
               </label>
