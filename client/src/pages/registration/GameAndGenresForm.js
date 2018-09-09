@@ -50,7 +50,7 @@ class GameAndGenresForm extends Component {
               <h4 className="question">Which games do you enjoy playing?</h4>
               <div className="game-search">
                 <SearchInput
-                  value="Start typing to search"
+                  placeholder="Start typing to search"
                   className="search-input"
                   onChange={this.onGameSearch}
                 />
@@ -61,7 +61,7 @@ class GameAndGenresForm extends Component {
                     </li>
                   ))}
                 </ul>
-                <h4 className="question">your games?</h4>
+                <h4 className="question">your games</h4>
                 <ul className="selected">
                   {selectedGames.map(selected => (
                     <li key={selected.name}>{selected.name}</li>
