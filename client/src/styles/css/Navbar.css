@@ -49,7 +49,7 @@
     margin-top: 20px;
     padding-left: 1.5em !important; }
   .navbar .nav-item:hover {
-    color: white !important; }
+    color: #ab1e24 !important; }
   .navbar .nav-rm-item {
     padding-right: 84px !important; }
   .navbar .nav-item,
@@ -59,7 +59,7 @@
     .navbar .nav-item .nav-link:hover,
     .navbar .nav-link .nav-item:hover,
     .navbar .nav-link .nav-link:hover {
-      color: white !important; }
+      color: #ab1e24 !important; }
   .navbar .dropdown-menu.settings {
     min-width: 30px !important;
     left: auto !important; }
