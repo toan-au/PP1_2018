@@ -1,0 +1,16 @@
+@import 'variables';
+
+.SelectSearch {
+  .results {
+    li {
+      color: $gunmetal;
+      // background: $grey;
+    }
+  }
+
+  .selected {
+    li {
+      background: $light_red;
+    }
+  }
+}

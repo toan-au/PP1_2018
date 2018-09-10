@@ -625,6 +625,9 @@ h3 {
   background-size: cover;
   height: 100%;
   padding: 40px; }
+  .Registration .question {
+    font-size: 1.5em;
+    color: #1e1e2b; }
   .Registration .title {
     text-align: center;
     font-size: 2em;
@@ -641,20 +644,20 @@ h3 {
       color: #ab1e24;
       font-size: 50px;
       padding-bottom: 15px; }
-  .Registration .form-body {
+  .Registration .form-body.grid {
     display: grid;
     grid-template: 100% 1fr / 1fr 4fr;
     margin-bottom: 10px; }
-    .Registration .form-body .left {
+    .Registration .form-body.grid .left {
       grid-area: 1 / 1 / 1 / 1; }
-    .Registration .form-body .right {
+    .Registration .form-body.grid .right {
       padding: 12px 20px;
       grid-area: 1 / 2 / 1 / 2; }
-    .Registration .form-body .bio {
+    .Registration .form-body.grid .bio {
       grid-area: 2 / 1 / 2 / 3;
       color: #1e1e2b;
       font-size: 1.3em; }
-      .Registration .form-body .bio textarea {
+      .Registration .form-body.grid .bio textarea {
         font-size: 1.3em;
         min-width: 100%;
         max-width: 100%;
@@ -717,16 +720,11 @@ h3 {
       border-top-right-radius: 6px;
       background: red; }
 
-/* Chuck your variables in here*/
-/* colors */
-/* sizes */
-/* backgrounds */
-/* paddings */
-/* border */
-/* kittens */
-.QuestionAnswerForm .question {
-  font-size: 1.5em;
+.game-search .results li {
   color: #1e1e2b; }
+
+.game-search .selected li {
+  background: #c82128; }
 
 .RadioGroup {
   margin: 20px 0px; }
