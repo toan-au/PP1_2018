@@ -7,10 +7,13 @@ const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const facebookStrategy = require('passport-facebook').Strategy;
 const discordStrategy = require('passport-discord').Strategy;
 
-const keys = require('../config/keys');
+// models
 const Users = require('../models').users;
 const GoogleUsers = require('../models').googleUsers;
 const FacebookUsers = require('../models').facebookUsers;
+const DiscordUsers = require('../models').discordUsers;
+
+const keys = require('../config/keys');
 
 // serialize the user into the session
 passport.serializeUser((user, done) => {
@@ -154,7 +157,7 @@ passport.use(
       });
 
       // persist to DB
-      await facebookUser.save();
+      await discordUser.save();
 
       console.log(
         'new user created id:' + discordUser.discordId,
@@ -206,7 +209,7 @@ router.get(
 
 router.get(
   '/discord/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  passport.authenticate('discord', { failureRedirect: '/login' }),
   (req, res) => {
     if (!req.user.finishedRegistration) {
       return res.redirect('/register');
