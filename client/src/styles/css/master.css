@@ -519,7 +519,7 @@ h3 {
 /* paddings */
 /* border */
 /* kittens */
-form {
+.ContactForm form {
   max-width: 720px;
   padding: 20px;
   margin: 0 auto;
@@ -528,26 +528,26 @@ form {
   border-bottom: 10px solid #deb841;
   text-align: center; }
 
-.field {
+.ContactForm .field {
   width: 100%;
   padding: 2px 5px;
   margin-bottom: 7px;
   text-align: left !important; }
 
-label {
+.ContactForm label {
   color: #1e1e2b;
   font-size: 1.3em;
   text-align: left;
   padding-bottom: 3px; }
 
-input {
+.ContactForm input {
   border: solid #bfbdc1 1px;
   border-radius: 5px;
   font-size: 1.3em;
   width: 100%;
   padding: 1px; }
 
-textarea {
+.ContactForm textarea {
   font-size: 1.3em;
   min-width: 100%;
   max-width: 100%;
@@ -558,18 +558,18 @@ textarea {
   border: solid #bfbdc1 1px;
   resize: none; }
 
-.submit {
+.ContactForm .submit {
   width: 150px;
   border-radius: 5px;
   color: #e8e8e8;
   background: #ab1e24;
   text-align: center; }
 
-.submit:hover {
+.ContactForm .submit:hover {
   background-color: #c82128;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
 
-button:hover {
+.ContactForm button:hover {
   cursor: pointer; }
 
 /* Chuck your variables in here*/
@@ -766,12 +766,6 @@ button:hover {
       border-top-right-radius: 6px;
       background: red; }
 
-.game-search .results li {
-  color: #1e1e2b; }
-
-.game-search .selected li {
-  background: #c82128; }
-
 .RadioGroup {
   margin: 20px 0px; }
   .RadioGroup .choices {
@@ -793,3 +787,16 @@ button:hover {
 .RadioGroup.importance .choices {
   grid-template: 1fr / 1fr 1fr 1fr;
   grid-gap: 10px 10px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.SelectSearch .results li {
+  color: #1e1e2b; }
+
+.SelectSearch .selected li {
+  background: #c82128; }
