@@ -1,16 +1,30 @@
 @import 'variables';
-
+.search-input {
+    padding-bottom:5px;
+  border: solid white;
+  border-radius: 5px;
+  }
+  
+  
+}
 .SelectSearch {
+  padding-top: 10px;
   .results {
+    background: $white;
     li {
+      padding: 5px;
       color: $gunmetal;
-      // background: $grey;
+      
     }
   }
 
   .selected {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
     li {
-      background: $light_red;
+      background: $red;
+      padding: 5px;
     }
   }
 }

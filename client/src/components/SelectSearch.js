@@ -52,7 +52,7 @@ class SelectSearch extends Component {
             </li>
           ))}
         </ul>
-        <h4 className="question">your Selections</h4>
+        {/* <label className="question">Your selections</label> */}
         <ul className="selected">
           {selectedItems.map(item => (
             <li key={item[identifier]}>{item[labelName]}</li>

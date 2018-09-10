@@ -103,9 +103,3 @@
       border-top-left-radius: 6px;
       border-top-right-radius: 6px;
       background: red; }
-
-.game-search .results li {
-  color: #1e1e2b; }
-
-.game-search .selected li {
-  background: #c82128; }
