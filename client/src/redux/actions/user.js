@@ -43,13 +43,13 @@ export const updateUser = (id, newUser) => {
 
 export const likeUser = (id, targetId) => {
   return async dispatch => {
-    await axios.get(`/api/users/like/${id}/${targetId}`);
+    await axios.get(`/api/user/like/${id}/${targetId}`);
   };
 };
 
 export const dislikeUser = (id, targetId) => {
   return async dispatch => {
-    await axios.get(`/api/users/dislike/${id}/${targetId}`);
+    await axios.get(`/api/user/dislike/${id}/${targetId}`);
   };
 };
 
