@@ -34,7 +34,8 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
 });
 //returns a user's pending matches
 router.get('/matches/pending/:id', async (req, res) => {
-  const pendingMatches = await userCalls.getPendingMatches();
+  const id = req.params.id;
+  const pendingMatches = await userCalls.getPendingMatches(id);
   res.send(pendingMatches);
 });
 
