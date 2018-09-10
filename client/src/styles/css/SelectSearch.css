@@ -5,22 +5,29 @@
 /* paddings */
 /* border */
 /* kittens */
-.search-input .SearchInput {
+.search-input {
   padding-bottom: 5px;
-  border: solid white;
-  border-radius: 5px; }
+  border-radius: 5px;
+  width: 50%; }
 
 .SelectSearch {
+  display: flex;
   padding-top: 10px; }
   .SelectSearch .results {
-    background: #e8e8e8; }
+    background: #7b1115;
+    width: 49.5%;
+    border-radius: 5px;
+    padding: 5px; }
     .SelectSearch .results li {
-      padding: 5px;
-      color: #1e1e2b; }
+      padding: 3px;
+      color: #e8e8e8; }
   .SelectSearch .selected {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 5px; }
+    padding: 5px;
+    border-radius: 5px;
+    width: 49.5%;
+    background: #ab1e24; }
     .SelectSearch .selected li {
-      background: #ab1e24;
-      padding: 5px; }
+      padding: 3px; }
+
+.genres {
+  border: solid white; }
