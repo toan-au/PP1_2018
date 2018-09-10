@@ -28,14 +28,6 @@ export const updateUser = (id, newUser) => {
     if (newUser.pfp !== undefined) {
       data.append('pfp', newUser.pfp[0]);
     }
-
-    // const it = data.values();
-    // var result = it.next();
-    // while (!result.done) {
-    //   console.log(result.value); // 1 3 5 7 9
-    //   result = it.next();
-    // }
-
     // post formData to api
     const response = await axios({
       method: 'post',
@@ -46,6 +38,18 @@ export const updateUser = (id, newUser) => {
 
     const user = response.data;
     dispatch({ type: UPDATE_USER, user });
+  };
+};
+
+export const likeUser = (id, targetId) => {
+  return async dispatch => {
+    await axios.get(`/api/users/like/${id}/${targetId}`);
+  };
+};
+
+export const dislikeUser = (id, targetId) => {
+  return async dispatch => {
+    await axios.get(`/api/users/dislike/${id}/${targetId}`);
   };
 };
 
