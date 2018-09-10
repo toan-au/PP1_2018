@@ -8,27 +8,40 @@
 .search-input {
   padding-bottom: 5px;
   border-radius: 5px;
-  width: 50%; }
+  width: 100%; }
+
+.gameList {
+  display: flex; }
+
+.listTitle {
+  display: flex;
+  padding-bottom: 5px; }
 
 .SelectSearch {
-  display: flex;
   padding-top: 10px;
   padding-bottom: 10px; }
-  .SelectSearch .results {
-    background: #7b1115;
-    width: 49.5%;
+  .SelectSearch input {
+    border: solid #bfbdc1 1px;
     border-radius: 5px;
-    padding: 5px; }
+    padding: 5px;
+    width: 100%; }
+  .SelectSearch .results {
+    border: solid #bfbdc1 1px;
+    background: white;
+    width: 50%;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 3px; }
     .SelectSearch .results li {
       padding: 3px;
-      color: #e8e8e8; }
+      color: #1e1e2b; }
   .SelectSearch .selected {
     padding: 5px;
     border-radius: 5px;
-    width: 49.5%;
-    background: #ab1e24; }
+    width: 50%;
+    background: white;
+    margin-left: 3px;
+    border: solid #bfbdc1 1px; }
     .SelectSearch .selected li {
-      padding: 3px; }
-
-.genres {
-  border: solid white; }
+      padding: 3px;
+      color: #1e1e2b; }

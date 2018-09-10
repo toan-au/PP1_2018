@@ -81,7 +81,7 @@ class ProfileForm extends Component {
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>
-          <h2 className="title">Register</h2>
+          <h2 className="title">Sign Up</h2>
           <div className="form-body grid">
             <div className="left">
               <Field
