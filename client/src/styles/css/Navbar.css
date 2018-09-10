@@ -38,18 +38,28 @@
 
 .navbar {
   background: #1e1e2b; }
+  .navbar .logo:hover {
+    color: #deb841 !important; }
   .navbar .logo {
     padding-top: 15px;
     font-size: 2.7em;
     text-decoration: none;
     color: #bfbdc1; }
   .navbar .nav-item {
+    margin-top: 20px;
     padding-left: 1.5em !important; }
+  .navbar .nav-item:hover {
+    color: white !important; }
   .navbar .nav-rm-item {
     padding-right: 84px !important; }
   .navbar .nav-item,
   .navbar .nav-link {
     color: #bfbdc1 !important; }
+    .navbar .nav-item .nav-item:hover,
+    .navbar .nav-item .nav-link:hover,
+    .navbar .nav-link .nav-item:hover,
+    .navbar .nav-link .nav-link:hover {
+      color: white !important; }
   .navbar .dropdown-menu.settings {
     min-width: 30px !important;
     left: auto !important; }
