@@ -1,10 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+
+// passport strategys
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const keys = require('../config/keys');
+const facebookStrategy = require('passport-facebook').Strategy;
+const discordStrategy = require('passport-discord').Strategy;
+
+// models
 const Users = require('../models').users;
 const GoogleUsers = require('../models').googleUsers;
+const FacebookUsers = require('../models').facebookUsers;
+const DiscordUsers = require('../models').discordUsers;
+
+const keys = require('../config/keys');
 
 // serialize the user into the session
 passport.serializeUser((user, done) => {
@@ -67,16 +76,140 @@ passport.use(
   )
 );
 
-// user authenticates with google
+passport.use(
+  new facebookStrategy(
+    {
+      clientID: keys.facebookClientId,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: '/api/auth/facebook/callback'
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      const { id, displayName, email } = profile;
+      // search if existing user
+      const existingUser = await FacebookUsers.findById(id);
+      if (existingUser) {
+        console.log(
+          `existing user found: ${existingUser.facebookId} ${
+            existingUser.userId
+          }`
+        );
+        return done(null, existingUser);
+      }
+
+      // build a generic User object
+      const user = Users.build({
+        displayName,
+        language: 'en'
+      });
+
+      await user.save();
+
+      // associate googleUser object with bew generic user object
+      const facebookUser = FacebookUsers.build({
+        facebookId: id,
+        userId: user.id
+      });
+
+      // persist to DB
+      await facebookUser.save();
+
+      console.log(
+        'new user created id:' + facebookUser.facebookId,
+        ', ' + facebookUser.userId
+      );
+      return done(null, facebookUser);
+    }
+  )
+);
+
+passport.use(
+  new discordStrategy(
+    {
+      clientID: keys.discordClientId,
+      clientSecret: keys.discordClientSecret,
+      callbackURL: '/api/auth/discord/callback'
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      const { id, displayName, email } = profile;
+      // search if existing user
+      const existingUser = await DiscordUsers.findById(id);
+      if (existingUser) {
+        console.log(
+          `existing user found: ${existingUser.discordId} ${
+            existingUser.userId
+          }`
+        );
+        return done(null, existingUser);
+      }
+
+      // build a generic User object
+      const user = Users.build({
+        displayName,
+        language: 'en'
+      });
+
+      await user.save();
+
+      // associate googleUser object with bew generic user object
+      const discordUser = DiscordUsers.build({
+        discordId: id,
+        userId: user.id
+      });
+
+      // persist to DB
+      await discordUser.save();
+
+      console.log(
+        'new user created id:' + discordUser.discordId,
+        ', ' + discordUser.userId
+      );
+      return done(null, discordUser);
+    }
+  )
+);
+
+// user authentication routes
 router.get(
   '/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-// callback
+router.get(
+  '/facebook',
+  passport.authenticate('facebook', { scope: ['email'] })
+);
+
+router.get(
+  '/discord',
+  passport.authenticate('discord', { failureRedirect: '/' })
+);
+
+// callbacks
 router.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
+  (req, res) => {
+    if (!req.user.finishedRegistration) {
+      return res.redirect('/register');
+    }
+    res.redirect('/');
+  }
+);
+
+router.get(
+  '/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  (req, res) => {
+    if (!req.user.finishedRegistration) {
+      return res.redirect('/register');
+    }
+    res.redirect('/');
+  }
+);
+
+router.get(
+  '/discord/callback',
+  passport.authenticate('discord', { failureRedirect: '/login' }),
   (req, res) => {
     if (!req.user.finishedRegistration) {
       return res.redirect('/register');

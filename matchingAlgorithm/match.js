@@ -74,7 +74,6 @@ var relevantUsers = await users.findAll({where: {id: {[Op.notIn]: invalidMatches
     {model: locale},
     {model: region},
     {model: matches}
-    
 ]});
 
 

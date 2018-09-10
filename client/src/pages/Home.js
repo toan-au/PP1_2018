@@ -3,6 +3,7 @@ import MatchCard from '../components/MatchCard';
 import { connect } from 'react-redux';
 import { getMatches } from '../redux/actions/matches';
 import PacmanSpinner from '../components/PacmanSpinner';
+import { likeUser, dislikeUser } from '../redux/actions/user';
 
 class Home extends Component {
   state = { matches: [], loading: true };
@@ -15,8 +16,14 @@ class Home extends Component {
   }
 
   renderMatches = () => {
+    const { likeUser, dislikeUser, user } = this.props;
     return this.props.matches.map(match => (
-      <MatchCard key={match.id} match={match} />
+      <MatchCard
+        key={match.id}
+        match={match}
+        onLike={() => likeUser(user.id, match.id)}
+        onDislike={() => dislikeUser(user.id, match.id)}
+      />
     ));
   };
 
@@ -41,5 +48,5 @@ const mapeStateToProps = state => ({
 
 export default connect(
   mapeStateToProps,
-  { getMatches }
+  { getMatches, likeUser, dislikeUser }
 )(Home);
