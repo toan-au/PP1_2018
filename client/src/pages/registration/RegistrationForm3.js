@@ -10,7 +10,7 @@ class RegistrationForm1 extends Component {
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="sign">
-            <h1>Sign Up</h1>
+            <h1>Registration</h1>
           </div>
           <div className="Form">
             <div className="next">

@@ -92,7 +92,7 @@ class RegistrationForm1 extends Component {
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>
-          <h2 className="title">Sign Up</h2>
+          <h2 className="title">Register</h2>
           <div className="form-body">
             <div className="left">
               <Field
@@ -176,13 +176,13 @@ class RegistrationForm1 extends Component {
               <label>Bio: </label>
               <Field
                 component="textarea"
-                placeholder="Biography"
+                placeholder="Describe youreself..."
                 name="bio"
                 required="required"
               />
             </div>
           </div>
-          <div className="footer-buttons">
+          <div className="footer-buttons1">
             <button className="next" type="submit">
               Next
             </button>
@@ -199,8 +199,8 @@ let registrationForm1 = reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   initialValues: {
-    displayName: 'deftCorgi',
-    bio: 'cows cows cows',
+    displayName: 'God',
+    bio: 'Kami sama',
     answers: {},
     preferences: {},
     importances: {},

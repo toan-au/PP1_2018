@@ -6,6 +6,9 @@
   height: 100%;
   padding: 40px;
 
+  .PfpInput {
+    color: $gunmetal;
+  }
   .title {
     text-align: center;
     font-size: 2em;
@@ -18,7 +21,7 @@
     padding: 20px;
     margin: 0 auto;
     background: $white;
-    border-radius: 15px;
+    border-radius: 5px;
     border-bottom: 10px solid $yellow;
 
     h2 {
@@ -54,10 +57,21 @@
         min-height: 200px;
         border-radius: 8px;
         border: solid $light_grey 1px;
+        padding: 10px;
+        
       }
     }
   }
-
+  .footer-buttons1{
+    text-align: right;
+    .next {
+      width: 150px;
+      border-radius: 15px;
+      color: $white;
+      background: $red;
+      text-align: center;
+    }
+  }
   .footer-buttons {
     display: flex;
     justify-content: space-between;
@@ -104,7 +118,6 @@
 
     label {
       position: relative;
-      top: 3px;
       flex: 1;
       color: $gunmetal;
       text-align: left;
@@ -116,9 +129,10 @@
       box-sizing: border-box;
       flex: 3;
       font-size: 1.2em;
-      padding: 3px;
+      padding-left: 10px;
       border-radius: 6px;
       border: solid $light_grey 1px;
+      
     }
 
     .SelectWithError {
