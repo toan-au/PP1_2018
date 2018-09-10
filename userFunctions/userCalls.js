@@ -217,6 +217,7 @@ var finishRegistration = async function(registrationForm, requestId){
   //Dummy form for testing
   
   /*
+  var requestId = 1001;
   var registrationForm = {
     answers: {1: "C", 2: "A", 3: "C", 4: "A", 5: "A", 6: "C", 7: "A", 8: "A", 9: "C", 10: "A"},
     importances: {1: "high", 2: "high", 3: "low", 4: "medium", 5: "low", 6: "low", 7: "high", 8: "medium", 9: "low", 10: "low"},
@@ -224,7 +225,11 @@ var finishRegistration = async function(registrationForm, requestId){
     5: {C: true, A: true, B: true, D:true}, 6: {D: false, A: true, C: true, B: true}, 7: {B: false, A: true}, 8: {B: false, A:true}, 9: {A: true, B:true}, 10: {A:true, C: true}}
   }*/
 
-  var requestId = 1001;
+  //clear existing responses by the user.
+  responses.destroy({where: {userId: requestId}});
+
+
+ 
 
   //array to hold a user's responses.
   var registerResponses = [];
