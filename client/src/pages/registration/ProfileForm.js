@@ -2,20 +2,9 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import axios from 'axios';
 import PfpInput from './PfpInput';
+import SelectWithError from '../../components/SelectWithError';
 
-const SelectWithError = ({
-  input,
-  meta: { touched, error, warning },
-  children
-}) => (
-  <div className="SelectWithError">
-    {(touched && (error && <span className="error">{error}</span>)) ||
-      (warning && <span>{warning}</span>)}
-    <select {...input}>{children}</select>
-  </div>
-);
-
-class RegistrationForm1 extends Component {
+class ProfileForm extends Component {
   state = {
     regions: [],
     locales: []
@@ -93,7 +82,7 @@ class RegistrationForm1 extends Component {
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>
           <h2 className="title">Sign Up</h2>
-          <div className="form-body">
+          <div className="form-body grid">
             <div className="left">
               <Field
                 name="pfp"
@@ -183,6 +172,7 @@ class RegistrationForm1 extends Component {
             </div>
           </div>
           <div className="footer-buttons">
+            <div />
             <button className="next" type="submit">
               Next
             </button>
@@ -194,7 +184,7 @@ class RegistrationForm1 extends Component {
 }
 
 // hook up with red-form
-let registrationForm1 = reduxForm({
+let profileForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
@@ -207,9 +197,11 @@ let registrationForm1 = reduxForm({
     age: 20,
     region: 1,
     locale: 1,
-    playstyle: 'casual'
+    playstyle: 'casual',
+    genres: {},
+    games: []
   }
-})(RegistrationForm1);
+})(ProfileForm);
 
 // export HOC
-export default registrationForm1;
+export default profileForm;

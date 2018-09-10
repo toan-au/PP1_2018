@@ -15,9 +15,9 @@ const matches = require('../models').matches;
 const locale = require('../models').locale;
 const region = require('../models').region;
 
-var getPendingMatches = async function() {
+var getPendingMatches = async function(id) {
   //placeholder Id, will take in variable ID values in future cases
-  var requestId = 1;
+  var requestId = id;
 
   //find the requested user, and their matches
   var findMatches = await matches.findAll({ where: { userId: requestId } });

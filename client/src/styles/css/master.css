@@ -519,12 +519,58 @@ h3 {
 /* paddings */
 /* border */
 /* kittens */
-.contact-title {
-  margin-left: auto;
-  margin-right: auto;
+form {
+  max-width: 720px;
+  padding: 20px;
+  margin: 0 auto;
+  background: #e8e8e8;
+  border-radius: 5px;
+  border-bottom: 10px solid #deb841;
   text-align: center; }
-  .contact-title input {
-    margin-bottom: 10px; }
+
+.field {
+  width: 100%;
+  padding: 2px 5px;
+  margin-bottom: 7px;
+  text-align: left !important; }
+
+label {
+  color: #1e1e2b;
+  font-size: 1.3em;
+  text-align: left;
+  padding-bottom: 3px; }
+
+input {
+  border: solid #bfbdc1 1px;
+  border-radius: 5px;
+  font-size: 1.3em;
+  width: 100%;
+  padding: 1px; }
+
+textarea {
+  font-size: 1.3em;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 200px;
+  padding-left: 1px;
+  padding-top: 1px;
+  border-radius: 5px;
+  border: solid #bfbdc1 1px;
+  resize: none; }
+
+.submit {
+  width: 150px;
+  border-radius: 5px;
+  color: #e8e8e8;
+  background: #ab1e24;
+  text-align: center; }
+
+.submit:hover {
+  background-color: #c82128;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
+
+button:hover {
+  cursor: pointer; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -625,6 +671,9 @@ h3 {
   background-size: cover;
   height: 100%;
   padding: 40px; }
+  .Registration .question {
+    font-size: 1.5em;
+    color: #1e1e2b; }
   .Registration .title {
     text-align: center;
     font-size: 2em;
@@ -641,20 +690,20 @@ h3 {
       color: #ab1e24;
       font-size: 50px;
       padding-bottom: 15px; }
-  .Registration .form-body {
+  .Registration .form-body.grid {
     display: grid;
     grid-template: 100% 1fr / 1fr 4fr;
     margin-bottom: 10px; }
-    .Registration .form-body .left {
+    .Registration .form-body.grid .left {
       grid-area: 1 / 1 / 1 / 1; }
-    .Registration .form-body .right {
+    .Registration .form-body.grid .right {
       padding: 12px 20px;
       grid-area: 1 / 2 / 1 / 2; }
-    .Registration .form-body .bio {
+    .Registration .form-body.grid .bio {
       grid-area: 2 / 1 / 2 / 3;
       color: #1e1e2b;
       font-size: 1.3em; }
-      .Registration .form-body .bio textarea {
+      .Registration .form-body.grid .bio textarea {
         font-size: 1.3em;
         min-width: 100%;
         max-width: 100%;
@@ -717,16 +766,11 @@ h3 {
       border-top-right-radius: 6px;
       background: red; }
 
-/* Chuck your variables in here*/
-/* colors */
-/* sizes */
-/* backgrounds */
-/* paddings */
-/* border */
-/* kittens */
-.QuestionAnswerForm .question {
-  font-size: 1.5em;
+.game-search .results li {
   color: #1e1e2b; }
+
+.game-search .selected li {
+  background: #c82128; }
 
 .RadioGroup {
   margin: 20px 0px; }
