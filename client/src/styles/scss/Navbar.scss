@@ -19,7 +19,7 @@
     
   }
   .nav-item:hover {
-    color: white !important;
+    color: $red !important;
   }
 
   // right most item, padding on nav is 16px - for alignning with footer
@@ -33,7 +33,7 @@
     
     .nav-item:hover,
     .nav-link:hover {
-      color: white !important;
+      color:$red !important;
     }
   }
 
