@@ -96,4 +96,18 @@ router.get('/user/dislike/:userId/:targetId', async (req, res) => {
   res.send(response);
 });
 
+//must be given an object, which contains the Id's of the user who selected like,
+//and the user they liked.
+//creates/updates a dislike relation.
+router.get('/user/loadResponses', async (req, res) => {
+  //Function takes in the object holding the data for the questionnaire
+  //And the user's Id as request Id
+  const response = await userCalls.finishRegistration(
+    req.params.registrationForm,
+    req.params.requestId
+  );
+
+  res.send(response);
+});
+
 module.exports = router;
