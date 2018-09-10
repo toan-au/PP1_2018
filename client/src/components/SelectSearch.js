@@ -22,12 +22,17 @@ class SelectSearch extends Component {
   };
 
   selectItem = item => {
-    const { identifier } = this.props;
+    const {
+      identifier,
+      input: { onChange }
+    } = this.props;
     if (
       this.state.selectedItems.filter(g => item[identifier] === g[identifier])
         .length < 1
-    )
+    ) {
       this.setState({ selectedItems: [...this.state.selectedItems, item] });
+      onChange(this.state.selectedItems);
+    }
   };
 
   render() {
