@@ -31,9 +31,22 @@
     margin-bottom: 10px;
     color: #1e1e2b !important; }
   .MatchCard .button-group {
-    width: 100px;
+    display: flex;
     margin: auto auto;
     text-align: center; }
+  .MatchCard .button1 {
+    position: center;
+    border-radius: 5px;
+    border: #c82128 2px;
+    color: #e8e8e8;
+    background: #ab1e24;
+    font-size: 20px;
+    padding-left: auto;
+    padding-right: auto;
+    margin: 10px; }
+  .MatchCard .button1:hover {
+    background-color: #c82128;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
 
 .MatchCard:hover {
   cursor: pointer; }
