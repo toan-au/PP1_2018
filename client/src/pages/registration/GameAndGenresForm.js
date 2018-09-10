@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import SearchInput, { createFilter } from 'react-search-input';
 import { getGames } from '../../redux/actions/games';
 import { getGenres } from '../../redux/actions/genres';
 import CheckboxGroup from '../../components/CheckboxGroup';
-
-const FILTER_KEYS = ['name'];
+import SelectSearch from '../../components/SelectSearch';
 
 class GameAndGenresForm extends Component {
   state = {
@@ -20,27 +18,8 @@ class GameAndGenresForm extends Component {
     await this.props.getGenres();
   };
 
-  onGameSearch = searchTerm => {
-    this.setState({ searchTerm });
-
-    // filteredGames should be nothing if no searchterm is provided
-    if (!searchTerm) return this.setState({ filteredGames: [] });
-
-    const filteredGames = this.props.games.filter(
-      createFilter(this.state.searchTerm, FILTER_KEYS)
-    );
-
-    this.setState({ filteredGames });
-  };
-
-  selectGame = game => {
-    if (this.state.selectedGames.filter(g => game.id === g.id).length < 1)
-      this.setState({ selectedGames: [...this.state.selectedGames, game] });
-  };
-
   render() {
-    const { handleSubmit, onPrevious, genres } = this.props;
-    const { filteredGames, selectedGames } = this.state;
+    const { handleSubmit, onPrevious, genres, games } = this.props;
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -49,24 +28,13 @@ class GameAndGenresForm extends Component {
             <div>
               <h4 className="question">Which games do you enjoy playing?</h4>
               <div className="game-search">
-                <SearchInput
-                  placeholder="Start typing to search"
-                  className="search-input"
-                  onChange={this.onGameSearch}
+                <Field
+                  name="games"
+                  component={SelectSearch}
+                  options={games}
+                  identifier="id"
+                  labelName="name"
                 />
-                <ul className="results">
-                  {filteredGames.map(game => (
-                    <li onClick={() => this.selectGame(game)} key={game.name}>
-                      {game.name}
-                    </li>
-                  ))}
-                </ul>
-                <h4 className="question">your games</h4>
-                <ul className="selected">
-                  {selectedGames.map(selected => (
-                    <li key={selected.name}>{selected.name}</li>
-                  ))}
-                </ul>
               </div>
             </div>
             <div>
