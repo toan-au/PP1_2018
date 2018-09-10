@@ -756,7 +756,8 @@ h3 {
 
 .SelectSearch {
   display: flex;
-  padding-top: 10px; }
+  padding-top: 10px;
+  padding-bottom: 10px; }
   .SelectSearch .results {
     background: #7b1115;
     width: 49.5%;
