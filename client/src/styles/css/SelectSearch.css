@@ -35,13 +35,13 @@
     .SelectSearch .results li {
       padding: 3px;
       color: #1e1e2b; }
-  .SelectSearch .selected {
+  .SelectSearch .select {
     padding: 5px;
     border-radius: 5px;
     width: 50%;
     background: white;
     margin-left: 3px;
     border: solid #bfbdc1 1px; }
-    .SelectSearch .selected li {
+    .SelectSearch .select li {
       padding: 3px;
       color: #1e1e2b; }

@@ -50,7 +50,7 @@ class SelectSearch extends Component {
             <li className="glist"> Searched Games
             </li>
         </ul>
-        <ul className="selected">
+        <ul className="select">
             <li>Selected Games</li>
         </ul>
         </div>
@@ -62,7 +62,7 @@ class SelectSearch extends Component {
             </li>
           ))}
         </ul>
-        <ul className="selected">
+        <ul className="select">
           {selectedItems.map(item => (
             <li key={item[identifier]}>{item[labelName]}</li>
           ))}
