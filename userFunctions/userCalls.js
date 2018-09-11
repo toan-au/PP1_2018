@@ -15,9 +15,9 @@ const matches = require('../models').matches;
 const locale = require('../models').locale;
 const region = require('../models').region;
 
-var getPendingMatches = async function(id) {
+var getPendingMatches = async function(requestId) {
   //placeholder Id, will take in variable ID values in future cases
-  var requestId = id;
+  //var requestId = 1;
 
   //find the requested user, and their matches
   var findMatches = await matches.findAll({ where: { userId: requestId } });
@@ -33,12 +33,14 @@ var getPendingMatches = async function(id) {
     }
   }
 
+  var pendingUsers = [];
   //find the pending matches as user objects
-  var pendingUsers = await users.findAll({
-    where: { id: { [Op.or]: pendingUserIds } },
-    include: [{ model: region }, { model: locale }]
-  });
-
+  if(pendingUserIds.length != 0){
+    pendingUsers = await users.findAll({
+      where: { id: { [Op.or]: pendingUserIds } },
+      include: [{ model: region }, { model: locale }]
+    });
+  }
   //transform the objects to a more reasonable form
   for (var i = 0; i < pendingUsers.length; i++) {
     pendingUsers[i] = pendingUsers[i].toJSON();
@@ -48,9 +50,9 @@ var getPendingMatches = async function(id) {
   return pendingUsers;
 };
 
-var getSuccessfulMatches = async function() {
+var getSuccessfulMatches = async function(requestId) {
   //placeholder Id, will take in variable ID values in future cases
-  var requestId = 1;
+  //var requestId = 1;
 
   //find the requested user, and their matches
   var findMatches = await matches.findAll({
@@ -80,12 +82,15 @@ var getSuccessfulMatches = async function() {
     }
   }
 
-  //find the matching users as user objects
-  var matchingUsers = await users.findAll({
-    where: { id: { [Op.or]: matchingUserIds } },
-    include: [{ model: region }, { model: locale }]
-  });
-
+  //Checks that the matches are not empty.
+  var matchingUsers = [];
+  if(matchingUserIds.length != 0){
+    //find the matching users as user objects
+    matchingUsers = await users.findAll({
+      where: { id: { [Op.or]: matchingUserIds } },
+      include: [{ model: region }, { model: locale }]
+    });
+  }
   //transform the objects to a more reasonable form
   for (var i = 0; i < matchingUsers.length; i++) {
     matchingUsers[i] = matchingUsers[i].toJSON();
