@@ -70,13 +70,13 @@
     padding-right: 10px; }
   .navbar div.dropdown-item:active {
     background-color: white; }
-  .navbar .pending-item-text.no-matches {
+  .navbar .pending-item-text.center {
     text-align: center; }
-  .navbar div.dropdown-item .pending-item-text {
+  .navbar .pending-item-text {
     flex: 8;
     color: black;
     font-weight: 500; }
-  .navbar div.dropdown-item i {
+  .navbar .pending-item-remove {
     flex: 1;
     color: #ab1e24; }
   .navbar .unselectable {
