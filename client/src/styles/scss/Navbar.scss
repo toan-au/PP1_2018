@@ -3,9 +3,11 @@
 
 .navbar {
   background: $gunmetal;
-  .logo:hover{
+
+  .logo:hover {
     color: $yellow !important;
   }
+
   .logo {
     padding-top: 15px;
     font-size: 2.7em;
@@ -16,8 +18,8 @@
   .nav-item {
     margin-top: 20px;
     padding-left: 1.5em !important;
-    
   }
+
   .nav-item:hover {
     color: $red !important;
   }
@@ -30,10 +32,10 @@
   .nav-item,
   .nav-link {
     color: #bfbdc1 !important;
-    
+
     .nav-item:hover,
     .nav-link:hover {
-      color:$red !important;
+      color: $red !important;
     }
   }
 
@@ -54,17 +56,17 @@
     background-color: white;
   }
 
-  .pending-item-text.no-matches {
+  .pending-item-text.center {
     text-align: center;
   }
 
-  div.dropdown-item .pending-item-text {
+  .pending-item-text {
     flex: 8;
     color: black;
     font-weight: 500;
   }
 
-  div.dropdown-item i {
+  .pending-item-remove {
     flex: 1;
     color: $red;
   }

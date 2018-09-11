@@ -3,11 +3,58 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import logo from '../images/Favicon.png';
 
-import PendingDropdown from './PendingDropdown';
+import PendingDropdownMenu from './PendingDropdownMenu';
+
+const NavbarLinks = ({ user }) => {
+  const NavRightLoggedIn = () => (
+    <div className="navbar-nav ml-auto">
+      <Link className="nav-item nav-link" to="/">
+        Home
+      </Link>
+      <Link className="nav-item nav-link" to="/matches">
+        Matches
+      </Link>
+
+      {/* Pending Dropdown */}
+      <li className="nav-item dropdown">
+        <Link
+          className="nav-link dropdown-toggle"
+          to="/profile"
+          id="navbarDropdownMenuPending"
+          role="button"
+          href="_"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Pending
+        </Link>
+
+        {/* Pending Dropdown */}
+        <PendingDropdownMenu />
+      </li>
+
+      <Link className="nav-item nav-link" to="/profile">
+        Profile
+      </Link>
+      <a className="nav-item nav-link nav-rm-item" href="/api/auth/logout">
+        Logout
+      </a>
+    </div>
+  );
+
+  const NavRightLoggedOut = () => <div className="navbar-nav ml-auto" />;
+
+  if (user === null) {
+    return <NavRightLoggedOut />;
+  }
+  return <NavRightLoggedIn />;
+};
 
 const Navbar = ({ user }) => {
   return (
     <nav id="navbar" className="navbar navbar-expand-lg navbar-light">
+      {/* Brand */}
       <Link className="navbar-brand" to={'/'}>
         <img src={logo} width="50" height="50" alt="Game Search Match" />
       </Link>
@@ -15,6 +62,7 @@ const Navbar = ({ user }) => {
         GameSearchMatch
       </Link>
 
+      {/* Responsive Design Button Toggler */}
       <button
         className="navbar-toggler"
         type="button"
@@ -26,61 +74,13 @@ const Navbar = ({ user }) => {
       >
         <span className="navbar-toggler-icon" />
       </button>
+
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        {/* Main Nav Links */}
         <NavbarLinks user={user} />
       </div>
     </nav>
   );
-};
-
-const NavbarLinks = ({ user }) => {
-  const NavRightLoggedIn = () => {
-    return (
-      <div className="navbar-nav ml-auto">
-        <Link className="nav-item nav-link" to="/">
-          Home
-        </Link>
-        <Link className="nav-item nav-link" to="/matches">
-          Matches
-        </Link>
-
-        {/* Pending Dropdown */}
-        <li className="nav-item dropdown">
-          <Link
-            className="nav-link dropdown-toggle"
-            to="/profile"
-            id="navbarDropdownMenuPending"
-            role="button"
-            href="_"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Pending
-          </Link>
-
-          {/* DROPDOWN */}
-          <PendingDropdown />
-        </li>
-
-        <Link className="nav-item nav-link" to="/profile">
-          Profile
-        </Link>
-        <a className="nav-item nav-link nav-rm-item" href="/api/auth/logout">
-          Logout
-        </a>
-      </div>
-    );
-  };
-
-  const NavRightLoggedOut = () => {
-    return <div className="navbar-nav ml-auto" />;
-  };
-
-  if (user === null) {
-    return <NavRightLoggedOut />;
-  }
-  return <NavRightLoggedIn />;
 };
 
 const mapStateToProps = state => ({

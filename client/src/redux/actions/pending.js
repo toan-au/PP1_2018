@@ -4,8 +4,11 @@ import axios from 'axios';
 export const getPending = id => {
   return async dispatch => {
     const response = await axios.get('/api/matches/pending/' + id);
-    const pending = response.data;
-    dispatch({ type: GET_PENDING, pending });
+    const pending = {
+      loading: false,
+      matches: response.data
+    };
+    dispatch({ type: GET_PENDING, pending: pending });
   };
 };
 
