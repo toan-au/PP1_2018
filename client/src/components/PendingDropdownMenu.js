@@ -52,7 +52,7 @@ const PendingDropdownMenu = ({ pending, removePending }) => {
     if (pending.loading) {
       return <IsLoading />;
     }
-    if (pending.matches !== null) {
+    if (pending.matches !== null && pending.matches.length > 0) {
       return <PendingItems />;
     } else {
       return <NoPendingItems />;
