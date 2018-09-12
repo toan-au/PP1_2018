@@ -12,21 +12,34 @@ import Navbar from './components/Navbar';
 import Content from './components/Content';
 import Footer from './components/Footer';
 import AppSwitch from './routes';
+import Loading from './pages/Loading';
 
 class App extends Component {
-  async componentDidMount() {
-    await this.props.getUser();
+  state = {
+    loading: true
+  };
+
+  componentDidMount() {
+    this.props.getUser().then(() => {
+      this.setState({ loading: false });
+    });
   }
 
   render() {
+    const { loading } = this.state;
+    console.log(loading);
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar />
-          <Content>
-            <AppSwitch />
-          </Content>
-          <Footer />
+          <Navbar loading={loading} />
+          {loading ? (
+            <Loading />
+          ) : (
+            <Content>
+              <AppSwitch />
+            </Content>
+          )}
+          <Footer loading={loading} />
         </div>
       </BrowserRouter>
     );
