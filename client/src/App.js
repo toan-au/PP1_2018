@@ -14,12 +14,8 @@ import Footer from './components/Footer';
 import AppSwitch from './routes';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getUser().then(user => {
-      if (user !== null) {
-        this.props.getPending(user.id);
-      }
-    });
+  async componentDidMount() {
+    await this.props.getUser();
   }
 
   render() {
@@ -37,10 +33,7 @@ class App extends Component {
   }
 }
 
-// maping the state(redux) to this.props within this component
-const mapStateToProps = () => ({});
-
 export default connect(
-  mapStateToProps,
+  null,
   { getUser, getPending }
 )(App);

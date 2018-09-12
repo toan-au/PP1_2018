@@ -1,7 +1,7 @@
-import React from 'react';
-import { removePending } from '../redux/actions/pending';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { getPending, removePending } from '../redux/actions/pending';
 import TrashIcon from './TrashIcon';
 
 const UsersPending = ({ users, removePending }) => {
@@ -29,7 +29,7 @@ const UsersPending = ({ users, removePending }) => {
   ));
 };
 
-const PendingDropdownMenu = ({ pending, removePending }) => {
+const PendingDropdownContent = ({ loading, pending, removePending }) => {
   const IsLoading = () => (
     <div className="dropdown-item">
       <p className="pending-item-text centered unselectable">Loading...</p>
@@ -44,37 +44,50 @@ const PendingDropdownMenu = ({ pending, removePending }) => {
     </div>
   );
 
-  const PendingItems = () => (
-    <UsersPending users={pending.matches} removePending={removePending} />
-  );
-
-  const Menu = () => {
-    if (pending.loading) {
-      return <IsLoading />;
-    }
-    if (pending.matches !== null) {
-      return <PendingItems />;
-    } else {
-      return <NoPendingItems />;
-    }
-  };
-
-  return (
-    <div
-      id="pending-dropdown"
-      className="dropdown-menu"
-      aria-labelledby="navbarDropdownMenuPending"
-    >
-      <Menu />
-    </div>
-  );
+  if (loading) {
+    return <IsLoading />;
+  }
+  if (pending !== null) {
+    return <UsersPending users={pending} removePending={removePending} />;
+  } else {
+    return <NoPendingItems />;
+  }
 };
 
+class PendingDropdownMenu extends Component {
+  state = {
+    loading: true
+  };
+
+  componentDidMount() {
+    this.props.getPending(this.props.user.id).then(() => {
+      this.setState({ loading: false });
+    });
+  }
+
+  render() {
+    return (
+      <div
+        id="pending-dropdown"
+        className="dropdown-menu"
+        aria-labelledby="navbarDropdownMenuPending"
+      >
+        <PendingDropdownContent
+          loading={this.state.loading}
+          pending={this.props.pending}
+          removePending={this.props.removePending}
+        />
+      </div>
+    );
+  }
+}
+
 const mapStateToProps = state => ({
+  user: state.user,
   pending: state.pending
 });
 
 export default connect(
   mapStateToProps,
-  { removePending }
+  { getPending, removePending }
 )(PendingDropdownMenu);
