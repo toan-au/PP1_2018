@@ -7,6 +7,9 @@
   padding: 40px;
 
   .PfpInput {
+  }
+  .question {
+    font-size: 1.5em;
     color: $gunmetal;
   }
   .title {
@@ -31,7 +34,7 @@
     }
   }
 
-  .form-body {
+  .form-body.grid {
     display: grid;
     grid-template: 100% 1fr / 1fr 4fr;
     margin-bottom: 10px;

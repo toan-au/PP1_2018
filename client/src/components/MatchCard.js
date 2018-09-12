@@ -5,6 +5,7 @@ import MatchMeter from './MatchMeter';
 
 const MatchCard = props => {
   const { displayName, bio, matchingScore, region } = props.match;
+  const { onLike, onDislike } = props;
   const bioLength = 250;
   const shortBio = bio.substring(0, bioLength);
   return (
@@ -15,6 +16,7 @@ const MatchCard = props => {
           src={defaultPfp}
           alt={displayName + "'s profile picture"}
         />
+        <div className="region">{region.region}</div>
       </div>
       <div className="display-name">
         <h3>{displayName}</h3>
@@ -24,11 +26,10 @@ const MatchCard = props => {
         ...
       </div>
       <div className="button-group">
-        {/* <button>Like</button> */}
+        <button className="button1" onClick={onLike}>Like</button>
         <MatchMeter percent={matchingScore} />
-        {/* <button>Dislike</button> */}
+        <button className="button1" onClick={onDislike}>Dislike</button>
       </div>
-      <div className="region">{region.region}</div>
     </div>
   );
 };

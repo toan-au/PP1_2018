@@ -9,8 +9,8 @@ const AboutUs = () => {
           <h3 className="AboutUsTitle">Who Created GameSearchMatch?</h3>
           <br />
           <p>
-            GameSearchMatch was created by a group called The Terror Wrists. There Terror Wrists were formed for their
-            Programming Project Subject.
+            GameSearchMatch was created by a group called The Terror Wrists. The Terror Wrists were formed for their
+            Programming Project subject.
           </p>
           <br /> <br />
           <p className="boldThis">The Terror Wrists Members</p>

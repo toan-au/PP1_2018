@@ -248,18 +248,28 @@ button {
 
 .navbar {
   background: #1e1e2b; }
+  .navbar .logo:hover {
+    color: #deb841 !important; }
   .navbar .logo {
     padding-top: 15px;
     font-size: 2.7em;
     text-decoration: none;
     color: #bfbdc1; }
   .navbar .nav-item {
+    margin-top: 20px;
     padding-left: 1.5em !important; }
+  .navbar .nav-item:hover {
+    color: #ab1e24 !important; }
   .navbar .nav-rm-item {
     padding-right: 84px !important; }
   .navbar .nav-item,
   .navbar .nav-link {
     color: #bfbdc1 !important; }
+    .navbar .nav-item .nav-item:hover,
+    .navbar .nav-item .nav-link:hover,
+    .navbar .nav-link .nav-item:hover,
+    .navbar .nav-link .nav-link:hover {
+      color: #ab1e24 !important; }
   .navbar .dropdown-menu.settings {
     min-width: 30px !important;
     left: auto !important; }
@@ -270,13 +280,13 @@ button {
     padding-right: 10px; }
   .navbar div.dropdown-item:active {
     background-color: white; }
-  .navbar .pending-item-text.no-matches {
+  .navbar .pending-item-text.center {
     text-align: center; }
-  .navbar div.dropdown-item .pending-item-text {
+  .navbar .pending-item-text {
     flex: 8;
     color: black;
     font-weight: 500; }
-  .navbar div.dropdown-item i {
+  .navbar .pending-item-remove {
     flex: 1;
     color: #ab1e24; }
   .navbar .unselectable {
@@ -519,12 +529,58 @@ h3 {
 /* paddings */
 /* border */
 /* kittens */
-.contact-title {
-  margin-left: auto;
-  margin-right: auto;
+.ContactForm form {
+  max-width: 720px;
+  padding: 20px;
+  margin: 0 auto;
+  background: #e8e8e8;
+  border-radius: 5px;
+  border-bottom: 10px solid #deb841;
   text-align: center; }
-  .contact-title input {
-    margin-bottom: 10px; }
+
+.ContactForm .field {
+  width: 100%;
+  padding: 2px 5px;
+  margin-bottom: 7px;
+  text-align: left !important; }
+
+.ContactForm label {
+  color: #1e1e2b;
+  font-size: 1.3em;
+  text-align: left;
+  padding-bottom: 3px; }
+
+.ContactForm input {
+  border: solid #bfbdc1 1px;
+  border-radius: 5px;
+  font-size: 1.3em;
+  width: 100%;
+  padding: 1px; }
+
+.ContactForm textarea {
+  font-size: 1.3em;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 200px;
+  padding-left: 1px;
+  padding-top: 1px;
+  border-radius: 5px;
+  border: solid #bfbdc1 1px;
+  resize: none; }
+
+.ContactForm .submit {
+  width: 150px;
+  border-radius: 5px;
+  color: #e8e8e8;
+  background: #ab1e24;
+  text-align: center; }
+
+.ContactForm .submit:hover {
+  background-color: #c82128;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
+
+.ContactForm button:hover {
+  cursor: pointer; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -597,9 +653,22 @@ h3 {
     margin-bottom: 10px;
     color: #1e1e2b !important; }
   .MatchCard .button-group {
-    width: 100px;
+    display: flex;
     margin: auto auto;
     text-align: center; }
+  .MatchCard .button1 {
+    position: center;
+    border-radius: 5px;
+    border: #c82128 2px;
+    color: #e8e8e8;
+    background: #ab1e24;
+    font-size: 20px;
+    padding-left: auto;
+    padding-right: auto;
+    margin: 10px; }
+  .MatchCard .button1:hover {
+    background-color: #c82128;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
 
 .MatchCard:hover {
   cursor: pointer; }
@@ -626,6 +695,9 @@ h3 {
   height: 100%;
   padding: 40px; }
   .Registration .PfpInput {
+  }
+  .Registration .question {
+    font-size: 1.5em;
     color: #1e1e2b; }
   .Registration .title {
     text-align: center;
@@ -643,20 +715,20 @@ h3 {
       color: #ab1e24;
       font-size: 50px;
       padding-bottom: 15px; }
-  .Registration .form-body {
+  .Registration .form-body.grid {
     display: grid;
     grid-template: 100% 1fr / 1fr 4fr;
     margin-bottom: 10px; }
-    .Registration .form-body .left {
+    .Registration .form-body.grid .left {
       grid-area: 1 / 1 / 1 / 1; }
-    .Registration .form-body .right {
+    .Registration .form-body.grid .right {
       padding: 12px 20px;
       grid-area: 1 / 2 / 1 / 2; }
-    .Registration .form-body .bio {
+    .Registration .form-body.grid .bio {
       grid-area: 2 / 1 / 2 / 3;
       color: #1e1e2b;
       font-size: 1.3em; }
-      .Registration .form-body .bio textarea {
+      .Registration .form-body.grid .bio textarea {
         font-size: 1.3em;
         min-width: 100%;
         max-width: 100%;
@@ -727,17 +799,6 @@ h3 {
       border-top-right-radius: 6px;
       background: red; }
 
-/* Chuck your variables in here*/
-/* colors */
-/* sizes */
-/* backgrounds */
-/* paddings */
-/* border */
-/* kittens */
-.QuestionAnswerForm .question {
-  font-size: 1.5em;
-  color: #1e1e2b; }
-
 .RadioGroup {
   margin: 20px 0px; }
   .RadioGroup .choices {
@@ -759,3 +820,16 @@ h3 {
 .RadioGroup.importance .choices {
   grid-template: 1fr / 1fr 1fr 1fr;
   grid-gap: 10px 10px; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.SelectSearch .results li {
+  color: #1e1e2b; }
+
+.SelectSearch .selected li {
+  background: #c82128; }

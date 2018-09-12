@@ -34,7 +34,8 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
 });
 //returns a user's pending matches
 router.get('/matches/pending/:id', async (req, res) => {
-  const pendingMatches = await userCalls.getPendingMatches();
+  const id = req.params.id;
+  const pendingMatches = await userCalls.getPendingMatches(id);
   res.send(pendingMatches);
 });
 
@@ -90,6 +91,20 @@ router.get('/user/dislike/:userId/:targetId', async (req, res) => {
   const response = await userCalls.dislikeUser(
     req.params.userId,
     req.params.targetId
+  );
+
+  res.send(response);
+});
+
+//must be given an object, which contains the Id's of the user who selected like,
+//and the user they liked.
+//creates/updates a dislike relation.
+router.get('/user/loadResponses', async (req, res) => {
+  //Function takes in the object holding the data for the questionnaire
+  //And the user's Id as request Id
+  const response = await userCalls.finishRegistration(
+    req.params.registrationForm,
+    req.params.requestId
   );
 
   res.send(response);
