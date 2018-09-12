@@ -694,8 +694,9 @@ h3 {
   background-size: cover;
   height: 100%;
   padding: 40px; }
-  .Registration .PfpInput {
-  }
+  .Registration .PfpInput label {
+    color: #1e1e2b;
+    padding-bottom: 3px; }
   .Registration .question {
     font-size: 1.5em;
     color: #1e1e2b; }
@@ -788,7 +789,8 @@ h3 {
       font-size: 1.2em;
       padding-left: 10px;
       border-radius: 6px;
-      border: solid #bfbdc1 1px; }
+      border: solid #bfbdc1 1px;
+      width: 100%; }
     .Registration .field .SelectWithError {
       display: flex;
       flex: 3;
@@ -814,7 +816,12 @@ h3 {
     background: #ffffff;
     padding: 15px 10px;
     box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4); }
+    .RadioGroup label input {
+      position: relative;
+      margin-right: 10px; }
   .RadioGroup label:hover {
+    background: #c82128;
+    color: #e8e8e8;
     cursor: pointer; }
 
 .RadioGroup.importance .choices {

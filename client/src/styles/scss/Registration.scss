@@ -7,6 +7,10 @@
   padding: 40px;
 
   .PfpInput {
+    label {
+      color: $gunmetal;
+      padding-bottom: 3px;
+    }
   }
   .question {
     font-size: 1.5em;
@@ -135,6 +139,7 @@
       padding-left: 10px;
       border-radius: 6px;
       border: solid $light_grey 1px;
+      width: 100%;
       
     }
 

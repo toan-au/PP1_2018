@@ -9,8 +9,9 @@
   background-size: cover;
   height: 100%;
   padding: 40px; }
-  .Registration .PfpInput {
-  }
+  .Registration .PfpInput label {
+    color: #1e1e2b;
+    padding-bottom: 3px; }
   .Registration .question {
     font-size: 1.5em;
     color: #1e1e2b; }
@@ -103,7 +104,8 @@
       font-size: 1.2em;
       padding-left: 10px;
       border-radius: 6px;
-      border: solid #bfbdc1 1px; }
+      border: solid #bfbdc1 1px;
+      width: 100%; }
     .Registration .field .SelectWithError {
       display: flex;
       flex: 3;
@@ -113,9 +115,3 @@
       border-top-left-radius: 6px;
       border-top-right-radius: 6px;
       background: red; }
-
-.game-search .results li {
-  color: #1e1e2b; }
-
-.game-search .selected li {
-  background: #c82128; }
