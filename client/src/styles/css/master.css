@@ -699,6 +699,7 @@ h3 {
     padding-bottom: 3px; }
   .Registration .question {
     font-size: 1.5em;
+    margin-bottom: 10px;
     color: #1e1e2b; }
   .Registration .title {
     text-align: center;
@@ -755,7 +756,7 @@ h3 {
       background: #ab1e24;
       text-align: center; }
     .Registration .footer-buttons .next {
-      width: 150px;
+      min-width: 150px;
       border-radius: 15px;
       color: #e8e8e8;
       background: #ab1e24;

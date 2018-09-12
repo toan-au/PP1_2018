@@ -20,7 +20,6 @@ router.get('/match/:id', async (req, res) => {
 });
 
 router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
-  console.log(req.params.id);
   const user = await User.findById(req.params.id);
 
   // get the posted data
@@ -29,7 +28,6 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   // update the user
   user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
 
-  console.log(user);
   res.send(user);
 });
 //returns a user's pending matches
