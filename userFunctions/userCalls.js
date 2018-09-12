@@ -46,7 +46,7 @@ var getPendingMatches = async function(requestId) {
     pendingUsers[i] = pendingUsers[i].toJSON();
   }
 
-  //return the pending users
+  //return the pending users  
   return pendingUsers;
 };
 
@@ -115,8 +115,12 @@ var likeUser = async function(requestId, targetId) {
     var filterArray = findMatches[loopCounter];
     //If the current user, has already interacted with the target
     if (filterArray.userId == requestId && filterArray.matchId == targetId) {
-      //The match already exists, leave the loop
-      return { message: 'match already exists' };
+      //The match already exists, make an update to the matching
+      await matches.update(
+        { userResponse: 'L' },
+        { where: { id: filterArray.id } }
+      );
+      return { message: 'match created' };
     }
 
     //If the target has interacted with the requesting user, and they have responded
@@ -125,8 +129,12 @@ var likeUser = async function(requestId, targetId) {
       filterArray.matchId == requestId &&
       (filterArray.matchResponse == 'L' || filterArray.matchResponse == 'D')
     ) {
-      //The match already exists, leave the loop
-      return { message: 'match already exists' };
+      //The match already exists, make an update to the matching
+      await matches.update(
+        { matchResponse: 'L' },
+        { where: { id: filterArray.id } }
+      );
+      return { message: 'match created' };
     }
 
     //If the target has interacted with the requesting user, and they have not responded.
