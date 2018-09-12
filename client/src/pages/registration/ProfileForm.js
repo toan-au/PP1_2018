@@ -81,7 +81,7 @@ class ProfileForm extends Component {
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>
-          <h2 className="title">Sign Up</h2>
+          <h2 className="title">Register</h2>
           <div className="form-body grid">
             <div className="left">
               <Field
@@ -165,7 +165,7 @@ class ProfileForm extends Component {
               <label>Bio: </label>
               <Field
                 component="textarea"
-                placeholder="Biography"
+                placeholder="Describe youreself..."
                 name="bio"
                 required="required"
               />
@@ -189,8 +189,8 @@ let profileForm = reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   initialValues: {
-    displayName: 'deftCorgi',
-    bio: 'cows cows cows',
+    displayName: 'God',
+    bio: 'Kami sama',
     answers: {},
     preferences: {},
     importances: {},

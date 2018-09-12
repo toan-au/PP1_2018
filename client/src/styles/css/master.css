@@ -694,6 +694,9 @@ h3 {
   background-size: cover;
   height: 100%;
   padding: 40px; }
+  .Registration .PfpInput label {
+    color: #1e1e2b;
+    padding-bottom: 3px; }
   .Registration .question {
     font-size: 1.5em;
     color: #1e1e2b; }
@@ -707,7 +710,7 @@ h3 {
     padding: 20px;
     margin: 0 auto;
     background: #e8e8e8;
-    border-radius: 15px;
+    border-radius: 5px;
     border-bottom: 10px solid #deb841; }
     .Registration .RegistrationForm h2 {
       color: #ab1e24;
@@ -732,7 +735,16 @@ h3 {
         max-width: 100%;
         min-height: 200px;
         border-radius: 8px;
-        border: solid #bfbdc1 1px; }
+        border: solid #bfbdc1 1px;
+        padding: 10px; }
+  .Registration .footer-buttons1 {
+    text-align: right; }
+    .Registration .footer-buttons1 .next {
+      width: 150px;
+      border-radius: 15px;
+      color: #e8e8e8;
+      background: #ab1e24;
+      text-align: center; }
   .Registration .footer-buttons {
     display: flex;
     justify-content: space-between; }
@@ -766,7 +778,6 @@ h3 {
       border: solid #bfbdc1 1px; }
     .Registration .field label {
       position: relative;
-      top: 3px;
       flex: 1;
       color: #1e1e2b;
       text-align: left;
@@ -776,9 +787,10 @@ h3 {
       box-sizing: border-box;
       flex: 3;
       font-size: 1.2em;
-      padding: 3px;
+      padding-left: 10px;
       border-radius: 6px;
-      border: solid #bfbdc1 1px; }
+      border: solid #bfbdc1 1px;
+      width: 100%; }
     .Registration .field .SelectWithError {
       display: flex;
       flex: 3;
@@ -804,7 +816,12 @@ h3 {
     background: #ffffff;
     padding: 15px 10px;
     box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4); }
+    .RadioGroup label input {
+      position: relative;
+      margin-right: 10px; }
   .RadioGroup label:hover {
+    background: #c82128;
+    color: #e8e8e8;
     cursor: pointer; }
 
 .RadioGroup.importance .choices {
