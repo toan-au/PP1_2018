@@ -1,28 +1,20 @@
 import { GET_PENDING, REMOVE_PENDING } from '../actions/types';
 
-const initialPendingState = {
-  loading: true,
-  matches: null
-};
-
-export default (state = initialPendingState, action) => {
+export default (state = null, action) => {
   switch (action.type) {
     case GET_PENDING:
-      return action.pending;
+      return action.payload;
+
     case REMOVE_PENDING:
       // there will be no pending matches left
-      if (state.matches.length === 1) {
-        return {
-          loading: false,
-          matches: null
-        };
+      if (state.length - 1 === 0) {
+        return null;
       }
-      return {
-        loading: false,
-        matches: state.matches.filter(
-          pendingUser => pendingUser.displayName !== action.displayName
-        )
-      };
+      const updatedMatches = state.filter(
+        pendingUser => pendingUser.displayName !== action.payload
+      );
+      return updatedMatches;
+
     default:
       return state;
   }
