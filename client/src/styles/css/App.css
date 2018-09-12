@@ -38,8 +38,6 @@ a {
   text-decoration: none;
   transition: .2s;
   font-size: 1.1em; }
-  transition: .2s; }
-}
 
 a:hover {
   color: #ab1e24; }

@@ -51,7 +51,7 @@ const NavbarLinks = ({ user }) => {
   return <NavRightLoggedIn />;
 };
 
-const Navbar = ({ user }) => {
+const Navbar = ({ loading, user }) => {
   return (
     <nav id="navbar" className="navbar navbar-expand-lg navbar-light">
       {/* Brand */}
@@ -62,7 +62,7 @@ const Navbar = ({ user }) => {
         GameSearchMatch
       </Link>
 
-      {/* Responsive Design Button Toggler */}
+      {/* Responsive Design Toggler */}
       <button
         className="navbar-toggler"
         type="button"
@@ -75,10 +75,12 @@ const Navbar = ({ user }) => {
         <span className="navbar-toggler-icon" />
       </button>
 
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        {/* Main Nav Links */}
-        <NavbarLinks user={user} />
-      </div>
+      {loading ? null : (
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          {/* Main Nav Links */}
+          <NavbarLinks user={user} />
+        </div>
+      )}
     </nav>
   );
 };
