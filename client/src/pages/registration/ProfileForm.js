@@ -165,7 +165,7 @@ class ProfileForm extends Component {
               <label>Bio: </label>
               <Field
                 component="textarea"
-                placeholder="Describe youreself..."
+                placeholder="Describe yourself..."
                 name="bio"
                 required="required"
               />
