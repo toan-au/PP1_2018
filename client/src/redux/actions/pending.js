@@ -11,6 +11,22 @@ export const getPending = id => {
   };
 };
 
+export const likeUser = (id, targetId) => {
+  return async dispatch => {
+    const response = await axios.get(`/api/user/like/${id}/${targetId}`);
+    const payload = response.data;
+    dispatch({ type: GET_PENDING, payload });
+  };
+};
+
+export const dislikeUser = (id, targetId) => {
+  return async dispatch => {
+    const response = await axios.get(`/api/user/dislike/${id}/${targetId}`);
+    const payload = response.data;
+    dispatch({ type: GET_PENDING, payload });
+  };
+};
+
 export const removePending = user => ({
   type: REMOVE_PENDING,
   payload: user.displayName

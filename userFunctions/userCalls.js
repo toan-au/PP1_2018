@@ -35,7 +35,7 @@ var getPendingMatches = async function(requestId) {
 
   var pendingUsers = [];
   //find the pending matches as user objects
-  if(pendingUserIds.length != 0){
+  if (pendingUserIds.length != 0) {
     pendingUsers = await users.findAll({
       where: { id: { [Op.or]: pendingUserIds } },
       include: [{ model: region }, { model: locale }]
@@ -46,7 +46,7 @@ var getPendingMatches = async function(requestId) {
     pendingUsers[i] = pendingUsers[i].toJSON();
   }
 
-  //return the pending users  
+  //return the pending users
   return pendingUsers;
 };
 
@@ -84,7 +84,7 @@ var getSuccessfulMatches = async function(requestId) {
 
   //Checks that the matches are not empty.
   var matchingUsers = [];
-  if(matchingUserIds.length != 0){
+  if (matchingUserIds.length != 0) {
     //find the matching users as user objects
     matchingUsers = await users.findAll({
       where: { id: { [Op.or]: matchingUserIds } },
@@ -120,7 +120,7 @@ var likeUser = async function(requestId, targetId) {
         { userResponse: 'L' },
         { where: { id: filterArray.id } }
       );
-      return { message: 'match created' };
+      return await getPendingMatches(requestId);
     }
 
     //If the target has interacted with the requesting user, and they have responded
@@ -134,7 +134,7 @@ var likeUser = async function(requestId, targetId) {
         { matchResponse: 'L' },
         { where: { id: filterArray.id } }
       );
-      return { message: 'match created' };
+      return await getPendingMatches(requestId);
     }
 
     //If the target has interacted with the requesting user, and they have not responded.
@@ -148,7 +148,7 @@ var likeUser = async function(requestId, targetId) {
         { matchResponse: 'L' },
         { where: { id: filterArray.id } }
       );
-      return { message: 'match created' };
+      return await getPendingMatches(requestId);
     }
 
     //The match does not exist, either as created by the user requesting the match, or the targeted user.
@@ -163,7 +163,7 @@ var likeUser = async function(requestId, targetId) {
 
   // persisted to DB
   await newMatch.save();
-  return { message: 'pending created', newMatch };
+  return await getPendingMatches(requestId);
 };
 var dislikeUser = async function(requestId, targetId) {
   //debugging test.
@@ -185,7 +185,7 @@ var dislikeUser = async function(requestId, targetId) {
         { userResponse: 'D' },
         { where: { id: filterArray.id } }
       );
-      return { message: 'user disliked' };
+      return await getPendingMatches(requestId);
     }
 
     //If the target has interacted with the requesting user
@@ -195,7 +195,7 @@ var dislikeUser = async function(requestId, targetId) {
         { matchResponse: 'D' },
         { where: { id: filterArray.id } }
       );
-      return { message: 'user disliked' };
+      return await getPendingMatches(requestId);
     }
 
     //The match does not exist, either as created by the user requesting the match, or the targeted user.
@@ -210,25 +210,24 @@ var dislikeUser = async function(requestId, targetId) {
 
   // persisted to DB
   await newMatch.save();
-  return { message: 'user disliked' };
+  return await getPendingMatches(requestId);
 };
 
-var finishRegistration = async function(registrationForm, requestId){
-  
+var finishRegistration = async function(registrationForm, requestId) {
   const NO_IMPORTANCE = 0;
   const LOW_IMPORTANCE = 1;
   const MED_IMPORTANCE = 2;
   const HIGH_IMPORTANCE = 3;
 
-  const A_SELECTED = "A";
-  const B_SELECTED = "B";
-  const C_SELECTED = "C";
-  const D_SELECTED = "D";
+  const A_SELECTED = 'A';
+  const B_SELECTED = 'B';
+  const C_SELECTED = 'C';
+  const D_SELECTED = 'D';
 
   const NO_QUESTIONS = 10;
 
   //Dummy form for testing
-  
+
   /*
   var requestId = 1001;
   var registrationForm = {
@@ -239,10 +238,7 @@ var finishRegistration = async function(registrationForm, requestId){
   }*/
 
   //clear existing responses by the user.
-  responses.destroy({where: {userId: requestId}});
-
-
- 
+  responses.destroy({ where: { userId: requestId } });
 
   //array to hold a user's responses.
   var registerResponses = [];
@@ -251,93 +247,85 @@ var finishRegistration = async function(registrationForm, requestId){
   var importanceHolder = [];
 
   //preloads an array of the users importance scores
-  Object.values(registrationForm.importances).forEach(function(importance){
-    switch(importance)
-    {
-      case "low":
+  Object.values(registrationForm.importances).forEach(function(importance) {
+    switch (importance) {
+      case 'low':
         importanceHolder.push(LOW_IMPORTANCE);
         break;
-      case "medium":
+      case 'medium':
         importanceHolder.push(MED_IMPORTANCE);
         break;
-      case "high":
+      case 'high':
         importanceHolder.push(HIGH_IMPORTANCE);
         break;
     }
-  })
- 
+  });
+
   //preloads an array of the users responses
   var responseHolder = [];
-  Object.values(registrationForm.answers).forEach(function(answer){
+  Object.values(registrationForm.answers).forEach(function(answer) {
     responseHolder.push(answer);
-  })
+  });
 
   //stores, the preferences, in a string for insertion
   var preferenceHolder = [];
 
-  //preloads an array of user's 
-  Object.values(registrationForm.preferences).forEach(function(preference){
+  //preloads an array of user's
+  Object.values(registrationForm.preferences).forEach(function(preference) {
     //Preferences String to create
-    var preferenceString = ''
+    var preferenceString = '';
 
     //Check, if the user at any point select A
-    if(preference.hasOwnProperty('A'))
-    {
+    if (preference.hasOwnProperty('A')) {
       //If the user selected A, and left it selected
-      if(preference.A == true)
-      {
+      if (preference.A == true) {
         //A is added to the preference for loading
         preferenceString = preferenceString + A_SELECTED;
       }
     }
 
     //Check, if the user at any point select B
-    if(preference.hasOwnProperty('B'))
-    {
+    if (preference.hasOwnProperty('B')) {
       //If the user selected B, and left it selected
-      if(preference.B == true)
-      {
+      if (preference.B == true) {
         //B is added to the preference for loading
         preferenceString = preferenceString + B_SELECTED;
       }
     }
 
     //Check, if the user at any point select C
-    if(preference.hasOwnProperty('C'))
-    {
+    if (preference.hasOwnProperty('C')) {
       //If the user selected C, and left it selected
-      if(preference.C == true)
-      {
+      if (preference.C == true) {
         //C is added to the preference for loading
         preferenceString = preferenceString + C_SELECTED;
       }
     }
 
     //Check, if the user at any point select D
-    if(preference.hasOwnProperty('D'))
-    {
+    if (preference.hasOwnProperty('D')) {
       //If the user selected D, and left it selected
-      if(preference.D == true)
-      {
+      if (preference.D == true) {
         //D is added to the preference for loading
         preferenceString = preferenceString + D_SELECTED;
       }
     }
 
     preferenceHolder.push(preferenceString);
-  })
+  });
 
-  for(var loopCounter = 0; loopCounter < preferenceHolder.length; loopCounter++){
-    if(preferenceHolder[loopCounter] == "ABCD"){
+  for (
+    var loopCounter = 0;
+    loopCounter < preferenceHolder.length;
+    loopCounter++
+  ) {
+    if (preferenceHolder[loopCounter] == 'ABCD') {
       importanceHolder[loopCounter] = NO_IMPORTANCE;
     }
   }
 
-
   //populate the array of JSON objects for insertion via a bulk create.
-  for(var loopCounter = 0; loopCounter < NO_QUESTIONS; loopCounter++){
-
-
+  for (var loopCounter = 0; loopCounter < NO_QUESTIONS; loopCounter++) {
     var newResponse = {
       userId: requestId,
       questionId: loopCounter + 1,
@@ -346,16 +334,15 @@ var finishRegistration = async function(registrationForm, requestId){
       preference: preferenceHolder[loopCounter],
       createdAt: new Date(),
       updatedAt: new Date()
-    }
+    };
 
-    registerResponses.push(newResponse)
-
+    registerResponses.push(newResponse);
   }
 
   //save all response recordings to database.
   await responses.bulkCreate(registerResponses);
   return;
-}
+};
 
 module.exports = {
   getPendingMatches,
