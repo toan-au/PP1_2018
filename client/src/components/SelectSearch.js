@@ -45,6 +45,16 @@ class SelectSearch extends Component {
           className="search-input"
           onChange={this.onSearch}
         />
+        <div className="listTitle">
+        <ul className="results">
+            <li className="glist"> Searched Games
+            </li>
+        </ul>
+        <ul className="select">
+            <li>Selected Games</li>
+        </ul>
+        </div>
+        <div className="gameList">
         <ul className="results">
           {filteredItems.map(item => (
             <li onClick={() => this.selectItem(item)} key={item[identifier]}>
@@ -52,12 +62,12 @@ class SelectSearch extends Component {
             </li>
           ))}
         </ul>
-        <h4 className="question">your Selections</h4>
-        <ul className="selected">
+        <ul className="select">
           {selectedItems.map(item => (
             <li key={item[identifier]}>{item[labelName]}</li>
           ))}
         </ul>
+        </div>
       </div>
     );
   }

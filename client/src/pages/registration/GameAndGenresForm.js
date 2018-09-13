@@ -23,10 +23,10 @@ class GameAndGenresForm extends Component {
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <h2 className="title">Games and Genres</h2>
+          {/* <h2 className="title">Games and Genres</h2> */}
           <div className="form-body">
             <div>
-              <h4 className="question">Which games do you enjoy playing?</h4>
+              <label className="question">Which games do you enjoy playing?</label>
               <div className="game-search">
                 <Field
                   name="games"
@@ -38,7 +38,7 @@ class GameAndGenresForm extends Component {
               </div>
             </div>
             <div>
-              <h4 className="question">Which genres do you enjoy playing?</h4>
+              <label className="question">Which genres do you enjoy playing?</label>
               <CheckboxGroup
                 options={genres}
                 labelName="name"
