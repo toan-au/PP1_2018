@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 // redux actions
 import { updateUser } from '../../redux/actions/user';
@@ -9,13 +10,15 @@ import { updateUser } from '../../redux/actions/user';
 import ProfileForm from './ProfileForm';
 import QuestionAnswerForm from './QuestionAnswerForm';
 import GameAndGenresForm from './GameAndGenresForm';
+import ConfirmationForm from './ConfirmationForm';
 
 class Registration extends Component {
   state = {
     page: 1,
     currentQuestion: 0,
     questions: [],
-    questionForms: []
+    questionForms: [],
+    redirect: false
   };
 
   componentDidMount = async () => {
@@ -27,6 +30,11 @@ class Registration extends Component {
   handleSubmit = async values => {
     console.log(values);
     //await this.props.updateUser(this.props.user.id, values);
+    this.setState({ redirect: true });
+  };
+
+  renderRedirect = () => {
+    if (this.state.redirect) return <Redirect to="/" />;
   };
 
   nextPage = () => {
@@ -75,10 +83,17 @@ class Registration extends Component {
         {page === 2 && this.state.questionForms[this.state.currentQuestion]}
         {page === 3 && (
           <GameAndGenresForm
+            onSubmit={this.nextPage}
+            onPrevious={this.prevPage}
+          />
+        )}
+        {page === 4 && (
+          <ConfirmationForm
             onSubmit={this.handleSubmit}
             onPrevious={this.prevPage}
           />
         )}
+        {this.renderRedirect()}
       </div>
     );
   }
