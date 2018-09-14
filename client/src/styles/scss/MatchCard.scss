@@ -27,6 +27,15 @@
       color: $light_red;
       text-align: center;
     }
+    label {
+      text-align:center;
+      width: 40px;
+      padding: 5px;
+      border-radius: 5px;
+      background: $yellow;
+      color: $white;
+      margin-left: 5px;
+    }
   }
 
   .bio {
