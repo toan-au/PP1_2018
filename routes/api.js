@@ -10,6 +10,7 @@ const Answers = require('../models').answers;
 const Locale = require('../models').locale;
 const Region = require('../models').region;
 const User = require('../models').users;
+const Responses = require('../models').responses;
 
 const router = express.Router();
 
@@ -17,6 +18,13 @@ const router = express.Router();
 router.get('/match/:id', async (req, res) => {
   const matches = await matching.findMatches();
   res.send(matches);
+});
+
+router.get('/user/:id', async (req, res) => {
+  const user = await User.findById(req.params.id, {
+    include: [{ model: Region }, { model: Locale }, { model: Responses }]
+  });
+  res.send(user);
 });
 
 router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
