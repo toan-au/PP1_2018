@@ -29,12 +29,27 @@
     }
     label {
       text-align:center;
-      
       padding: 5px;
       border-radius: 5px;
-      background: $yellow;
       color: $white;
       margin-left: 5px;
+
+    }
+    label.CN {
+      background: $red;
+    }
+    label.NA {
+      background: $blue;
+    }
+    label.SEA {
+      background: $green;
+    }
+    label.JP {
+      background: white;
+      color: $red;
+    }
+    label.OCE {
+      background: $purple;
     }
   }
 

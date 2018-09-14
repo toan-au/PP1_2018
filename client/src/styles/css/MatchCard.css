@@ -30,9 +30,19 @@
       text-align: center;
       padding: 5px;
       border-radius: 5px;
-      background: #deb841;
       color: #e8e8e8;
       margin-left: 5px; }
+    .MatchCard .display-name label.CN {
+      background: #ab1e24; }
+    .MatchCard .display-name label.NA {
+      background: #4C68A1; }
+    .MatchCard .display-name label.SEA {
+      background: #2C7873; }
+    .MatchCard .display-name label.JP {
+      background: white;
+      color: #ab1e24; }
+    .MatchCard .display-name label.OCE {
+      background: #8B72BE; }
   .MatchCard .bio {
     padding: 20px;
     margin-bottom: 10px;

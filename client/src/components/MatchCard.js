@@ -18,7 +18,7 @@ const MatchCard = props => {
         />
       </div>
       <div className="display-name">
-        <h3>{displayName} <label>{region.region}</label></h3>
+        <h3>{displayName} <label className={region.region}>{region.region}</label></h3>
       </div>
       
       <div className="bio">
