@@ -36,17 +36,12 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const user = await User.findById(req.params.id);
 
   // get the posted data
-  const {
-    displayName,
-    bio,
-    age,
-    region,
-    locale,
-    playstyle,
-    importances,
-    answers,
-    preferences
-  } = req.body;
+  const { displayName, bio, age, region, locale, playstyle } = req.body;
+
+  // parse the nested objects
+  const answers = JSON.parse(req.body.answers);
+  const importances = JSON.parse(req.body.importances);
+  const preferences = JSON.parse(req.body.preferences);
 
   // update the user
   user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
@@ -54,7 +49,6 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
     { importances, answers, preferences },
     req.params.id
   );
-  console.log(response);
   res.send(user);
 });
 

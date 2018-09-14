@@ -23,7 +23,13 @@ export const updateUser = (id, newUser) => {
 
     // Append all items in form data to body of request
     Object.keys(newUser).forEach(key => {
-      if (key !== 'pfp') data.append(key, newUser[key]);
+      if (key !== 'pfp') {
+        if (typeof newUser[key] !== 'object') {
+          data.append(key, newUser[key]);
+        } else {
+          data.append(key, JSON.stringify(newUser[key]));
+        }
+      }
     });
     if (newUser.pfp !== undefined) {
       data.append('pfp', newUser.pfp[0]);
