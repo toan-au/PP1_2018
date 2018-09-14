@@ -666,6 +666,14 @@ h3 {
     .MatchCard .display-name h3 {
       color: #c82128;
       text-align: center; }
+    .MatchCard .display-name label {
+      text-align: center;
+      width: 40px;
+      padding: 5px;
+      border-radius: 5px;
+      background: #deb841;
+      color: #e8e8e8;
+      margin-left: 5px; }
   .MatchCard .bio {
     padding: 20px;
     margin-bottom: 10px;
