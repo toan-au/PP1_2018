@@ -36,13 +36,28 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const user = await User.findById(req.params.id);
 
   // get the posted data
-  const { displayName, bio, age, region, locale, playstyle } = req.body;
+  const {
+    displayName,
+    bio,
+    age,
+    region,
+    locale,
+    playstyle,
+    importances,
+    answers,
+    preferences
+  } = req.body;
 
   // update the user
   user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
-
+  const response = await userCalls.finishRegistration(
+    { importances, answers, preferences },
+    req.params.id
+  );
+  console.log(response);
   res.send(user);
 });
+
 //returns a user's pending matches
 router.get('/matches/pending/:id', async (req, res) => {
   const id = req.params.id;
