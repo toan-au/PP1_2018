@@ -24,27 +24,27 @@
   
   .results {
     border:solid $light_grey 1px;
-    background: white;
+    background: $maroon;
     width:50%;
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 5px;
     margin-right: 3px;
     li {
       padding: 3px;
-      color: $gunmetal;
+      color: $white;
     }
   }
 
   .select {
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 2px;
     width:50%;
-    background: white;
+    background: $light_red;
     margin-left: 3px;
     border:solid $light_grey 1px;
     li {
       padding: 3px;
-      color: $gunmetal;
+      color: $white;
     }
   }
 }

@@ -884,21 +884,21 @@ h3 {
     width: 100%; }
   .SelectSearch .results {
     border: solid #bfbdc1 1px;
-    background: white;
+    background: #7b1115;
     width: 50%;
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 5px;
     margin-right: 3px; }
     .SelectSearch .results li {
       padding: 3px;
-      color: #1e1e2b; }
+      color: #e8e8e8; }
   .SelectSearch .select {
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 2px;
     width: 50%;
-    background: white;
+    background: #c82128;
     margin-left: 3px;
     border: solid #bfbdc1 1px; }
     .SelectSearch .select li {
       padding: 3px;
-      color: #1e1e2b; }
+      color: #e8e8e8; }
