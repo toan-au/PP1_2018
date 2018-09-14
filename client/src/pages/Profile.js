@@ -13,13 +13,14 @@ class Profile extends Component {
     const {
       viewUser: { responses }
     } = this.props;
-    responses.map(response => {
+    const responsesList = responses.map(response => {
       return (
-        <div>
+        <div key={response.id}>
           {response.question.questionText} - {response.response}
         </div>
       );
     });
+    return responsesList;
   };
 
   renderProfile = () => {
