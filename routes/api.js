@@ -11,6 +11,7 @@ const Locale = require('../models').locale;
 const Region = require('../models').region;
 const User = require('../models').users;
 const Responses = require('../models').responses;
+const Matches = require('../models').matches;
 
 const router = express.Router();
 
@@ -22,7 +23,11 @@ router.get('/match/:id', async (req, res) => {
 
 router.get('/user/:id', async (req, res) => {
   const user = await User.findById(req.params.id, {
-    include: [{ model: Region }, { model: Locale }, { model: Responses }]
+    include: [
+      { model: Region },
+      { model: Locale },
+      { model: Responses, include: [Questions] }
+    ]
   });
   res.send(user);
 });
