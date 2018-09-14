@@ -15,7 +15,11 @@ const responses = require('../models').responses;
 const matches = require('../models').matches;
 const locale = require('../models').locale;
 const region = require('../models').region;
+const prefGenres = require('../models').prefGenres;
+const ratings = require('../models').ratings;
 
+const games = require('../models').games;
+const genres = require('../models').genres;
 
 var findMatches = async function()  {
 //Test ID while writing algorithm
@@ -69,10 +73,12 @@ invalidMatches.push(matchingUser.id);
 
 //Find all users who have at least one matching game to intiating user
 var relevantUsers = await users.findAll({where: {id: {[Op.notIn]: invalidMatches}} , limit: 30, include: [
-    {model: prefGames, where: {gameId: {[Op.or]: relevantGames}}},
+    {model: prefGames, where: {gameId: {[Op.or]: relevantGames}}, include: [{model: games}]},
+    {model:prefGenres, include: [{model: genres}]},
     {model: responses},
     {model: locale},
     {model: region},
+    {model: ratings},
     {model: matches}
 ]});
 
@@ -90,10 +96,13 @@ function orderDesc(b,a){
     return a.matchingScore-b.matchingScore;
 }
 
+//function to average ratings of users
+//do later
+
 //sorts array by descending matching scores.
 relevantUsers.sort(orderDesc);
 
-return relevantUsers;
+return relevantUsers;   
 }
 
     

@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     users.hasMany(models.prefGames, { foriegnKey: 'userId' });
     users.hasMany(models.matches, { foriegnKey: 'userId' });
 
+    //Social Factors
+    users.hasMany(models.prefGenres, { foriegnKey: 'userId' });
+    users.hasMany(models.platformIds, {foreignKey: 'userId'});
+    users.hasMany(models.ratings, {foreignKey: 'userId'})
+
     //user qualities
     users.belongsTo(models.locale, { foreignKey: 'localeId' });
     users.belongsTo(models.region, { foreignKey: 'regionId' });
