@@ -114,6 +114,16 @@ router.get('/user/dislike/:userId/:targetId', async (req, res) => {
   res.send(response);
 });
 
+router.get('/user/rate/:userId/:targetId/:rating', async (req, res) => {
+  const response = await userCalls.rateUser(
+    req.params.userId,
+    req.params.targetId,
+    req.params.rating
+  );
+
+  res.send(response);
+});
+
 //must be given an object, which contains the Id's of the user who selected like,
 //and the user they liked.
 //creates/updates a dislike relation.
