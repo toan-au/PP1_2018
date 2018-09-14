@@ -18,9 +18,18 @@
     background: #ffffff;
     padding: 15px 10px;
     box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+    
+
+    input {
+      position: relative;
+      margin-right: 10px;
+    }
+    
   }
 
   label:hover {
+    background: $light_red;
+    color: $white;
     cursor: pointer;
   }
 }

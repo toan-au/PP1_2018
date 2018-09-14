@@ -12,35 +12,41 @@ import Navbar from './components/Navbar';
 import Content from './components/Content';
 import Footer from './components/Footer';
 import AppSwitch from './routes';
+import Loading from './pages/Loading';
 
 class App extends Component {
+  state = {
+    loading: true
+  };
+
   componentDidMount() {
-    this.props.getUser().then(user => {
-      if (user !== null) {
-        this.props.getPending(user.id);
-      }
+    this.props.getUser().then(() => {
+      this.setState({ loading: false });
     });
   }
 
   render() {
+    const { loading } = this.state;
+    console.log(loading);
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar />
-          <Content>
-            <AppSwitch />
-          </Content>
-          <Footer />
+          <Navbar loading={loading} />
+          {loading ? (
+            <Loading />
+          ) : (
+            <Content>
+              <AppSwitch />
+            </Content>
+          )}
+          <Footer loading={loading} />
         </div>
       </BrowserRouter>
     );
   }
 }
 
-// maping the state(redux) to this.props within this component
-const mapStateToProps = () => ({});
-
 export default connect(
-  mapStateToProps,
+  null,
   { getUser, getPending }
 )(App);

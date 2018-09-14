@@ -16,5 +16,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-// uncomment this in final build
+// TODO: uncomment this in final build
 //registerServiceWorker();

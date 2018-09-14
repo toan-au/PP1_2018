@@ -5,11 +5,10 @@ const PfpInput = props => {
   const files = props.input.value;
   return (
     <div className="PfpInput">
+      <label className="">Upload an image</label>
       <Dropzone
         name={props.name}
-        onDrop={(filesToUpload, e) => props.input.onChange(filesToUpload)}
-      >
-        <span styles={{ color: 'black' }}>Upload your profile picture</span>
+        onDrop={(filesToUpload, e) => props.input.onChange(filesToUpload)}>
       </Dropzone>
       {props.meta.dirty &&
         props.meta.error && <span className="error">{props.meta.error}</span>}

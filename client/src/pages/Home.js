@@ -3,7 +3,7 @@ import MatchCard from '../components/MatchCard';
 import { connect } from 'react-redux';
 import { getMatches } from '../redux/actions/matches';
 import PacmanSpinner from '../components/PacmanSpinner';
-import { likeUser, dislikeUser } from '../redux/actions/user';
+import { likeUser, dislikeUser } from '../redux/actions/pending';
 
 class Home extends Component {
   state = { matches: [], loading: true };

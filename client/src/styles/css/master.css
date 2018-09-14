@@ -619,6 +619,24 @@ h3 {
     border-radius: 5px;
     margin-bottom: 20px; }
 
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.loading-screen {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100vw;
+  background: url("../../images/background2.png");
+  background-size: cover; }
+  .loading-screen .maskot {
+    display: block;
+    width: 350px;
+    padding-top: 50px; }
+
 /* components */
 /* Chuck your variables in here*/
 /* colors */
@@ -711,8 +729,12 @@ h3 {
   background-size: cover;
   height: 100%;
   padding: 40px; }
+  .Registration .PfpInput label {
+    color: #1e1e2b;
+    padding-bottom: 3px; }
   .Registration .question {
     font-size: 1.5em;
+    margin-bottom: 10px;
     color: #1e1e2b; }
   .Registration .title {
     text-align: center;
@@ -724,7 +746,7 @@ h3 {
     padding: 20px;
     margin: 0 auto;
     background: #e8e8e8;
-    border-radius: 15px;
+    border-radius: 5px;
     border-bottom: 10px solid #deb841; }
     .Registration .RegistrationForm h2 {
       color: #ab1e24;
@@ -749,7 +771,16 @@ h3 {
         max-width: 100%;
         min-height: 200px;
         border-radius: 8px;
-        border: solid #bfbdc1 1px; }
+        border: solid #bfbdc1 1px;
+        padding: 10px; }
+  .Registration .footer-buttons1 {
+    text-align: right; }
+    .Registration .footer-buttons1 .next {
+      width: 150px;
+      border-radius: 15px;
+      color: #e8e8e8;
+      background: #ab1e24;
+      text-align: center; }
   .Registration .footer-buttons {
     display: flex;
     justify-content: space-between; }
@@ -760,7 +791,7 @@ h3 {
       background: #ab1e24;
       text-align: center; }
     .Registration .footer-buttons .next {
-      width: 150px;
+      min-width: 150px;
       border-radius: 15px;
       color: #e8e8e8;
       background: #ab1e24;
@@ -783,7 +814,6 @@ h3 {
       border: solid #bfbdc1 1px; }
     .Registration .field label {
       position: relative;
-      top: 3px;
       flex: 1;
       color: #1e1e2b;
       text-align: left;
@@ -793,9 +823,10 @@ h3 {
       box-sizing: border-box;
       flex: 3;
       font-size: 1.2em;
-      padding: 3px;
+      padding-left: 10px;
       border-radius: 6px;
-      border: solid #bfbdc1 1px; }
+      border: solid #bfbdc1 1px;
+      width: 100%; }
     .Registration .field .SelectWithError {
       display: flex;
       flex: 3;
@@ -821,7 +852,12 @@ h3 {
     background: #ffffff;
     padding: 15px 10px;
     box-shadow: 0 1px #ffffff inset, 0 1px 3px rgba(34, 25, 25, 0.4); }
+    .RadioGroup label input {
+      position: relative;
+      margin-right: 10px; }
   .RadioGroup label:hover {
+    background: #c82128;
+    color: #e8e8e8;
     cursor: pointer; }
 
 .RadioGroup.importance .choices {
@@ -835,8 +871,43 @@ h3 {
 /* paddings */
 /* border */
 /* kittens */
-.SelectSearch .results li {
-  color: #1e1e2b; }
+.search-input {
+  padding-bottom: 5px;
+  border-radius: 5px;
+  width: 100%; }
 
-.SelectSearch .selected li {
-  background: #c82128; }
+.gameList {
+  display: flex; }
+
+.listTitle {
+  display: flex;
+  padding-bottom: 5px; }
+
+.SelectSearch {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+  .SelectSearch input {
+    border: solid #bfbdc1 1px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%; }
+  .SelectSearch .results {
+    border: solid #bfbdc1 1px;
+    background: #7b1115;
+    width: 50%;
+    border-radius: 2px;
+    padding: 5px;
+    margin-right: 3px; }
+    .SelectSearch .results li {
+      padding: 3px;
+      color: #e8e8e8; }
+  .SelectSearch .select {
+    padding: 5px;
+    border-radius: 2px;
+    width: 50%;
+    background: #c82128;
+    margin-left: 3px;
+    border: solid #bfbdc1 1px; }
+    .SelectSearch .select li {
+      padding: 3px;
+      color: #e8e8e8; }
