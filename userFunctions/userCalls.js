@@ -15,6 +15,7 @@ const responses = require('../models').responses;
 const matches = require('../models').matches;
 const locale = require('../models').locale;
 const region = require('../models').region;
+const ratings = require('../models').ratings;
 
 var getPendingMatches = async function(requestId) {
   //placeholder Id, will take in variable ID values in future cases
@@ -390,10 +391,52 @@ var finishRegistration = async function(registrationForm, requestId) {
   return;
 };
 
+var rateUser = async function(requestId, targetId, inputRating) {
+  //debugging test.
+  /*var requestId = 1;
+  var targetId = 14;
+  var inputRating = 4;*/
+
+  if(inputRating > 5 || inputRating < 0){
+    console.log("Invalid Rating of: " + inputRating)
+    return;
+  }
+
+  //finds all matches the user has made, or made to him.
+  var findRatings = await ratings.findAll({
+    where: { reviewerId: requestId }
+  });
+  //extract the id values, from previous ratings
+  for (var loopCounter = 0; loopCounter < findRatings.length; loopCounter++) {
+    var filterArray = findRatings[loopCounter];
+    //If the current user, has already interacted with the target
+    if (filterArray.userId == targetId && filterArray.reviewerId == requestId) {
+      //update the existing rating
+      await ratings.update(
+        { rating: inputRating},
+        { where: { id: filterArray.id } }
+      );
+      return;
+    }
+    //The user has not rated the target user
+  }
+
+  //A new match is built
+  const newRating = ratings.build({
+    userId: targetId,
+    reviewerId: requestId,
+    rating: inputRating
+  });
+
+  // persisted to DB
+  await newRating.save();
+  return;
+}
 module.exports = {
   getPendingMatches,
   getSuccessfulMatches,
   likeUser,
   dislikeUser,
-  finishRegistration
+  finishRegistration,
+  rateUser
 };
