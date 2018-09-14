@@ -10,6 +10,7 @@ const fn = Sequelize.fn;
 //Imports db models
 const users = require('../models').users;
 const prefGames = require('../models').prefGames;
+const prefGenres = require('../models').prefGenres;
 const responses = require('../models').responses;
 const matches = require('../models').matches;
 const locale = require('../models').locale;
@@ -228,17 +229,20 @@ var finishRegistration = async function(registrationForm, requestId) {
 
   //Dummy form for testing
 
-  /*
-  var requestId = 1001;
+  /*var requestId = 1001;
   var registrationForm = {
     answers: {1: "C", 2: "A", 3: "C", 4: "A", 5: "A", 6: "C", 7: "A", 8: "A", 9: "C", 10: "A"},
     importances: {1: "high", 2: "high", 3: "low", 4: "medium", 5: "low", 6: "low", 7: "high", 8: "medium", 9: "low", 10: "low"},
     preferences: {1: {C:false, A:false, B:true, D:true}, 2: {A:true, C:true, B:true}, 3: {C:true, D:true}, 4: {B:true, C: false, A: true}, 
-    5: {C: true, A: true, B: true, D:true}, 6: {D: false, A: true, C: true, B: true}, 7: {B: false, A: true}, 8: {B: false, A:true}, 9: {A: true, B:true}, 10: {A:true, C: true}}
+    5: {C: true, A: true, B: true, D:true}, 6: {D: false, A: true, C: true, B: true}, 7: {B: false, A: true}, 8: {B: false, A:true}, 9: {A: true, B:true}, 10: {A:true, C: true}},
+    games: [1,4,42,11],
+    genres: {2: true, 3: true, 6: true, 7:true}
   }*/
 
   //clear existing responses by the user.
   responses.destroy({ where: { userId: requestId } });
+  prefGames.destroy({ where: { userId: requestId } });
+  prefGenres.destroy({ where: { userId: requestId } });
 
   //array to hold a user's responses.
   var registerResponses = [];
@@ -313,7 +317,7 @@ var finishRegistration = async function(registrationForm, requestId) {
 
     preferenceHolder.push(preferenceString);
   });
-
+  //Check for all selected, sets importance to none
   for (
     var loopCounter = 0;
     loopCounter < preferenceHolder.length;
@@ -324,7 +328,20 @@ var finishRegistration = async function(registrationForm, requestId) {
     }
   }
 
-  //populate the array of JSON objects for insertion via a bulk create.
+  //create a genre holder to load into database.
+  var selectedGenrekeys = Object.keys(registrationForm.genres)
+  var selectedGenreValues = Object.values(registrationForm.genres)
+  var genresHolder = [];
+
+  //Checks for existence and loads it.
+  for(var i = 0; i < selectedGenrekeys.length; i++){
+    if(selectedGenreValues[i] == true){
+      var genreId = parseInt(selectedGenrekeys[i])
+      genresHolder.push(genreId)
+    }
+  }
+  
+  //populate the array of JSON objects for insertion via a bulk create (Responses).
   for (var loopCounter = 0; loopCounter < NO_QUESTIONS; loopCounter++) {
     var newResponse = {
       userId: requestId,
@@ -339,8 +356,37 @@ var finishRegistration = async function(registrationForm, requestId) {
     registerResponses.push(newResponse);
   }
 
+  var registerGenres = [];
+  //populate the array of JSON objects for insertion via a bulk create (Responses).
+  for (var loopCounter = 0; loopCounter < genresHolder.length; loopCounter++) {
+    var newPrefGenre = {
+      userId: requestId,
+      genreId: genresHolder[loopCounter],
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+
+    registerGenres.push(newPrefGenre);
+  }
+
+  var registerGames = [];
+  //populate the array of JSON objects for insertion via a bulk create (Responses).
+  for (var loopCounter = 0; loopCounter < genresHolder.length; loopCounter++) {
+    var newPrefGame = {
+      userId: requestId,
+      gameId: registrationForm.games[loopCounter],
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+
+    registerGames.push(newPrefGame);
+  }
+
   //save all response recordings to database.
   await responses.bulkCreate(registerResponses);
+  await prefGenres.bulkCreate(registerGenres);
+  await prefGames.bulkCreate(registerGames);
+
   return;
 };
 

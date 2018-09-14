@@ -10,6 +10,8 @@ const Answers = require('../models').answers;
 const Locale = require('../models').locale;
 const Region = require('../models').region;
 const User = require('../models').users;
+const Games = require('../models').games;
+const Genres = require('../models').genres;
 
 const router = express.Router();
 
@@ -69,6 +71,24 @@ router.get('/regions', async (req, res) => {
     regions[i] = regions[i].toJSON();
   }
   res.send(regions);
+});
+
+router.get('/games', async (req, res) => {
+  const games = await Games.findAll({ attributes: ['id', 'title'] });
+
+  for (var i = 0; i < games.length; i++) {
+    games[i] = games[i].toJSON();
+  }
+  res.send(games);
+});
+
+router.get('/genres', async (req, res) => {
+  const genres = await Genres.findAll({ attributes: ['id', 'title'] });
+
+  for (var i = 0; i < genres.length; i++) {
+    genres[i] = genres[i].toJSON();
+  }
+  res.send(genres);
 });
 
 //must be given an object, which contains the Id's of the user who selected like,
