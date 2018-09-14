@@ -23,7 +23,9 @@ passport.serializeUser((user, done) => {
 // deserialize a user from the session
 passport.deserializeUser(async (id, done) => {
   // ideally should find user from database with given id
-  const user = await Users.findById(id);
+  const user = await Users.findById(id, {
+    include: [{ model: Region }, { model: Locale }, { model: Responses }]
+  });
   done(null, user);
 });
 

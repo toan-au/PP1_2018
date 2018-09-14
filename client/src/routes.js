@@ -9,6 +9,7 @@ import AboutUs from './pages/AboutUs';
 import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
 import Matches from './pages/Matches';
+import Profile from './pages/Profile';
 
 import Home from './pages/Home';
 
@@ -49,6 +50,7 @@ const ProtectedRoutes = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Registration} />
       <Route exact path="/matches" component={Matches} />
+      <Route exact path="/profile" component={Profile} />
       {/* TODO: Implement routes bellow */}
       {/* 
         <Route exact path="/pending" component={Pending} />
