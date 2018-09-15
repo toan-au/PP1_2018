@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getViewUser } from '../redux/actions/viewUser';
+import defaultPfp from '../images/fortnite_drift_.png';
 
 class Profile extends Component {
   componentDidMount = async () => {
@@ -49,7 +50,7 @@ class Profile extends Component {
       console.log(viewUser);
       return (
         <div>
-          <img src={viewUser.pfpUrl} />
+          <img src={viewUser.pfpUrl || defaultPfp} />
           {viewUser.displayName}
           {viewUser.bio}
           {viewUser.age}
