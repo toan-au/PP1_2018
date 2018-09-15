@@ -216,15 +216,7 @@ var dislikeUser = async function(requestId, targetId) {
 };
 
 var finishRegistration = async function(registrationForm, requestId) {
-  const NO_IMPORTANCE = 0;
-  const LOW_IMPORTANCE = 1;
-  const MED_IMPORTANCE = 2;
-  const HIGH_IMPORTANCE = 3;
-
-  const A_SELECTED = 'A';
-  const B_SELECTED = 'B';
-  const C_SELECTED = 'C';
-  const D_SELECTED = 'D';
+  
 
   const NO_QUESTIONS = 10;
 
@@ -335,9 +327,9 @@ var finishRegistration = async function(registrationForm, requestId) {
   var genresHolder = [];
 
   //Checks for existence and loads it.
-  for(var i = 0; i < selectedGenrekeys.length; i++){
-    if(selectedGenreValues[i] == true){
-      var genreId = parseInt(selectedGenrekeys[i])
+  for(var loopCounter = 0; loopCounter < selectedGenrekeys.length; loopCounter++){
+    if(selectedGenreValues[loopCounter] == true){
+      var genreId = parseInt(selectedGenrekeys[loopCounter])
       genresHolder.push(genreId)
     }
   }
@@ -370,12 +362,14 @@ var finishRegistration = async function(registrationForm, requestId) {
     registerGenres.push(newPrefGenre);
   }
 
+
+  
   var registerGames = [];
   //populate the array of JSON objects for insertion via a bulk create (Responses).
-  for (var loopCounter = 0; loopCounter < genresHolder.length; loopCounter++) {
+  for (var loopCounter = 0; loopCounter < registrationForm.games.length; loopCounter++) {
     var newPrefGame = {
       userId: requestId,
-      gameId: registrationForm.games[loopCounter],
+      gameId: registrationForm.games[loopCounter].id,
       createdAt: new Date(),
       updatedAt: new Date()
     };
