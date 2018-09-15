@@ -13,7 +13,7 @@ class SelectSearch extends Component {
     console.log(this.props.options);
 
     // filteredGames should be nothing if no searchterm is provided
-    if (!searchTerm) return this.setState({ filteredGames: [] });
+    if (!searchTerm) return this.setState({ filteredItems: [] });
 
     const filteredItems = this.props.options.filter(
       createFilter(this.state.searchTerm, [this.props.labelName])
