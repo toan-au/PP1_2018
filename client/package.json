@@ -22,6 +22,7 @@
     "react-scripts": "1.1.4",
     "react-search-input": "^0.11.3",
     "react-spinners": "^0.4.5",
+    "react-star-rating": "^1.4.2",
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0"
