@@ -16,11 +16,11 @@ const MatchCard = props => {
           src={defaultPfp}
           alt={displayName + "'s profile picture"}
         />
-        <div className="region">{region.region}</div>
       </div>
       <div className="display-name">
-        <h3>{displayName}</h3>
+        <h3>{displayName} <label className={region.region}>{region.region}</label></h3>
       </div>
+      
       <div className="bio">
         {shortBio}
         ...

@@ -669,6 +669,23 @@ h3 {
     .MatchCard .display-name h3 {
       color: #c82128;
       text-align: center; }
+    .MatchCard .display-name label {
+      text-align: center;
+      padding: 5px;
+      border-radius: 5px;
+      color: #e8e8e8;
+      margin-left: 5px; }
+    .MatchCard .display-name label.CN {
+      background: #ab1e24; }
+    .MatchCard .display-name label.NA {
+      background: #4C68A1; }
+    .MatchCard .display-name label.SEA {
+      background: #2C7873; }
+    .MatchCard .display-name label.JP {
+      background: white;
+      color: #ab1e24; }
+    .MatchCard .display-name label.OCE {
+      background: #8B72BE; }
   .MatchCard .bio {
     padding: 20px;
     margin-bottom: 10px;
@@ -879,21 +896,21 @@ h3 {
     width: 100%; }
   .SelectSearch .results {
     border: solid #bfbdc1 1px;
-    background: white;
+    background: #7b1115;
     width: 50%;
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 5px;
     margin-right: 3px; }
     .SelectSearch .results li {
       padding: 3px;
-      color: #1e1e2b; }
+      color: #e8e8e8; }
   .SelectSearch .select {
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 2px;
     width: 50%;
-    background: white;
+    background: #c82128;
     margin-left: 3px;
     border: solid #bfbdc1 1px; }
     .SelectSearch .select li {
       padding: 3px;
-      color: #1e1e2b; }
+      color: #e8e8e8; }

@@ -14,6 +14,8 @@ const Region = require('../models').region;
 const User = require('../models').users;
 const Responses = require('../models').responses;
 const Matches = require('../models').matches;
+const Games = require('../models').games;
+const Genres = require('../models').genres;
 
 const router = express.Router();
 
@@ -95,6 +97,24 @@ router.get('/regions', async (req, res) => {
   res.send(regions);
 });
 
+router.get('/games', async (req, res) => {
+  const games = await Games.findAll({ attributes: ['id', 'title'] });
+
+  for (var i = 0; i < games.length; i++) {
+    games[i] = games[i].toJSON();
+  }
+  res.send(games);
+});
+
+router.get('/genres', async (req, res) => {
+  const genres = await Genres.findAll({ attributes: ['id', 'title'] });
+
+  for (var i = 0; i < genres.length; i++) {
+    genres[i] = genres[i].toJSON();
+  }
+  res.send(genres);
+});
+
 //must be given an object, which contains the Id's of the user who selected like,
 //and the user they liked.
 //creates/updates a like relation.
@@ -113,6 +133,16 @@ router.get('/user/dislike/:userId/:targetId', async (req, res) => {
   const response = await userCalls.dislikeUser(
     req.params.userId,
     req.params.targetId
+  );
+
+  res.send(response);
+});
+
+router.get('/user/rate/:userId/:targetId/:rating', async (req, res) => {
+  const response = await userCalls.rateUser(
+    req.params.userId,
+    req.params.targetId,
+    req.params.rating
   );
 
   res.send(response);
