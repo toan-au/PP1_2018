@@ -1,6 +1,8 @@
 const express = require('express');
 const matching = require('../matchingAlgorithm/match');
 const multer = require('multer');
+
+
 const pfpUpload = multer({ dest: 'imgs/pfps/' });
 
 // models
@@ -10,6 +12,8 @@ const Answers = require('../models').answers;
 const Locale = require('../models').locale;
 const Region = require('../models').region;
 const User = require('../models').users;
+const Responses = require('../models').responses;
+const Matches = require('../models').matches;
 const Games = require('../models').games;
 const Genres = require('../models').genres;
 
@@ -21,17 +25,37 @@ router.get('/match/:id', async (req, res) => {
   res.send(matches);
 });
 
+router.get('/user/:id', async (req, res) => {
+  const user = await User.findById(req.params.id, {
+    include: [
+      { model: Region },
+      { model: Locale },
+      { model: Responses, include: [Questions] }
+    ]
+  });
+  res.send(user);
+});
+
 router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const user = await User.findById(req.params.id);
 
   // get the posted data
   const { displayName, bio, age, region, locale, playstyle } = req.body;
 
+  // parse the nested objects
+  const answers = JSON.parse(req.body.answers);
+  const importances = JSON.parse(req.body.importances);
+  const preferences = JSON.parse(req.body.preferences);
+
   // update the user
   user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
-
+  const response = await userCalls.finishRegistration(
+    { importances, answers, preferences },
+    req.params.id
+  );
   res.send(user);
 });
+
 //returns a user's pending matches
 router.get('/matches/pending/:id', async (req, res) => {
   const id = req.params.id;

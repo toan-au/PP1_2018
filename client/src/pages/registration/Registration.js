@@ -29,7 +29,8 @@ class Registration extends Component {
 
   handleSubmit = async values => {
     console.log(values);
-    //await this.props.updateUser(this.props.user.id, values);
+    await this.props.updateUser(this.props.user.id, values);
+    console.log(this.props.user);
     this.setState({ redirect: true });
   };
 
@@ -63,7 +64,7 @@ class Registration extends Component {
     });
     // return only 1 for testing purposes
     return this.setState({
-      questionForms: [questionForms[questionForms.length - 1]]
+      questionForms
     });
   }
 

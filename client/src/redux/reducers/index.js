@@ -8,6 +8,7 @@ import pending from './pending';
 import matched from './matched';
 import games from './games';
 import genres from './genres';
+import viewUser from './viewUser';
 
 // combine the reducers and export
 export default combineReducers({
@@ -17,5 +18,6 @@ export default combineReducers({
   form,
   matched,
   games,
-  genres
+  genres,
+  viewUser
 });
