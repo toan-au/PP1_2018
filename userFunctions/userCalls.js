@@ -216,7 +216,15 @@ var dislikeUser = async function(requestId, targetId) {
 };
 
 var finishRegistration = async function(registrationForm, requestId) {
-  
+  const NO_IMPORTANCE = 0;
+  const LOW_IMPORTANCE = 1;
+  const MED_IMPORTANCE = 2;
+  const HIGH_IMPORTANCE = 3;
+
+  const A_SELECTED = 'A';
+  const B_SELECTED = 'B';
+  const C_SELECTED = 'C';
+  const D_SELECTED = 'D';
 
   const NO_QUESTIONS = 10;
 
