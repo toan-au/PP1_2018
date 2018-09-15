@@ -2,7 +2,6 @@ const express = require('express');
 const matching = require('../matchingAlgorithm/match');
 const multer = require('multer');
 
-
 const pfpUpload = multer({ dest: 'imgs/pfps/' });
 
 // models
@@ -40,7 +39,16 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const user = await User.findById(req.params.id);
 
   // get the posted data
-  const { displayName, bio, age, region, locale, playstyle } = req.body;
+  const {
+    displayName,
+    bio,
+    age,
+    region,
+    locale,
+    playstyle,
+    games,
+    genres
+  } = req.body;
 
   // parse the nested objects
   const answers = JSON.parse(req.body.answers);
@@ -50,7 +58,7 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   // update the user
   user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
   const response = await userCalls.finishRegistration(
-    { importances, answers, preferences },
+    { importances, answers, preferences, games, genres },
     req.params.id
   );
   res.send(user);
