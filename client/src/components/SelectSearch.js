@@ -12,10 +12,10 @@ class SelectSearch extends Component {
     this.setState({ searchTerm });
 
     // filteredGames should be nothing if no searchterm is provided
-    if (!searchTerm) return this.setState({ filteredGames: [] });
+    if (!searchTerm) return this.setState({ filteredItems: [] });
 
     const filteredItems = this.props.options.filter(
-      createFilter(this.state.searchTerm, ['name'])
+      createFilter(this.state.searchTerm, [this.props.labelName])
     );
 
     this.setState({ filteredItems });
@@ -46,27 +46,26 @@ class SelectSearch extends Component {
           onChange={this.onSearch}
         />
         <div className="listTitle">
-        <ul className="results">
-            <li className="glist"> Searched Games
-            </li>
-        </ul>
-        <ul className="select">
+          <ul className="results">
+            <li className="glist"> Searched Games</li>
+          </ul>
+          <ul className="select">
             <li>Selected Games</li>
-        </ul>
+          </ul>
         </div>
         <div className="gameList">
-        <ul className="results">
-          {filteredItems.map(item => (
-            <li onClick={() => this.selectItem(item)} key={item[identifier]}>
-              {item[labelName]}
-            </li>
-          ))}
-        </ul>
-        <ul className="select">
-          {selectedItems.map(item => (
-            <li key={item[identifier]}>{item[labelName]}</li>
-          ))}
-        </ul>
+          <ul className="results">
+            {filteredItems.map(item => (
+              <li onClick={() => this.selectItem(item)} key={item[identifier]}>
+                {item[labelName]}
+              </li>
+            ))}
+          </ul>
+          <ul className="select">
+            {selectedItems.map(item => (
+              <li key={item[identifier]}>{item[labelName]}</li>
+            ))}
+          </ul>
         </div>
       </div>
     );

@@ -23,6 +23,26 @@ class Profile extends Component {
     return responsesList;
   };
 
+  renderGames = () => {
+    const {
+      viewUser: { prefGames }
+    } = this.props;
+    const gamesList = prefGames.map(pref => {
+      return <div key={pref.id}>{pref.game.title}</div>;
+    });
+    return gamesList;
+  };
+
+  renderGenres = () => {
+    const {
+      viewUser: { prefGenres }
+    } = this.props;
+    const genresList = prefGenres.map(pref => {
+      return <div key={pref.id}>{pref.genre.title}</div>;
+    });
+    return genresList;
+  };
+
   renderProfile = () => {
     const { viewUser } = this.props;
     if (viewUser) {
@@ -36,6 +56,8 @@ class Profile extends Component {
           {viewUser.locale.locale}
 
           {this.renderResponses()}
+          {this.renderGames()}
+          {this.renderGenres()}
         </div>
       );
     }

@@ -2,7 +2,6 @@ const express = require('express');
 const matching = require('../matchingAlgorithm/match');
 const multer = require('multer');
 
-
 const pfpUpload = multer({ dest: 'imgs/pfps/' });
 
 // models
@@ -13,9 +12,10 @@ const Locale = require('../models').locale;
 const Region = require('../models').region;
 const User = require('../models').users;
 const Responses = require('../models').responses;
-const Matches = require('../models').matches;
 const Games = require('../models').games;
 const Genres = require('../models').genres;
+const PrefGenres = require('../models').prefGenres;
+const PrefGames = require('../models').prefGames;
 
 const router = express.Router();
 
@@ -30,7 +30,9 @@ router.get('/user/:id', async (req, res) => {
     include: [
       { model: Region },
       { model: Locale },
-      { model: Responses, include: [Questions] }
+      { model: Responses, include: [Questions] },
+      { model: PrefGames, include: [Games] },
+      { model: PrefGenres, include: [Genres] }
     ]
   });
   res.send(user);
@@ -46,11 +48,13 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const answers = JSON.parse(req.body.answers);
   const importances = JSON.parse(req.body.importances);
   const preferences = JSON.parse(req.body.preferences);
+  const games = JSON.parse(req.body.games);
+  const genres = JSON.parse(req.body.genres);
 
   // update the user
   user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
   const response = await userCalls.finishRegistration(
-    { importances, answers, preferences },
+    { importances, answers, preferences, games, genres },
     req.params.id
   );
   res.send(user);
