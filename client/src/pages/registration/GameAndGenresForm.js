@@ -26,23 +26,27 @@ class GameAndGenresForm extends Component {
           {/* <h2 className="title">Games and Genres</h2> */}
           <div className="form-body">
             <div>
-              <label className="question">Which games do you enjoy playing?</label>
+              <label className="question">
+                Which games do you enjoy playing?
+              </label>
               <div className="game-search">
                 <Field
                   name="games"
                   component={SelectSearch}
                   options={games}
                   identifier="id"
-                  labelName="name"
+                  labelName="title"
                 />
               </div>
             </div>
             <div>
-              <label className="question">Which genres do you enjoy playing?</label>
+              <label className="question">
+                Which genres do you enjoy playing?
+              </label>
               <CheckboxGroup
                 options={genres}
-                labelName="name"
-                valueName="name"
+                labelName="title"
+                valueName="title"
                 name="genres"
               />
             </div>
