@@ -5,11 +5,12 @@ const keys = require('../config/keys');
 
 // file upload setup
 const multer = require('multer');
-const gcs = require('multer-google-storage');
-const storage = gcs.storageEngine({
+const gcs = require('multer-sharp');
+const storage = gcs({
   bucket: keys.gcsBucketName,
   projectId: keys.googleProjectId,
-  keyFilename: './config/gcs_keys.json'
+  keyFilename: './config/gcs_keys.json',
+  size: { width: 350, height: 350 }
 });
 const pfpUpload = multer({ storage });
 
@@ -60,8 +61,20 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const games = JSON.parse(req.body.games);
   const genres = JSON.parse(req.body.genres);
 
+  const pfpUrl = req.file.path;
+
   // update the user
-  user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
+  user.updateAttributes({
+    displayName,
+    bio,
+    region,
+    age,
+    locale,
+    playstyle,
+    pfpUrl,
+    finishedRegistration: true
+  });
+
   const response = await userCalls.finishRegistration(
     { importances, answers, preferences, games, genres },
     req.params.id

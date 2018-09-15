@@ -49,6 +49,7 @@ class Profile extends Component {
       console.log(viewUser);
       return (
         <div>
+          <img src={viewUser.pfpUrl} />
           {viewUser.displayName}
           {viewUser.bio}
           {viewUser.age}
