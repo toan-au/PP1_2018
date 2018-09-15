@@ -1,8 +1,17 @@
 const express = require('express');
 const matching = require('../matchingAlgorithm/match');
-const multer = require('multer');
 
-const pfpUpload = multer({ dest: 'imgs/pfps/' });
+const keys = require('../config/keys');
+
+// file upload setup
+const multer = require('multer');
+const gcs = require('multer-google-storage');
+const storage = gcs.storageEngine({
+  bucket: keys.gcsBucketName,
+  projectId: keys.googleProjectId,
+  keyFilename: './config/gcs_keys.json'
+});
+const pfpUpload = multer({ storage });
 
 // models
 const userCalls = require('../userFunctions/userCalls');
