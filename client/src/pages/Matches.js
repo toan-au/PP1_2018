@@ -18,7 +18,6 @@ class Matches extends Component {
     const ratings = this.state.ratings;
     ratings[matchId] = rating;
     this.setState({ ratings });
-    console.log(matchId, rating);
   };
 
   renderMatched = () => {

@@ -31,7 +31,7 @@ const router = express.Router();
 
 //finds all matches for a user
 router.get('/match/:id', async (req, res) => {
-  const matches = await matching.findMatches();
+  const matches = await matching.findMatches(req.params.id);
   res.send(matches);
 });
 

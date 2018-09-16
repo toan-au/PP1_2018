@@ -4,20 +4,22 @@ import { connect } from 'react-redux';
 import { getMatches } from '../redux/actions/matches';
 import PacmanSpinner from '../components/PacmanSpinner';
 import { likeUser, dislikeUser } from '../redux/actions/pending';
+import ReactStars from 'react-stars';
 
 class Home extends Component {
-  state = { matches: [], loading: true };
+  state = { matches: [], loading: true, filter: 0, filteredItems: [] };
 
   async componentDidMount() {
     if (this.props.matches.length < 1) {
       await this.props.getMatches(this.props.user.id);
     }
+    this.filterMatches(0);
     this.setState({ loading: false });
   }
 
   renderMatches = () => {
     const { likeUser, dislikeUser, user } = this.props;
-    return this.props.matches.map(match => (
+    return this.state.filteredItems.map(match => (
       <MatchCard
         key={match.id}
         match={match}
@@ -25,6 +27,28 @@ class Home extends Component {
         onDislike={() => dislikeUser(user.id, match.id)}
       />
     ));
+  };
+
+  filterMatches = filter => {
+    const filteredItems = this.props.matches.filter(
+      match => match.avgRating > filter
+    );
+    this.setState({ filteredItems, filter });
+  };
+
+  renderFilterButtons = () => {
+    if (!this.state.loading)
+      return (
+        <div className="star-filter">
+          <h2>Filter by:</h2>
+          <ReactStars
+            count={5}
+            value={this.state.filter}
+            size={40}
+            onChange={this.filterMatches}
+          />
+        </div>
+      );
   };
 
   render() {
@@ -35,6 +59,7 @@ class Home extends Component {
           <h1>Welcome Back {user.displayName}</h1>
           {this.state.loading && <PacmanSpinner />}
         </div>
+        {this.renderFilterButtons()}
         <div className="matches">{this.renderMatches()}</div>
       </div>
     );
