@@ -82,25 +82,26 @@ class Registration extends Component {
     return (
       <div className="Registration">
         {page === 1 && <ProfileForm onSubmit={this.nextPage} />}
-        {page === 2 && this.state.questionForms[this.state.currentQuestion]}
-        {page === 3 && (
-          <GameAndGenresForm
-            onSubmit={this.nextPage}
-            onPrevious={this.prevPage}
-          />
-        )}
-        {page === 4 && 
-          <PlatformQuestion 
-            onSubmit={this.nextPage} 
-            onPrevious={this.prevPage} 
-          />
-        }
-        {page === 5 && (
+        {page === 2 && (
           <ConfirmationForm
             onSubmit={this.handleSubmit}
             onPrevious={this.prevPage}
           />
         )}
+        {page === 3 && this.state.questionForms[this.state.currentQuestion]}
+        {page === 4 && (
+          <GameAndGenresForm
+            onSubmit={this.nextPage}
+            onPrevious={this.prevPage}
+          />
+        )}
+        {page === 5 && (
+          <PlatformQuestion
+            onSubmit={this.nextPage}
+            onPrevious={this.prevPage}
+          />
+        )}
+
         {this.renderRedirect()}
       </div>
     );

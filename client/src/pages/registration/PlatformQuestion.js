@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 class PlatformQuestion extends Component {
-  state = {
-
-  };
+  state = {};
 
   render() {
     const { handleSubmit } = this.props;
@@ -60,7 +58,7 @@ class PlatformQuestion extends Component {
                 />
               </div>
             </div>
-        </div>
+          </div>
           <div className="footer-buttons">
             <div />
             <button className="next" type="submit">
@@ -74,11 +72,11 @@ class PlatformQuestion extends Component {
 }
 
 let platformQuestion = reduxForm({
-    form: 'registration',
-    destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true,
-  })(PlatformQuestion);
-  
-  // export HOC
+  form: 'registration',
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true
+})(PlatformQuestion);
+
 // export HOC
-export default PlatformQuestion;
+// export HOC
+export default platformQuestion;
