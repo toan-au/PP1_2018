@@ -8,7 +8,14 @@ const PfpInput = props => {
       <label className="">Upload an image</label>
       <Dropzone
         name={props.name}
-        onDrop={(filesToUpload, e) => props.input.onChange(filesToUpload)}>
+        onDrop={(filesToUpload, e) => props.input.onChange(filesToUpload)}
+      >
+        {props.input.value[0] && (
+          <img
+            src={props.input.value[0].preview}
+            style={{ height: '100%', width: '100%' }}
+          />
+        )}
       </Dropzone>
       {props.meta.dirty &&
         props.meta.error && <span className="error">{props.meta.error}</span>}

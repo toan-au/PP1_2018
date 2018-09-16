@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Chuck your variables in here*/
 /* colors */
 /* sizes */
@@ -34,3 +35,24 @@
     border-bottom: 10px solid #de9e36;
     border-radius: 5px;
     margin-bottom: 20px; }
+  .Matches .matches-list .rate-user {
+    padding-left: 5px; }
+  .Matches .matches-list .rate {
+    display: inline-block; }
+  .Matches .matches-list .rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px; }
+  .Matches .matches-list .rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #1e1e2b; }
+  .Matches .matches-list .rate:not(:checked) > label:before {
+    content: '★ '; }
+  .Matches .matches-list .rate > input:checked ~ label {
+    color: #de9e36; }
+  .Matches .matches-list .rate:not(:checked) > label:hover, .Matches .matches-list .rate:not(:checked) > label:hover ~ label {
+    color: #deb841; }

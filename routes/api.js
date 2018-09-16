@@ -1,8 +1,18 @@
 const express = require('express');
 const matching = require('../matchingAlgorithm/match');
-const multer = require('multer');
 
-const pfpUpload = multer({ dest: 'imgs/pfps/' });
+const keys = require('../config/keys');
+
+// file upload setup
+const multer = require('multer');
+const gcs = require('multer-sharp');
+const storage = gcs({
+  bucket: keys.gcsBucketName,
+  projectId: keys.googleProjectId,
+  keyFilename: './config/gcs_keys.json',
+  size: { width: 350, height: 350 }
+});
+const pfpUpload = multer({ storage });
 
 // models
 const userCalls = require('../userFunctions/userCalls');
@@ -51,8 +61,20 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const games = JSON.parse(req.body.games);
   const genres = JSON.parse(req.body.genres);
 
+  const pfpUrl = req.file.path;
+
   // update the user
-  user.updateAttributes({ displayName, bio, region, age, locale, playstyle });
+  user.updateAttributes({
+    displayName,
+    bio,
+    region,
+    age,
+    locale,
+    playstyle,
+    pfpUrl,
+    finishedRegistration: true
+  });
+
   const response = await userCalls.finishRegistration(
     { importances, answers, preferences, games, genres },
     req.params.id
@@ -142,11 +164,11 @@ router.get('/user/dislike/:userId/:targetId', async (req, res) => {
   res.send(response);
 });
 
-router.get('/user/rate/:userId/:targetId/:rating', async (req, res) => {
+router.get('/user/rate/:userId/:targetId', async (req, res) => {
   const response = await userCalls.rateUser(
     req.params.userId,
     req.params.targetId,
-    req.params.rating
+    req.body.rating
   );
 
   res.send(response);

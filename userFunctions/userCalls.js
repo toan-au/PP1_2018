@@ -54,7 +54,7 @@ var getPendingMatches = async function(requestId) {
 
 var getSuccessfulMatches = async function(requestId) {
   //placeholder Id, will take in variable ID values in future cases
-  //var requestId = 1;
+  var requestId = 1;
 
   //find the requested user, and their matches
   var findMatches = await matches.findAll({
@@ -234,7 +234,7 @@ var finishRegistration = async function(registrationForm, requestId) {
   var registrationForm = {
     answers: {1: "C", 2: "A", 3: "C", 4: "A", 5: "A", 6: "C", 7: "A", 8: "A", 9: "C", 10: "A"},
     importances: {1: "high", 2: "high", 3: "low", 4: "medium", 5: "low", 6: "low", 7: "high", 8: "medium", 9: "low", 10: "low"},
-    preferences: {1: {C:false, A:false, B:true, D:true}, 2: {A:true, C:true, B:true}, 3: {C:true, D:true}, 4: {B:true, C: false, A: true}, 
+    preferences: {1: {C:false, A:false, B:true, D:true}, 2: {A:true, C:true, B:true}, 3: {C:true, D:true}, 4: {B:true, C: false, A: true},
     5: {C: true, A: true, B: true, D:true}, 6: {D: false, A: true, C: true, B: true}, 7: {B: false, A: true}, 8: {B: false, A:true}, 9: {A: true, B:true}, 10: {A:true, C: true}},
     games: [1,4,42,11],
     genres: {2: true, 3: true, 6: true, 7:true}
@@ -330,18 +330,22 @@ var finishRegistration = async function(registrationForm, requestId) {
   }
 
   //create a genre holder to load into database.
-  var selectedGenrekeys = Object.keys(registrationForm.genres)
-  var selectedGenreValues = Object.values(registrationForm.genres)
+  var selectedGenrekeys = Object.keys(registrationForm.genres);
+  var selectedGenreValues = Object.values(registrationForm.genres);
   var genresHolder = [];
 
   //Checks for existence and loads it.
-  for(var loopCounter = 0; loopCounter < selectedGenrekeys.length; loopCounter++){
-    if(selectedGenreValues[loopCounter] == true){
-      var genreId = parseInt(selectedGenrekeys[loopCounter])
-      genresHolder.push(genreId)
+  for (
+    var loopCounter = 0;
+    loopCounter < selectedGenrekeys.length;
+    loopCounter++
+  ) {
+    if (selectedGenreValues[loopCounter] == true) {
+      var genreId = parseInt(selectedGenrekeys[loopCounter]);
+      genresHolder.push(genreId);
     }
   }
-  
+
   //populate the array of JSON objects for insertion via a bulk create (Responses).
   for (var loopCounter = 0; loopCounter < NO_QUESTIONS; loopCounter++) {
     var newResponse = {
@@ -370,11 +374,13 @@ var finishRegistration = async function(registrationForm, requestId) {
     registerGenres.push(newPrefGenre);
   }
 
-
-  
   var registerGames = [];
   //populate the array of JSON objects for insertion via a bulk create (Responses).
-  for (var loopCounter = 0; loopCounter < registrationForm.games.length; loopCounter++) {
+  for (
+    var loopCounter = 0;
+    loopCounter < registrationForm.games.length;
+    loopCounter++
+  ) {
     var newPrefGame = {
       userId: requestId,
       gameId: registrationForm.games[loopCounter].id,
@@ -399,8 +405,8 @@ var rateUser = async function(requestId, targetId, inputRating) {
   var targetId = 14;
   var inputRating = 4;*/
 
-  if(inputRating > 5 || inputRating < 0){
-    console.log("Invalid Rating of: " + inputRating)
+  if (inputRating > 5 || inputRating < 0) {
+    console.log('Invalid Rating of: ' + inputRating);
     return;
   }
 
@@ -415,9 +421,11 @@ var rateUser = async function(requestId, targetId, inputRating) {
     if (filterArray.userId == targetId && filterArray.reviewerId == requestId) {
       //update the existing rating
       await ratings.update(
-        { rating: inputRating},
+        { rating: inputRating },
         { where: { id: filterArray.id } }
       );
+
+      getAvgRating(targetId);
       return;
     }
     //The user has not rated the target user
@@ -432,13 +440,41 @@ var rateUser = async function(requestId, targetId, inputRating) {
 
   // persisted to DB
   await newRating.save();
+  getAvgRating(targetId);
+  return;
+};
+
+
+var getAvgRating = async function(targetId){
+  var matchingUser = await users.findOne({where: {id: targetId}, include: [
+    {model: ratings}
+], plain: true});
+
+
+  var holdRatings = 0;
+
+  for(var loopCounter = 0; loopCounter < matchingUser.ratings.length; loopCounter++){
+    holdRatings = matchingUser.ratings[loopCounter].rating + holdRatings
+  }
+  
+  var newRating = holdRatings / matchingUser.ratings.length
+
+  console.log(newRating)
+
+  await users.update(
+    { avgRating: newRating},
+    { where: { id: targetId } }
+  );
+
   return;
 }
+
 module.exports = {
   getPendingMatches,
   getSuccessfulMatches,
   likeUser,
   dislikeUser,
   finishRegistration,
-  rateUser
+  rateUser,
+  getAvgRating
 };
