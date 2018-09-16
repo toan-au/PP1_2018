@@ -1,16 +1,11 @@
 @import 'variables';
 
 .loading-screen {
-  margin-left: 0;
-  margin-right: 0;
-
-  width: 100vw;
-  background: url('../../images/background2.png');
-  background-size: cover;
+  @extend %content-b;
 
   .maskot {
     display: block;
-    width: 350px;
+    max-width: 350px;
     padding-top: 50px;
   }
 }
