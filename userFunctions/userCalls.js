@@ -54,7 +54,7 @@ var getPendingMatches = async function(requestId) {
 
 var getSuccessfulMatches = async function(requestId) {
   //placeholder Id, will take in variable ID values in future cases
-var requestId = 1;
+  var requestId = 1;
 
   //find the requested user, and their matches
   var findMatches = await matches.findAll({
@@ -330,15 +330,19 @@ var finishRegistration = async function(registrationForm, requestId) {
   }
 
   //create a genre holder to load into database.
-  var selectedGenrekeys = Object.keys(registrationForm.genres)
-  var selectedGenreValues = Object.values(registrationForm.genres)
+  var selectedGenrekeys = Object.keys(registrationForm.genres);
+  var selectedGenreValues = Object.values(registrationForm.genres);
   var genresHolder = [];
 
   //Checks for existence and loads it.
-  for(var loopCounter = 0; loopCounter < selectedGenrekeys.length; loopCounter++){
-    if(selectedGenreValues[loopCounter] == true){
-      var genreId = parseInt(selectedGenrekeys[loopCounter])
-      genresHolder.push(genreId)
+  for (
+    var loopCounter = 0;
+    loopCounter < selectedGenrekeys.length;
+    loopCounter++
+  ) {
+    if (selectedGenreValues[loopCounter] == true) {
+      var genreId = parseInt(selectedGenrekeys[loopCounter]);
+      genresHolder.push(genreId);
     }
   }
 
@@ -370,11 +374,13 @@ var finishRegistration = async function(registrationForm, requestId) {
     registerGenres.push(newPrefGenre);
   }
 
-
-
   var registerGames = [];
   //populate the array of JSON objects for insertion via a bulk create (Responses).
-  for (var loopCounter = 0; loopCounter < registrationForm.games.length; loopCounter++) {
+  for (
+    var loopCounter = 0;
+    loopCounter < registrationForm.games.length;
+    loopCounter++
+  ) {
     var newPrefGame = {
       userId: requestId,
       gameId: registrationForm.games[loopCounter].id,
@@ -399,8 +405,8 @@ var rateUser = async function(requestId, targetId, inputRating) {
   var targetId = 14;
   var inputRating = 4;*/
 
-  if(inputRating > 5 || inputRating < 0){
-    console.log("Invalid Rating of: " + inputRating)
+  if (inputRating > 5 || inputRating < 0) {
+    console.log('Invalid Rating of: ' + inputRating);
     return;
   }
 
@@ -415,7 +421,7 @@ var rateUser = async function(requestId, targetId, inputRating) {
     if (filterArray.userId == targetId && filterArray.reviewerId == requestId) {
       //update the existing rating
       await ratings.update(
-        { rating: inputRating},
+        { rating: inputRating },
         { where: { id: filterArray.id } }
       );
       return;
@@ -433,7 +439,7 @@ var rateUser = async function(requestId, targetId, inputRating) {
   // persisted to DB
   await newRating.save();
   return;
-}
+};
 module.exports = {
   getPendingMatches,
   getSuccessfulMatches,

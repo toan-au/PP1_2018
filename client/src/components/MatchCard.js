@@ -5,7 +5,7 @@ import MatchMeter from './MatchMeter';
 import ReactStars from 'react-stars';
 
 const MatchCard = props => {
-  const { displayName, bio, matchingScore, region, rating } = props.match;
+  const { displayName, bio, matchingScore, region, rating, pfpUrl } = props.match;
   const { onLike, onDislike } = props;
   const bioLength = 250;
   const shortBio = bio.substring(0, bioLength);
@@ -29,7 +29,7 @@ const MatchCard = props => {
         </div>
         <img
           className="profile-pic"
-          src={defaultPfp}
+          src={pfpUrl || defaultPfp}
           alt={displayName + "'s profile picture"}
         />
       </div>
