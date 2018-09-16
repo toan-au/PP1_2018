@@ -189,14 +189,12 @@ let profileForm = reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   initialValues: {
-    displayName: 'God',
-    bio: 'Kami sama',
     answers: {},
     preferences: {},
     importances: {},
     age: 20,
-    region: 1,
-    locale: 1,
+    region: -1,
+    locale: -1,
     playstyle: 'casual',
     genres: {},
     games: []

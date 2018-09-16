@@ -8,6 +8,7 @@
   margin-bottom: 20px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  position: relative;
 
   .profile-pic {
     display: block;
@@ -16,24 +17,30 @@
     border-top-right-radius: 5px;
   }
 
+  .star-rating {
+    padding: 10px;
+    position: absolute;
+    margin: 0 auto;
+    // left: 27%;
+  }
+
   .display-name {
     // padding: 20px 0px 0px 20px;
     font-weight: bold;
     font-size: $match_card_name_size;
-    padding-top:5px;
+    padding-top: 5px;
     text-transform: uppercase;
 
-    h3{
+    h3 {
       color: $light_red;
       text-align: center;
     }
     label {
-      text-align:center;
+      text-align: center;
       padding: 5px;
       border-radius: 5px;
       color: $white;
       margin-left: 5px;
-
     }
     label.CN {
       background: $red;
@@ -60,7 +67,7 @@
   }
 
   .button-group {
-   display:flex;
+    display: flex;
     margin: auto auto;
     text-align: center;
   }
@@ -70,14 +77,15 @@
     border: $light_red 2px;
     color: $white;
     background: $red;
-    font-size:20px;
-    padding-left:auto;
-    padding-right:auto;
+    font-size: 20px;
+    padding-left: auto;
+    padding-right: auto;
     margin: 10px;
   }
   .button1:hover {
     background-color: $light_red;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
   }
 }
 
