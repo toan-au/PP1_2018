@@ -164,11 +164,11 @@ router.get('/user/dislike/:userId/:targetId', async (req, res) => {
   res.send(response);
 });
 
-router.get('/user/rate/:userId/:targetId/:rating', async (req, res) => {
+router.get('/user/rate/:userId/:targetId', async (req, res) => {
   const response = await userCalls.rateUser(
     req.params.userId,
     req.params.targetId,
-    req.params.rating
+    req.body.rating
   );
 
   res.send(response);
