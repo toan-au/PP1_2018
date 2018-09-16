@@ -17,13 +17,15 @@ h3,
 p,
 a,
 form,
-.bio {
+.bio,
+table,
+button {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #e8e8e8;
   text-decoration: none; }
 
-p {
+p, table {
   font-size: 1.1em; }
 
 textarea,
