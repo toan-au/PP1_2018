@@ -2,15 +2,29 @@ import React from 'react';
 import defaultPfp from '../images/fortnite_drift_.png';
 // import defaultPfp from '../images/Ronald_devil.png';
 import MatchMeter from './MatchMeter';
+import ReactStars from 'react-stars';
 
 const MatchCard = props => {
-  const { displayName, bio, matchingScore, region } = props.match;
+  const { displayName, bio, matchingScore, region, rating } = props.match;
   const { onLike, onDislike } = props;
   const bioLength = 250;
   const shortBio = bio.substring(0, bioLength);
+  const postRating = rating || Math.random * 5;
+  const starLeftGap = 47.5 - postRating * 7;
+
   return (
     <div className="MatchCard">
       <div>
+        <div className="star-rating" style={{ left: `${starLeftGap}%` }}>
+          {console.log(starLeftGap)}
+          <ReactStars
+            count={rating}
+            value={rating}
+            edit={false}
+            size={50}
+            color1="rgba(0,0,0,0)"
+          />
+        </div>
         <img
           className="profile-pic"
           src={defaultPfp}
@@ -18,17 +32,23 @@ const MatchCard = props => {
         />
       </div>
       <div className="display-name">
-        <h3>{displayName} <label className={region.region}>{region.region}</label></h3>
+        <h3>
+          {displayName} <label className={region.region}>{region.region}</label>
+        </h3>
       </div>
-      
+
       <div className="bio">
         {shortBio}
         ...
       </div>
       <div className="button-group">
-        <button className="button1" onClick={onLike}>Like</button>
+        <button className="button1" onClick={onLike}>
+          Like
+        </button>
         <MatchMeter percent={matchingScore} />
-        <button className="button1" onClick={onDislike}>Dislike</button>
+        <button className="button1" onClick={onDislike}>
+          Dislike
+        </button>
       </div>
     </div>
   );

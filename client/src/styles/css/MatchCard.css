@@ -12,12 +12,17 @@
   border-radius: 5px;
   margin-bottom: 20px;
   border-top-left-radius: 10px;
-  border-top-right-radius: 10px; }
+  border-top-right-radius: 10px;
+  position: relative; }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px; }
+  .MatchCard .star-rating {
+    padding: 10px;
+    position: absolute;
+    margin: 0 auto; }
   .MatchCard .display-name {
     font-weight: bold;
     font-size: 2em;
