@@ -148,13 +148,15 @@ h3,
 p,
 a,
 form,
-.bio {
+.bio,
+table,
+button {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #e8e8e8;
   text-decoration: none; }
 
-p {
+p, table {
   font-size: 1.1em; }
 
 textarea,
@@ -546,7 +548,7 @@ h3 {
   margin: 0 auto;
   background: #e8e8e8;
   border-radius: 5px;
-  border-bottom: 10px solid #deb841;
+  border-bottom: 10px solid #de9e36;
   text-align: center; }
 
 .ContactForm .field {
@@ -664,7 +666,51 @@ h3 {
   padding-top: 50px; }
 
 .Profile {
-  color: white; }
+  color: #1e1e2b;
+  background: #e8e8e8;
+  border-bottom: 10px solid #de9e36;
+  border-radius: 5px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  max-width: 720px; }
+  .Profile .pfp {
+    text-align: center;
+    padding-bottom: 5px; }
+  .Profile h1 {
+    color: #e8e8e8 !important;
+    text-align: center; }
+  .Profile table {
+    color: #1e1e2b !important;
+    width: 100%; }
+  .Profile td {
+    padding-bottom: 5px;
+    width: 40px; }
+  .Profile p {
+    color: #1e1e2b !important;
+    padding-bottom: 5px; }
+  .Profile .info {
+    color: #6d6a75 !important; }
+  .Profile .user-info {
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px; }
+  .Profile .profile-details {
+    padding-bottom: 20px; }
+  .Profile .edit-button {
+    text-align: center;
+    padding-top: 10px; }
+    .Profile .edit-button .Edit {
+      font-size: 1.1em;
+      width: 150px;
+      border-radius: 5px;
+      color: #e8e8e8;
+      background: #ab1e24;
+      text-align: center; }
+    .Profile .edit-button button:hover {
+      background-color: #c82128;
+      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
+    .Profile .edit-button button:hover {
+      cursor: pointer; }
 
 /* Chuck your variables in here*/
 /* colors */
