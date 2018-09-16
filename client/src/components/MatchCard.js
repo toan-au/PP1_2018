@@ -5,7 +5,14 @@ import MatchMeter from './MatchMeter';
 import ReactStars from 'react-stars';
 
 const MatchCard = props => {
-  const { displayName, bio, matchingScore, region, rating, pfpUrl } = props.match;
+  const {
+    displayName,
+    bio,
+    matchingScore,
+    region,
+    rating,
+    pfpUrl
+  } = props.match;
   const { onLike, onDislike } = props;
   const bioLength = 250;
   const shortBio = bio.substring(0, bioLength);
@@ -18,7 +25,6 @@ const MatchCard = props => {
     <div className="MatchCard">
       <div>
         <div className="star-rating" style={{ left: `${starLeftGap}%` }}>
-          {console.log(starLeftGap)}
           <ReactStars
             count={fixedRating}
             value={fixedRating}
