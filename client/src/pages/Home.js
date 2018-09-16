@@ -17,7 +17,8 @@ class Home extends Component {
     this.props.matches.map(
       match => (match.rating = match.rating || Math.random() * 5)
     );
-    this.setState({ loading: false, filteredItems: this.props.matches });
+    this.filterMatches(0);
+    this.setState({ loading: false });
   }
 
   renderMatches = () => {
@@ -38,8 +39,6 @@ class Home extends Component {
       match => match.rating > filter
     );
     this.setState({ filteredItems, filter });
-    console.log(this.state.filteredItems);
-    console.log(this.state.filter);
   };
 
   renderFilterButtons = () => {
