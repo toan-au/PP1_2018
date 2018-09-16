@@ -443,6 +443,32 @@ var rateUser = async function(requestId, targetId, inputRating) {
   getAvgRating(targetId);
   return;
 };
+
+
+var getAvgRating = async function(targetId){
+  var matchingUser = await users.findOne({where: {id: targetId}, include: [
+    {model: ratings}
+], plain: true});
+
+
+  var holdRatings = 0;
+
+  for(var loopCounter = 0; loopCounter < matchingUser.ratings.length; loopCounter++){
+    holdRatings = matchingUser.ratings[loopCounter].rating + holdRatings
+  }
+  
+  var newRating = holdRatings / matchingUser.ratings.length
+
+  console.log(newRating)
+
+  await users.update(
+    { avgRating: newRating},
+    { where: { id: targetId } }
+  );
+
+  return;
+}
+
 module.exports = {
   getPendingMatches,
   getSuccessfulMatches,
