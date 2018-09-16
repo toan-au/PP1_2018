@@ -73,5 +73,12 @@ class PlatformQuestion extends Component {
   }
 }
 
+let platformQuestion = reduxForm({
+    form: 'registration',
+    destroyOnUnmount: false,
+    forceUnregisterOnUnmount: true,
+  })(PlatformQuestion);
+  
+  // export HOC
 // export HOC
 export default PlatformQuestion;
