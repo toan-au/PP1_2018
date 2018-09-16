@@ -83,8 +83,8 @@ class Registration extends Component {
       <div className="Registration">
         {page === 1 && <ProfileForm onSubmit={this.nextPage} />}
         {page === 2 && (
-          <ConfirmationForm
-            onSubmit={this.handleSubmit}
+          <PlatformQuestion
+            onSubmit={this.nextPage}
             onPrevious={this.prevPage}
           />
         )}
@@ -95,9 +95,10 @@ class Registration extends Component {
             onPrevious={this.prevPage}
           />
         )}
+
         {page === 5 && (
-          <PlatformQuestion
-            onSubmit={this.nextPage}
+          <ConfirmationForm
+            onSubmit={this.handleSubmit}
             onPrevious={this.prevPage}
           />
         )}
