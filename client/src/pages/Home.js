@@ -13,10 +13,6 @@ class Home extends Component {
     if (this.props.matches.length < 1) {
       await this.props.getMatches(this.props.user.id);
     }
-    // dummy ratings
-    this.props.matches.map(
-      match => (match.rating = match.rating || Math.random() * 5)
-    );
     this.filterMatches(0);
     this.setState({ loading: false });
   }
@@ -29,14 +25,13 @@ class Home extends Component {
         match={match}
         onLike={() => likeUser(user.id, match.id)}
         onDislike={() => dislikeUser(user.id, match.id)}
-        rating={match.rating}
       />
     ));
   };
 
   filterMatches = filter => {
     const filteredItems = this.props.matches.filter(
-      match => match.rating > filter
+      match => match.avgRating > filter
     );
     this.setState({ filteredItems, filter });
   };

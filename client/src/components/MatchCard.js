@@ -10,7 +10,7 @@ const MatchCard = props => {
     bio,
     matchingScore,
     region,
-    rating,
+    avgRating,
     pfpUrl
   } = props.match;
   const { onLike, onDislike } = props;
@@ -18,16 +18,15 @@ const MatchCard = props => {
   const shortBio = bio.substring(0, bioLength);
 
   // if no rating exists create a random one
-  const fixedRating = rating || (2.5 + Math.random() * 2.5).toFixed(2);
-  const starLeftGap = 47.5 - fixedRating * 7;
+  const starLeftGap = 47.5 - avgRating * 7;
 
   return (
     <div className="MatchCard">
       <div>
         <div className="star-rating" style={{ left: `${starLeftGap}%` }}>
           <ReactStars
-            count={fixedRating}
-            value={fixedRating}
+            count={avgRating}
+            value={avgRating}
             edit={false}
             size={50}
             color1="rgba(0,0,0,0)"
