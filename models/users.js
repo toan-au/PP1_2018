@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
       age: DataTypes.INTEGER,
       bio: DataTypes.STRING,
       finishedRegistration: DataTypes.BOOLEAN,
-      pfpUrl: DataTypes.STRING
+      pfpUrl: DataTypes.STRING,
+      avgRating: DataTypes.DECIMAL(10,2)
     },
     {}
   );
