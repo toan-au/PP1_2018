@@ -197,7 +197,7 @@ router.patch('/user/rate/:userId/:targetId', async (req, res) => {
     req.params.targetId,
     req.body.rating
   );
-  res.send(response);
+  res.send({});
 });
 
 //must be given an object, which contains the Id's of the user who selected like,
