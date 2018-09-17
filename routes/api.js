@@ -28,6 +28,7 @@ const Genres = require('../models').genres;
 const PrefGenres = require('../models').prefGenres;
 const PrefGames = require('../models').prefGames;
 const Ratings = require('../models').ratings;
+const Platforms = require('../models').platforms;
 
 const router = express.Router();
 
@@ -150,6 +151,7 @@ router.get('/regions', async (req, res) => {
   res.send(regions);
 });
 
+//return a list of games
 router.get('/games', async (req, res) => {
   const games = await Games.findAll({ attributes: ['id', 'title'] });
 
@@ -159,6 +161,7 @@ router.get('/games', async (req, res) => {
   res.send(games);
 });
 
+//return a list of genres
 router.get('/genres', async (req, res) => {
   const genres = await Genres.findAll({ attributes: ['id', 'title'] });
 
@@ -166,6 +169,16 @@ router.get('/genres', async (req, res) => {
     genres[i] = genres[i].toJSON();
   }
   res.send(genres);
+});
+
+//return a list of platforms
+router.get('/platforms', async (req, res) => {
+  const platforms = await Platforms.findAll({ attributes: ['id', 'title'] });
+
+  for (var i = 0; i < platforms.length; i++) {
+    platforms[i] = platforms[i].toJSON();
+  }
+  res.send(platforms);
 });
 
 //must be given an object, which contains the Id's of the user who selected like,
