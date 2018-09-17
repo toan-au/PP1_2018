@@ -5,7 +5,7 @@ class PlatformForm extends Component {
   state = {};
 
   render() {
-    const { handleSubmit, prevQuestion} = this.props;
+    const { handleSubmit, prevPage} = this.props;
     return (
       
       <div className="RegistrationForm">
