@@ -406,7 +406,7 @@ var rateUser = async function(requestId, targetId, inputRating) {
   var inputRating = 4;*/
 
   if (inputRating > 5 || inputRating < 0) {
-    console.log('Invalid Rating of: ' + inputRating);
+    // console.log('Invalid Rating of: ' + inputRating);
     return;
   }
 
@@ -444,30 +444,31 @@ var rateUser = async function(requestId, targetId, inputRating) {
   return;
 };
 
-
-var getAvgRating = async function(targetId){
-  var matchingUser = await users.findOne({where: {id: targetId}, include: [
-    {model: ratings}
-], plain: true});
-
+var getAvgRating = async function(targetId) {
+  var matchingUser = await users.findOne({
+    where: { id: targetId },
+    include: [{ model: ratings }],
+    plain: true
+  });
 
   var holdRatings = 0;
 
-  for(var loopCounter = 0; loopCounter < matchingUser.ratings.length; loopCounter++){
-    holdRatings = matchingUser.ratings[loopCounter].rating + holdRatings
+  for (
+    var loopCounter = 0;
+    loopCounter < matchingUser.ratings.length;
+    loopCounter++
+  ) {
+    holdRatings = matchingUser.ratings[loopCounter].rating + holdRatings;
   }
-  
-  var newRating = holdRatings / matchingUser.ratings.length
 
-  console.log(newRating)
+  var newRating = holdRatings / matchingUser.ratings.length;
 
-  await users.update(
-    { avgRating: newRating},
-    { where: { id: targetId } }
-  );
+  // console.log(newRating)
+
+  await users.update({ avgRating: newRating }, { where: { id: targetId } });
 
   return;
-}
+};
 
 module.exports = {
   getPendingMatches,
