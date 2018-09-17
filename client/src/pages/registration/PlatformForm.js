@@ -51,7 +51,7 @@ class PlatformForm extends Component {
                 />
               </div>
           <div className="footer-buttons">
-            <button className="previous" type="button" onClick={prevQuestion}>
+            <button className="previous" type="button" onClick={prevPage}>
               Previous
             </button>
             <button className="next" type="submit">
