@@ -3,21 +3,32 @@ import { connect } from 'react-redux';
 import { getMatched } from '../redux/actions/matched';
 import defaultPfp from '../images/fortnite_drift_.png';
 import ReactStars from 'react-stars';
+import axios from 'axios';
 
 class Matches extends Component {
-  state = {
-    ratings: {}
-  };
-
+  state = { ratings: {}, initialized: false };
   componentDidMount = async () => {
     await this.props.getMatched(this.props.user.id);
+
+    // initiate ratings state if there is none
+    if (!this.state.initialized) {
+      const ratings = {};
+      this.props.matched.map(match => {
+        ratings[match.id] = match.userRating;
+      });
+      this.setState({ ratings, initialized: true });
+    }
   };
 
   rate = (matchId, rating) => {
-    // redux action to like user
+    const { user } = this.props;
+
     const ratings = this.state.ratings;
     ratings[matchId] = rating;
     this.setState({ ratings });
+
+    // rate the user on server side
+    axios.patch(`/api/user/rate/${user.id}/${matchId}`, { rating });
   };
 
   renderMatched = () => {
