@@ -13,7 +13,9 @@ h3,
 p,
 a,
 form,
-.bio {
+.bio,
+table,
+button {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: $white;
@@ -22,7 +24,7 @@ form,
   text-decoration: none;
 }
 
-p {
+p, table {
   font-size: 1.1em;
 }
 
