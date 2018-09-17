@@ -2,6 +2,7 @@ import React from 'react';
 import defaultPfp from '../images/fortnite_drift_.png';
 // import defaultPfp from '../images/Ronald_devil.png';
 import MatchMeter from './MatchMeter';
+import Modal from './Modal';
 import ReactStars from 'react-stars';
 
 const MatchCard = props => {
@@ -20,42 +21,54 @@ const MatchCard = props => {
   // if no rating exists create a random one
   const starLeftGap = 47.5 - avgRating * 7;
 
+  const id = `modal-${displayName.replace(/\s/g, '')}`;
+
+  const callModal = id => {
+    return () => {
+      global.$(`#${id}`).modal();
+    };
+  };
+
   return (
-    <div className="MatchCard">
-      <div>
-        <div className="star-rating" style={{ left: `${starLeftGap}%` }}>
-          <ReactStars
-            count={avgRating}
-            value={avgRating}
-            edit={false}
-            size={50}
-            color1="rgba(0,0,0,0)"
+    <div>
+      <Modal id={id} userId={props.matchId} matchingScore={matchingScore} />
+      <div className="MatchCard">
+        <div>
+          <div className="star-rating" style={{ left: `${starLeftGap}%` }}>
+            <ReactStars
+              count={avgRating}
+              value={avgRating}
+              edit={false}
+              size={50}
+              color1="rgba(0,0,0,0)"
+            />
+          </div>
+          <img
+            className="profile-pic"
+            src={pfpUrl || defaultPfp}
+            alt={displayName + "'s profile picture"}
           />
         </div>
-        <img
-          className="profile-pic"
-          src={pfpUrl || defaultPfp}
-          alt={displayName + "'s profile picture"}
-        />
-      </div>
-      <div className="display-name">
-        <h3>
-          {displayName} <label className={region.region}>{region.region}</label>
-        </h3>
-      </div>
+        <div className="display-name">
+          <h3 onClick={callModal(id)}>
+            {displayName}{' '}
+            <label className={region.region}>{region.region}</label>
+          </h3>
+        </div>
 
-      <div className="bio">
-        {shortBio}
-        ...
-      </div>
-      <div className="button-group">
-        <button className="button1" onClick={onLike}>
-          Like
-        </button>
-        <MatchMeter percent={matchingScore} />
-        <button className="button1" onClick={onDislike}>
-          Dislike
-        </button>
+        <div className="bio">
+          {shortBio}
+          ...
+        </div>
+        <div className="button-group">
+          <button className="button1" onClick={onLike}>
+            Like
+          </button>
+          <MatchMeter percent={matchingScore} />
+          <button className="button1" onClick={onDislike}>
+            Dislike
+          </button>
+        </div>
       </div>
     </div>
   );

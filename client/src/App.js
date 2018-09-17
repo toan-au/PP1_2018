@@ -27,7 +27,6 @@ class App extends Component {
 
   render() {
     const { loading } = this.state;
-    console.log(loading);
     return (
       <BrowserRouter>
         <div className="App">
