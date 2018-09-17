@@ -50,16 +50,53 @@ class Profile extends Component {
       console.log(viewUser);
       return (
         <div>
-          <img src={viewUser.pfpUrl || defaultPfp} />
-          {viewUser.displayName}
-          {viewUser.bio}
-          {viewUser.age}
-          {viewUser.region.region}
-          {viewUser.locale.locale}
+          <div className="pfp">
+            <img src={viewUser.pfpUrl || defaultPfp} />
+          </div>
 
-          {this.renderResponses()}
-          {this.renderGames()}
-          {this.renderGenres()}
+          <div className="user-info">
+            <table>
+              <tr>
+                <td>Display Name:</td>
+                <td className="info">{viewUser.displayName}</td>
+              </tr>
+              <tr>
+                <td>Age: </td>
+                <td className="info">{viewUser.age}</td>
+              </tr>
+              <tr>
+                <td>Region: </td>
+                <td className="info">{viewUser.region.region}</td>
+              </tr>
+              <tr>
+                <td>Locale: </td>
+                <td className="info">{viewUser.locale.locale}</td>
+              </tr>
+            </table>
+
+            <br/>
+            <p>Biography:</p>
+            <p className="info">{viewUser.bio}</p>
+            <br/>
+
+            <p>Your Answers:</p>
+            <p className="info">{this.renderResponses()}</p>
+            <br/>
+
+            <p>Your Favourite Games:</p>
+            <p className="info">{this.renderGames()}</p>
+            <br/>
+
+            <p>Your Favourite Genres:</p>
+            <p className="info">{this.renderGenres()}</p>
+          </div>
+
+          <div className="edit-button">
+            <button className="Edit">
+              Edit Profile
+            </button>
+          </div>
+
         </div>
       );
     }
@@ -68,8 +105,10 @@ class Profile extends Component {
   render = () => {
     return (
       <div className="Profile container">
-        <h1>Profile page</h1>
-        {this.renderProfile()}
+        <h1>Your Profile</h1>
+        <div className="profile-details">
+          {this.renderProfile()}
+        </div>
       </div>
     );
   };

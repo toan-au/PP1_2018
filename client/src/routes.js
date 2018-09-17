@@ -10,6 +10,7 @@ import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
 import Matches from './pages/Matches';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 
 import Home from './pages/Home';
 
@@ -23,7 +24,7 @@ const AppSwitch = ({ user }) => {
 const mapStateToProps = state => ({ user: state.user });
 
 /**
- * PublicRoutes - routes available to an unathenticated user.
+ * PublicRoutes - routes available to an unauthenticated user.
  */
 const PublicRoutes = () => {
   return (
@@ -51,17 +52,12 @@ const ProtectedRoutes = () => {
       <Route exact path="/register" component={Registration} />
       <Route exact path="/matches" component={Matches} />
       <Route exact path="/profile" component={Profile} />
-      {/* TODO: Implement routes bellow */}
-      {/* 
-        <Route exact path="/pending" component={Pending} />
-        <Route exact path="/settings" component={Settings} /> */}
 
       {/* Common Routes */}
       <Route exact path="/aboutus" component={AboutUs} />
       <Route exact path="/privacy" component={Privacy} />
       <Route exact path="/contact" component={Contact} />
-      {/* TODO: Implement 404 page */}
-      {/* <Route path="*" component={NotFoundView} /> */}
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 };
