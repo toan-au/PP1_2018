@@ -14,8 +14,8 @@ class ProfileForm extends Component {
   selected = value => (value !== '-1' ? undefined : 'Please select an option');
   validateImage = imageList => {
     if (imageList) {
-      if (imageList.length > 1) {
-        return 'You can upload one image at a time';
+      if (imageList.length != 1) {
+        return 'You must upload an image';
       } else if (imageList.length === 1) {
         let selectedImage = imageList[0];
         if (!selectedImage.type.match('image.*')) {
@@ -24,6 +24,8 @@ class ProfileForm extends Component {
           return 'Maximum file size exceeded';
         }
       }
+    } else {
+      return 'You must upload a profile picture';
     }
   };
 
@@ -85,6 +87,7 @@ class ProfileForm extends Component {
           <div className="form-body grid">
             <div className="left">
               <Field
+                required
                 name="pfp"
                 component={PfpInput}
                 validate={this.validateImage}
