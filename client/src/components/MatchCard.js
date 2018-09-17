@@ -3,6 +3,8 @@ import defaultPfp from '../images/fortnite_drift_.png';
 // import defaultPfp from '../images/Ronald_devil.png';
 import MatchMeter from './MatchMeter';
 import ReactStars from 'react-stars';
+import like from '../images/like.png';
+import dislike from '../images/dislike.png'
 
 const MatchCard = props => {
   const {
@@ -49,13 +51,10 @@ const MatchCard = props => {
         ...
       </div>
       <div className="button-group">
-        <button className="button1" onClick={onLike}>
-          Like
-        </button>
+      {/* <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> */}
+        <img className="button2" src={like} alt="Like Button" onClick={onLike}/>
         <MatchMeter percent={matchingScore} />
-        <button className="button1" onClick={onDislike}>
-          Dislike
-        </button>
+        <img className="button2" src={dislike} alt="Dislike Button" onClick={onDislike}/>
       </div>
     </div>
   );
