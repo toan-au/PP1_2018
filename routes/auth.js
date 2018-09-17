@@ -17,7 +17,7 @@ const keys = require('../config/keys');
 
 // serialize the user into the session
 passport.serializeUser((user, done) => {
-  done(null, user.userId);
+  done(null, user.id);
 });
 
 // deserialize a user from the session
@@ -47,7 +47,8 @@ passport.use(
         console.log(
           `existing user found: ${existingUser.googleId} ${existingUser.userId}`
         );
-        return done(null, existingUser);
+        const user = await Users.findById(existingUser.userId);
+        return done(null, user);
       }
 
       // build a generic User object
@@ -71,7 +72,7 @@ passport.use(
 
       // if no existing user, create new user here
       console.log('new user created id:' + googleUser.googleId, ', ' + user.id);
-      return done(null, googleUser);
+      return done(null, user);
     }
   )
 );
@@ -93,7 +94,8 @@ passport.use(
             existingUser.userId
           }`
         );
-        return done(null, existingUser);
+        const user = await Users.findById(existingUser.userId);
+        return done(null, user);
       }
 
       // build a generic User object
@@ -117,7 +119,7 @@ passport.use(
         'new user created id:' + facebookUser.facebookId,
         ', ' + facebookUser.userId
       );
-      return done(null, facebookUser);
+      return done(null, user);
     }
   )
 );
@@ -139,7 +141,8 @@ passport.use(
             existingUser.userId
           }`
         );
-        return done(null, existingUser);
+        const user = await Users.findById(existingUser.userId);
+        return done(null, user);
       }
 
       // build a generic User object
@@ -163,7 +166,7 @@ passport.use(
         'new user created id:' + discordUser.discordId,
         ', ' + discordUser.userId
       );
-      return done(null, discordUser);
+      return done(null, user);
     }
   )
 );
