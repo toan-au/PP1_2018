@@ -1,5 +1,6 @@
 const express = require('express');
 const matching = require('../matchingAlgorithm/match');
+const Op = require('sequelize').Op;
 
 const keys = require('../config/keys');
 
@@ -26,6 +27,7 @@ const Games = require('../models').games;
 const Genres = require('../models').genres;
 const PrefGenres = require('../models').prefGenres;
 const PrefGames = require('../models').prefGames;
+const Ratings = require('../models').ratings;
 
 const router = express.Router();
 
@@ -91,7 +93,32 @@ router.get('/matches/pending/:id', async (req, res) => {
 
 //returns a user's successful matches
 router.get('/matches/successful/:id', async (req, res) => {
+  const id = req.params.id;
   const successfulMatches = await userCalls.getSuccessfulMatches();
+
+  // get list of Ids
+  const matchedIds = [];
+  successfulMatches.map(match => {
+    matchedIds.push(match.id);
+  });
+
+  // get ratings for list of matches
+  const ratings = await Ratings.findAll({
+    where: { reviewerId: id, userId: { [Op.in]: matchedIds } }
+  });
+
+  // append user's rating to matched user
+  successfulMatches.map(match => {
+    // set match's userRating or 0
+    let userRating = ratings.find(rating => rating.userId === match.id);
+    userRating ? (userRating = userRating.rating) : (userRating = 0);
+    match.userRating = userRating;
+  });
+
+  successfulMatches.map(match => {
+    console.log(match.userRating);
+  });
+
   res.send(successfulMatches);
 });
 
@@ -164,13 +191,12 @@ router.get('/user/dislike/:userId/:targetId', async (req, res) => {
   res.send(response);
 });
 
-router.get('/user/rate/:userId/:targetId', async (req, res) => {
-  const response = await userCalls.rateUser(
+router.patch('/user/rate/:userId/:targetId', async (req, res) => {
+  await userCalls.rateUser(
     req.params.userId,
     req.params.targetId,
     req.body.rating
   );
-
   res.send(response);
 });
 
