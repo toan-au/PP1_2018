@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactStars from 'react-stars';
+import { connect } from 'react-redux';
+
+import { likeUser, dislikeUser } from '../redux/actions/pending';
 
 import Modal from './Modal';
 import MatchMeter from './MatchMeter';
@@ -8,25 +11,12 @@ import ThumbDownIcon from './ThumbDownIcon';
 
 import defaultPfp from '../images/fortnite_drift_.png';
 
-const MatchCard = props => {
-  const {
-    displayName,
-    bio,
-    matchingScore,
-    region,
-    avgRating,
-    pfpUrl
-  } = props.match;
-  console.log(props.match);
-
-  const { onLike, onDislike } = props;
+const MatchCard = ({ match, user, likeUser, dislikeUser }) => {
+  const starLeftGap = 47.5 - match.avgRating * 7; // if no rating exists create a random one
   const bioLength = 250;
-  const shortBio = bio.substring(0, bioLength);
+  const shortBio = match.bio.substring(0, bioLength);
+  const modalId = `modal-${match.displayName.replace(/\s/g, '')}`;
 
-  // if no rating exists create a random one
-  const starLeftGap = 47.5 - avgRating * 7;
-
-  const modalId = `modal-${displayName.replace(/\s/g, '')}`;
   const callModal = modalId => {
     return () => {
       global.$(`#${modalId}`).modal();
@@ -35,40 +25,43 @@ const MatchCard = props => {
 
   return (
     <div>
-      <Modal id={modalId} user={props.match} />
+      <Modal id={modalId} user={match} />
       <div className="MatchCard">
         <div>
           <div className="star-rating" style={{ left: `${starLeftGap}%` }}>
             <ReactStars
-              count={parseFloat(avgRating)}
-              value={parseFloat(avgRating)}
+              count={parseFloat(match.avgRating)}
+              value={parseFloat(match.avgRating)}
               edit={false}
-              size={50}
+              size={40}
               color1="rgba(0,0,0,0)"
             />
           </div>
           <img
             className="profile-pic"
-            src={pfpUrl || defaultPfp}
-            alt={displayName + "'s profile picture"}
+            src={match.pfpUrl || defaultPfp}
+            alt={match.displayName + "'s profile picture"}
             onClick={callModal(modalId)}
           />
         </div>
         <div className="display-name">
           <h3 onClick={callModal(modalId)}>
-            {displayName}{' '}
-            <label className={region.region}>{region.region}</label>
+            {match.displayName}{' '}
+            <label className={match.region.region}>{match.region.region}</label>
           </h3>
         </div>
 
         <div className="bio">{`${shortBio}...`}</div>
 
         <div className="button-group">
-          <div className="button2" onClick={onLike}>
+          <div className="button2" onClick={() => likeUser(user.id, match.id)}>
             <ThumbUpIcon width={64} height={64} />
           </div>
-          <MatchMeter percent={matchingScore} />
-          <div className="button2" onClick={onDislike}>
+          <MatchMeter percent={match.matchingScore} />
+          <div
+            className="button2"
+            onClick={() => dislikeUser(user.id, match.id)}
+          >
             <ThumbDownIcon width={64} height={64} />
           </div>
         </div>
@@ -77,4 +70,11 @@ const MatchCard = props => {
   );
 };
 
-export default MatchCard;
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(
+  mapStateToProps,
+  { likeUser, dislikeUser }
+)(MatchCard);

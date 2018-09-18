@@ -1,7 +1,6 @@
 import React from 'react';
-import maskot from '../images/maskot.png';
 
-console.log(maskot);
+import maskot from '../images/maskot.png';
 
 const Landing = () => {
   return (
@@ -13,7 +12,10 @@ const Landing = () => {
             The beautifully designed matching application that will match you
             with your destined gaming compatriots.
           </p>
-          <p>Through our top-tier matching algorithm, find your perfect gaming buddies!</p>
+          <p>
+            Through our top-tier matching algorithm, find your perfect gaming
+            buddies!
+          </p>
           <br />
           <p>Register or log in now!</p>
           <a href="/api/auth/facebook" className="facebook">
