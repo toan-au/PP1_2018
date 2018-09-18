@@ -21,7 +21,6 @@ class Home extends Component {
     const { likeUser, dislikeUser, user } = this.props;
     return this.state.filteredItems.map(match => (
       <MatchCard
-        matchId={match.id}
         key={match.id}
         match={match}
         onLike={() => likeUser(user.id, match.id)}
