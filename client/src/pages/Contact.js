@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 const Contact = () => {
   return (
