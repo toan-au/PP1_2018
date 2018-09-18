@@ -23,9 +23,12 @@ const MatchCard = ({ match, user, likeUser, dislikeUser }) => {
     };
   };
 
+  const onLike = () => likeUser(user.id, match.id);
+  const onDislike = () => dislikeUser(user.id, match.id);
+
   return (
     <div>
-      <Modal id={modalId} user={match} />
+      <Modal id={modalId} user={match} onLike={onLike} onDislike={onDislike} />
       <div className="MatchCard">
         <div>
           <div className="star-rating" style={{ left: `${starLeftGap}%` }}>
@@ -54,14 +57,11 @@ const MatchCard = ({ match, user, likeUser, dislikeUser }) => {
         <div className="bio">{`${shortBio}...`}</div>
 
         <div className="button-group">
-          <div className="button2" onClick={() => likeUser(user.id, match.id)}>
+          <div className="button2" onClick={onLike}>
             <ThumbUpIcon width={64} height={64} />
           </div>
           <MatchMeter percent={match.matchingScore} />
-          <div
-            className="button2"
-            onClick={() => dislikeUser(user.id, match.id)}
-          >
+          <div className="button2" onClick={onDislike}>
             <ThumbDownIcon width={64} height={64} />
           </div>
         </div>
