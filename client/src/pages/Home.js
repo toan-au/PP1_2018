@@ -48,14 +48,16 @@ class Home extends Component {
           {this.state.loading && <PacmanSpinner />}
         </div>
         {!this.state.loading && (
-          <FilterButtons
-            filter={this.state.filter}
-            onChange={this.filterMatches(this.props.matches)}
-          />
+          <div>
+            <FilterButtons
+              filter={this.state.filter}
+              onChange={this.filterMatches(this.props.matches)}
+            />
+            <div className="matches">
+              <Matches matches={this.state.filteredItems} />
+            </div>
+          </div>
         )}
-        <div className="matches">
-          <Matches matches={this.state.filteredItems} />
-        </div>
       </div>
     );
   }
