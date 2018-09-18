@@ -1,11 +1,12 @@
 import React from 'react';
-
-import defaultPfp from '../images/fortnite_drift_.png';
-import MatchMeter from './MatchMeter';
-import Modal from './Modal';
 import ReactStars from 'react-stars';
+
+import Modal from './Modal';
+import MatchMeter from './MatchMeter';
 import ThumbUpIcon from './ThumbUpIcon';
 import ThumbDownIcon from './ThumbDownIcon';
+
+import defaultPfp from '../images/fortnite_drift_.png';
 
 const MatchCard = props => {
   const {
