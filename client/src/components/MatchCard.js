@@ -4,6 +4,8 @@ import defaultPfp from '../images/fortnite_drift_.png';
 import MatchMeter from './MatchMeter';
 import Modal from './Modal';
 import ReactStars from 'react-stars';
+import like from '../images/like.png';
+import dislike from '../images/dislike.png'
 
 const MatchCard = props => {
   const {

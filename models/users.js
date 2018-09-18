@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       bio: DataTypes.STRING,
       finishedRegistration: DataTypes.BOOLEAN,
       pfpUrl: DataTypes.STRING,
+      playstyle: DataTypes.STRING,
       avgRating: DataTypes.DECIMAL(10,2)
     },
     {}

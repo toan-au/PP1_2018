@@ -17,8 +17,12 @@ const PfpInput = props => {
           />
         )}
       </Dropzone>
-      {props.meta.dirty &&
-        props.meta.error && <span className="error">{props.meta.error}</span>}
+      {props.meta.touched &&
+        props.meta.error && (
+          <span className="error" style={{ color: 'red' }}>
+            {props.meta.error}
+          </span>
+        )}
       {files &&
         Array.isArray(files) && (
           <ul>

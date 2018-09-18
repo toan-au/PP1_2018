@@ -8,6 +8,7 @@ import { updateUser } from '../../redux/actions/user';
 
 // registration forms
 import ProfileForm from './ProfileForm';
+import PlatformForm from './PlatformForm';
 import QuestionAnswerForm from './QuestionAnswerForm';
 import GameAndGenresForm from './GameAndGenresForm';
 import ConfirmationForm from './ConfirmationForm';
@@ -81,19 +82,27 @@ class Registration extends Component {
     return (
       <div className="Registration">
         {page === 1 && <ProfileForm onSubmit={this.nextPage} />}
-        {page === 2 && this.state.questionForms[this.state.currentQuestion]}
-        {page === 3 && (
+        {page === 2 && (
+          <PlatformForm
+            onSubmit={this.nextPage}
+            onPrevious={this.prevPage}
+          />
+        )}
+        {page === 3 && this.state.questionForms[this.state.currentQuestion]}
+        {page === 4 && (
           <GameAndGenresForm
             onSubmit={this.nextPage}
             onPrevious={this.prevPage}
           />
         )}
-        {page === 4 && (
+
+        {page === 5 && (
           <ConfirmationForm
             onSubmit={this.handleSubmit}
             onPrevious={this.prevPage}
           />
         )}
+
         {this.renderRedirect()}
       </div>
     );
