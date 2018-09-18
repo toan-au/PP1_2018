@@ -118,13 +118,12 @@ const ModalUserInteraction = ({ user, onLike, onDislike }) => {
       {/* User Interaction */}
       <div style={styles.interactionsContainer} className="row">
         <div className="col d-flex justify-content-between">
-          {/* TODO: Make thumbs up clickable. */}
           <button className="button1" style={styles.button} onClick={onLike}>
             <ThumbUpIcon width={35} height={35} />
           </button>
+
           <MatchMeter percent={user.matchingScore} />
 
-          {/* TODO: Make thumbs down clickable. */}
           <button className="button1" style={styles.button} onClick={onDislike}>
             <ThumbDownIcon width={35} height={35} />
           </button>
