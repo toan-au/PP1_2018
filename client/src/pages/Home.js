@@ -7,7 +7,7 @@ import { getMatches } from '../redux/actions/matches';
 import MatchCard from '../components/MatchCard';
 import PacmanSpinner from '../components/PacmanSpinner';
 
-const Matches = ({ matches }) => {
+const MatchCards = ({ matches }) => {
   return matches.map(match => <MatchCard key={match.id} match={match} />);
 };
 
@@ -54,7 +54,7 @@ class Home extends Component {
               onChange={this.filterMatches(this.props.matches)}
             />
             <div className="matches">
-              <Matches matches={this.state.filteredItems} />
+              <MatchCards matches={this.state.filteredItems} />
             </div>
           </div>
         )}
