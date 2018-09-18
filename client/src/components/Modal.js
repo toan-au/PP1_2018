@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-
+import React from 'react';
 import ReactStars from 'react-stars';
+
 import MatchMeter from './MatchMeter';
+import ThumbUpIcon from './ThumbUpIcon';
+import ThumbDownIcon from './ThumbDownIcon';
+
+import DefaultPfp from '../images/fortnite_drift_.png';
 
 const ModalUserInfo = ({ user }) => {
   const styles = {
@@ -55,7 +58,7 @@ const ModalUserInfo = ({ user }) => {
         <div className="col d-flex justify-content-center" style={styles.stars}>
           <ReactStars
             count={5}
-            value={user.avgRating}
+            value={parseFloat(user.avgRating)}
             edit={false}
             size={35}
             color1="rgba(0,0,0,0)"
@@ -72,8 +75,7 @@ const ModalUserInfo = ({ user }) => {
             <br />
             Favorite Genres: {genreFormatter(user.prefGenres)}
             <br />
-            {/* TODO: user.playStyle */}
-            Casual or Competitive? {':P'}
+            Casual or Competitive? {user.playstyle}
           </p>
         </div>
       </div>
@@ -81,7 +83,7 @@ const ModalUserInfo = ({ user }) => {
   );
 };
 
-const ModalUserInteraction = ({ user, matchingScore }) => {
+const ModalUserInteraction = ({ user, onLike, onDislike }) => {
   const styles = {
     interactionsContainer: {
       height: '100px'
@@ -103,52 +105,27 @@ const ModalUserInteraction = ({ user, matchingScore }) => {
       {/* Display Picture */}
       <div className="row">
         <div className="col text-center">
-          <img src={user.pfpUrl} height="275" width="275" />
+          <img src={user.pfpUrl || DefaultPfp} height="275" width="275" />
         </div>
       </div>
       {/* Match Percentage */}
       <div className="row">
         <div className="col text-center">
-          {/* TODO: Matching rating! */}
-          <h5 style={styles.matchText}>{matchingScore}% Match</h5>
+          <h5 style={styles.matchText}>{user.matchingScore}% Match</h5>
         </div>
       </div>
 
       {/* User Interaction */}
       <div style={styles.interactionsContainer} className="row">
         <div className="col d-flex justify-content-between">
-          <button className="button1" style={styles.button} onClick={() => {}}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="35"
-              height="35"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-thumbs-up"
-            >
-              <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
-            </svg>
+          <button className="button1" style={styles.button} onClick={onLike}>
+            <ThumbUpIcon width={35} height={35} />
           </button>
-          <MatchMeter percent={matchingScore} />
-          <button className="button1" style={styles.button} onClick={() => {}}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="35"
-              height="35"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-thumbs-down"
-            >
-              <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17" />
-            </svg>
+
+          <MatchMeter percent={user.matchingScore} />
+
+          <button className="button1" style={styles.button} onClick={onDislike}>
+            <ThumbDownIcon width={35} height={35} />
           </button>
         </div>
       </div>
@@ -156,64 +133,46 @@ const ModalUserInteraction = ({ user, matchingScore }) => {
   );
 };
 
-class Modal extends Component {
-  state = {
-    loading: true,
-    user: null
+const Modal = ({ id, user, onLike, onDislike }) => {
+  const styles = {
+    container: {
+      width: '800px'
+    },
+    content: {
+      background: '#e8e8e8'
+    }
   };
 
-  async queryUser(userId) {
-    const response = await axios.get(`/api/user/${userId}`);
-    return response.data;
-  }
-
-  componentDidMount() {
-    this.queryUser(this.props.userId).then(user => {
-      this.setState({ loading: false, user: user });
-    });
-  }
-
-  render() {
-    const style = {
-      background: '#e8e8e8',
-      width: '800px'
-    };
-
-    return (
+  return (
+    <div
+      className="modal fade"
+      id={id}
+      tabIndex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
       <div
-        className="modal fade"
-        id={this.props.id}
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
+        className="modal-dialog modal-lg modal-dialog-centered"
+        role="document"
+        style={styles.container}
       >
-        <div
-          className="modal-dialog modal-lg modal-dialog-centered"
-          role="document"
-        >
-          <div className="modal-content" style={style}>
-            <div className="modal-body">
-              {/* Content */}
-              {this.state.loading ? (
-                <div className="row">
-                  <div className="col">Loading...</div>
-                </div>
-              ) : (
-                <div className="row">
-                  <ModalUserInfo user={this.state.user} />
-                  <ModalUserInteraction
-                    user={this.state.user}
-                    matchingScore={this.props.matchingScore}
-                  />
-                </div>
-              )}
+        <div className="modal-content" style={styles.content}>
+          <div className="modal-body">
+            {/* Content */}
+            <div className="row">
+              <ModalUserInfo user={user} />
+              <ModalUserInteraction
+                user={user}
+                onLike={onLike}
+                onDislike={onDislike}
+              />
             </div>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Modal;
