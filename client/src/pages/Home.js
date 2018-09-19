@@ -15,7 +15,7 @@ const MatchCards = ({ matches }) => {
 const FilterButtons = ({ filter, onChange }) => (
   <div className="star-filter">
     <h2>Filter by:</h2>
-    <ReactStars count={5} value={filter} size={40} onChange={() => {}} />
+    <ReactStars count={5} value={filter} size={40} onChange={onChange} />
   </div>
 );
 
