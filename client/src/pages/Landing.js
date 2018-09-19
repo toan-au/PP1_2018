@@ -1,10 +1,13 @@
 import React from 'react';
 
+import DocumentTitle from '../components/DocumentTitle';
+
 import maskot from '../images/maskot.png';
 
 const Landing = () => {
   return (
     <div className="landing">
+      <DocumentTitle>GameSearchMatch</DocumentTitle>
       <div className="middle">
         <div className="inner">
           <h2 className="landing-title">GAME SEARCH MATCH</h2>

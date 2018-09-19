@@ -1,8 +1,11 @@
 import React from 'react';
 
+import DocumentTitle from '../components/DocumentTitle';
+
 const Loading = () => {
   return (
     <div className="not-found-screen">
+      <DocumentTitle>404 | Not Found</DocumentTitle>
       <div className="row">
         <div className="col not-found-content text-center">
           <h1 className="title">404</h1>

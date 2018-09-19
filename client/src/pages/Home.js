@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { getMatches } from '../redux/actions/matches';
 
+import DocumentTitle from '../components/DocumentTitle';
 import MatchCard from '../components/MatchCard';
 import PacmanSpinner from '../components/PacmanSpinner';
 
@@ -43,6 +44,7 @@ class Home extends Component {
   render() {
     return (
       <div className="Home container-custom">
+        <DocumentTitle>Home</DocumentTitle>
         <div className="banner">
           <h1>Welcome Back {this.props.user.displayName}</h1>
           {this.state.loading && <PacmanSpinner />}

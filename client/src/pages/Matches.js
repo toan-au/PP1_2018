@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getMatched } from '../redux/actions/matched';
-import defaultPfp from '../images/fortnite_drift_.png';
-import ReactStars from 'react-stars';
 import axios from 'axios';
+import ReactStars from 'react-stars';
+import { connect } from 'react-redux';
+
+import { getMatched } from '../redux/actions/matched';
+
+import DocumentTitle from '../components/DocumentTitle';
+
+import defaultPfp from '../images/fortnite_drift_.png';
 
 class Matches extends Component {
   state = { ratings: {}, initialized: false };
@@ -64,6 +68,7 @@ class Matches extends Component {
     // const { matched } = this.props;
     return (
       <div className="Matches container">
+        <DocumentTitle>Matches</DocumentTitle>
         <div className="banner">
           <h1>Your Matches</h1>
         </div>

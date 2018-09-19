@@ -1,8 +1,11 @@
 import React from 'react';
 
+import DocumentTitle from '../components/DocumentTitle';
+
 const Contact = () => {
   return (
     <div className="ContactForm">
+      <DocumentTitle>Contact</DocumentTitle>
       <form>
         <h3 className="contact-title">Contact Us</h3>
         <br />
