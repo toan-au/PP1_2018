@@ -14,6 +14,7 @@ const PfpInput = props => {
           <img
             src={props.input.value[0].preview}
             style={{ height: '100%', width: '100%' }}
+            alt="profile dp input"
           />
         )}
       </Dropzone>
