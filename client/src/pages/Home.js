@@ -15,7 +15,7 @@ const MatchCards = ({ matches }) => {
 const FilterButtons = ({ filter, onChange }) => (
   <div className="star-filter">
     <h2>Filter by:</h2>
-    <ReactStars count={5} value={filter} size={40} onChange={onChange} />
+    <ReactStars count={5} value={filter} size={40} onChange={() => {}} />
   </div>
 );
 
@@ -26,12 +26,23 @@ class Home extends Component {
     filteredItems: []
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    const completeLoading = () => {
+      this.filterMatches(this.props.matches)(0);
+      this.setState({ loading: false });
+    };
+
     if (this.props.matches.length === 0) {
-      await this.props.getMatches(this.props.user.id);
+      this.props.getMatches(this.props.user.id).then(() => {
+        !this.isCancelled && completeLoading();
+      });
+      return;
     }
-    this.filterMatches(this.props.matches)(0);
-    this.setState({ loading: false });
+    !this.isCancelled && completeLoading();
+  }
+
+  componentWillUnmount() {
+    this.isCancelled = true;
   }
 
   filterMatches = matches => {
