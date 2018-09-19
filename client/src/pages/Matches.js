@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReactStars from 'react-stars';
+import ReactLoading from 'react-loading';
 import { connect } from 'react-redux';
 
 import { getMatched } from '../redux/actions/matched';
@@ -41,7 +42,7 @@ const MatchedUsers = ({ matched, ratings, onChange }) => {
 class Matches extends Component {
   state = {
     ratings: {},
-    initialized: false
+    loading: true
   };
 
   componentDidMount() {
@@ -50,16 +51,15 @@ class Matches extends Component {
       this.props.matched.forEach(match => {
         ratings[match.id] = match.userRating;
       });
-      this.setState({ ratings, initialized: true });
+      this.setState({ ratings, loading: false });
     };
 
-    this.props.getMatched(this.props.user.id).then(() => {
-      if (this.state.initialized) {
-        return;
-      }
-      // initiate ratings state if there is none
-      !this.isCancelled && completeLoading();
-    });
+    if (this.state.loading) {
+      this.props.getMatched(this.props.user.id).then(() => {
+        // initiate ratings state if there is none
+        !this.isCancelled && completeLoading();
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -84,14 +84,20 @@ class Matches extends Component {
           <h1>Your Matches</h1>
         </div>
         <div>
-          <ul className="matches-list">
-            {/*matched.length < 1 && <li>The princess is in another castle!</li>*/}
-            <MatchedUsers
-              matched={this.props.matched}
-              ratings={this.state.ratings}
-              onChange={this.rateUser}
-            />
-          </ul>
+          {/*matched.length < 1 && <li>The princess is in another castle!</li>*/}
+          {this.state.loading ? (
+            <div className="d-flex justify-content-center">
+              <ReactLoading type={'bubbles'} color="yellow" />
+            </div>
+          ) : (
+            <ul className="matches-list">
+              <MatchedUsers
+                matched={this.props.matched}
+                ratings={this.state.ratings}
+                onChange={this.rateUser}
+              />
+            </ul>
+          )}
         </div>
       </div>
     );
