@@ -77,4 +77,3 @@ gameAndGenresForm = connect(
   { getGames, getGenres }
 )(gameAndGenresForm);
 export default gameAndGenresForm;
-1;

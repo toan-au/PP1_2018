@@ -36,4 +36,3 @@ let confirmationForm = reduxForm({
   forceUnregisterOnUnmount: true
 })(ConfirmationForm);
 export default confirmationForm;
-1;

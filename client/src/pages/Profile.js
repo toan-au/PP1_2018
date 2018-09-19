@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { getViewUser } from '../redux/actions/viewUser';
+
+import DocumentTitle from '../components/DocumentTitle';
+
 import defaultPfp from '../images/fortnite_drift_.png';
 
 class Profile extends Component {
@@ -102,6 +106,7 @@ class Profile extends Component {
   render = () => {
     return (
       <div className="Profile container">
+        <DocumentTitle>Profile</DocumentTitle>
         <h1>Your Profile</h1>
         <div className="profile-details">{this.renderProfile()}</div>
       </div>

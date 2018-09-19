@@ -1,8 +1,11 @@
 import React from 'react';
 
+import DocumentTitle from '../components/DocumentTitle';
+
 const PrivacyPolicy = () => {
   return (
     <div className="Privacy">
+      <DocumentTitle>Privacy</DocumentTitle>
       <div className="Privacy-middle">
         <div className="Privacy-inner">
           <h3 className="PrivacyTitle">Our Privacy Policy</h3>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { getMatches } from '../redux/actions/matches';
 
+import DocumentTitle from '../components/DocumentTitle';
 import MatchCard from '../components/MatchCard';
 import PacmanSpinner from '../components/PacmanSpinner';
 
@@ -25,12 +26,23 @@ class Home extends Component {
     filteredItems: []
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    const completeLoading = () => {
+      this.filterMatches(this.props.matches)(0);
+      this.setState({ loading: false });
+    };
+
     if (this.props.matches.length === 0) {
-      await this.props.getMatches(this.props.user.id);
+      this.props.getMatches(this.props.user.id).then(() => {
+        !this.isCancelled && completeLoading();
+      });
+      return;
     }
-    this.filterMatches(this.props.matches)(0);
-    this.setState({ loading: false });
+    !this.isCancelled && completeLoading();
+  }
+
+  componentWillUnmount() {
+    this.isCancelled = true;
   }
 
   filterMatches = matches => {
@@ -43,6 +55,7 @@ class Home extends Component {
   render() {
     return (
       <div className="Home container-custom">
+        <DocumentTitle>Home</DocumentTitle>
         <div className="banner">
           <h1>Welcome Back {this.props.user.displayName}</h1>
           {this.state.loading && <PacmanSpinner />}
