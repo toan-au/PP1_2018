@@ -3,7 +3,6 @@
   background: $white;
   border-bottom: 10px solid $dark_yellow;
   border-radius: 5px;
-  margin-top: 40px;
   margin-bottom: 40px;
   max-width: 720px;
 
@@ -14,7 +13,6 @@
 
   h1 {
     color: $white !important;
-    text-align: center;
   }
 
   table {
@@ -43,7 +41,8 @@
   }
 
   .profile-details {
-    padding-bottom: 20px;
+    padding-top: 2em;
+    padding-bottom: 2em;
   }
 
   .edit-button {
@@ -69,7 +68,4 @@
       cursor: pointer;
     }
   }
-
-
-
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactLoading from 'react-loading';
 import { connect } from 'react-redux';
 
 import { getViewUser } from '../redux/actions/viewUser';
@@ -8,10 +9,16 @@ import DocumentTitle from '../components/DocumentTitle';
 import defaultPfp from '../images/fortnite_drift_.png';
 
 class Profile extends Component {
-  componentDidMount = async () => {
-    const { getViewUser, user } = this.props; // , viewUser
-    await getViewUser(user.id);
+  state = {
+    loading: true
   };
+
+  componentDidMount() {
+    const { getViewUser, user } = this.props; // , viewUser
+    getViewUser(user.id).then(() => {
+      this.setState({ loading: false });
+    });
+  }
 
   // render list of responses: questionId - response
   renderResponses = () => {
@@ -105,10 +112,19 @@ class Profile extends Component {
 
   render = () => {
     return (
-      <div className="Profile container">
+      <div>
         <DocumentTitle>Profile</DocumentTitle>
-        <h1>Your Profile</h1>
-        <div className="profile-details">{this.renderProfile()}</div>
+        <h1 className="text-center">Your Profile</h1>
+
+        {this.state.loading ? (
+          <div className="d-flex justify-content-center">
+            <ReactLoading type={'bubbles'} color="yellow" />
+          </div>
+        ) : (
+          <div className="Profile container">
+            <div className="profile-details">{this.renderProfile()}</div>
+          </div>
+        )}
       </div>
     );
   };
