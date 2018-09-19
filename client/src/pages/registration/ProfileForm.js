@@ -14,7 +14,7 @@ class ProfileForm extends Component {
   selected = value => (value !== '-1' ? undefined : 'Please select an option');
   validateImage = imageList => {
     if (imageList) {
-      if (imageList.length != 1) {
+      if (imageList.length !== 1) {
         return 'You must upload an image';
       } else if (imageList.length === 1) {
         let selectedImage = imageList[0];

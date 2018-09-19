@@ -105,7 +105,12 @@ const ModalUserInteraction = ({ user, onLike, onDislike }) => {
       {/* Display Picture */}
       <div className="row">
         <div className="col text-center">
-          <img src={user.pfpUrl || DefaultPfp} height="275" width="275" />
+          <img
+            src={user.pfpUrl || DefaultPfp}
+            height="275"
+            width="275"
+            alt="profile dp"
+          />
         </div>
       </div>
       {/* Match Percentage */}

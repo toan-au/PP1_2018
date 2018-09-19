@@ -13,7 +13,7 @@ class Matches extends Component {
     // initiate ratings state if there is none
     if (!this.state.initialized) {
       const ratings = {};
-      this.props.matched.map(match => {
+      this.props.matched.forEach(match => {
         ratings[match.id] = match.userRating;
       });
       this.setState({ ratings, initialized: true });
@@ -44,9 +44,7 @@ class Matches extends Component {
           <span>Age: {match.age}</span>
           <div>{match.bio}</div>
         </div>
-        <a href="#" className="RemoveUser">
-          Remove
-        </a>
+        <a className="RemoveUser">Remove</a>
         <div className="rate-user">
           Rate {match.displayName}:<br />
           <div>
@@ -63,7 +61,7 @@ class Matches extends Component {
   };
 
   render() {
-    const { matched } = this.props;
+    // const { matched } = this.props;
     return (
       <div className="Matches container">
         <div className="banner">

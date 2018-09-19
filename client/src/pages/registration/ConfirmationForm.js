@@ -3,7 +3,7 @@ import { reduxForm } from 'redux-form';
 
 class ConfirmationForm extends Component {
   render() {
-    const { handleSubmit, onPrevious, genres, games } = this.props;
+    const { handleSubmit, onPrevious } = this.props; // , genres, games
     return (
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit} encType="multipart/form-data">

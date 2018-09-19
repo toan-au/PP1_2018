@@ -36,7 +36,7 @@ class SelectSearch extends Component {
   };
 
   render() {
-    const { options, identifier, labelName } = this.props;
+    const { identifier, labelName } = this.props; // this.props.options
     const { filteredItems, selectedItems } = this.state;
     return (
       <div className="SelectSearch">

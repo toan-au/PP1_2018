@@ -5,7 +5,7 @@ import defaultPfp from '../images/fortnite_drift_.png';
 
 class Profile extends Component {
   componentDidMount = async () => {
-    const { getViewUser, user, viewUser } = this.props;
+    const { getViewUser, user } = this.props; // , viewUser
     await getViewUser(user.id);
   };
 
@@ -51,7 +51,7 @@ class Profile extends Component {
       return (
         <div>
           <div className="pfp">
-            <img src={viewUser.pfpUrl || defaultPfp} />
+            <img src={viewUser.pfpUrl || defaultPfp} alt="profile dp" />
           </div>
 
           <div className="user-info">
@@ -74,29 +74,26 @@ class Profile extends Component {
               </tr>
             </table>
 
-            <br/>
+            <br />
             <p>Biography:</p>
             <p className="info">{viewUser.bio}</p>
-            <br/>
+            <br />
 
             <p>Your Answers:</p>
             <p className="info">{this.renderResponses()}</p>
-            <br/>
+            <br />
 
             <p>Your Favourite Games:</p>
             <p className="info">{this.renderGames()}</p>
-            <br/>
+            <br />
 
             <p>Your Favourite Genres:</p>
             <p className="info">{this.renderGenres()}</p>
           </div>
 
           <div className="edit-button">
-            <button className="Edit">
-              Edit Profile
-            </button>
+            <button className="Edit">Edit Profile</button>
           </div>
-
         </div>
       );
     }
@@ -106,9 +103,7 @@ class Profile extends Component {
     return (
       <div className="Profile container">
         <h1>Your Profile</h1>
-        <div className="profile-details">
-          {this.renderProfile()}
-        </div>
+        <div className="profile-details">{this.renderProfile()}</div>
       </div>
     );
   };
