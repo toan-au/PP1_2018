@@ -4,19 +4,19 @@ import { connect } from 'react-redux';
 import { getPending, removePending } from '../redux/actions/pending';
 import TrashIcon from './TrashIcon';
 
-const UsersPending = ({ users, removePending }) => {
-  const UserPending = ({ user, onClick }) => {
-    return (
-      <div className="dropdown-item">
-        <p className="pending-item-text">{user.displayName}</p>
-        <TrashIcon className={'pending-item-remove'} onClick={onClick} />
-      </div>
-    );
-  };
+const UserPending = ({ user, onClick }) => {
+  return (
+    <div className="dropdown-item">
+      <p className="pending-item-text">{user.displayName}</p>
+      <TrashIcon className={'pending-item-remove'} onClick={onClick} />
+    </div>
+  );
+};
 
-  const onClick = (user, removePending) => {
+const UsersPending = ({ users, removePending, appUser }) => {
+  const removeUser = (appUser, user, removePending) => {
     return () => {
-      removePending(user);
+      removePending(appUser.id, user.id);
     };
   };
 
@@ -24,12 +24,17 @@ const UsersPending = ({ users, removePending }) => {
     <UserPending
       key={user.displayName}
       user={user}
-      onClick={onClick(user, removePending)}
+      onClick={removeUser(appUser, user, removePending)}
     />
   ));
 };
 
-const PendingDropdownContent = ({ loading, pending, removePending }) => {
+const PendingDropdownContent = ({
+  loading,
+  pending,
+  removePending,
+  appUser
+}) => {
   const IsLoading = () => (
     <div className="dropdown-item">
       <p className="pending-item-text centered unselectable">Loading...</p>
@@ -48,7 +53,13 @@ const PendingDropdownContent = ({ loading, pending, removePending }) => {
     return <IsLoading />;
   }
   if (pending !== null) {
-    return <UsersPending users={pending} removePending={removePending} />;
+    return (
+      <UsersPending
+        users={pending}
+        removePending={removePending}
+        appUser={appUser}
+      />
+    );
   } else {
     return <NoPendingItems />;
   }
@@ -76,6 +87,7 @@ class PendingDropdownMenu extends Component {
           loading={this.state.loading}
           pending={this.props.pending}
           removePending={this.props.removePending}
+          appUser={this.props.user}
         />
       </div>
     );

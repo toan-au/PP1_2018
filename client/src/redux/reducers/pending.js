@@ -1,17 +1,37 @@
-import { GET_PENDING, REMOVE_PENDING } from '../actions/types';
+import {
+  GET_PENDING,
+  USER_LIKED,
+  USER_DISLIKED,
+  REMOVE_PENDING
+} from '../actions/types';
 
 export default (state = null, action) => {
   switch (action.type) {
     case GET_PENDING:
       return action.payload;
 
+    case USER_LIKED:
+      return action.payload;
+
+    case USER_DISLIKED:
+      if (state === null) {
+        return null;
+      }
+      if (state.length - 1 <= 0) {
+        return null;
+      }
+      return action.payload;
+
     case REMOVE_PENDING:
+      if (state === null) {
+        return null;
+      }
       // there will be no pending matches left
-      if (state.length - 1 === 0) {
+      if (state.length - 1 <= 0) {
         return null;
       }
       const updatedMatches = state.filter(
-        pendingUser => pendingUser.displayName !== action.payload
+        pendingUser => pendingUser.id !== action.payload
       );
       return updatedMatches;
 
