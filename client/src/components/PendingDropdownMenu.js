@@ -71,6 +71,11 @@ class PendingDropdownMenu extends Component {
   };
 
   componentDidMount() {
+    // this will stop bootstrap dropdown menu from closing on click
+    global.$(document).on('click', '.dropdown-menu', function(e) {
+      e.stopPropagation();
+    });
+
     this.props.getPending(this.props.user.id).then(() => {
       this.setState({ loading: false });
     });
