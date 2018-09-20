@@ -17,18 +17,16 @@ const NavbarLinks = ({ user }) => {
 
       {/* Pending Dropdown */}
       <li className="nav-item dropdown">
-        <Link
+        <a
           className="nav-link dropdown-toggle"
-          to="/profile"
           id="navbarDropdownMenuPending"
           role="button"
-          href="_"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         >
           Pending
-        </Link>
+        </a>
 
         {/* Pending Dropdown */}
         <PendingDropdownMenu />
