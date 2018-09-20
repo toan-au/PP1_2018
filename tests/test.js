@@ -17,6 +17,11 @@ describe('Array', function() {
 });
 
 describe('Key files', () => {
+  it('test.js Should exist', () => {
+    expect(config_path)
+      .to.be.a.directory()
+      .and.include.contents(['test.js']);
+  });
   it('dev.js Should exist', () => {
     expect(config_path)
       .to.be.a.directory()
@@ -27,11 +32,5 @@ describe('Key files', () => {
     expect(config_path)
       .to.be.a.directory()
       .and.include.contents(['gcs_keys.json']);
-  });
-});
-
-describe('Users', () => {
-  it('should be created', () => {
-    console.log(process.env.NODE_ENV);
   });
 });
