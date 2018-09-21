@@ -16,7 +16,8 @@ const FilterButtons = ({
   regionFilter,
   starFilter,
   onStarFilter,
-  onRegionFilter
+  onRegionFilter,
+  filterReset
 }) => {
   const regions = ['OCE', 'JP', 'NA', 'CN'];
   return (
@@ -150,6 +151,7 @@ class Home extends Component {
               regionFilter={this.state.regionFilter}
               onStarFilter={this.starFilter}
               onRegionFilter={this.regionFilter}
+              filterReset={this.filterReset}
             />
             <SortButtons
               sortBy={this.state.sortBy}
