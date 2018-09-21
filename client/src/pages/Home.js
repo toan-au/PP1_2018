@@ -76,7 +76,7 @@ class Home extends Component {
     loading: true,
     starFilter: 0,
     regionFilter: '',
-    sortBy: '',
+    sortBy: 'matchingScore',
     filteredItems: []
   };
 
