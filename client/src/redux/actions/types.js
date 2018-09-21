@@ -25,4 +25,4 @@ export const REMOVE_PENDING = 'remove_pending';
 
 // notifications
 export const ADD_NOTIFICATION = 'add_notification';
-export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION_notification';
+export const REMOVE_NOTIFICATION = 'remove_notification';
