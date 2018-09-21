@@ -107,7 +107,7 @@ class Home extends Component {
 
   sortByChange = sortBy => {
     const compare = (a, b) => {
-      return a[sortBy] < b[sortBy] ? -1 : 1;
+      return a[sortBy] < b[sortBy] ? 1 : -1;
     };
     const filteredItems = this.state.filteredItems.sort(compare);
     this.setState({ filteredItems });
