@@ -1,13 +1,13 @@
-import { ADD_NOTIFICATION } from './types';
+import { ADD_NOTIFICATION, REMOVE_NOTIFICATION } from './types';
 
-export const addNotification = note => {
+export const addNote = note => {
   return dispatch => {
-    dispatch({ action: ADD_NOTIFICATION, note });
+    dispatch({ type: ADD_NOTIFICATION, note });
   };
 };
 
-export const removeNotification = id => {
+export const removeNote = id => {
   return dispatch => {
-    dispatch({ action: REMOVE_NOTIFICATION, id });
+    dispatch({ type: REMOVE_NOTIFICATION, id });
   };
 };

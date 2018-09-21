@@ -1,15 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { removeNote } from '../redux/actions/notifications';
 
-const notifications = [{ id: 0, component: <div>hello world</div> }];
-
-const Notifications = () => {
+const Notifications = ({ notifications }) => {
   return (
     <div className="Notifications">
       <ul>
         {notifications.map(note => (
-          <div className="note" key={note.id}>
-            {note.component}
+          <div
+            className="note"
+            key={note.id}
+            onClick={() => removeNote(note.id)}
+          >
+            {note.text}
           </div>
         ))}
       </ul>
@@ -17,9 +20,9 @@ const Notifications = () => {
   );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = ({ notifications }) => ({ notifications });
 
 export default connect(
   mapStateToProps,
-  {}
+  { removeNote }
 )(Notifications);

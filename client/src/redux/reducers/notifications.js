@@ -13,7 +13,8 @@ export default (state = defaultNotes, action) => {
     case ADD_NOTIFICATION:
       return [...state, action.note];
     case REMOVE_NOTIFICATION:
-      return state.filter(note => note !== action.id);
+      console.log(action);
+      return state.filter(note => note.id !== action.id);
     default:
       return state;
   }
