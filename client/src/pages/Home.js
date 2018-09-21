@@ -120,8 +120,9 @@ class Home extends Component {
     this.filterMatches();
   };
 
-  filterReset = () => {
-    this.setState({ regionFilter: '', starFilter: 0 });
+  filterReset = async () => {
+    await this.setState({ regionFilter: '', starFilter: 0 });
+    this.filterMatches();
   };
 
   sortByChange = sortBy => {
