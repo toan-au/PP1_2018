@@ -20,7 +20,7 @@ const FilterButtons = ({
 }) => {
   const regions = ['OCE', 'JP', 'NA', 'CN'];
   return (
-    <div className="star-filter">
+    <div className="FilterButtons">
       <h2>Filter by:</h2>
       <ReactStars
         count={5}
@@ -30,6 +30,7 @@ const FilterButtons = ({
       />
       {regions.map(region => {
         const selected = region === regionFilter ? 'selected' : '';
+
         return (
           <button
             key={region}
@@ -72,7 +73,6 @@ class Home extends Component {
   }
 
   filterMatches = () => {
-    console.log(this.state);
     const filteredItems = this.props.matches.filter(match => {
       const starPass = match.avgRating > this.state.starFilter;
       let regionPass = true;
@@ -84,13 +84,11 @@ class Home extends Component {
   };
 
   starFilter = async stars => {
-    console.log(stars);
     await this.setState({ starFilter: stars });
     this.filterMatches();
   };
 
   regionFilter = async region => {
-    console.log(region);
     await this.setState({ regionFilter: region });
     this.filterMatches();
   };
@@ -111,7 +109,7 @@ class Home extends Component {
           <div>
             <FilterButtons
               starFilter={this.state.starFilter}
-              regionFIlter={this.state.regionFilter}
+              regionFilter={this.state.regionFilter}
               onStarFilter={this.starFilter}
               onRegionFilter={this.regionFilter}
             />

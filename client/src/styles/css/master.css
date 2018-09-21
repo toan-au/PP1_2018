@@ -389,6 +389,12 @@ h3 {
   width: 150px;
   margin: 0 auto; }
 
+.Home .FilterButtons .selected {
+  background: #c82128; }
+
+.Home .FilterButtons button:hover {
+  cursor: pointer; }
+
 /* Chuck your variables in here*/
 /* colors */
 /* sizes */
