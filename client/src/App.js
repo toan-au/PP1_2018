@@ -13,6 +13,7 @@ import Content from './components/Content';
 import Footer from './components/Footer';
 import AppSwitch from './routes';
 import Loading from './pages/Loading';
+import Notifications from './components/Notifications';
 
 class App extends Component {
   state = {
@@ -35,6 +36,7 @@ class App extends Component {
             <Loading />
           ) : (
             <Content>
+              <Notifications />
               <AppSwitch />
             </Content>
           )}

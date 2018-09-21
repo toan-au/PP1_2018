@@ -1,0 +1,8 @@
+@import 'variables';
+
+.Notifications {
+  position: absolute;
+  right: $container_padding_width;
+  top: $navbar_height;
+  background: red;
+}

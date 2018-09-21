@@ -1,5 +1,5 @@
 import React from 'react';
-import connect from 'react-redux';
+import { connect } from 'react-redux';
 
 const notifications = [{ id: 0, component: <div>hello world</div> }];
 
@@ -15,7 +15,7 @@ const Notifications = () => {
   );
 };
 
-const mapStateToProps = (state = {});
+const mapStateToProps = state => ({});
 
 export default connect(
   mapStateToProps,

@@ -998,3 +998,16 @@ h3 {
     .SelectSearch .select li {
       padding: 3px;
       color: #e8e8e8; }
+
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/* kittens */
+.Notifications {
+  position: absolute;
+  right: 80px;
+  top: 80px;
+  background: red; }
