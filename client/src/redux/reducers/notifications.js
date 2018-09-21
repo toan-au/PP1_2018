@@ -1,6 +1,6 @@
 import { ADD_NOTIFICATION, REMOVE_NOTIFICATION } from '../actions/types';
 
-export default (state = defaultNotes, action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case ADD_NOTIFICATION:
       return [...state, action.note];
