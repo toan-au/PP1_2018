@@ -421,6 +421,7 @@ var finishRegistration = async function(registrationForm, requestId) {
 
     for(var innerCounter = 0; innerCounter < availablePlatforms.length; innerCounter++){
       var platformIdKeys = Object.keys(filterObject);
+      
       if(availablePlatforms[innerCounter].title.toUpperCase() === platformIdKeys[0].toUpperCase()){
         var platformIdHolder = Object.values(filterObject)
 

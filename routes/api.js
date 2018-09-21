@@ -63,6 +63,7 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const preferences = JSON.parse(req.body.preferences);
   const games = JSON.parse(req.body.games);
   const genres = JSON.parse(req.body.genres);
+  const platformIds = JSON.parse(req.body.platformIds)
 
   const pfpUrl = req.file.path;
 
@@ -79,7 +80,7 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   });
 
   const response = await userCalls.finishRegistration(
-    { importances, answers, preferences, games, genres },
+    { importances, answers, preferences, games, genres, platformIds },
     req.params.id
   );
   res.send(user);
