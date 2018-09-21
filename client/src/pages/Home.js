@@ -45,6 +45,18 @@ const FilterButtons = ({
   );
 };
 
+const SortButtons = ({ sortByChange }) => {
+  return (
+    <div>
+      <h2>Sort by:</h2>
+      <button onClick={() => sortByChange('avgRating')}>Average Ratings</button>
+      <button onClick={() => sortByChange('matchingScore')}>
+        Matching percentage
+      </button>
+    </div>
+  );
+};
+
 class Home extends Component {
   state = {
     loading: true,
@@ -93,6 +105,14 @@ class Home extends Component {
     this.filterMatches();
   };
 
+  sortByChange = sortBy => {
+    const compare = (a, b) => {
+      return a[sortBy] < b[sortBy] ? -1 : 1;
+    };
+    const filteredItems = this.state.filteredItems.sort(compare);
+    this.setState({ filteredItems });
+  };
+
   render() {
     return (
       <div className="Home container-custom">
@@ -113,6 +133,7 @@ class Home extends Component {
               onStarFilter={this.starFilter}
               onRegionFilter={this.regionFilter}
             />
+            <SortButtons sortByChange={this.sortByChange} />
             <div className="matches">
               <MatchCards matches={this.state.filteredItems} />
             </div>
