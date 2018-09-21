@@ -12,7 +12,12 @@ const MatchCards = ({ matches }) => {
   return matches.map(match => <MatchCard key={match.id} match={match} />);
 };
 
-const FilterButtons = ({ starFilter, onStarFilter, onRegionFilter }) => {
+const FilterButtons = ({
+  regionFilter,
+  starFilter,
+  onStarFilter,
+  onRegionFilter
+}) => {
   const regions = ['OCE', 'JP', 'NA', 'CN'];
   return (
     <div className="star-filter">
@@ -24,8 +29,13 @@ const FilterButtons = ({ starFilter, onStarFilter, onRegionFilter }) => {
         onChange={onStarFilter}
       />
       {regions.map(region => {
+        const selected = region === regionFilter ? 'selected' : '';
         return (
-          <button key={region} onClick={() => onRegionFilter(region)}>
+          <button
+            key={region}
+            onClick={() => onRegionFilter(region)}
+            className={selected}
+          >
             {region}
           </button>
         );
@@ -73,13 +83,15 @@ class Home extends Component {
     this.setState({ filteredItems });
   };
 
-  starFilter = stars => {
-    this.setState({ starFilter: stars });
+  starFilter = async stars => {
+    console.log(stars);
+    await this.setState({ starFilter: stars });
     this.filterMatches();
   };
 
-  regionFilter = region => {
-    this.setState({ regionFilter: region });
+  regionFilter = async region => {
+    console.log(region);
+    await this.setState({ regionFilter: region });
     this.filterMatches();
   };
 
@@ -98,7 +110,8 @@ class Home extends Component {
         {!this.state.loading && (
           <div>
             <FilterButtons
-              filter={this.state.starFilter}
+              starFilter={this.state.starFilter}
+              regionFIlter={this.state.regionFilter}
               onStarFilter={this.starFilter}
               onRegionFilter={this.regionFilter}
             />
