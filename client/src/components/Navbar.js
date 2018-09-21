@@ -19,7 +19,7 @@ const NavbarLinks = ({ user }) => {
       <li className="nav-item dropdown">
         <Link
           className="nav-link dropdown-toggle"
-          to="/profile"
+          to="#"
           id="navbarDropdownMenuPending"
           role="button"
           href="_"
