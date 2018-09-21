@@ -101,10 +101,6 @@ class Profile extends Component {
             <p>Your Favourite Genres:</p>
             <p className="info">{this.renderGenres()}</p>
           </div>
-
-          <div className="edit-button">
-            <button className="Edit">Edit Profile</button>
-          </div>
         </div>
       );
     }
