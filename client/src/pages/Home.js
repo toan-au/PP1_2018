@@ -41,6 +41,7 @@ const FilterButtons = ({
           </button>
         );
       })}
+      <button onClick={filterReset}>Reset</button>
     </div>
   );
 };
@@ -116,6 +117,10 @@ class Home extends Component {
   regionFilter = async region => {
     await this.setState({ regionFilter: region });
     this.filterMatches();
+  };
+
+  filterReset = () => {
+    this.setState({ regionFilter: '', starFilter: 0 });
   };
 
   sortByChange = sortBy => {
