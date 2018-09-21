@@ -8,7 +8,9 @@ const Notifications = () => {
     <div className="Notifications">
       <ul>
         {notifications.map(note => (
-          <div>{note.id}</div>
+          <div className="note" key={note.id}>
+            {note.component}
+          </div>
         ))}
       </ul>
     </div>

@@ -2,7 +2,18 @@
 
 .Notifications {
   position: absolute;
+  display: block;
   right: $container_padding_width;
   top: $navbar_height;
   background: red;
+
+  .note {
+    padding: 20px;
+    margin-bottom: 7px;
+    background: $note_background;
+  }
+
+  .note:hover {
+    cursor: pointer;
+  }
 }

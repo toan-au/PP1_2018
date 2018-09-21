@@ -22,3 +22,6 @@ export const GET_PENDING = 'get_pending';
 export const USER_LIKED = 'user_liked';
 export const USER_DISLIKED = 'user_disliked';
 export const REMOVE_PENDING = 'remove_pending';
+
+// notifications
+export const ADD_NOTIFICATIONS = 'add_notifications';

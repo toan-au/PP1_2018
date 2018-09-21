@@ -4,9 +4,17 @@
 /* backgrounds */
 /* paddings */
 /* border */
+/*notifications*/
 /* kittens */
 .Notifications {
   position: absolute;
+  display: block;
   right: 80px;
   top: 80px;
   background: red; }
+  .Notifications .note {
+    padding: 20px;
+    margin-bottom: 7px;
+    background: #7e93dd; }
+  .Notifications .note:hover {
+    cursor: pointer; }

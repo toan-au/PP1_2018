@@ -4,6 +4,7 @@
 /* backgrounds */
 /* paddings */
 /* border */
+/*notifications*/
 /* kittens */
 .MatchCard {
   background: #d1d1d1;
@@ -47,14 +48,14 @@
     .MatchCard .display-name label.CN {
       background: #ab1e24; }
     .MatchCard .display-name label.NA {
-      background: #4C68A1; }
+      background: #4c68a1; }
     .MatchCard .display-name label.SEA {
-      background: #2C7873; }
+      background: #2c7873; }
     .MatchCard .display-name label.JP {
       background: white;
       color: #ab1e24; }
     .MatchCard .display-name label.OCE {
-      background: #8B72BE; }
+      background: #8b72be; }
   .MatchCard .bio {
     padding: 20px;
     margin-bottom: 10px;
