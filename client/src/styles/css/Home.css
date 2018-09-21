@@ -29,3 +29,9 @@
   padding-top: 120px;
   width: 150px;
   margin: 0 auto; }
+
+.Home .FilterButtons .selected {
+  background: #c82128; }
+
+.Home .FilterButtons button:hover {
+  cursor: pointer; }

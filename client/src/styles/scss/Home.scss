@@ -1,21 +1,19 @@
 @import 'variables';
 
 .Home {
-
-    .match {
-      margin: 50px;
-      border-radius: 5px;
-      border: $light_red 2px;
-      color: $white;
-      background: $light_red;
-      font-size: 20px;
-      padding-left: 50px;
-      padding-right: 50px;
-    }
-    button:hover {
-      background: $red;
-    }
-
+  .match {
+    margin: 50px;
+    border-radius: 5px;
+    border: $light_red 2px;
+    color: $white;
+    background: $light_red;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  button:hover {
+    background: $red;
+  }
 
   .matches {
     display: grid;
@@ -30,5 +28,14 @@
     width: 150px;
     margin: 0 auto;
     // background: red;
+  }
+
+  .FilterButtons {
+    .selected {
+      background: $light_red;
+    }
+    button:hover {
+      cursor: pointer;
+    }
   }
 }

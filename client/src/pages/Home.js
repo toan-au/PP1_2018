@@ -12,23 +12,50 @@ const MatchCards = ({ matches }) => {
   return matches.map(match => <MatchCard key={match.id} match={match} />);
 };
 
-const FilterButtons = ({ filter, onChange }) => (
-  <div className="star-filter">
-    <h2>Filter by:</h2>
-    <ReactStars count={5} value={filter} size={40} onChange={onChange} />
-  </div>
-);
+const FilterButtons = ({
+  regionFilter,
+  starFilter,
+  onStarFilter,
+  onRegionFilter
+}) => {
+  const regions = ['OCE', 'JP', 'NA', 'CN'];
+  return (
+    <div className="FilterButtons">
+      <h2>Filter by:</h2>
+      <ReactStars
+        count={5}
+        value={starFilter}
+        size={40}
+        onChange={onStarFilter}
+      />
+      {regions.map(region => {
+        const selected = region === regionFilter ? 'selected' : '';
+
+        return (
+          <button
+            key={region}
+            onClick={() => onRegionFilter(region)}
+            className={selected}
+          >
+            {region}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
 
 class Home extends Component {
   state = {
     loading: true,
-    filter: 0,
+    starFilter: 0,
+    regionFilter: '',
     filteredItems: []
   };
 
   componentDidMount() {
     const completeLoading = () => {
-      this.filterMatches(this.props.matches)(0);
+      this.filterMatches();
       this.setState({ loading: false });
     };
 
@@ -45,11 +72,25 @@ class Home extends Component {
     this.isCancelled = true;
   }
 
-  filterMatches = matches => {
-    return filter => {
-      const filteredItems = matches.filter(match => match.avgRating > filter);
-      this.setState({ filteredItems, filter });
-    };
+  filterMatches = () => {
+    const filteredItems = this.props.matches.filter(match => {
+      const starPass = match.avgRating > this.state.starFilter;
+      let regionPass = true;
+      if (this.state.regionFilter !== '')
+        regionPass = match.region.region === this.state.regionFilter;
+      return starPass && regionPass;
+    });
+    this.setState({ filteredItems });
+  };
+
+  starFilter = async stars => {
+    await this.setState({ starFilter: stars });
+    this.filterMatches();
+  };
+
+  regionFilter = async region => {
+    await this.setState({ regionFilter: region });
+    this.filterMatches();
   };
 
   render() {
@@ -58,15 +99,19 @@ class Home extends Component {
         <DocumentTitle>Home</DocumentTitle>
         <div className="banner">
           <h1>Welcome Back {this.props.user.displayName}</h1>
-          <p>View your potential gaming partners here.
-          Like to give them a chance or Dislike to say goodbye! </p>
+          <p>
+            View your potential gaming partners here. Like to give them a chance
+            or Dislike to say goodbye!{' '}
+          </p>
           {this.state.loading && <PacmanSpinner />}
         </div>
         {!this.state.loading && (
           <div>
             <FilterButtons
-              filter={this.state.filter}
-              onChange={this.filterMatches(this.props.matches)}
+              starFilter={this.state.starFilter}
+              regionFilter={this.state.regionFilter}
+              onStarFilter={this.starFilter}
+              onRegionFilter={this.regionFilter}
             />
             <div className="matches">
               <MatchCards matches={this.state.filteredItems} />
