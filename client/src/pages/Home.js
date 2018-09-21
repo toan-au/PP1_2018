@@ -58,6 +58,8 @@ class Home extends Component {
         <DocumentTitle>Home</DocumentTitle>
         <div className="banner">
           <h1>Welcome Back {this.props.user.displayName}</h1>
+          <p>View your potential gaming partners here.
+          Like to give them a chance or Dislike to say goodbye! </p>
           {this.state.loading && <PacmanSpinner />}
         </div>
         {!this.state.loading && (

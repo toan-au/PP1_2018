@@ -19,7 +19,6 @@
   }
 
   .RemoveUser {
-    //display: flex;
     float: right;
     color: $red !important;
     padding-top: 10px;
@@ -44,33 +43,6 @@
 
     .rate {
     display: inline-block;
-    }
-
-    .rate:not(:checked) > input {
-      position: absolute;
-      top: -9999px;
-    }
-
-    .rate:not(:checked) > label {
-      float: right;
-      width: 1em;
-      overflow: hidden;
-      white-space: nowrap;
-      cursor: pointer;
-      font-size: 30px;
-      color: #1e1e2b;
-    }
-
-    .rate:not(:checked) > label:before {
-      content: '★ ';
-    }
-
-    .rate > input:checked ~ label {
-      color: #de9e36;
-    }
-
-    .rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label {
-      color: #deb841;
     }
   }
 }
