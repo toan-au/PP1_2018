@@ -3,6 +3,7 @@ import ReactStars from 'react-stars';
 import { connect } from 'react-redux';
 
 import { likeUser, dislikeUser } from '../redux/actions/pending';
+import { addNote } from '../redux/actions/notifications';
 
 import Modal from './Modal';
 import MatchMeter from './MatchMeter';
@@ -11,7 +12,7 @@ import ThumbDownIcon from './ThumbDownIcon';
 
 import defaultPfp from '../images/fortnite_drift_.png';
 
-const MatchCard = ({ match, user, likeUser, dislikeUser }) => {
+const MatchCard = ({ match, user, likeUser, dislikeUser, addNote }) => {
   const starLeftGap = 47.5 - match.avgRating * 7; // if no rating exists create a random one
   const bioLength = 250;
   const shortBio = match.bio.substring(0, bioLength);
@@ -23,8 +24,20 @@ const MatchCard = ({ match, user, likeUser, dislikeUser }) => {
     };
   };
 
-  const onLike = () => likeUser(user.id, match.id);
-  const onDislike = () => dislikeUser(user.id, match.id);
+  const onLike = () => {
+    likeUser(user.id, match.id);
+    addNote({
+      id: new Date().getTime(),
+      text: 'You have liked ' + match.displayName
+    });
+  };
+  const onDislike = () => {
+    dislikeUser(user.id, match.id);
+    addNote({
+      id: new Date().getTime(),
+      text: 'You have disliked ' + match.displayName
+    });
+  };
 
   return (
     <div>
@@ -76,5 +89,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { likeUser, dislikeUser }
+  { likeUser, dislikeUser, addNote }
 )(MatchCard);

@@ -9,6 +9,7 @@ const defaultNotes = [
 ];
 
 export default (state = defaultNotes, action) => {
+  console.log(state);
   switch (action.type) {
     case ADD_NOTIFICATION:
       return [...state, action.note];

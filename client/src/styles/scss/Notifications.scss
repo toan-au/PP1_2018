@@ -1,16 +1,18 @@
 @import 'variables';
 
 .Notifications {
-  position: absolute;
+  position: sticky;
   display: block;
-  right: $container_padding_width;
-  top: $navbar_height;
-  background: red;
+  z-index: 100;
+  top: 0;
 
   .note {
-    padding: 20px;
-    margin-bottom: 7px;
-    background: $note_background;
+    text-align: center;
+    padding: 14px;
+    margin-bottom: 2px;
+    background: rgba(249, 233, 64, 0.817);
+    color: $gunmetal;
+    font-size: 1.1em;
   }
 
   .note:hover {
