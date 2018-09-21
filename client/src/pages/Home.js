@@ -16,7 +16,8 @@ const FilterButtons = ({
   regionFilter,
   starFilter,
   onStarFilter,
-  onRegionFilter
+  onRegionFilter,
+  filterReset
 }) => {
   const regions = ['OCE', 'JP', 'NA', 'CN'];
   return (
@@ -41,6 +42,31 @@ const FilterButtons = ({
           </button>
         );
       })}
+      <button onClick={filterReset}>Reset</button>
+    </div>
+  );
+};
+
+const SortButtons = ({ sortBy, sortByChange }) => {
+  const sorts = [
+    { name: 'avgRating', label: 'Average Ratings' },
+    { name: 'matchingScore', label: 'Matching Percentage' }
+  ];
+  return (
+    <div className="FilterButtons">
+      <h2>Sort by:</h2>
+      {sorts.map(sort => {
+        const selected = sortBy === sort.name ? 'selected' : '';
+        return (
+          <button
+            key={sort.name}
+            onClick={() => sortByChange(sort.name)}
+            className={selected}
+          >
+            {sort.label}
+          </button>
+        );
+      })}
     </div>
   );
 };
@@ -50,6 +76,7 @@ class Home extends Component {
     loading: true,
     starFilter: 0,
     regionFilter: '',
+    sortBy: 'matchingScore',
     filteredItems: []
   };
 
@@ -93,6 +120,19 @@ class Home extends Component {
     this.filterMatches();
   };
 
+  filterReset = async () => {
+    await this.setState({ regionFilter: '', starFilter: 0 });
+    this.filterMatches();
+  };
+
+  sortByChange = sortBy => {
+    const compare = (a, b) => {
+      return a[sortBy] < b[sortBy] ? 1 : -1;
+    };
+    const filteredItems = this.state.filteredItems.sort(compare);
+    this.setState({ filteredItems, sortBy });
+  };
+
   render() {
     return (
       <div className="Home container-custom">
@@ -112,6 +152,11 @@ class Home extends Component {
               regionFilter={this.state.regionFilter}
               onStarFilter={this.starFilter}
               onRegionFilter={this.regionFilter}
+              filterReset={this.filterReset}
+            />
+            <SortButtons
+              sortBy={this.state.sortBy}
+              sortByChange={this.sortByChange}
             />
             <div className="matches">
               <MatchCards matches={this.state.filteredItems} />
