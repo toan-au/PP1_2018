@@ -388,7 +388,8 @@ h3 {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 40px;
   grid-row-gap: 40px;
-  padding-bottom: 40px; }
+  padding-bottom: 20px;
+  padding-top: 20px; }
 
 .Home .spinner {
   padding-top: 120px;
@@ -402,7 +403,8 @@ h3 {
 
 .Home .FilterButtons {
   width: 50%;
-  padding-bottom: 20px; }
+  padding-bottom: 10px;
+  border-bottom: solid #bfbdc1; }
   .Home .FilterButtons .right {
     width: 100%;
     text-align: right; }

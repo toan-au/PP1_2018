@@ -20,7 +20,8 @@
     grid-template-columns: $match_columns;
     grid-column-gap: $match_column_gap;
     grid-row-gap: $match_row_gap;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
   }
 
   .spinner {
@@ -38,7 +39,8 @@
   }
   .FilterButtons {
     width: 50%;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: solid $light_grey;
     .right {
       width:100%;
       text-align: right;
