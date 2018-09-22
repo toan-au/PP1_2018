@@ -43,12 +43,24 @@ router.get('/user/:id', async (req, res) => {
     include: [
       { model: Region },
       { model: Locale },
-      { model: Responses, include: [Questions] },
+      {
+        model: Responses,
+        include: [{ model: Questions, include: [{ model: Answers }] }]
+      },
       { model: PrefGames, include: [Games] },
       { model: PrefGenres, include: [Genres] }
     ]
   });
-  res.send(user);
+
+  const resUser = user.toJSON();
+  resUser.responses.map((response, index) => {
+    const answerText = response.question.answers.find(
+      answer => answer.answerKey === response.response
+    ).answerText;
+    response.answerText = answerText;
+  });
+  console.log(resUser);
+  res.send(resUser);
 });
 
 router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {

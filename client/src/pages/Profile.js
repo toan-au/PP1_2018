@@ -28,7 +28,8 @@ class Profile extends Component {
     const responsesList = responses.map(response => {
       return (
         <div key={response.id}>
-          {response.question.questionText} - {response.response}
+          {console.log(response)}
+          {response.question.questionText} - {response.answerText}
         </div>
       );
     });
@@ -66,21 +67,25 @@ class Profile extends Component {
           </div>
 
           <div className="user-info">
-            <p>Display Name:
-            <span className="info">{viewUser.displayName}</span>
+            <p>
+              Display Name:
+              <span className="info">{viewUser.displayName}</span>
             </p>
             <br />
 
-            <p>Age:
-            <span className="info">{viewUser.age}</span>
+            <p>
+              Age:
+              <span className="info">{viewUser.age}</span>
             </p>
 
-            <p>Region:
-            <span className="info">{viewUser.region.region}</span>
+            <p>
+              Region:
+              <span className="info">{viewUser.region.region}</span>
             </p>
 
-            <p>Locale:
-            <span className="info">{viewUser.locale.locale}</span>
+            <p>
+              Locale:
+              <span className="info">{viewUser.locale.locale}</span>
             </p>
 
             <br />
@@ -110,7 +115,9 @@ class Profile extends Component {
         <DocumentTitle>Profile</DocumentTitle>
         <div className="banner">
           <h1 className="text-center">Your Profile</h1>
-          <p>View your profile details and your answers to our questionnaire.</p>
+          <p>
+            View your profile details and your answers to our questionnaire.
+          </p>
         </div>
 
         {this.state.loading ? (
