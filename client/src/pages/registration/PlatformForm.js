@@ -10,36 +10,45 @@ class PlatformForm extends Component {
       
       <div className="RegistrationForm">
         <form onSubmit={handleSubmit}>
+        <h4 className="question">Enter your Platform ID's</h4>
               <div className="field">
                 <label>Nintendo: </label>
                 <Field
-                  name="Nintendo"
+                  name="nintendo"
                   component="input"
                   placeholder=" Nintendo"
                 />
               </div>
               <div className="field">
-                <label>Playstation: </label>
+                <label>Origin: </label>
                 <Field
-                  name="Playstation"
+                  name="origin"
                   component="input"
-                  placeholder=" Playstation"
+                  placeholder=" Origin"
                 />
               </div>
               <div className="field">
                 <label>Xbox Live: </label>
                 <Field
-                  name="Xbox"
+                  name="xbox"
                   component="input"
                   placeholder=" Xbox"
                 />
               </div>
               <div className="field">
-                <label>Steam: </label>
+                <label>Playstation: </label>
                 <Field
-                  name="Steam"
+                  name="playstation"
                   component="input"
-                  placeholder=" Steam"
+                  placeholder=" Playstation"
+                />
+              </div>
+              <div className="field">
+                <label>Twitch: </label>
+                <Field
+                  name="twitch"
+                  component="input"
+                  placeholder=" Twitch"
                 />
               </div>
               <div className="field">
@@ -47,7 +56,15 @@ class PlatformForm extends Component {
                 <Field
                   name="discord"
                   component="input"
-                  placeholder=" discord"
+                  placeholder=" Discord"
+                />
+              </div>
+              <div className="field">
+                <label>Steam: </label>
+                <Field
+                  name="steam"
+                  component="input"
+                  placeholder=" Steam"
                 />
               </div>
           <div className="footer-buttons">
