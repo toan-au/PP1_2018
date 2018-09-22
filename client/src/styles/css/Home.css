@@ -17,7 +17,7 @@
   padding-right: 50px; }
 
 .Home button:hover {
-  background: #ab1e24; }
+  background: #7b1115; }
 
 .Home .matches {
   display: grid;
@@ -31,8 +31,24 @@
   width: 150px;
   margin: 0 auto; }
 
-.Home .FilterButtons .selected {
-  background: #c82128; }
+.Home .filter {
+  width: 100%; }
+  .Home .filter .sort {
+    display: flex; }
 
-.Home .FilterButtons button:hover {
-  cursor: pointer; }
+.Home .FilterButtons {
+  width: 50%;
+  padding-bottom: 20px; }
+  .Home .FilterButtons .right {
+    width: 100%;
+    text-align: right; }
+  .Home .FilterButtons .left {
+    display: flex; }
+    .Home .FilterButtons .left .tag {
+      width: 70%; }
+    .Home .FilterButtons .left button {
+      padding: 10px; }
+  .Home .FilterButtons .selected {
+    background: #c82128; }
+  .Home .FilterButtons button:hover {
+    cursor: pointer; }
