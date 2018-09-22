@@ -5,7 +5,7 @@ class PlatformForm extends Component {
   state = {};
 
   render() {
-    const { handleSubmit, prevPage} = this.props;
+    const { handleSubmit, onPrevious} = this.props;
     return (
       
       <div className="RegistrationForm">
@@ -51,7 +51,7 @@ class PlatformForm extends Component {
                 />
               </div>
           <div className="footer-buttons">
-            <button className="previous" type="button" onClick={prevPage}>
+            <button className="previous" type="button" onClick={onPrevious}>
               Previous
             </button>
             <button className="next" type="submit">
