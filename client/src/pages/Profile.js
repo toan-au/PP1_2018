@@ -88,6 +88,10 @@ class Profile extends Component {
               <span className="info">{viewUser.locale.locale}</span>
             </p>
 
+            <p>Casual or Competitive:
+            <span className="info">{viewUser.playstyle}</span>
+            </p>
+
             <br />
             <p>Biography:</p>
             <p className="info">{viewUser.bio}</p>
