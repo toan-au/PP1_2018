@@ -1,13 +1,12 @@
 .Profile {
-  color: $gunmetal;
   background: $white;
   border-bottom: 10px solid $dark_yellow;
   border-radius: 5px;
   margin-bottom: 40px;
   max-width: 720px;
+  text-align: center;
 
   .pfp {
-    text-align: center;
     padding-bottom: 5px;
   }
 
@@ -15,19 +14,13 @@
     color: $white !important;
   }
 
-  table {
-    color: $gunmetal !important;
-    width: 100%;
-  }
-
-  td {
-    padding-bottom: 5px;
-    width: 40px;
-  }
-
   p {
     color: $gunmetal !important;
     padding-bottom: 5px;
+  }
+
+  span {
+    padding-left: 0.7em;
   }
 
   .info {

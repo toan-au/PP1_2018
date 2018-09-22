@@ -66,24 +66,22 @@ class Profile extends Component {
           </div>
 
           <div className="user-info">
-            <table>
-              <tr>
-                <td>Display Name:</td>
-                <td className="info">{viewUser.displayName}</td>
-              </tr>
-              <tr>
-                <td>Age: </td>
-                <td className="info">{viewUser.age}</td>
-              </tr>
-              <tr>
-                <td>Region: </td>
-                <td className="info">{viewUser.region.region}</td>
-              </tr>
-              <tr>
-                <td>Locale: </td>
-                <td className="info">{viewUser.locale.locale}</td>
-              </tr>
-            </table>
+            <p>Display Name:
+            <span className="info">{viewUser.displayName}</span>
+            </p>
+            <br />
+
+            <p>Age:
+            <span className="info">{viewUser.age}</span>
+            </p>
+
+            <p>Region:
+            <span className="info">{viewUser.region.region}</span>
+            </p>
+
+            <p>Locale:
+            <span className="info">{viewUser.locale.locale}</span>
+            </p>
 
             <br />
             <p>Biography:</p>
