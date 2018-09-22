@@ -92,8 +92,6 @@ class Profile extends Component {
             <p className="info">{viewUser.bio}</p>
             <br />
 
-
-
             <p>Your Answers:</p>
             <p className="info">{this.renderResponses()}</p>
             <br />
