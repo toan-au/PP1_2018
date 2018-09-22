@@ -417,6 +417,11 @@ h3 {
   .Home .FilterButtons button:hover {
     cursor: pointer; }
 
+.Home button {
+  border: none;
+  background: #7b1115;
+  border-radius: 0px !important; }
+
 /* Chuck your variables in here*/
 /* colors */
 /* sizes */
