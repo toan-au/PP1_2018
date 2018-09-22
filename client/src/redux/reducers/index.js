@@ -9,6 +9,7 @@ import matched from './matched';
 import games from './games';
 import genres from './genres';
 import viewUser from './viewUser';
+import notifications from './notifications';
 
 // combine the reducers and export
 export default combineReducers({
@@ -19,5 +20,6 @@ export default combineReducers({
   matched,
   games,
   genres,
-  viewUser
+  viewUser,
+  notifications
 });

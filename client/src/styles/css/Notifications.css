@@ -1,0 +1,22 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/*notifications*/
+/* kittens */
+.Notifications {
+  position: sticky;
+  display: block;
+  z-index: 100;
+  top: 0; }
+  .Notifications .note {
+    text-align: center;
+    padding: 14px;
+    margin-bottom: 2px;
+    background: rgba(249, 233, 64, 0.817);
+    color: #1e1e2b;
+    font-size: 1.1em; }
+  .Notifications .note:hover {
+    cursor: pointer; }
