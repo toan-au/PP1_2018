@@ -101,10 +101,6 @@ class Profile extends Component {
             <p>Your Favourite Genres:</p>
             <p className="info">{this.renderGenres()}</p>
           </div>
-
-          <div className="edit-button">
-            <button className="Edit">Edit Profile</button>
-          </div>
         </div>
       );
     }
@@ -114,7 +110,10 @@ class Profile extends Component {
     return (
       <div>
         <DocumentTitle>Profile</DocumentTitle>
-        <h1 className="text-center">Your Profile</h1>
+        <div className="banner">
+          <h1 className="text-center">Your Profile</h1>
+          <p>View your profile details and your answers to our questionnaire.</p>
+        </div>
 
         {this.state.loading ? (
           <div className="d-flex justify-content-center">

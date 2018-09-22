@@ -4,6 +4,7 @@
 /* backgrounds */
 /* paddings */
 /* border */
+/*notifications*/
 /* kittens */
 @import url(//fonts.googleapis.com/css?family=Alegreya+Sans:300);
 .App {
@@ -48,12 +49,13 @@ a:hover {
   width: 0 auto;
   margin: 0 auto;
   text-align: center;
-  color: #e8e8e8; }
+  color: #e8e8e8;
+  padding-bottom: 50px; }
 
 h1 {
   font-size: 45px;
   padding-top: 50px;
-  padding-bottom: 50px; }
+  padding-bottom: 10px; }
 
 .container-custom {
   padding: 12px 80px; }

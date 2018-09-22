@@ -82,6 +82,7 @@ class Matches extends Component {
         <DocumentTitle>Matches</DocumentTitle>
         <div className="banner">
           <h1>Your Matches</h1>
+          <p>Here are the gamers you have matched with. Contact them through various platforms, remove or rate them. </p>
         </div>
         <div>
           {/*matched.length < 1 && <li>The princess is in another castle!</li>*/}

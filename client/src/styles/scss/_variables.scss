@@ -1,23 +1,23 @@
 /* Chuck your variables in here*/
 
 /* colors */
-$purple: #8B72BE;
-$blue: #4C68A1;
-$green: #2C7873;
+$purple: #8b72be;
+$blue: #4c68a1;
+$green: #2c7873;
 $white: #e8e8e8;
 $yellow: #deb841;
 $dark_yellow: #de9e36;
 $light_grey: #bfbdc1;
 $dim_grey: #6d6a75;
-$dark_grey: #32323E;
+$dark_grey: #32323e;
 $gunmetal: #1e1e2b;
 $maroon: #7b1115;
 $red: #ab1e24;
 $light_red: #c82128;
-$light_facebook: #4C68A1;
-$facebook: #3B5998;
-$discord: #7289DA;
-$light_discord: #7E93DD;
+$light_facebook: #4c68a1;
+$facebook: #3b5998;
+$discord: #7289da;
+$light_discord: #7e93dd;
 /* sizes */
 $navbar_height: 80px;
 $footer_height: 80px;
@@ -41,5 +41,8 @@ $match_card_name_size: 2em;
 
 /* border */
 $match_card_border: 1px solid $light_grey;
+
+/*notifications*/
+$note_background: $light_discord;
 
 /* kittens */
