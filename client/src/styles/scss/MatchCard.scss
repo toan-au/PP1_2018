@@ -17,8 +17,13 @@
       color: $gunmetal;
   }
   .button2:hover {
-    color: $red;
+    color: $maroon;
   }
+  .button2:active {
+    color: $red;
+    transform: translateY(3px);
+  }
+  
 
   .profile-pic {
     display: block;

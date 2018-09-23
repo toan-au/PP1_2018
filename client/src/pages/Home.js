@@ -22,13 +22,17 @@ const FilterButtons = ({
   const regions = ['OCE', 'JP', 'NA', 'CN'];
   return (
     <div className="FilterButtons">
-      <h2>Filter by:</h2>
+      <h2>Filter Region:</h2>
+      <div className="left">
+      {/* <div className="tag">
       <ReactStars
         count={5}
         value={starFilter}
         size={40}
         onChange={onStarFilter}
       />
+      
+      </div> */}
       {regions.map(region => {
         const selected = region === regionFilter ? 'selected' : '';
 
@@ -44,6 +48,7 @@ const FilterButtons = ({
       })}
       <button onClick={filterReset}>Reset</button>
     </div>
+    </div>
   );
 };
 
@@ -54,6 +59,7 @@ const SortButtons = ({ sortBy, sortByChange }) => {
   ];
   return (
     <div className="FilterButtons">
+      <div className="right">
       <h2>Sort by:</h2>
       {sorts.map(sort => {
         const selected = sortBy === sort.name ? 'selected' : '';
@@ -67,6 +73,7 @@ const SortButtons = ({ sortBy, sortByChange }) => {
           </button>
         );
       })}
+    </div>
     </div>
   );
 };
@@ -146,7 +153,8 @@ class Home extends Component {
           {this.state.loading && <PacmanSpinner />}
         </div>
         {!this.state.loading && (
-          <div>
+          <div className="filter">
+          <div className="sort">
             <FilterButtons
               starFilter={this.state.starFilter}
               regionFilter={this.state.regionFilter}
@@ -154,10 +162,12 @@ class Home extends Component {
               onRegionFilter={this.regionFilter}
               filterReset={this.filterReset}
             />
+            
             <SortButtons
               sortBy={this.state.sortBy}
               sortByChange={this.sortByChange}
             />
+            </div>
             <div className="matches">
               <MatchCards matches={this.state.filteredItems} />
             </div>

@@ -12,7 +12,7 @@
     padding-right: 50px;
   }
   button:hover {
-    background: $red;
+    background: $maroon;
   }
 
   .matches {
@@ -20,7 +20,8 @@
     grid-template-columns: $match_columns;
     grid-column-gap: $match_column_gap;
     grid-row-gap: $match_row_gap;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
   }
 
   .spinner {
@@ -29,13 +30,42 @@
     margin: 0 auto;
     // background: red;
   }
-
+  .filter{
+    width:100%;
+    
+    .sort {
+      display:flex;
+    }
+  }
   .FilterButtons {
+    width: 50%;
+    padding-bottom: 10px;
+    border-bottom: solid $light_grey;
+    .right {
+      width:100%;
+      text-align: right;
+    }
+    .left {
+      display:flex;
+      .tag{
+        width: 70%;
+      }
+
+      button {
+        padding: 10px;
+      }
+    }
     .selected {
       background: $light_red;
     }
     button:hover {
       cursor: pointer;
     }
+  }
+  button{
+    border: none;
+    background: $maroon;
+    border-radius: 0px !important;
+    
   }
 }
