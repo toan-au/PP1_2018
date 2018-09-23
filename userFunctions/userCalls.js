@@ -395,7 +395,6 @@ var finishRegistration = async function(registrationForm, requestId) {
   await responses.bulkCreate(registerResponses);
   await prefGenres.bulkCreate(registerGenres);
   await prefGames.bulkCreate(registerGames);
-
   return;
 };
 
