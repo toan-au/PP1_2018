@@ -51,22 +51,13 @@ describe('Users', () => {
   });
   
   it('can be persisted', async() => {
-    try {
      await user.save();
 
-    }
-    catch(e){
       assert.isTrue(true);
-      done()
-    }
   }).timeout(8000);
 
   it('can be retrieved', async() => {
-    try {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}}) 
-      done()
-     }
-     catch(e){
       //equivalence checks
       assert.equal(retrieveUser.email, dummyUser.email, "field email does not match")
       assert.equal(retrieveUser.bio, dummyUser.bio, "field bio does not match")
@@ -75,11 +66,9 @@ describe('Users', () => {
       assert.equal(retrieveUser.localeId, dummyUser.localeId, "field localeId does not match")
       assert.equal(retrieveUser.regionId, dummyUser.regionId, "field regionId does not match")
       assert.equal(retrieveUser.playstyle, dummyUser.playstyle, "field playstyle does not match")
-     }
   });
 
   it('can finish registration', async() => {
-    try {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}})
       userCalls.finishRegistration(dummyRegData,retrieveUser.id);
       var finishedUser = await Users.findOne({where: {email: dummyUser.email},
@@ -94,10 +83,7 @@ describe('Users', () => {
           { model: Region }
         ]
       })
-      
-      done()
-     }
-     catch(e){
+
       //equivalence checks
       //console.log(finishedUser.responses);
       var dummyAnswers = ["C","A","C","A","A","C","A","A","C","A"]
@@ -109,59 +95,46 @@ describe('Users', () => {
         assert.equal(finishedUser.responses[loopCounter].importance, dummyImportance[loopCounter], "An importance does not match expected value: ");
         assert.equal(finishedUser.responses[loopCounter].preference, dummyPreferences[loopCounter], "A preference does not match expected value: " );
       }
-     }
   }).timeout(8000);
 
   it('can like other users', async() => {
-    try {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}});
       await userCalls.likeUser(retrieveUser.id, TARGET_DUMMY_ID);
 
       var retrieveMatches = await Matches.findAll({where: {userId: retrieveUser.id}});
-      done();
-     }
-     catch(e){
+
       assert.equal(retrieveMatches[0].userId, retrieveUser.id, "Unexpected UserId")
       assert.equal(retrieveMatches[0].matchId, TARGET_DUMMY_ID, "Unexpected matchId")
       assert.equal(retrieveMatches[0].userResponse, "L", "Unexpected UserResponse")
 
-     }
   }).timeout(8000);
 
   it('can dislike other users', async() => {
-    try {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}});
       await userCalls.dislikeUser(retrieveUser.id, TARGET_DUMMY_ID);
 
       var retrieveMatches = await Matches.findAll({where: {userId: retrieveUser.id}});
-      done();
-     }
-     catch(e){
+
       assert.equal(retrieveMatches[0].userId, retrieveUser.id, "Unexpected UserId")
       assert.equal(retrieveMatches[0].matchId, TARGET_DUMMY_ID, "Unexpected matchId")
       assert.equal(retrieveMatches[0].userResponse, "D", "Unexpected UserResponse")
 
-     }
   }).timeout(8000);
 
   it('can rate other users', async() => {
-    try {
 
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}});
       await userCalls.rateUser(retrieveUser.id, TARGET_DUMMY_ID, TARGET_DUMMY_RATING);
 
       var retrieveRatings = await Ratings.findAll({where: {reviewerId: retrieveUser.id}});
-      done();
-     }
-     catch(e){
+
       assert.equal(retrieveRatings[0].userId, TARGET_DUMMY_ID, "Unexpected UserId")
       assert.equal(retrieveRatings[0].reviewerId, retrieveUser.id, "Unexpected reviewerId")
       assert.equal(retrieveRatings[0].rating, TARGET_DUMMY_RATING, "Unexpected rating")
-     }
+
   }).timeout(8000);
 
   it('can be cleared', async() => {
-    try {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}}) 
       await Responses.destroy({ where: { userId: retrieveUser.id } });
       await PrefGames.destroy({ where: { userId: retrieveUser.id } });
@@ -169,12 +142,9 @@ describe('Users', () => {
       await Matches.destroy({ where: { userId: retrieveUser.id } });
       await Ratings.destroy({ where: { reviewerId: retrieveUser.id } });
       await Users.destroy({ where: { email: retrieveUser.email }, force: true});
-      done();
-     }
-     catch(e){
+
       //equivalence checks
       assert.isTrue(true)
-     }
   }).timeout(8000);
 
   // auth stuff
