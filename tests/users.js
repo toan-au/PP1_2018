@@ -56,6 +56,7 @@ describe('Users', () => {
       assert.isTrue(true);
   }).timeout(8000);
 
+  //checks that a new user object exists in database
   it('can be retrieved', async() => {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}}) 
       //equivalence checks
@@ -68,6 +69,7 @@ describe('Users', () => {
       assert.equal(retrieveUser.playstyle, dummyUser.playstyle, "field playstyle does not match")
   });
 
+  //checks finishRegistration, and that responses load correctly
   it('can finish registration', async() => {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}})
       userCalls.finishRegistration(dummyRegData,retrieveUser.id);
@@ -97,6 +99,7 @@ describe('Users', () => {
       }
   }).timeout(8000);
 
+  //checks likeUser
   it('can like other users', async() => {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}});
       await userCalls.likeUser(retrieveUser.id, TARGET_DUMMY_ID);
@@ -109,6 +112,7 @@ describe('Users', () => {
 
   }).timeout(8000);
 
+  //checks dislikeUser
   it('can dislike other users', async() => {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}});
       await userCalls.dislikeUser(retrieveUser.id, TARGET_DUMMY_ID);
@@ -121,6 +125,7 @@ describe('Users', () => {
 
   }).timeout(8000);
 
+  //checks rateUser
   it('can rate other users', async() => {
 
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}});
@@ -134,6 +139,7 @@ describe('Users', () => {
 
   }).timeout(8000);
 
+  //clears the dummy user
   it('can be cleared', async() => {
       var retrieveUser = await Users.findOne({where: {email: dummyUser.email}}) 
       await Responses.destroy({ where: { userId: retrieveUser.id } });

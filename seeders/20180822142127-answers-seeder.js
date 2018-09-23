@@ -33,21 +33,21 @@ module.exports = {
       },
       {
         questionId: 2,
-        answerText: 'They must be from my region',
+        answerText: 'Someone from my region',
         answerKey: 'A',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         questionId: 2,
-        answerText: 'They can be from surrounding areas',
+        answerText: 'Someone from surrounding areas',
         answerKey: 'B',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         questionId: 2,
-        answerText: 'They can be from anywhere region',
+        answerText: 'Someone from any region',
         answerKey: 'C',
         createdAt: new Date(),
         updatedAt: new Date()
