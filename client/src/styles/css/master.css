@@ -744,7 +744,10 @@ h3 {
     padding: 15px;
     color: #1e1e2b; }
   .MatchCard .button2:hover {
-    color: #ab1e24; }
+    color: #7b1115; }
+  .MatchCard .button2:active {
+    color: #ab1e24;
+    transform: translateY(3px); }
   .MatchCard .profile-pic {
     display: block;
     width: 100%;
