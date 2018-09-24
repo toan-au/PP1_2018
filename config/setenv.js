@@ -21,7 +21,7 @@ writeKeys = () => {
       encoding: 'utf8'
     });
     const f = fs.readFileSync('./config/gcs_keys.json', { encoding: 'utf8' });
-    console.log(f);
+    // console.log(f);
   }
 };
 
