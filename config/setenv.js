@@ -2,7 +2,7 @@ const fs = require('fs');
 const keys = require('./keys');
 process.env.DB_STRING = keys.dbString;
 
-writeKeys = async () => {
+writeKeys = () => {
   if (process.env.NODE_ENV === 'production') {
     const gcsKeys = {
       type: process.env.GCS_TYPE,
@@ -17,19 +17,11 @@ writeKeys = async () => {
       client_x509_cert_url: process.env.GCS_CLIENT_X509_CERT_URL
     };
 
-    await fs.writeFile(
-      './config/gcs_keys.json',
-      JSON.stringify(gcsKeys),
-      async err => {
-        if (err) console.log(err);
-        const f = await fs.readFile(
-          './config/gcs_keys.json',
-          (err, contents) => {
-            console.log(contents);
-          }
-        );
-      }
-    );
+    fs.writeFileSync('./config/gcs_keys.json', JSON.stringify(gcsKeys), {
+      encoding: 'utf8'
+    });
+    const f = fs.readFileSync('./config/gcs_keys.json', { encoding: 'utf8' });
+    console.log(f);
   }
 };
 
