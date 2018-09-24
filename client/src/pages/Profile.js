@@ -121,6 +121,7 @@ class Profile extends Component {
 
             <span>Social Platforms:</span>
             <span className="info">{this.renderPlatformIds()}</span>
+
             <br />
 
             <span>Your Answers:</span>
