@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { addNote } from '../redux/actions/notifications';
 import { getPending, removePending } from '../redux/actions/pending';
 import TrashIcon from './TrashIcon';
 
@@ -13,10 +14,14 @@ const UserPending = ({ user, onClick }) => {
   );
 };
 
-const UsersPending = ({ users, removePending, appUser }) => {
+const UsersPending = ({ users, removePending, appUser, addNote }) => {
   const removeUser = (appUser, user, removePending) => {
     return () => {
       removePending(appUser.id, user.id);
+      addNote({
+        id: new Date().getTime(),
+        text: `removed ${user.displayName} from pending list`
+      });
     };
   };
 
@@ -33,7 +38,8 @@ const PendingDropdownContent = ({
   loading,
   pending,
   removePending,
-  appUser
+  appUser,
+  addNote
 }) => {
   const IsLoading = () => (
     <div className="dropdown-item">
@@ -58,6 +64,7 @@ const PendingDropdownContent = ({
         users={pending}
         removePending={removePending}
         appUser={appUser}
+        addNote={addNote}
       />
     );
   } else {
@@ -93,6 +100,7 @@ class PendingDropdownMenu extends Component {
           pending={this.props.pending}
           removePending={this.props.removePending}
           appUser={this.props.user}
+          addNote={this.props.addNote}
         />
       </div>
     );
@@ -106,5 +114,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getPending, removePending }
+  { getPending, removePending, addNote }
 )(PendingDropdownMenu);
