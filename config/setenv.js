@@ -2,7 +2,7 @@ const fs = require('fs');
 const keys = require('./keys');
 process.env.DB_STRING = keys.dbString;
 
-if ((process.env.NODE_ENV = 'production')) {
+if (process.env.NODE_ENV === 'production') {
   const gcsKeys = {
     type: process.env.GCS_TYPE,
     project_id: process.env.GCS_PROJECT_ID,
