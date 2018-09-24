@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import logo from '../images/Favicon.png';
+import logo from '../images/favicon.png';
 
 import PendingDropdownMenu from './PendingDropdownMenu';
 

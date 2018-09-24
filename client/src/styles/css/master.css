@@ -391,6 +391,18 @@ h3 {
   padding-bottom: 20px;
   padding-top: 20px; }
 
+@media only screen and (max-width: 1250px) {
+  .Home .matches {
+    grid-template-columns: 1fr 1fr 1fr; } }
+
+@media only screen and (max-width: 1025px) {
+  .Home .matches {
+    grid-template-columns: 1fr 1fr; } }
+
+@media only screen and (max-width: 700px) {
+  .Home .matches {
+    grid-template-columns: 1fr; } }
+
 .Home .spinner {
   padding-top: 120px;
   width: 150px;
