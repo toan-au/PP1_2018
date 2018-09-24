@@ -24,7 +24,7 @@ const FilterButtons = ({
     <div className="FilterButtons">
       <h2>Filter Region:</h2>
       <div className="left">
-      {/* <div className="tag">
+        {/* <div className="tag">
       <ReactStars
         count={5}
         value={starFilter}
@@ -33,21 +33,21 @@ const FilterButtons = ({
       />
       
       </div> */}
-      {regions.map(region => {
-        const selected = region === regionFilter ? 'selected' : '';
+        {regions.map(region => {
+          const selected = region === regionFilter ? 'selected' : '';
 
-        return (
-          <button
-            key={region}
-            onClick={() => onRegionFilter(region)}
-            className={selected}
-          >
-            {region}
-          </button>
-        );
-      })}
-      <button onClick={filterReset}>Reset</button>
-    </div>
+          return (
+            <button
+              key={region}
+              onClick={() => onRegionFilter(region)}
+              className={selected}
+            >
+              {region}
+            </button>
+          );
+        })}
+        <button onClick={filterReset}>Reset</button>
+      </div>
     </div>
   );
 };
@@ -60,20 +60,20 @@ const SortButtons = ({ sortBy, sortByChange }) => {
   return (
     <div className="FilterButtons">
       <div className="right">
-      <h2>Sort by:</h2>
-      {sorts.map(sort => {
-        const selected = sortBy === sort.name ? 'selected' : '';
-        return (
-          <button
-            key={sort.name}
-            onClick={() => sortByChange(sort.name)}
-            className={selected}
-          >
-            {sort.label}
-          </button>
-        );
-      })}
-    </div>
+        <h2>Sort by:</h2>
+        {sorts.map(sort => {
+          const selected = sortBy === sort.name ? 'selected' : '';
+          return (
+            <button
+              key={sort.name}
+              onClick={() => sortByChange(sort.name)}
+              className={selected}
+            >
+              {sort.label}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -154,19 +154,19 @@ class Home extends Component {
         </div>
         {!this.state.loading && (
           <div className="filter">
-          <div className="sort">
-            <FilterButtons
-              starFilter={this.state.starFilter}
-              regionFilter={this.state.regionFilter}
-              onStarFilter={this.starFilter}
-              onRegionFilter={this.regionFilter}
-              filterReset={this.filterReset}
-            />
-            
-            <SortButtons
-              sortBy={this.state.sortBy}
-              sortByChange={this.sortByChange}
-            />
+            <div className="sort">
+              <FilterButtons
+                starFilter={this.state.starFilter}
+                regionFilter={this.state.regionFilter}
+                onStarFilter={this.starFilter}
+                onRegionFilter={this.regionFilter}
+                filterReset={this.filterReset}
+              />
+
+              <SortButtons
+                sortBy={this.state.sortBy}
+                sortByChange={this.sortByChange}
+              />
             </div>
             <div className="matches">
               <MatchCards matches={this.state.filteredItems} />
