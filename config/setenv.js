@@ -20,12 +20,14 @@ writeKeys = async () => {
     await fs.writeFile(
       './config/gcs_keys.json',
       JSON.stringify(gcsKeys),
-      err => {
+      async err => {
         if (err) console.log(err);
-        const f = await fs.readFile('./config/gcs_keys.json', (err, contents) => {
-
-          console.log(contents);
-        });
+        const f = await fs.readFile(
+          './config/gcs_keys.json',
+          (err, contents) => {
+            console.log(contents);
+          }
+        );
       }
     );
   }
