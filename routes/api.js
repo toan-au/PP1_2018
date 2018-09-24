@@ -139,7 +139,9 @@ router.get('/matches/successful/:id', async (req, res) => {
   successfulMatches.map(match => {
     // set match's userRating or 0
     let userRating = ratings.find(rating => rating.userId === match.id);
-    userRating ? (userRating = userRating.rating) : (userRating = 0);
+    userRating
+      ? (userRating = userRating.rating)
+      : (userRating = match.avgRating);
     match.userRating = userRating;
   });
 
