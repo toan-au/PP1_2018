@@ -32,12 +32,12 @@ class Registration extends Component {
   handleSubmit = async values => {
     console.log(values);
     await this.props.updateUser(this.props.user.id, values);
-    this.setState({ redirect: true });
     this.props.addNote({
       id: new Date().getTime(),
       text:
         'Welcome to game search match! Get started by liking users, if they like you back you can then connect with them through social platforms'
     });
+    this.setState({ redirect: true });
   };
 
   renderRedirect = () => {
