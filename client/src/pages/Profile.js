@@ -55,6 +55,19 @@ class Profile extends Component {
     return genresList;
   };
 
+  renderPlatformIds = () => {
+    const {
+      viewUser: { platformIds }
+    } = this.props;
+    console.log(platformIds);
+    const platformsList = platformIds.map(platform => (
+      <div>
+        {platform.platform.title} - {platform.platformDisplayName}
+      </div>
+    ));
+    return platformsList;
+  };
+
   renderProfile = () => {
     const { viewUser } = this.props;
     if (viewUser) {
@@ -104,6 +117,10 @@ class Profile extends Component {
               <span className="info">{viewUser.bio}</span>
             </span>
             <br />
+            <br />
+
+            <span>Social Platforms:</span>
+            <span className="info">{this.renderPlatformIds()}</span>
             <br />
 
             <span>Your Answers:</span>
