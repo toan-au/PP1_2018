@@ -127,10 +127,6 @@ router.get('/matches/successful/:id', async (req, res) => {
     match.userRating = userRating;
   });
 
-  successfulMatches.map(match => {
-    console.log(match.userRating);
-  });
-
   res.send(successfulMatches);
 });
 

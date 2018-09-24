@@ -11,7 +11,7 @@ export const getMatched = userId => {
 
 export const removeUser = (id, targetId) => {
   return async dispatch => {
-    // await axios.get(`/api/user/dislike/${id}/${targetId}`);
+    await axios.get(`/api/user/dislike/${id}/${targetId}`);
     dispatch({ type: REMOVE_MATCHED, targetId });
   };
 };
