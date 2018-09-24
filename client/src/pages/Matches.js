@@ -5,12 +5,13 @@ import ReactLoading from 'react-loading';
 import { connect } from 'react-redux';
 
 import { getMatched, removeUser } from '../redux/actions/matched';
+import { addNote } from '../redux/actions/notifications.js';
 
 import DocumentTitle from '../components/DocumentTitle';
 
 import defaultPfp from '../images/fortnite_drift_.png';
 
-const MatchedUsers = ({ matched, ratings, onChange, removeUser, userId }) => {
+const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
   return matched.map(match => (
     <li key={match.id}>
       <img
@@ -23,7 +24,7 @@ const MatchedUsers = ({ matched, ratings, onChange, removeUser, userId }) => {
         <span>Age: {match.age}</span>
         <div>{match.bio}</div>
       </div>
-      <a className="RemoveUser" onClick={() => removeUser(userId, match.id)}>
+      <a className="RemoveUser" onClick={() => removeUser(match)}>
         Remove
       </a>
       <div className="rate-user">
@@ -77,6 +78,21 @@ class Matches extends Component {
     axios.patch(`/api/user/rate/${this.props.user.id}/${matchId}`, { rating });
   };
 
+  // handles removing a user
+  handleRemoveUser = target => {
+    const response = window.confirm(
+      'Are you sure you want to remove this user?'
+    );
+    if (response) {
+      // remove user in back and front end
+      this.props.removeUser(this.props.user.id, target.id);
+      // inform user on front end
+      this.props.addNote({
+        text: `You have been unmatched with ${target.displayName}`
+      });
+    }
+  };
+
   render() {
     // const { matched } = this.props;
     return (
@@ -101,8 +117,7 @@ class Matches extends Component {
                 matched={this.props.matched}
                 ratings={this.state.ratings}
                 onChange={this.rateUser}
-                removeUser={this.props.removeUser}
-                userId={this.props.userId}
+                removeUser={this.handleRemoveUser}
               />
             </ul>
           )}
@@ -117,5 +132,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { getMatched, removeUser }
+  { getMatched, removeUser, addNote }
 )(Matches);

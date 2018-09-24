@@ -3,7 +3,7 @@ import ReactStars from 'react-stars';
 import { connect } from 'react-redux';
 
 import { likeUser, dislikeUser } from '../redux/actions/pending';
-import { addNote } from '../redux/actions/notifications';
+import { addNote, removeNote } from '../redux/actions/notifications';
 
 import Modal from './Modal';
 import MatchMeter from './MatchMeter';
@@ -12,7 +12,14 @@ import ThumbDownIcon from './ThumbDownIcon';
 
 import defaultPfp from '../images/fortnite_drift_.png';
 
-const MatchCard = ({ match, user, likeUser, dislikeUser, addNote }) => {
+const MatchCard = ({
+  match,
+  user,
+  likeUser,
+  dislikeUser,
+  addNote,
+  removeNote
+}) => {
   const starLeftGap = 47.5 - match.avgRating * 7; // if no rating exists create a random one
   const bioLength = 250;
   const shortBio = match.bio.substring(0, bioLength);
@@ -26,17 +33,19 @@ const MatchCard = ({ match, user, likeUser, dislikeUser, addNote }) => {
 
   const onLike = () => {
     likeUser(user.id, match.id);
-    addNote({
-      id: new Date().getTime(),
-      text: 'You have liked ' + match.displayName
-    });
+    const id = new Date().getTime();
+    const text = 'You have liked ' + match.displayName;
+    addNote({ id, text });
+    // remove note after time out
+    setTimeout(() => removeNote(id), 4000);
   };
   const onDislike = () => {
     dislikeUser(user.id, match.id);
-    addNote({
-      id: new Date().getTime(),
-      text: 'You have disliked ' + match.displayName
-    });
+    const id = new Date().getTime();
+    const text = 'You have disliked ' + match.displayName;
+    addNote({ id, text });
+    // remove note after time out
+    setTimeout(() => removeNote(id), 4000);
   };
 
   return (
@@ -89,5 +98,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { likeUser, dislikeUser, addNote }
+  { likeUser, dislikeUser, addNote, removeNote }
 )(MatchCard);
