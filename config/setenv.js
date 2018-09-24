@@ -17,11 +17,7 @@ writeKeys = () => {
       client_x509_cert_url: process.env.GCS_CLIENT_X509_CERT_URL
     };
 
-    fs.writeFileSync('./config/gcs_keys.json', JSON.stringify(gcsKeys), {
-      encoding: 'utf8'
-    });
-    const f = fs.readFileSync('./config/gcs_keys.json', { encoding: 'utf8' });
-    // console.log(f);
+    fs.writeFileSync('./config/gcs_keys.json', JSON.stringify(gcsKeys));
   }
 };
 
