@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 // redux actions
 import { updateUser } from '../../redux/actions/user';
+import { addNote } from '../../redux/actions/notifications';
 
 // registration forms
 import ProfileForm from './ProfileForm';
@@ -31,8 +32,12 @@ class Registration extends Component {
   handleSubmit = async values => {
     console.log(values);
     await this.props.updateUser(this.props.user.id, values);
-    console.log(this.props.user);
     this.setState({ redirect: true });
+    this.props.addNote({
+      id: new Date().getTime(),
+      text:
+        'Welcome to game search match! Get started by liking users, if they like you back you can then connect with them through social platforms'
+    });
   };
 
   renderRedirect = () => {
@@ -83,10 +88,7 @@ class Registration extends Component {
       <div className="Registration">
         {page === 1 && <ProfileForm onSubmit={this.nextPage} />}
         {page === 2 && (
-          <PlatformForm
-            onSubmit={this.nextPage}
-            onPrevious={this.prevPage}
-          />
+          <PlatformForm onSubmit={this.nextPage} onPrevious={this.prevPage} />
         )}
         {page === 3 && this.state.questionForms[this.state.currentQuestion]}
         {page === 4 && (
@@ -112,5 +114,5 @@ class Registration extends Component {
 const mapStateToProps = state => ({ user: state.user });
 export default connect(
   mapStateToProps,
-  { updateUser }
+  { updateUser, addNote }
 )(Registration);

@@ -28,7 +28,6 @@ class Profile extends Component {
     const responsesList = responses.map(response => {
       return (
         <div key={response.id}>
-          {console.log(response)}
           {response.question.questionText} - {response.answerText}
         </div>
       );
@@ -101,7 +100,7 @@ class Profile extends Component {
 
             <span>
               Biography:
-              <br/>
+              <br />
               <span className="info">{viewUser.bio}</span>
             </span>
             <br />
