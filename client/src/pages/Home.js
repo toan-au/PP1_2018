@@ -12,30 +12,18 @@ const MatchCards = ({ matches }) => {
   return matches.map(match => <MatchCard key={match.id} match={match} />);
 };
 
-const FilterButtons = ({
+const RegionButton = ({
   regionFilter,
-  starFilter,
-  onStarFilter,
   onRegionFilter,
   filterReset
 }) => {
   const regions = ['OCE', 'JP', 'NA', 'CN'];
   return (
     <div className="FilterButtons">
-      <h2>Filter Region:</h2>
       <div className="left">
-        {/* <div className="tag">
-      <ReactStars
-        count={5}
-        value={starFilter}
-        size={40}
-        onChange={onStarFilter}
-      />
-      
-      </div> */}
+      <h2>Filter by Region:</h2>
         {regions.map(region => {
           const selected = region === regionFilter ? 'selected' : '';
-
           return (
             <button
               key={region}
@@ -48,6 +36,29 @@ const FilterButtons = ({
         })}
         <button onClick={filterReset}>Reset</button>
       </div>
+    </div>
+  );
+};
+
+const StarButton = ({
+  starFilter,
+  onStarFilter
+}) => {
+  return (
+    <div className="FilterButtons">
+      <div className="mid">
+        <h2>Show rating from:</h2>
+        <div className="star">
+          <ReactStars
+            count={5}
+            value={starFilter}
+            size={40}
+            onChange={onStarFilter}
+          />
+          </div>
+      </div>
+      );
+    })}
     </div>
   );
 };
@@ -155,10 +166,13 @@ class Home extends Component {
         {!this.state.loading && (
           <div className="filter">
             <div className="sort">
-              <FilterButtons
+              
+              <StarButton
                 starFilter={this.state.starFilter}
-                regionFilter={this.state.regionFilter}
                 onStarFilter={this.starFilter}
+              />
+              <RegionButton
+                regionFilter={this.state.regionFilter}
                 onRegionFilter={this.regionFilter}
                 filterReset={this.filterReset}
               />

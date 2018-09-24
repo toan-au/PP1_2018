@@ -50,16 +50,13 @@
     display: flex; }
 
 .Home .FilterButtons {
-  width: 50%;
-  padding-bottom: 10px;
+  width: 100%;
+  padding-bottom: 5px;
   border-bottom: solid #bfbdc1; }
   .Home .FilterButtons .right {
-    width: 100%;
     text-align: right; }
   .Home .FilterButtons .left {
-    display: flex; }
-    .Home .FilterButtons .left .tag {
-      width: 70%; }
+    text-align: center; }
     .Home .FilterButtons .left button {
       padding: 10px; }
   .Home .FilterButtons .selected {
