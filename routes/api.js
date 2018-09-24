@@ -74,6 +74,7 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const preferences = JSON.parse(req.body.preferences);
   const games = JSON.parse(req.body.games);
   const genres = JSON.parse(req.body.genres);
+  const platforms = JSON.parse(req.body.platforms);
 
   const pfpUrl = req.file.path;
 
@@ -89,8 +90,21 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
     finishedRegistration: true
   });
 
+  // convert platforms to correct format
+
+  const platformsArr = Object.keys(platforms).map(key => ({
+    [key]: platforms[key]
+  }));
+
   const response = await userCalls.finishRegistration(
-    { importances, answers, preferences, games, genres },
+    {
+      importances,
+      answers,
+      preferences,
+      games,
+      genres,
+      platforms: platformsArr
+    },
     req.params.id
   );
   res.send(user);

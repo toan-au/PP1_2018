@@ -34,8 +34,7 @@ class Registration extends Component {
     await this.props.updateUser(this.props.user.id, values);
     this.props.addNote({
       id: new Date().getTime(),
-      text:
-        'Welcome to game search match! Get started by liking users, if they like you back you can then connect with them through social platforms'
+      text: 'Welcome to game search match! (click to delete notifications)'
     });
     this.setState({ redirect: true });
   };

@@ -200,7 +200,8 @@ let profileForm = reduxForm({
     locale: -1,
     playstyle: 'casual',
     genres: {},
-    games: []
+    games: [],
+    platforms: {}
   }
 })(ProfileForm);
 
