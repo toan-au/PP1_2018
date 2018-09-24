@@ -74,7 +74,11 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const preferences = JSON.parse(req.body.preferences);
   const games = JSON.parse(req.body.games);
   const genres = JSON.parse(req.body.genres);
+<<<<<<< HEAD
   const platforms = JSON.parse(req.body.platforms);
+=======
+  const platformIds = JSON.parse(req.body.platformIds)
+>>>>>>> 916188aa9be951ff66174f9630ef7fb2e3cc1873
 
   const pfpUrl = req.file.path;
 
@@ -103,7 +107,7 @@ router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
       preferences,
       games,
       genres,
-      platforms: platformsArr
+      platformIds: platformsArr
     },
     req.params.id
   );
