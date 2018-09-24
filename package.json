@@ -15,6 +15,7 @@
     "setenv": "node ./config/setenv",
     "dev": "npm run setenv && concurrently \"npm run server\" \"npm run client\" \"npm run sass\"",
     "setup": "npm install && npm install --prefix client",
+    "heroku-prebuild": "npm run setenv",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
