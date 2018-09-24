@@ -59,7 +59,6 @@ router.get('/user/:id', async (req, res) => {
     ).answerText;
     response.answerText = answerText;
   });
-  console.log(resUser);
   res.send(resUser);
 });
 

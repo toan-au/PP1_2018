@@ -1,4 +1,4 @@
-import { GET_MATCHED } from './types';
+import { GET_MATCHED, REMOVE_MATCHED } from './types';
 import axios from 'axios';
 
 export const getMatched = userId => {
@@ -6,5 +6,12 @@ export const getMatched = userId => {
     const res = await axios.get('/api/matches/successful/' + userId);
     const matches = res.data;
     dispatch({ type: GET_MATCHED, matches });
+  };
+};
+
+export const removeUser = (id, targetId) => {
+  return async dispatch => {
+    // await axios.get(`/api/user/dislike/${id}/${targetId}`);
+    dispatch({ type: REMOVE_MATCHED, targetId });
   };
 };

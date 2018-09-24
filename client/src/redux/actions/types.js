@@ -23,6 +23,9 @@ export const USER_LIKED = 'user_liked';
 export const USER_DISLIKED = 'user_disliked';
 export const REMOVE_PENDING = 'remove_pending';
 
+// matches
+export const REMOVE_MATCHED = 'remove_matched';
+
 // notifications
 export const ADD_NOTIFICATION = 'add_notification';
 export const REMOVE_NOTIFICATION = 'remove_notification';
