@@ -28,7 +28,6 @@ class Profile extends Component {
     const responsesList = responses.map(response => {
       return (
         <div key={response.id}>
-          {console.log(response)}
           {response.question.questionText} - {response.answerText}
         </div>
       );
@@ -56,6 +55,19 @@ class Profile extends Component {
     return genresList;
   };
 
+  renderPlatformIds = () => {
+    const {
+      viewUser: { platformIds }
+    } = this.props;
+    console.log(platformIds);
+    const platformsList = platformIds.map(platform => (
+      <div>
+        {platform.platform.title} - {platform.platformDisplayName}
+      </div>
+    ));
+    return platformsList;
+  };
+
   renderProfile = () => {
     const { viewUser } = this.props;
     if (viewUser) {
@@ -67,46 +79,61 @@ class Profile extends Component {
           </div>
 
           <div className="user-info">
-            <p>
+            <span>
               Display Name:
-              <span className="info">{viewUser.displayName}</span>
-            </p>
+              <span className="info"> {viewUser.displayName}</span>
+            </span>
+            <br />
             <br />
 
-            <p>
+            <span>
               Age:
-              <span className="info">{viewUser.age}</span>
-            </p>
+              <span className="info"> {viewUser.age}</span>
+            </span>
+            <br />
 
-            <p>
+            <span>
               Region:
-              <span className="info">{viewUser.region.region}</span>
-            </p>
+              <span className="info"> {viewUser.region.region}</span>
+            </span>
+            <br />
 
-            <p>
+            <span>
               Locale:
-              <span className="info">{viewUser.locale.locale}</span>
-            </p>
-
-            <p>Casual or Competitive:
-            <span className="info">{viewUser.playstyle}</span>
-            </p>
-
-            <br />
-            <p>Biography:</p>
-            <p className="info">{viewUser.bio}</p>
+              <span className="info"> {viewUser.locale.locale}</span>
+            </span>
             <br />
 
-            <p>Your Answers:</p>
-            <p className="info">{this.renderResponses()}</p>
+            <span>
+              Casual or Competitive:
+              <span className="info"> {viewUser.playstyle}</span>
+            </span>
+            <br />
             <br />
 
-            <p>Your Favourite Games:</p>
-            <p className="info">{this.renderGames()}</p>
+            <span>
+              Biography:
+              <br />
+              <span className="info">{viewUser.bio}</span>
+            </span>
+            <br />
             <br />
 
-            <p>Your Favourite Genres:</p>
-            <p className="info">{this.renderGenres()}</p>
+            <span>Social Platforms:</span>
+            <span className="info">{this.renderPlatformIds()}</span>
+
+            <br />
+
+            <span>Your Answers:</span>
+            <span className="info">{this.renderResponses()}</span>
+            <br />
+
+            <span>Your Favourite Games:</span>
+            <span className="info">{this.renderGames()}</span>
+            <br />
+
+            <span>Your Favourite Genres:</span>
+            <span className="info">{this.renderGenres()}</span>
           </div>
         </div>
       );
