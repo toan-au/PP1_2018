@@ -5,6 +5,8 @@
   margin-bottom: 40px;
   max-width: 720px;
   text-align: center;
+  font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
+  font-weight: bold;
 
   .pfp {
     padding-bottom: 5px;
@@ -20,7 +22,8 @@
   }
 
   span {
-    padding-left: 0.7em;
+    //padding-left: 0.7em;
+    padding-bottom: 20px;
   }
 
   .info {
