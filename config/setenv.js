@@ -24,9 +24,11 @@ writeKeys = async () => {
         if (err) console.log(err);
         const f = await fs.readFile('./config/gcs_keys.json', (err, contents) => {
 
-          console.log(f);
+          console.log(contents);
         });
       }
     );
   }
 };
+
+writeKeys();
