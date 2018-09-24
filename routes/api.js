@@ -59,7 +59,6 @@ router.get('/user/:id', async (req, res) => {
     ).answerText;
     response.answerText = answerText;
   });
-  console.log(resUser);
   res.send(resUser);
 });
 
@@ -126,10 +125,6 @@ router.get('/matches/successful/:id', async (req, res) => {
     let userRating = ratings.find(rating => rating.userId === match.id);
     userRating ? (userRating = userRating.rating) : (userRating = 0);
     match.userRating = userRating;
-  });
-
-  successfulMatches.map(match => {
-    console.log(match.userRating);
   });
 
   res.send(successfulMatches);

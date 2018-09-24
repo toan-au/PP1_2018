@@ -26,17 +26,15 @@ const MatchCard = ({ match, user, likeUser, dislikeUser, addNote }) => {
 
   const onLike = () => {
     likeUser(user.id, match.id);
-    addNote({
-      id: new Date().getTime(),
-      text: 'You have liked ' + match.displayName
-    });
+    const id = new Date().getTime();
+    const text = 'You have liked ' + match.displayName;
+    addNote({ id, text });
   };
   const onDislike = () => {
     dislikeUser(user.id, match.id);
-    addNote({
-      id: new Date().getTime(),
-      text: 'You have disliked ' + match.displayName
-    });
+    const id = new Date().getTime();
+    const text = 'You have disliked ' + match.displayName;
+    addNote({ id, text });
   };
 
   return (
