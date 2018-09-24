@@ -16,7 +16,7 @@ if ((process.env.NODE_ENV = 'production')) {
     client_x509_cert_url: process.env.GCS_CLIENT_X509_CERT_URL
   };
 
-  fs.writeFile('gcs_keys.json', JSON.stringify(gcsKeys), err => {
+  fs.writeFile('./config/gcs_keys.json', JSON.stringify(gcsKeys), err => {
     if (err) console.log(err);
     console.log('gcs keys written');
   });
