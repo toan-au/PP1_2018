@@ -28,7 +28,6 @@ class Profile extends Component {
     const responsesList = responses.map(response => {
       return (
         <div key={response.id}>
-          {console.log(response)}
           {response.question.questionText} - {response.answerText}
         </div>
       );
@@ -54,6 +53,19 @@ class Profile extends Component {
       return <div key={pref.id}>{pref.genre.title}</div>;
     });
     return genresList;
+  };
+
+  renderPlatformIds = () => {
+    const {
+      viewUser: { platformIds }
+    } = this.props;
+    console.log(platformIds);
+    const platformsList = platformIds.map(platform => (
+      <div>
+        {platform.platform.title} - {platform.platformDisplayName}
+      </div>
+    ));
+    return platformsList;
   };
 
   renderProfile = () => {
@@ -101,10 +113,15 @@ class Profile extends Component {
 
             <span>
               Biography:
-              <br/>
+              <br />
               <span className="info">{viewUser.bio}</span>
             </span>
             <br />
+            <br />
+
+            <span>Social Platforms:</span>
+            <span className="info">{this.renderPlatformIds()}</span>
+
             <br />
 
             <span>Your Answers:</span>

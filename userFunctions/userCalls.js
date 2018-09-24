@@ -16,6 +16,12 @@ const matches = require('../models').matches;
 const locale = require('../models').locale;
 const region = require('../models').region;
 const ratings = require('../models').ratings;
+const games = require('../models').games;
+const genres = require('../models').genres;
+const platformIds = require('../models').platformIds;
+const platforms = require('../models').platforms;
+
+
 
 var getPendingMatches = async function(requestId) {
   //placeholder Id, will take in variable ID values in future cases
@@ -90,7 +96,16 @@ var getSuccessfulMatches = async function(requestId) {
     //find the matching users as user objects
     matchingUsers = await users.findAll({
       where: { id: { [Op.or]: matchingUserIds } },
-      include: [{ model: region }, { model: locale }]
+      include: [
+        {
+          model: prefGames, include: [{ model: games }]
+        },
+        { model: prefGenres, include: [{ model: genres }] },
+        { model: locale },
+        { model: region },
+        { model: ratings },
+        { model: platformIds, include: [{ model: platforms }]}
+      ]
     });
   }
   //transform the objects to a more reasonable form
@@ -216,6 +231,7 @@ var dislikeUser = async function(requestId, targetId) {
 };
 
 var finishRegistration = async function(registrationForm, requestId) {
+  
   const NO_IMPORTANCE = 0;
   const LOW_IMPORTANCE = 1;
   const MED_IMPORTANCE = 2;
@@ -244,6 +260,7 @@ var finishRegistration = async function(registrationForm, requestId) {
   responses.destroy({ where: { userId: requestId } });
   prefGames.destroy({ where: { userId: requestId } });
   prefGenres.destroy({ where: { userId: requestId } });
+  platformIds.destroy({ where: { userId: requestId } });
 
   //array to hold a user's responses.
   var registerResponses = [];
@@ -391,11 +408,39 @@ var finishRegistration = async function(registrationForm, requestId) {
     registerGames.push(newPrefGame);
   }
 
-  //save all response recordings to database.
+  var registerPlatforms = [];
+  const availablePlatforms = await platforms.findAll({ attributes: ['id', 'title'] });
+  //populate the array of JSON objects for insertion via a bulk create (platformIds).
+  for(
+    var loopCounter = 0;
+    loopCounter < registrationForm.platformIds.length;
+    loopCounter++
+  ) {
+
+    var filterObject = registrationForm.platformIds[loopCounter]
+
+    for(var innerCounter = 0; innerCounter < availablePlatforms.length; innerCounter++){
+      var platformIdKeys = Object.keys(filterObject);
+      
+      if(availablePlatforms[innerCounter].title.toUpperCase() === platformIdKeys[0].toUpperCase()){
+        var platformIdHolder = Object.values(filterObject)
+
+        var newPlatformId = {
+          userId: requestId,
+          platformId: availablePlatforms[innerCounter].id,
+          platformDisplayName: platformIdHolder[0],
+          createdAt: new Date(),
+          updatedAt: new Date()
+        };
+        registerPlatforms.push(newPlatformId);
+      }
+    }
+  }
+  //save all response recordings to database
   await responses.bulkCreate(registerResponses);
   await prefGenres.bulkCreate(registerGenres);
   await prefGames.bulkCreate(registerGames);
-
+  await platformIds.bulkCreate(registerPlatforms);
   return;
 };
 
