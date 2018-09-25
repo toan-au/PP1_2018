@@ -9,7 +9,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        questionText: 'Would you prefer to play with a user from your region?',
+        questionText: 'I would prefer to play with...',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -24,7 +24,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        questionText: 'What aspect of a game is most important to you?',
+        questionText: 'What aspect of a game is the most important to you?',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -49,7 +49,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        questionText: 'On average how long do you play videos games a day?',
+        questionText: 'On average, how many hours a day do you play video games?',
         createdAt: new Date(),
         updatedAt: new Date()
       }

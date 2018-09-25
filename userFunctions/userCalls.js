@@ -49,10 +49,21 @@ var getPendingMatches = async function(requestId) {
       include: [{ model: region }, { model: locale }]
     });
   }
-  //transform the objects to a more reasonable form
+  
   for (var i = 0; i < pendingUsers.length; i++) {
+    //transform the objects to a more reasonable form
     pendingUsers[i] = pendingUsers[i].toJSON();
+
+    //add the date of the match, for sorting in the list.
+    for(var j = 0; j < findMatches.length; j++){
+      if(findMatches[j].matchId == pendingUsers[i].id){
+        pendingUsers[i].sortingDate = findMatches[j].updatedAt
+      }
+    }
   }
+
+  //sort pending from newest to oldest.
+  pendingUsers.sort(sortByDate)
 
   //return the pending users
   return pendingUsers;
@@ -111,7 +122,18 @@ var getSuccessfulMatches = async function(requestId) {
   //transform the objects to a more reasonable form
   for (var i = 0; i < matchingUsers.length; i++) {
     matchingUsers[i] = matchingUsers[i].toJSON();
-  }
+
+    //add the date of the match, for sorting in the list.
+    for(var j = 0; j < findMatches.length; j++){
+      if(findMatches[j].matchId == matchingUsers[i].id || findMatches[j].userId == matchingUsers[i].id){
+        matchingUsers[i].sortingDate = findMatches[j].updatedAt
+      }
+    } 
+  } 
+
+  
+
+  matchingUsers.sort(sortByDate)
 
   //return the matching users
   return matchingUsers;
@@ -513,6 +535,11 @@ var getAvgRating = async function(targetId) {
   await users.update({ avgRating: newRating }, { where: { id: targetId } });
 
   return;
+};
+
+
+var sortByDate = function(a,b){
+  return b.sortingDate - a.sortingDate
 };
 
 module.exports = {
