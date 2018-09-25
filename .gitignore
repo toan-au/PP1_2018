@@ -7,3 +7,5 @@ db/config/config.json
 .DS_Store
 imgs/pfps/*
 config/gcs_keys.json
+touch
+touch.cmd
