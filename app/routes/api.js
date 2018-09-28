@@ -10,7 +10,7 @@ const gcs = require('multer-sharp');
 const storage = gcs({
   bucket: keys.gcsBucketName,
   projectId: keys.googleProjectId,
-  keyFilename: './config/gcs_keys.json',
+  keyFilename: './app/config/gcs_keys.json',
   size: { width: 350, height: 350 }
 });
 const pfpUpload = multer({ storage });

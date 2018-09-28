@@ -1,9 +1,18 @@
+# general
 node_modules
 package-lock.json
-.sass-cache
-config/dev.js
-config/test.js
-db/config/config.json
 .DS_Store
+.sass-cache
+
+# config/keys
+app/config/dev.js
+app/config/test.js
+app/config/gcs_keys.json
+db/config/config.json
+
+# profile images
 imgs/pfps/*
-config/gcs_keys.json
+
+# other
+touch
+touch.cmd

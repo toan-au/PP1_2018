@@ -708,7 +708,9 @@ h3 {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold; }
   .Profile .pfp {
-    padding-bottom: 5px; }
+    padding-bottom: 5px;
+    min-width: 350px;
+    min-height: 350px; }
   .Profile h1 {
     color: #e8e8e8 !important; }
   .Profile p {
