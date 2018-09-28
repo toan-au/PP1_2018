@@ -7,7 +7,7 @@ import {
 import axios from 'axios';
 
 /**
- * Fetches 'pending users' array from server and saves it as state.
+ * Fetch 'pending users' array from server and save it as state.
  * @param {number} id - The id of the current user.
  */
 export const getPending = id => {
@@ -21,7 +21,7 @@ export const getPending = id => {
 };
 
 /**
- * Adds a user to liked on server-side, fetches updated user array and saves it as state.
+ * Add a user to liked on server-side, fetches updated user array and saves it as state.
  * @param {number} id - The id of the current user.
  * @param {number} targetId - The id of the liked user.
  */
@@ -34,7 +34,7 @@ export const likeUser = (id, targetId) => {
 };
 
 /**
- * Removes a user from liked on server-side, fetches updated user array and saves it as state.
+ * Remove a user from liked on server-side, fetch updated user array and save it as state.
  * @param {number} id - The id of the current user.
  * @param {number} targetId - The id of the disliked user.
  */
@@ -47,7 +47,7 @@ export const dislikeUser = (id, targetId) => {
 };
 
 /**
- * Removes a user from current state. Removes user from liked on server-side.
+ * Remove a user from current state. Remove user from liked on server-side.
  * @param {number} id - The id of the current user.
  * @param {number} targetId - The id of the user to remove.
  */

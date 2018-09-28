@@ -10,6 +10,7 @@ import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
 import Matches from './pages/Matches';
 import Profile from './pages/Profile';
+import MemberProfile from './pages/MemberProfile'
 import NotFound from './pages/NotFound';
 
 import Home from './pages/Home';
@@ -23,9 +24,7 @@ const AppSwitch = ({ user }) => {
 
 const mapStateToProps = state => ({ user: state.user });
 
-/**
- * PublicRoutes - routes available to an unauthenticated user.
- */
+/** PublicRoutes - routes available to an unauthenticated user. */
 const PublicRoutes = () => {
   return (
     <Switch>
@@ -52,6 +51,7 @@ const ProtectedRoutes = () => {
       <Route exact path="/register" component={Registration} />
       <Route exact path="/matches" component={Matches} />
       <Route exact path="/profile" component={Profile} />
+      <Route exact path='/profile/:id' component={MemberProfile} />
 
       {/* Common Routes */}
       <Route exact path="/aboutus" component={AboutUs} />
