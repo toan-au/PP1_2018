@@ -7,7 +7,7 @@ const PreferenceChoices = ({ answers, questionId, error }) => {
   return (
     <div className="RadioGroup">
       <h4 className="question">Your gaming buddy would ideally choose...</h4>
-      {error && <span className="error">{error}</span>}
+      {error && <span style={{ color: 'red' }}>{error}</span>}
       <div className="choices">
         {answers.map(answer => {
           return (
