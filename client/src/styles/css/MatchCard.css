@@ -41,7 +41,8 @@
     text-transform: uppercase; }
     .MatchCard .display-name h3 {
       color: #c82128;
-      text-align: center; }
+      text-align: center;
+      text-transform: uppercase; }
     .MatchCard .display-name label {
       text-align: center;
       padding: 5px;
