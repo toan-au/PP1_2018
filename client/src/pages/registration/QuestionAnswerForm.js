@@ -45,7 +45,6 @@ class QuestionAnswerForm extends Component {
     const { handleSubmit, question, preferences } = this.props;
     // validate preferences
 
-    console.log(preferences);
     if (!(question.id in preferences)) {
       this.setState({ error: 'you must choose atleast 1 preference' });
       return false;
