@@ -1,0 +1,102 @@
+@import 'variables';
+
+.pic {
+    text-align: center;
+
+    label {
+        width: 100%;
+        padding-bottom: 5px;
+    }
+}
+.modalright {
+    width: 40%;
+}
+.modal-content {
+    border-radius: 10px;
+}
+.modal-body {
+    border-bottom: 10px solid $dark_yellow;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    height: 100%;
+    border-radius: 5px;
+}
+.modalleft {
+  min-width: 60%;
+}
+.content {
+   
+    .display-name {
+        
+        font-weight: bold;
+        font-size: $match_card_name_size;
+        padding-top: 5px;
+        text-transform: uppercase;
+    
+        h3 {
+          color: $light_red;
+          text-align: center;
+        }
+        label {
+          text-align: center;
+          padding: 5px;
+          border-radius: 5px;
+          color: $white;
+          margin-left: 5px;
+        }
+        label.CN {
+          background: $red;
+        }
+        label.NA {
+          background: $blue;
+        }
+        label.SEA {
+          background: $green;
+        }
+        label.JP {
+          background: white;
+          color: $red;
+        }
+        label.OCE {
+          background: $purple;
+        }
+      }
+    .bio {
+        label {
+            color: $gunmetal;
+            
+        }
+        .info {
+            
+            margin-bottom: 10px;
+            margin-right: 10px;
+            border:solid $white;
+            background: $white;
+            border-radius: 5px;
+            padding: 5px;
+            color: $gunmetal !important;
+        }
+    }
+    
+    
+      
+}
+.button-group {
+    display: flex;
+    margin: auto auto;
+    text-align: center;
+  }
+  .button2 {
+    text-align: center;
+    margin: auto auto;
+    
+    color: $gunmetal;
+  }
+  .button2:hover {
+    color: $maroon;
+  }
+  .button2:active {
+    color: $red;
+    transform: translateY(3px);
+  }
