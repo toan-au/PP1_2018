@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, formValueSelector } from 'redux-form';
 import RadioGroup from '../../components/RadioGroup';
+import { connect } from 'react-redux';
 
-const PreferenceChoices = ({ answers, questionId }) => {
+const PreferenceChoices = ({ answers, questionId, error }) => {
   return (
     <div className="RadioGroup">
       <h4 className="question">Your gaming buddy would ideally choose...</h4>
+      {error && <span style={{ color: 'red' }}>{error}</span>}
       <div className="choices">
         {answers.map(answer => {
           return (
@@ -30,6 +32,7 @@ const PreferenceChoices = ({ answers, questionId }) => {
 
 class QuestionAnswerForm extends Component {
   state = {
+    error: '',
     showPreferences: false
   };
 
@@ -37,10 +40,30 @@ class QuestionAnswerForm extends Component {
     this.setState({ showPreferences: true });
   };
 
+  handleSubmit = values => {
+    values.preventDefault();
+    const { handleSubmit, question, preferences } = this.props;
+    // validate preferences
+
+    if (!(question.id in preferences)) {
+      this.setState({ error: 'you must choose atleast 1 preference' });
+      return false;
+    }
+
+    if (
+      Object.values(preferences[question.id]).filter(pref => pref === true)
+        .length < 1
+    ) {
+      this.setState({ error: 'you must choose atleast 1 preference' });
+      return false;
+    }
+
+    handleSubmit(values);
+  };
+
   render() {
     const {
       question,
-      handleSubmit,
       prevQuestion,
       question: { answers }
     } = this.props;
@@ -51,7 +74,7 @@ class QuestionAnswerForm extends Component {
     ];
     return (
       <div className="RegistrationForm QuestionAnswerForm">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           {/* Answer section */}
           <h4 className="question">{question.questionText}</h4>
           <RadioGroup
@@ -65,7 +88,11 @@ class QuestionAnswerForm extends Component {
 
           {/* Preferences section */}
           {this.state.showPreferences && (
-            <PreferenceChoices answers={answers} questionId={question.id} />
+            <PreferenceChoices
+              answers={answers}
+              questionId={question.id}
+              error={this.state.error}
+            />
           )}
 
           {/* Important */}
@@ -98,8 +125,20 @@ class QuestionAnswerForm extends Component {
   }
 }
 
-export default reduxForm({
+const selector = formValueSelector('registration');
+const mapStateToProps = state => ({
+  preferences: selector(state, 'preferences')
+});
+
+let questionAnswerForm = connect(
+  mapStateToProps,
+  {}
+)(QuestionAnswerForm);
+
+questionAnswerForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
-})(QuestionAnswerForm);
+})(questionAnswerForm);
+
+export default questionAnswerForm;
