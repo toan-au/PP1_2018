@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var users = sequelize.define(
     'users',
     {
-      email: DataTypes.STRING,
+      email: {type: DataTypes.STRING, validate: {isEmail: true}},
       displayName: DataTypes.STRING,
       regionId: DataTypes.INTEGER,
       localeId: DataTypes.INTEGER,
