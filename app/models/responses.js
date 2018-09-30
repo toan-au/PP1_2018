@@ -3,9 +3,9 @@ module.exports = (sequelize, DataTypes) => {
   var responses = sequelize.define('responses', {
     userId: DataTypes.INTEGER,
     questionId: DataTypes.INTEGER,
-    response: DataTypes.STRING,
-    importance: DataTypes.INTEGER,
-    preference: DataTypes.STRING
+    response: { type: DataTypes.STRING,  validate: {isAlpha: true, notEmpty: true, isIn: [['A', 'B', 'C', 'D']]}},
+    importance: { type: DataTypes.INTEGER, validate: { min: 0, max: 4 }},
+    preference: {type: DataTypes.STRING,  validate: {isAlpha: true, notEmpty: true, len:[1,4]}}
   }, {});
   responses.associate = function(models) {
     responses.belongsTo(models.users, {foriegnKey: 'userId'})
