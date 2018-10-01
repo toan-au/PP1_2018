@@ -13,11 +13,12 @@ class Profile extends Component {
     loading: true
   };
 
-  componentDidMount() {
-    const { getViewUser, user } = this.props; // , viewUser
-    getViewUser(user.id).then(() => {
-      this.setState({ loading: false });
-    });
+  async componentDidMount() {
+    const { getViewUser, viewUser, user } = this.props;
+    if (viewUser === null) {
+      await getViewUser(user.id);
+    }
+    this.setState({ loading: false });
   }
 
   // render list of responses: questionId - response
@@ -156,10 +157,10 @@ class Profile extends Component {
             <ReactLoading type={'bubbles'} color="yellow" />
           </div>
         ) : (
-          <div className="Profile container">
-            <div className="profile-details">{this.renderProfile()}</div>
-          </div>
-        )}
+            <div className="Profile container">
+              <div className="profile-details">{this.renderProfile()}</div>
+            </div>
+          )}
       </div>
     );
   };

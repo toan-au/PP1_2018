@@ -14,11 +14,11 @@ class MemberProfile extends Component {
     id: parseInt(this.props.match.params.id, 10)
   };
 
-  componentDidMount() {
-    const { getViewUser } = this.props;
-    getViewUser(this.state.id).then(() => {
-      this.setState({ loading: false });
-    });
+  async componentDidMount() {
+    if (this.props.viewUser === null) {
+      await this.props.getViewUser(this.state.id);
+    }
+    this.setState({ loading: false });
   }
 
   // render list of responses: questionId - response
