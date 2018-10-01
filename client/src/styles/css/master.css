@@ -427,6 +427,7 @@ h3 {
   .Home .FilterButtons .selected {
     background: #c82128; }
   .Home .FilterButtons button:hover {
+    background: #c82128;
     cursor: pointer; }
 
 .Home button {
@@ -738,6 +739,7 @@ h3 {
   margin: 5px; }
 
 .Matches .remove:hover {
+  cursor: pointer;
   border: solid #ab1e24;
   text-align: center;
   color: #e8e8e8 !important;
@@ -900,6 +902,7 @@ h3 {
   color: #1e1e2b; }
 
 .button2:hover {
+  cursor: pointer;
   color: #7b1115; }
 
 .button2:active {
