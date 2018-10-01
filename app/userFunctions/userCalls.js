@@ -483,7 +483,7 @@ var rateUser = async function(requestId, targetId, inputRating) {
   });
   //extract the id values, from previous ratings
   for (var loopCounter = 0; loopCounter < findRatings.length; loopCounter++) {
-    var filterArray = findRatings[loopCounter];
+    var filterArray = await findRatings[loopCounter];
     //If the current user, has already interacted with the target
     if (filterArray.userId == targetId && filterArray.reviewerId == requestId) {
       //update the existing rating

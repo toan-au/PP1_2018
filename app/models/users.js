@@ -8,10 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       regionId: DataTypes.INTEGER,
       localeId: DataTypes.INTEGER,
       age: DataTypes.INTEGER,
-      bio: DataTypes.STRING,
+      bio: DataTypes.STRING(1000),
       finishedRegistration: DataTypes.BOOLEAN,
       pfpUrl: DataTypes.STRING,
-      playstyle: DataTypes.STRING,
+      playstyle: { type: DataTypes.STRING,  validate: {isIn: [['casual', 'competitive']]}},
       avgRating: DataTypes.DECIMAL(10,2)
     },
     {}
