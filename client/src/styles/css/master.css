@@ -652,39 +652,101 @@ h3 {
 /* border */
 /*notifications*/
 /* kittens */
-.Matches h3 {
-  text-transform: uppercase; }
+.result {
+  display: flex; }
 
-.Matches img {
-  align: left;
-  width: 150px;
-  border-radius: 4px 0px 0px 0px; }
+.Matches .MatchCard {
+  width: 95%;
+  display: flex;
+  border-bottom: solid 10px #de9e36;
+  border-radius: 10px;
+  padding: 20px; }
+  .Matches .MatchCard .pic {
+    text-align: left; }
+  .Matches .MatchCard .display-name {
+    font-weight: bold;
+    font-size: 2em;
+    padding-top: 5px;
+    text-transform: uppercase; }
+    .Matches .MatchCard .display-name h3 {
+      color: #c82128;
+      text-align: center;
+      text-transform: uppercase; }
+    .Matches .MatchCard .display-name label {
+      text-align: center;
+      padding: 5px;
+      border-radius: 5px;
+      color: #e8e8e8;
+      margin-left: 5px; }
+    .Matches .MatchCard .display-name label.CN {
+      background: #ab1e24; }
+    .Matches .MatchCard .display-name label.NA {
+      background: #4c68a1; }
+    .Matches .MatchCard .display-name label.SEA {
+      background: #2c7873; }
+    .Matches .MatchCard .display-name label.JP {
+      background: white;
+      color: #ab1e24; }
+    .Matches .MatchCard .display-name label.OCE {
+      background: #8b72be; }
+  .Matches .MatchCard .rate-user {
+    text-align: center;
+    padding-left: 20px; }
+  .Matches .MatchCard img {
+    width: 250px;
+    border-radius: 4px 0px 0px 0px; }
+  .Matches .MatchCard .info {
+    color: #1e1e2b;
+    margin-right: 20px; }
+    .Matches .MatchCard .info label {
+      border: solid #e8e8e8;
+      padding: 5px;
+      background: #e8e8e8;
+      border-radius: 5px;
+      width: 100%;
+      margin-bottom: 5px; }
+  .Matches .MatchCard .UserDescription {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 10px;
+    padding-top: 10px;
+    height: 100%;
+    width: 80%; }
+  .Matches .MatchCard .matches-list {
+    font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    padding-bottom: 40px; }
+    .Matches .MatchCard .matches-list li {
+      border: solid white;
+      padding-right: 15px;
+      background: #bfbdc1;
+      border-bottom: 10px solid #de9e36;
+      border-radius: 5px;
+      margin-bottom: 20px; }
+    .Matches .MatchCard .matches-list .rate {
+      display: inline-block; }
 
-.Matches .UserDescription {
-  display: inline-block;
-  vertical-align: top;
-  padding-left: 10px;
-  padding-top: 10px; }
+.Matches .remove {
+  border: solid #7b1115;
+  text-align: center;
+  color: #e8e8e8 !important;
+  border-radius: 5px;
+  background: #7b1115;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  margin: 5px; }
 
-.Matches .RemoveUser {
-  float: right;
-  color: #ab1e24 !important;
-  padding-top: 10px; }
-
-.Matches .matches-list {
-  font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  padding-bottom: 40px; }
-  .Matches .matches-list li {
-    padding-right: 15px;
-    background: #bfbdc1;
-    border-bottom: 10px solid #de9e36;
-    border-radius: 5px;
-    margin-bottom: 20px; }
-  .Matches .matches-list .rate-user {
-    padding-left: 5px; }
-  .Matches .matches-list .rate {
-    display: inline-block; }
+.Matches .remove:hover {
+  border: solid #ab1e24;
+  text-align: center;
+  color: #e8e8e8 !important;
+  border-radius: 5px;
+  background: #ab1e24;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  margin: 5px; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -739,7 +801,7 @@ h3 {
 /* kittens */
 .not-found-screen h1,
 .not-found-screen h3 {
-  color: #ab1e24; }
+  color: #c82128; }
 
 .not-found-screen h1 {
   font-size: 3.5em;
@@ -758,6 +820,92 @@ h3 {
   height: 100%; }
 
 /* components */
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/*notifications*/
+/* kittens */
+.pic {
+  text-align: center; }
+  .pic label {
+    width: 100%;
+    padding-bottom: 5px; }
+
+.modalright {
+  width: 40%; }
+
+.modal-content {
+  border-radius: 10px; }
+
+.modal-body {
+  border-bottom: 10px solid #de9e36;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  height: 100%;
+  border-radius: 5px; }
+
+.modalleft {
+  min-width: 60%; }
+
+.content .display-name {
+  font-weight: bold;
+  font-size: 2em;
+  padding-top: 5px;
+  text-transform: uppercase; }
+  .content .display-name h3 {
+    color: #c82128;
+    text-align: center; }
+  .content .display-name label {
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    color: #e8e8e8;
+    margin-left: 5px; }
+  .content .display-name label.CN {
+    background: #ab1e24; }
+  .content .display-name label.NA {
+    background: #4c68a1; }
+  .content .display-name label.SEA {
+    background: #2c7873; }
+  .content .display-name label.JP {
+    background: white;
+    color: #ab1e24; }
+  .content .display-name label.OCE {
+    background: #8b72be; }
+
+.content .bio label {
+  color: #1e1e2b; }
+
+.content .bio .info {
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border: solid #e8e8e8;
+  background: #e8e8e8;
+  border-radius: 5px;
+  padding: 5px;
+  color: #1e1e2b !important; }
+
+.button-group {
+  display: flex;
+  margin: auto auto;
+  text-align: center; }
+
+.button2 {
+  text-align: center;
+  margin: auto auto;
+  color: #1e1e2b; }
+
+.button2:hover {
+  color: #7b1115; }
+
+.button2:active {
+  color: #ab1e24;
+  transform: translateY(3px); }
+
 /* Chuck your variables in here*/
 /* colors */
 /* sizes */
@@ -801,7 +949,8 @@ h3 {
     text-transform: uppercase; }
     .MatchCard .display-name h3 {
       color: #c82128;
-      text-align: center; }
+      text-align: center;
+      text-transform: uppercase; }
     .MatchCard .display-name label {
       text-align: center;
       padding: 5px;
