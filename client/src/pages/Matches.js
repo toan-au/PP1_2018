@@ -123,20 +123,17 @@ class Matches extends Component {
     loading: true
   };
 
-  componentDidMount() {
-    const completeLoading = () => {
+  async componentDidMount() {
+    if (this.props.matched === null) {
+      await this.props.getMatched(this.props.user.id);
+    }
+    if (!this.isCancelled) {
+      // initiate ratings state if there is none
       let ratings = {};
       this.props.matched.forEach(match => {
         ratings[match.id] = match.userRating;
       });
       this.setState({ ratings, loading: false });
-    };
-
-    if (this.state.loading) {
-      this.props.getMatched(this.props.user.id).then(() => {
-        // initiate ratings state if there is none
-        !this.isCancelled && completeLoading();
-      });
     }
   }
 

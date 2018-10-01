@@ -1,32 +1,49 @@
 import React, { Component } from 'react';
 import ReactLoading from 'react-loading';
-import { connect } from 'react-redux';
-
-import { getViewUser } from '../redux/actions/viewUser';
+import axios from 'axios';
 
 import DocumentTitle from '../components/DocumentTitle';
 
 import defaultPfp from '../images/fortnite_drift_.png';
 
-class Profile extends Component {
+class MemberProfile extends Component {
   state = {
-    loading: true
+    loading: true,
+    id: -1,
+    user: null
+  };
+
+  fetchUser = async id => {
+    this.setState({ loading: true });
+
+    const res = await axios.get('/api/user/' + id);
+    const user = res.data;
+    this.setState({ loading: false, user, id });
   };
 
   async componentDidMount() {
-    const { getViewUser, viewUser, user } = this.props;
-    if (viewUser === null) {
-      await getViewUser(user.id);
+    if (this.state.user === null) {
+      const id = parseInt(this.props.match.params.id, 10);
+      await this.fetchUser(id);
     }
-    this.setState({ loading: false });
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const nextId = parseInt(nextProps.match.params.id, 10);
+    if (nextId !== prevState.id) {
+      return { id: nextId };
+    } else return null;
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.id !== this.state.id) {
+      this.fetchUser(this.state.id);
+    }
   }
 
   // render list of responses: questionId - response
   renderResponses = () => {
-    const {
-      viewUser: { responses }
-    } = this.props;
-    const responsesList = responses.map(response => {
+    const responsesList = this.state.user.responses.map(response => {
       return (
         <div key={response.id}>
           {response.question.questionText} - {response.answerText}
@@ -37,31 +54,21 @@ class Profile extends Component {
   };
 
   renderGames = () => {
-    const {
-      viewUser: { prefGames }
-    } = this.props;
-    const gamesList = prefGames.map(pref => {
+    const gamesList = this.state.user.prefGames.map(pref => {
       return <div key={pref.id}>{pref.game.title}</div>;
     });
     return gamesList;
   };
 
   renderGenres = () => {
-    const {
-      viewUser: { prefGenres }
-    } = this.props;
-    const genresList = prefGenres.map(pref => {
+    const genresList = this.state.user.prefGenres.map(pref => {
       return <div key={pref.id}>{pref.genre.title}</div>;
     });
     return genresList;
   };
 
   renderPlatformIds = () => {
-    const {
-      viewUser: { platformIds }
-    } = this.props;
-    console.log(platformIds);
-    const platformsList = platformIds.map(platform => (
+    const platformsList = this.state.user.platformIds.map(platform => (
       <div>
         {platform.platform.title} - {platform.platformDisplayName}
       </div>
@@ -69,45 +76,43 @@ class Profile extends Component {
     return platformsList;
   };
 
-  renderProfile = () => {
-    const { viewUser } = this.props;
-    if (viewUser) {
-      console.log(viewUser);
+  renderProfile = user => {
+    if (user !== null) {
       return (
         <div>
           <div className="pfp">
-            <img src={viewUser.pfpUrl || defaultPfp} alt="profile dp" />
+            <img src={user.pfpUrl || defaultPfp} alt="profile dp" />
           </div>
 
           <div className="user-info">
             <span>
               Display Name:
-              <span className="info"> {viewUser.displayName}</span>
+              <span className="info"> {user.displayName}</span>
             </span>
             <br />
             <br />
 
             <span>
               Age:
-              <span className="info"> {viewUser.age}</span>
+              <span className="info"> {user.age}</span>
             </span>
             <br />
 
             <span>
               Region:
-              <span className="info"> {viewUser.region.region}</span>
+              <span className="info"> {user.region.region}</span>
             </span>
             <br />
 
             <span>
               Locale:
-              <span className="info"> {viewUser.locale.locale}</span>
+              <span className="info"> {user.locale.locale}</span>
             </span>
             <br />
 
             <span>
               Casual or Competitive:
-              <span className="info"> {viewUser.playstyle}</span>
+              <span className="info"> {user.playstyle}</span>
             </span>
             <br />
             <br />
@@ -115,7 +120,7 @@ class Profile extends Component {
             <span>
               Biography:
               <br />
-              <span className="info">{viewUser.bio}</span>
+              <span className="info">{user.bio}</span>
             </span>
             <br />
             <br />
@@ -142,14 +147,14 @@ class Profile extends Component {
   };
 
   render = () => {
+    const { displayName } = this.props.location.state;
+
     return (
       <div>
-        <DocumentTitle>Profile</DocumentTitle>
+        {/* displayName should always be present, but is checked just in case */}
+        <DocumentTitle>{`Profile | ${displayName}`}</DocumentTitle>
         <div className="banner">
-          <h1 className="text-center">Your Profile</h1>
-          <p>
-            View your profile details and your answers to our questionnaire.
-          </p>
+          <h1 className="text-center">{displayName}</h1>
         </div>
 
         {this.state.loading ? (
@@ -158,7 +163,9 @@ class Profile extends Component {
           </div>
         ) : (
           <div className="Profile container">
-            <div className="profile-details">{this.renderProfile()}</div>
+            <div className="profile-details">
+              {this.renderProfile(this.state.user)}
+            </div>
           </div>
         )}
       </div>
@@ -166,8 +173,4 @@ class Profile extends Component {
   };
 }
 
-const mapStateToProps = ({ user, viewUser }) => ({ user, viewUser });
-export default connect(
-  mapStateToProps,
-  { getViewUser }
-)(Profile);
+export default MemberProfile;
