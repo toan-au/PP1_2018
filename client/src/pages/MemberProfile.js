@@ -9,18 +9,36 @@ import defaultPfp from '../images/fortnite_drift_.png';
 class MemberProfile extends Component {
   state = {
     loading: true,
-    id: parseInt(this.props.match.params.id, 10),
+    id: -1,
     user: null
+  };
+
+  fetchUser = async id => {
+    this.setState({ loading: true });
+
+    const res = await axios.get('/api/user/' + id);
+    const user = res.data;
+    this.setState({ loading: false, user, id });
   };
 
   async componentDidMount() {
     if (this.state.user === null) {
-      const res = await axios.get('/api/user/' + this.state.id);
-      const user = res.data;
-      this.setState({ loading: false, user });
-      return;
+      const id = parseInt(this.props.match.params.id, 10);
+      await this.fetchUser(id);
     }
-    this.setState({ loading: false });
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const nextId = parseInt(nextProps.match.params.id, 10);
+    if (nextId !== prevState.id) {
+      return { id: nextId };
+    } else return null;
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.id !== this.state.id) {
+      this.fetchUser(this.state.id);
+    }
   }
 
   // render list of responses: questionId - response
@@ -58,8 +76,7 @@ class MemberProfile extends Component {
     return platformsList;
   };
 
-  renderProfile = () => {
-    const { user } = this.state;
+  renderProfile = user => {
     if (user !== null) {
       return (
         <div>
@@ -130,26 +147,25 @@ class MemberProfile extends Component {
   };
 
   render = () => {
-    const { loading } = this.state;
     const { displayName } = this.props.location.state;
 
     return (
       <div>
         {/* displayName should always be present, but is checked just in case */}
-        <DocumentTitle>
-          {displayName ? `Profile | ${displayName}` : 'Member Profile'}
-        </DocumentTitle>
+        <DocumentTitle>{`Profile | ${displayName}`}</DocumentTitle>
         <div className="banner">
-          <h1 className="text-center">{displayName ? displayName : ''}</h1>
+          <h1 className="text-center">{displayName}</h1>
         </div>
 
-        {loading ? (
+        {this.state.loading ? (
           <div className="d-flex justify-content-center">
             <ReactLoading type={'bubbles'} color="yellow" />
           </div>
         ) : (
           <div className="Profile container">
-            <div className="profile-details">{this.renderProfile()}</div>
+            <div className="profile-details">
+              {this.renderProfile(this.state.user)}
+            </div>
           </div>
         )}
       </div>
