@@ -131,12 +131,14 @@ class MemberProfile extends Component {
 
   render = () => {
     const { loading } = this.state;
-    const { displayName } = this.props.location.state
+    const { displayName } = this.props.location.state;
 
     return (
       <div>
         {/* displayName should always be present, but is checked just in case */}
-        <DocumentTitle>{displayName ? `Profile | ${displayName}` : 'Member Profile'}</DocumentTitle>
+        <DocumentTitle>
+          {displayName ? `Profile | ${displayName}` : 'Member Profile'}
+        </DocumentTitle>
         <div className="banner">
           <h1 className="text-center">{displayName ? displayName : ''}</h1>
         </div>
@@ -146,10 +148,10 @@ class MemberProfile extends Component {
             <ReactLoading type={'bubbles'} color="yellow" />
           </div>
         ) : (
-            <div className="Profile container">
-              <div className="profile-details">{this.renderProfile()}</div>
-            </div>
-          )}
+          <div className="Profile container">
+            <div className="profile-details">{this.renderProfile()}</div>
+          </div>
+        )}
       </div>
     );
   };

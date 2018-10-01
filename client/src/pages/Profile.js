@@ -157,10 +157,10 @@ class Profile extends Component {
             <ReactLoading type={'bubbles'} color="yellow" />
           </div>
         ) : (
-            <div className="Profile container">
-              <div className="profile-details">{this.renderProfile()}</div>
-            </div>
-          )}
+          <div className="Profile container">
+            <div className="profile-details">{this.renderProfile()}</div>
+          </div>
+        )}
       </div>
     );
   };

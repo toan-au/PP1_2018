@@ -1,6 +1,6 @@
 import { GET_MATCHED, REMOVE_MATCHED } from '../actions/types';
 
-export default (state = [], action) => {
+export default (state = null, action) => {
   switch (action.type) {
     case GET_MATCHED:
       return action.matches;
