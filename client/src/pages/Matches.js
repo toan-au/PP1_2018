@@ -29,54 +29,56 @@ const genreFormatter = perfGenres => {
 
 const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
   return matched.map(match => (
-    <div className="result">
-    <div className="MatchCard" key={match.id}>
-      <div className="UserDescription">
-      <div className="display-name">
-          <h3>
-            {match.displayName}{' '}
-            <label className={match.region.region}>{match.region.region}</label>
-          </h3>
-        </div>
-        <div className="info">
-            Age: 
+    <div className="result" key={match.id}>
+      <div className="MatchCard">
+        <div className="UserDescription">
+          <div className="display-name">
+            <h3>
+              {match.displayName}{' '}
+              <label className={match.region.region}>
+                {match.region.region}
+              </label>
+            </h3>
+          </div>
+          <div className="info">
+            Age:
             <label> {match.age} </label>
             <br />
-            Bio: 
+            Bio:
             <label>{match.bio}</label>
             <br />
-            Favorite Games: 
+            Favorite Games:
             <label>{gameFormatter(match.prefGames)}</label>
             <br />
-            Favorite Genres: 
+            Favorite Genres:
             <label>{genreFormatter(match.prefGenres)}</label>
             <br />
-            Casual or Competitive? 
+            Casual or Competitive?
             <label>{match.playstyle}</label>
+          </div>
         </div>
-      </div>
-      <div className="pic">
-      <img
-        className="profile-pic"
-        src={defaultPfp}
-        alt={match.displayName + "'s profile picture"}
-      />
-      <div className="rate-user">
-        Rate {match.displayName}:<br />
-        <div>
-          <ReactStars
-            count={5}
-            value={ratings[match.id]}
-            onChange={rating => onChange(match.id, rating)}
-            size={40}
+        <div className="pic">
+          <img
+            className="profile-pic"
+            src={defaultPfp}
+            alt={match.displayName + "'s profile picture"}
           />
-        </div>
+          <div className="rate-user">
+            Rate {match.displayName}:<br />
+            <div>
+              <ReactStars
+                count={5}
+                value={ratings[match.id]}
+                onChange={rating => onChange(match.id, rating)}
+                size={40}
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div className="remove" onClick={() => removeUser(match)}>
-      X
-    </div>
+      <div className="remove" onClick={() => removeUser(match)}>
+        X
+      </div>
     </div>
   ));
 };
