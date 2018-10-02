@@ -164,6 +164,7 @@ class Matches extends Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   matched: state.matched,
   user: state.user
