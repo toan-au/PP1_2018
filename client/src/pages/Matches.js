@@ -83,42 +83,6 @@ const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
   ));
 };
 
-// const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
-//   return matched.map(match => (
-//     <div className="MatchCard" key={match.id}>
-//       <div className="UserDescription">
-//       <div className="display-name">
-//           <h3>
-//             {match.displayName}{' '}
-//             <label className={match.region.region}>{match.region.region}</label>
-//           </h3>
-//         </div>
-//         <span>Age: {match.age}</span>
-//         <div>{match.bio}</div>
-//       </div>
-//       <div className="rate-user">
-//         Rate {match.displayName}:<br />
-//         <div>
-//           <ReactStars
-//             count={5}
-//             value={ratings[match.id]}
-//             onChange={rating => onChange(match.id, rating)}
-//             size={40}
-//           />
-//         </div>
-//       </div>
-//       <img
-//         className="profile-pic"
-//         src={defaultPfp}
-//         alt={match.displayName + "'s profile picture"}
-//       />
-//     <div className="RemoveUser" onClick={() => removeUser(match)}>
-//     Remove
-//   </div>
-//     </div>
-//   ));
-// };
-
 class Matches extends Component {
   state = {
     ratings: {},
