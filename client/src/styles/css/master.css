@@ -662,6 +662,8 @@ h3 {
       color: #c82128;
       text-align: center;
       text-transform: uppercase; }
+    .Matches .MatchCard .display-name a {
+      color: #c82128; }
     .Matches .MatchCard .display-name label {
       text-align: center;
       padding: 5px;

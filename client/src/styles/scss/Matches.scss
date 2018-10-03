@@ -3,7 +3,7 @@
   display: flex;
 }
 .Matches {
-  .MatchCard{
+  .MatchCard {
     width: 95%;
     display: flex;
     border-bottom: solid 10px $dark_yellow;
@@ -14,19 +14,24 @@
       img {
       }
     }
-  
+
     .display-name {
       // padding: 20px 0px 0px 20px;
       font-weight: bold;
       font-size: $match_card_name_size;
       padding-top: 5px;
       text-transform: uppercase;
-  
+
       h3 {
         color: $light_red;
         text-align: center;
         text-transform: uppercase;
       }
+
+      a {
+        color: $light_red;
+      }
+
       label {
         text-align: center;
         padding: 5px;
@@ -50,10 +55,8 @@
       label.OCE {
         background: $purple;
       }
-      
     }
     .rate-user {
-     
       text-align: center;
       padding-left: 20px;
     }
@@ -61,22 +64,19 @@
       width: 250px;
       border-radius: 4px 0px 0px 0px;
     }
-  .info {
-    color: $gunmetal;
-    margin-right: 20px;
-    label {
-      border: solid $white;
-      padding: 5px;
-      background: $white;
-      border-radius: 5px;
-      width: 100%;
-      margin-bottom: 5px;
-     
+    .info {
+      color: $gunmetal;
+      margin-right: 20px;
+      label {
+        border: solid $white;
+        padding: 5px;
+        background: $white;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 5px;
+      }
     }
-   
-  }
     .UserDescription {
-      
       display: inline-block;
       vertical-align: top;
       padding-left: 10px;
@@ -84,13 +84,12 @@
       height: 100%;
       width: 80%;
     }
-  
+
     .matches-list {
-     
       font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
       font-weight: bold;
       padding-bottom: 40px;
-  
+
       li {
         border: solid white;
         padding-right: 15px;
@@ -99,9 +98,9 @@
         border-radius: 5px;
         margin-bottom: 20px;
       }
-  
+
       .rate {
-      display: inline-block;
+        display: inline-block;
       }
     }
   }
@@ -127,5 +126,4 @@
     padding: 10px;
     margin: 5px;
   }
-  
 }
