@@ -80,7 +80,7 @@ class PlatformForm extends Component {
   }
 }
 
-let platformForm = reduxForm({
+const platformForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true

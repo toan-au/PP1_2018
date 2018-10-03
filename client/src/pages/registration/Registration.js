@@ -8,11 +8,11 @@ import { updateUser } from '../../redux/actions/user';
 import { addNote } from '../../redux/actions/notifications';
 
 // registration forms
-import ProfileForm from './ProfileForm';
-import PlatformForm from './PlatformForm';
-import QuestionAnswerForm from './QuestionAnswerForm';
-import GameAndGenresForm from './GameAndGenresForm';
-import ConfirmationForm from './ConfirmationForm';
+import ProfileForm from './components/ProfileForm';
+import PlatformForm from './components/PlatformForm';
+import QuestionAnswerForm from './components/QuestionAnswerForm';
+import GameAndGenresForm from './components/GameAndGenresForm';
+import ConfirmationForm from './components/ConfirmationForm';
 
 class Registration extends Component {
   state = {

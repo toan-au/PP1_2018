@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { getGames } from '../../redux/actions/games';
-import { getGenres } from '../../redux/actions/genres';
-import CheckboxGroup from '../../components/CheckboxGroup';
-import SelectSearch from '../../components/SelectSearch';
+
+import { getGames } from '../../../redux/actions/games';
+import { getGenres } from '../../../redux/actions/genres';
+import CheckboxGroup from '../../../components/CheckboxGroup';
+import SelectSearch from '../../../components/SelectSearch';
 
 class GameAndGenresForm extends Component {
   state = {
@@ -72,8 +73,10 @@ let gameAndGenresForm = reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
 })(GameAndGenresForm);
+
 gameAndGenresForm = connect(
   mapStateToProps,
   { getGames, getGenres }
 )(gameAndGenresForm);
+
 export default gameAndGenresForm;

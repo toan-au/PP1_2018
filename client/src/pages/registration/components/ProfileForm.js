@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import axios from 'axios';
+
+import SelectWithError from '../../../components/SelectWithError';
 import PfpInput from './PfpInput';
-import SelectWithError from '../../components/SelectWithError';
 
 class ProfileForm extends Component {
   state = {
@@ -187,7 +188,7 @@ class ProfileForm extends Component {
 }
 
 // hook up with red-form
-let profileForm = reduxForm({
+const profileForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,

@@ -30,9 +30,10 @@ class ConfirmationForm extends Component {
   }
 }
 
-let confirmationForm = reduxForm({
+const confirmationForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
 })(ConfirmationForm);
+
 export default confirmationForm;

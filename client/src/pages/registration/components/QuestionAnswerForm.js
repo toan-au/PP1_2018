@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { reduxForm, Field, formValueSelector } from 'redux-form';
-import RadioGroup from '../../components/RadioGroup';
 import { connect } from 'react-redux';
+
+import RadioGroup from '../../../components/RadioGroup';
 
 const PreferenceChoices = ({ answers, questionId, error }) => {
   return (
