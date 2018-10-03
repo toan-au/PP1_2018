@@ -1,5 +1,6 @@
 import { GET_GAMES } from '../actions/types';
 
+/** Reducer containing all games. */
 export default (state = [], action) => {
   switch (action.type) {
     case GET_GAMES:

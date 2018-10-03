@@ -1,5 +1,6 @@
 import { GET_USER, LOGOUT_USER, UPDATE_USER } from '../actions/types';
 
+/** Reducer containing current user. */
 export default (state = null, action) => {
   switch (action.type) {
     case GET_USER:

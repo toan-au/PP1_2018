@@ -5,6 +5,7 @@ import {
   REMOVE_PENDING
 } from '../actions/types';
 
+/** Reducer containing user's pending matches. */
 export default (state = null, action) => {
   switch (action.type) {
     case GET_PENDING:
