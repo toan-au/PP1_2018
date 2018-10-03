@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { getUser } from './redux/actions/user';
 import { getPending } from './redux/actions/pending';
 
-// Styles
+// Import stylesheet.
 import './styles/css/master.css';
 
-// layout components
+// Layout components.
 import Navbar from './components/Navbar';
 import Content from './components/Content';
 import Footer from './components/Footer';
@@ -15,6 +15,7 @@ import AppSwitch from './routes';
 import Loading from './pages/Loading';
 import Notifications from './components/Notifications';
 
+/** The main component. */
 class App extends Component {
   state = {
     loading: true

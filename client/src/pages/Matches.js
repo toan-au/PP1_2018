@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReactStars from 'react-stars';
 import ReactLoading from 'react-loading';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { getMatched, removeUser } from '../redux/actions/matched';
 import { addNote } from '../redux/actions/notifications.js';
@@ -34,8 +35,18 @@ const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
         <div className="UserDescription">
           <div className="display-name">
             <h3>
-              {match.displayName}{' '}
+              <Link
+                to={{
+                  pathname: `/profile/${match.id}`,
+                  state: { displayName: match.displayName }
+                }}
+                query={{ displayName: match.displayName }}
+              >
+                {match.displayName}
+              </Link>
+
               <label className={match.region.region}>
+                {' '}
                 {match.region.region}
               </label>
             </h3>
@@ -68,7 +79,7 @@ const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
             <div>
               <ReactStars
                 count={5}
-                value={ratings[match.id]}
+                value={parseFloat(ratings[match.id])}
                 onChange={rating => onChange(match.id, rating)}
                 size={40}
               />
@@ -82,42 +93,6 @@ const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
     </div>
   ));
 };
-
-// const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
-//   return matched.map(match => (
-//     <div className="MatchCard" key={match.id}>
-//       <div className="UserDescription">
-//       <div className="display-name">
-//           <h3>
-//             {match.displayName}{' '}
-//             <label className={match.region.region}>{match.region.region}</label>
-//           </h3>
-//         </div>
-//         <span>Age: {match.age}</span>
-//         <div>{match.bio}</div>
-//       </div>
-//       <div className="rate-user">
-//         Rate {match.displayName}:<br />
-//         <div>
-//           <ReactStars
-//             count={5}
-//             value={ratings[match.id]}
-//             onChange={rating => onChange(match.id, rating)}
-//             size={40}
-//           />
-//         </div>
-//       </div>
-//       <img
-//         className="profile-pic"
-//         src={defaultPfp}
-//         alt={match.displayName + "'s profile picture"}
-//       />
-//     <div className="RemoveUser" onClick={() => removeUser(match)}>
-//     Remove
-//   </div>
-//     </div>
-//   ));
-// };
 
 class Matches extends Component {
   state = {
@@ -152,7 +127,10 @@ class Matches extends Component {
     axios.patch(`/api/user/rate/${this.props.user.id}/${matchId}`, { rating });
   };
 
-  // handles removing a user
+  /**
+   * Displays confirm window, if confirmed removes the user from the front-end and back-end.
+   * @param {object} target - A user object.
+   */
   handleRemoveUser = target => {
     const response = window.confirm(
       'Are you sure you want to remove this user?'
@@ -200,6 +178,7 @@ class Matches extends Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   matched: state.matched,
   user: state.user

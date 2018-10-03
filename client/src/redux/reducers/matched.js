@@ -1,5 +1,6 @@
 import { GET_MATCHED, REMOVE_MATCHED } from '../actions/types';
 
+/** Reducer containing users user is successfully matched with. */
 export default (state = null, action) => {
   switch (action.type) {
     case GET_MATCHED:

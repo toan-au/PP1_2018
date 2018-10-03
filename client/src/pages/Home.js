@@ -12,16 +12,12 @@ const MatchCards = ({ matches }) => {
   return matches.map(match => <MatchCard key={match.id} match={match} />);
 };
 
-const RegionButton = ({
-  regionFilter,
-  onRegionFilter,
-  filterReset
-}) => {
+const RegionButton = ({ regionFilter, onRegionFilter, filterReset }) => {
   const regions = ['OCE', 'JP', 'NA', 'CN'];
   return (
     <div className="FilterButtons">
       <div className="left">
-      <h2>Filter by Region:</h2>
+        <h2>Filter by Region:</h2>
         {regions.map(region => {
           const selected = region === regionFilter ? 'selected' : '';
           return (
@@ -40,10 +36,7 @@ const RegionButton = ({
   );
 };
 
-const StarButton = ({
-  starFilter,
-  onStarFilter
-}) => {
+const StarButton = ({ starFilter, onStarFilter }) => {
   return (
     <div className="FilterButtons">
       <div className="mid">
@@ -55,10 +48,9 @@ const StarButton = ({
             size={40}
             onChange={onStarFilter}
           />
-          </div>
+        </div>
       </div>
-      );
-    })}
+      ); })}
     </div>
   );
 };
@@ -98,19 +90,14 @@ class Home extends Component {
     filteredItems: []
   };
 
-  componentDidMount() {
-    const completeLoading = () => {
+  async componentDidMount() {
+    if (this.props.matches.length === 0) {
+      await this.props.getMatches(this.props.user.id);
+    }
+    if (!this.isCancelled) {
       this.filterMatches();
       this.setState({ loading: false });
-    };
-
-    if (this.props.matches.length === 0) {
-      this.props.getMatches(this.props.user.id).then(() => {
-        !this.isCancelled && completeLoading();
-      });
-      return;
     }
-    !this.isCancelled && completeLoading();
   }
 
   componentWillUnmount() {
@@ -166,7 +153,6 @@ class Home extends Component {
         {!this.state.loading && (
           <div className="filter">
             <div className="sort">
-              
               <StarButton
                 starFilter={this.state.starFilter}
                 onStarFilter={this.starFilter}
