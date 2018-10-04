@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 
+/** Profile picture input component. Allows the uploading a profile picture */
 const PfpInput = props => {
   const files = props.input.value;
   return (

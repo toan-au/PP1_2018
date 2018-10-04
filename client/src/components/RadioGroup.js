@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
+/** Radio group. Used in forms. */
 const RadioGroup = ({
   options,
   identifier,

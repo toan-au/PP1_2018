@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 
+/** Confirmation form component. */
 class ConfirmationForm extends Component {
   render() {
     const { handleSubmit, onPrevious } = this.props; // , genres, games
@@ -30,9 +31,10 @@ class ConfirmationForm extends Component {
   }
 }
 
-let confirmationForm = reduxForm({
+const confirmationForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
 })(ConfirmationForm);
+
 export default confirmationForm;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+/** Platform form component. */
 class PlatformForm extends Component {
   state = {};
 
@@ -80,7 +81,7 @@ class PlatformForm extends Component {
   }
 }
 
-let platformForm = reduxForm({
+const platformForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true

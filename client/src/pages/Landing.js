@@ -4,6 +4,7 @@ import DocumentTitle from '../components/DocumentTitle';
 
 import maskot from '../images/maskot.png';
 
+/** Landing page. */
 const Landing = () => {
   return (
     <div className="landing">

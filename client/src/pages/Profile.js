@@ -7,20 +7,17 @@ import { getViewUser } from '../redux/actions/viewUser';
 import DocumentTitle from '../components/DocumentTitle';
 import ProfileCard from '../components/ProfileCard';
 
+/** Profile page. */
 class Profile extends Component {
-  state = {
-    loading: true
-  };
-
-  async componentDidMount() {
+  componentDidMount() {
     const { getViewUser, viewUser, user } = this.props;
     if (viewUser === null) {
-      await getViewUser(user.id);
+      getViewUser(user.id);
     }
-    this.setState({ loading: false });
   }
 
   render = () => {
+    const loading = this.props.viewUser === null;
     return (
       <div>
         <DocumentTitle>Profile</DocumentTitle>
@@ -31,7 +28,7 @@ class Profile extends Component {
           </p>
         </div>
 
-        {this.state.loading ? (
+        {loading ? (
           <div className="d-flex justify-content-center">
             <ReactLoading type={'bubbles'} color="yellow" />
           </div>
@@ -48,6 +45,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = ({ user, viewUser }) => ({ user, viewUser });
+
 export default connect(
   mapStateToProps,
   { getViewUser }

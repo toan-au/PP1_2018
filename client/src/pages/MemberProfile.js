@@ -5,6 +5,7 @@ import axios from 'axios';
 import DocumentTitle from '../components/DocumentTitle';
 import ProfileCard from '../components/ProfileCard';
 
+/** Member profile page. */
 class MemberProfile extends Component {
   state = {
     loading: true,
@@ -12,18 +13,10 @@ class MemberProfile extends Component {
     user: null
   };
 
-  fetchUser = async id => {
-    this.setState({ loading: true });
-
-    const res = await axios.get('/api/user/' + id);
-    const user = res.data;
-    this.setState({ loading: false, user, id });
-  };
-
-  async componentDidMount() {
+  componentDidMount() {
     if (this.state.user === null) {
       const id = parseInt(this.props.match.params.id, 10);
-      await this.fetchUser(id);
+      this.fetchUser(id);
     }
   }
 
@@ -39,6 +32,23 @@ class MemberProfile extends Component {
       this.fetchUser(this.state.id);
     }
   }
+
+  componentWillUnmount() {
+    this.isCancelled = true;
+  }
+
+  /**
+   * Fetch user data for API.
+   * @param {number} id - The id of user to fetch.
+   */
+  fetchUser = id => {
+    this.setState({ loading: true });
+
+    axios.get('/api/user/' + id).then(res => {
+      const user = res.data;
+      !this.isCancelled && this.setState({ loading: false, user, id });
+    });
+  };
 
   render = () => {
     const { displayName } = this.props.location.state;

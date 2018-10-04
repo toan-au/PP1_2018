@@ -8,12 +8,13 @@ import { updateUser } from '../../redux/actions/user';
 import { addNote } from '../../redux/actions/notifications';
 
 // registration forms
-import ProfileForm from './ProfileForm';
-import PlatformForm from './PlatformForm';
-import QuestionAnswerForm from './QuestionAnswerForm';
-import GameAndGenresForm from './GameAndGenresForm';
-import ConfirmationForm from './ConfirmationForm';
+import ProfileForm from './components/ProfileForm';
+import PlatformForm from './components/PlatformForm';
+import QuestionAnswerForm from './components/QuestionAnswerForm';
+import GameAndGenresForm from './components/GameAndGenresForm';
+import ConfirmationForm from './components/ConfirmationForm';
 
+/** Registration page. */
 class Registration extends Component {
   state = {
     page: 1,
@@ -29,6 +30,10 @@ class Registration extends Component {
     this.renderQuestions();
   };
 
+  /**
+   * Update user via API and redirect user to "/".
+   * @param {object} values - An object containing all required values.
+   */
   handleSubmit = async values => {
     console.log(values);
     await this.props.updateUser(this.props.user.id, values);
@@ -39,20 +44,25 @@ class Registration extends Component {
     this.setState({ redirect: true });
   };
 
+  /** Redirect user to "/". */
   renderRedirect = () => {
     if (this.state.redirect) return <Redirect to="/" />;
   };
 
+  /** Increase page by one. */
   nextPage = () => {
     this.setState({ page: this.state.page + 1 });
   };
 
+  /** Decrease page by one. */
   prevPage = () => {
     this.setState({ page: this.state.page - 1 });
   };
 
-  // render all questions as multipage form components
-  // if it is not the last question then make the submit action go to the next question
+  /**
+   * Render all questions as multi-page form components. If it is not the
+   * last question then make the submit action go to the next question.
+   */
   renderQuestions() {
     const { questions } = this.state;
     const questionForms = questions.map((question, index) => {
@@ -73,10 +83,12 @@ class Registration extends Component {
     });
   }
 
+  /** Decrease question by one. */
   prevQuestion = () => {
     this.setState({ currentQuestion: this.state.currentQuestion - 1 });
   };
 
+  /** Increase question by one. */
   nextQuestion = () => {
     this.setState({ currentQuestion: this.state.currentQuestion + 1 });
   };
@@ -111,6 +123,7 @@ class Registration extends Component {
 }
 
 const mapStateToProps = state => ({ user: state.user });
+
 export default connect(
   mapStateToProps,
   { updateUser, addNote }

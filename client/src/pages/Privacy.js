@@ -2,6 +2,7 @@ import React from 'react';
 
 import DocumentTitle from '../components/DocumentTitle';
 
+/** Privacy policy page. */
 const PrivacyPolicy = () => {
   return (
     <div className="Privacy">

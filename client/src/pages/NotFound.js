@@ -2,7 +2,8 @@ import React from 'react';
 
 import DocumentTitle from '../components/DocumentTitle';
 
-const Loading = () => {
+/** Not found page. */
+const NotFound = () => {
   return (
     <div className="not-found-screen">
       <DocumentTitle>404 | Not Found</DocumentTitle>
@@ -19,4 +20,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default NotFound;

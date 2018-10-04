@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/** Footer component. */
 const Footer = ({ loading }) => (
   <footer className="Footer container-custom">
     <div className="left-footer">
