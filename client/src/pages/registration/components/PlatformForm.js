@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+/** Platform form component. */
 class PlatformForm extends Component {
   state = {};
 

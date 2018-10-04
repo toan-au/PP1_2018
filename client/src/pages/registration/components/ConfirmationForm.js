@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 
+/** Confirmation form component. */
 class ConfirmationForm extends Component {
   render() {
     const { handleSubmit, onPrevious } = this.props; // , genres, games

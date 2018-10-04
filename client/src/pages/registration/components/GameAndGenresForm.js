@@ -7,6 +7,7 @@ import { getGenres } from '../../../redux/actions/genres';
 import CheckboxGroup from '../../../components/CheckboxGroup';
 import SelectSearch from '../../../components/SelectSearch';
 
+/** Game and Genres form component. */
 class GameAndGenresForm extends Component {
   state = {
     searchTerm: '',
