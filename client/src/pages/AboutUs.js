@@ -3,6 +3,7 @@ import image from '../images/fortnite_drift_.png';
 
 import DocumentTitle from '../components/DocumentTitle';
 
+/** About Us page. */
 const AboutUs = () => {
   return (
     <div className="AboutUs">

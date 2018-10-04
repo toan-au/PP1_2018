@@ -7,6 +7,7 @@ import { getViewUser } from '../redux/actions/viewUser';
 import DocumentTitle from '../components/DocumentTitle';
 import ProfileCard from '../components/ProfileCard';
 
+/** Profile page. */
 class Profile extends Component {
   state = {
     loading: true
@@ -48,6 +49,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = ({ user, viewUser }) => ({ user, viewUser });
+
 export default connect(
   mapStateToProps,
   { getViewUser }

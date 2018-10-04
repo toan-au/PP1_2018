@@ -2,6 +2,7 @@ import React from 'react';
 
 import DocumentTitle from '../components/DocumentTitle';
 
+/** Contact page. */
 const Contact = () => {
   return (
     <div className="ContactForm">
