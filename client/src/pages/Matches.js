@@ -12,6 +12,10 @@ import DocumentTitle from '../components/DocumentTitle';
 
 import defaultPfp from '../images/fortnite_drift_.png';
 
+/**
+ * Format text for given games.
+ * @param {Array} perfGames - User's preferred games
+ */
 const gameFormatter = perfGames => {
   return perfGames
     .map(item => {
@@ -20,6 +24,10 @@ const gameFormatter = perfGames => {
     .join(', ');
 };
 
+/**
+ * Format text for given genres.
+ * @param {Array} perfGames - User's preferred games
+ */
 const genreFormatter = perfGenres => {
   return perfGenres
     .map(item => {
@@ -28,6 +36,7 @@ const genreFormatter = perfGenres => {
     .join(', ');
 };
 
+/** Card component of matched users. */
 const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
   return matched.map(match => (
     <div className="result" key={match.id}>
@@ -94,6 +103,7 @@ const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
   ));
 };
 
+/** Matches page. */
 class Matches extends Component {
   state = {
     ratings: {},
@@ -118,6 +128,11 @@ class Matches extends Component {
     this.isCancelled = true;
   }
 
+  /**
+   * Rate a user. Patch given user via API.
+   * @param {number} matchId - The id of user to rate.
+   * @param {number} rating - The rating to set.
+   */
   rateUser = (matchId, rating) => {
     const ratings = this.state.ratings;
     ratings[matchId] = rating;
