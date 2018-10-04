@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchInput, { createFilter } from 'react-search-input';
 
+/** Select search component for Games and Genres form. */
 class SelectSearch extends Component {
   state = {
     searchTerm: '',

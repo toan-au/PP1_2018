@@ -12,24 +12,29 @@ import ThumbDownIcon from './ThumbDownIcon';
 
 import defaultPfp from '../images/fortnite_drift_.png';
 
+/** Match card for displaying a "match user" information. */
 const MatchCard = ({ match, user, likeUser, dislikeUser, addNote }) => {
   const starLeftGap = 47.5 - match.avgRating * 7; // if no rating exists create a random one
   const bioLength = 250;
   const shortBio = match.bio.substring(0, bioLength);
   const modalId = `modal-${match.displayName.replace(/\s/g, '')}`;
 
+  /** Bring modal to foreground. */
   const callModal = modalId => {
     return () => {
       global.$(`#${modalId}`).modal();
     };
   };
 
+  /** Handle like user. */
   const onLike = () => {
     likeUser(user.id, match.id);
     const id = new Date().getTime();
     const text = 'You have liked ' + match.displayName;
     addNote({ id, text });
   };
+
+  /** Handle dislike user. */
   const onDislike = () => {
     dislikeUser(user.id, match.id);
     const id = new Date().getTime();

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
+/** Checkbox group. Used in forms. */
 const CheckboxGroup = ({
   options,
   identifier = 'id',

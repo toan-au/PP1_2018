@@ -1,5 +1,6 @@
 import React from 'react';
 
+/** Thumb down icon SVG component. */
 const ThumbDownIcon = ({ width, height }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

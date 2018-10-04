@@ -1,9 +1,10 @@
 import React from 'react';
 
+/** Match meter component. A heart showing the compatibility. */
 const MatchMeter = ({ percent }) => {
   const width = 75;
   const height = 63;
-  let fill = (percent / 100) * height - (height * 0.35);
+  let fill = (percent / 100) * height - height * 0.35;
   fill += 15;
   const styles = {
     heartFill: {

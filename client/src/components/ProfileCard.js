@@ -2,6 +2,7 @@ import React from 'react';
 
 import defaultPfp from '../images/fortnite_drift_.png';
 
+/** The responses of a user. */
 const ProfileResponses = ({ user }) => {
   // render list of responses: questionId - response
   const responsesList = user.responses.map(response => {
@@ -14,6 +15,7 @@ const ProfileResponses = ({ user }) => {
   return responsesList;
 };
 
+/** The preferred games of a user. */
 const ProfileGames = ({ user }) => {
   const gamesList = user.prefGames.map(pref => {
     return <div key={pref.id}>{pref.game.title}</div>;
@@ -21,6 +23,7 @@ const ProfileGames = ({ user }) => {
   return gamesList;
 };
 
+/** The preferred genres of a user. */
 const ProfileGenres = ({ user }) => {
   const genresList = user.prefGenres.map(pref => {
     return <div key={pref.id}>{pref.genre.title}</div>;
@@ -28,6 +31,7 @@ const ProfileGenres = ({ user }) => {
   return genresList;
 };
 
+/** The platform id of a user. */
 const ProfilePlatformIds = ({ user }) => {
   const platformsList = user.platformIds.map(platform => (
     <div>
@@ -37,6 +41,7 @@ const ProfilePlatformIds = ({ user }) => {
   return platformsList;
 };
 
+/** Profile card showing user information. */
 const ProfileCard = ({ user }) => {
   if (user !== null) {
     return (

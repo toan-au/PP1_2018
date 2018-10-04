@@ -1,5 +1,6 @@
 import React from 'react';
 
+/** Select with error component for Profile form. */
 const SelectWithError = ({
   input,
   meta: { touched, error, warning },
