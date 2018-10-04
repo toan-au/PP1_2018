@@ -183,6 +183,7 @@ const mapStateToProps = state => ({
   matched: state.matched,
   user: state.user
 });
+
 export default connect(
   mapStateToProps,
   { getMatched, removeUser, addNote }

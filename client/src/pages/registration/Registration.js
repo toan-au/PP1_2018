@@ -111,6 +111,7 @@ class Registration extends Component {
 }
 
 const mapStateToProps = state => ({ user: state.user });
+
 export default connect(
   mapStateToProps,
   { updateUser, addNote }
