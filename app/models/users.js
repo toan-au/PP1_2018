@@ -1,6 +1,7 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  var users = sequelize.define(
+  const users = sequelize.define(
     'users',
     {
       email: DataTypes.STRING,
@@ -12,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       finishedRegistration: DataTypes.BOOLEAN,
       pfpUrl: DataTypes.STRING,
       playstyle: DataTypes.STRING,
-      avgRating: DataTypes.DECIMAL(10,2)
+      avgRating: DataTypes.DECIMAL(10, 2)
     },
     {}
   );
@@ -24,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
 
     //Social Factors
     users.hasMany(models.prefGenres, { foriegnKey: 'userId' });
-    users.hasMany(models.platformIds, {foreignKey: 'userId'});
-    users.hasMany(models.ratings, {foreignKey: 'userId'})
+    users.hasMany(models.platformIds, { foreignKey: 'userId' });
+    users.hasMany(models.ratings, { foreignKey: 'userId' });
 
     //user qualities
     users.belongsTo(models.locale, { foreignKey: 'localeId' });

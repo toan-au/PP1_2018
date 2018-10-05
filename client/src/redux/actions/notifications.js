@@ -6,7 +6,8 @@
 
 import { ADD_NOTIFICATION, REMOVE_NOTIFICATION } from './types';
 
-/** Add notification to notification state.
+/**
+ * Add notification to notification state.
  * @param {string} note - The message text of the note.
  */
 export const addNote = note => {
@@ -19,7 +20,8 @@ export const addNote = note => {
   };
 };
 
-/** Remove notification from notification state.
+/**
+ * Remove notification from notification state.
  * @param {number} id - The id the note to remove.
  */
 export const removeNote = id => {
