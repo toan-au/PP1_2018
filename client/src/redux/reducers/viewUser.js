@@ -1,3 +1,9 @@
+/**
+ * Redux reducers for full user information - viewUser.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { GET_VIEW_USER } from '../actions/types';
 
 /** Reducer containing current user's information. */

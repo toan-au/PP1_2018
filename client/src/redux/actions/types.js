@@ -1,3 +1,9 @@
+/**
+ * Types used by Redux actions and reducers.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 export const GET_USER = 'get_user';
 export const LOGOUT_USER = 'logout_user';
 export const UPDATE_USER = 'update_user';

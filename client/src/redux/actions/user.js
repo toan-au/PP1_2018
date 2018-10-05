@@ -1,3 +1,9 @@
+/**
+ * Redux actions for app's user.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import axios from 'axios';
 import { GET_USER, LOGOUT_USER, UPDATE_USER } from './types';
 

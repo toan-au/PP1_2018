@@ -1,3 +1,9 @@
+/**
+ * Redux reducers for app's user.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { GET_USER, LOGOUT_USER, UPDATE_USER } from '../actions/types';
 
 /** Reducer containing current user. */

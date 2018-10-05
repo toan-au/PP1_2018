@@ -1,3 +1,9 @@
+/**
+ * Redux actions for matches.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { GET_MATCHES } from './types';
 import axios from 'axios';
 
