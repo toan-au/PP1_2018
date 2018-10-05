@@ -7,7 +7,8 @@
 import { GET_MATCHED, REMOVE_MATCHED } from './types';
 import axios from 'axios';
 
-/** Fetch the users that the user is successfully matched with, and save to state.
+/**
+ * Fetch the users that the user is successfully matched with, and save to state.
  * @param {number} userId - The id of user.
  */
 export const getMatched = userId => {

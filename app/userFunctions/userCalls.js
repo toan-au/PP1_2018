@@ -1,13 +1,13 @@
-//Declarations for express
+// Declarations for express. TODO: is express and app needed here?
 const express = require('express');
 const app = express();
 
-//Imports required functions and data.
+// Import required functions and data.
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const fn = Sequelize.fn;
 
-//Imports db models
+// Import db models.
 const users = require('../models').users;
 const prefGames = require('../models').prefGames;
 const prefGenres = require('../models').prefGenres;
@@ -21,27 +21,27 @@ const genres = require('../models').genres;
 const platformIds = require('../models').platformIds;
 const platforms = require('../models').platforms;
 
+/** Get Pending Matches. */
+const getPendingMatches = async requestId => {
+  // Placeholder ID, will take in variable ID values in future cases. // TODO: remove this?
+  // requestId = 1;
 
+  // Find the requested user, and their matches.
+  const findMatches = await matches.findAll({ where: { userId: requestId } });
 
-var getPendingMatches = async function(requestId) {
-  //placeholder Id, will take in variable ID values in future cases
-  //var requestId = 1;
-
-  //find the requested user, and their matches
-  var findMatches = await matches.findAll({ where: { userId: requestId } });
-
-  var pendingUserIds = [];
-
-  //extract the id values, from the matches
-  for (var loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
+  const pendingUserIds = [];
+  // Extract the id values, from the matches.
+  for (let loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
     var filterArray = findMatches[loopCounter];
-    //If the user Id is equal to the requesting Id, and the user responded Like, while the match has not responded
+
+    // If the user Id is equal to the requesting Id, and the user responded Like, while the
+    // match has not responded.
     if (filterArray.userResponse == 'L' && filterArray.matchResponse == 'P') {
       pendingUserIds.push(filterArray.matchId);
     }
   }
 
-  var pendingUsers = [];
+  let pendingUsers = [];
   //find the pending matches as user objects
   if (pendingUserIds.length != 0) {
     pendingUsers = await users.findAll({
@@ -49,39 +49,41 @@ var getPendingMatches = async function(requestId) {
       include: [{ model: region }, { model: locale }]
     });
   }
-  
-  for (var i = 0; i < pendingUsers.length; i++) {
+
+  for (let i = 0; i < pendingUsers.length; i++) {
     //transform the objects to a more reasonable form
     pendingUsers[i] = pendingUsers[i].toJSON();
 
     //add the date of the match, for sorting in the list.
-    for(var j = 0; j < findMatches.length; j++){
-      if(findMatches[j].matchId == pendingUsers[i].id){
-        pendingUsers[i].sortingDate = findMatches[j].updatedAt
+    for (let j = 0; j < findMatches.length; j++) {
+      if (findMatches[j].matchId == pendingUsers[i].id) {
+        pendingUsers[i].sortingDate = findMatches[j].updatedAt;
       }
     }
   }
 
   //sort pending from newest to oldest.
-  pendingUsers.sort(sortByDate)
+  pendingUsers.sort(sortByDate);
 
   //return the pending users
   return pendingUsers;
 };
 
-var getSuccessfulMatches = async function(requestId) {
-  //placeholder Id, will take in variable ID values in future cases
-  var requestId = 1;
+/** Get Successful Matches. */
+const getSuccessfulMatches = async requestId => {
+  // placeholder Id, will take in variable ID values in future cases
+  // TODO: Remove placeholder for request ID.
+  requestId = 1;
 
   //find the requested user, and their matches
-  var findMatches = await matches.findAll({
+  const findMatches = await matches.findAll({
     where: { [Op.or]: [{ userId: requestId }, { matchId: requestId }] }
   });
 
-  var matchingUserIds = [];
+  let matchingUserIds = [];
 
   //extract the id values, from the matches
-  for (var loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
+  for (let loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
     var filterArray = findMatches[loopCounter];
     //If the user Id is equal to the requesting Id, and the user responded Like, and the match has liked them back
     if (
@@ -102,55 +104,58 @@ var getSuccessfulMatches = async function(requestId) {
   }
 
   //Checks that the matches are not empty.
-  var matchingUsers = [];
+  let matchingUsers = [];
   if (matchingUserIds.length != 0) {
     //find the matching users as user objects
     matchingUsers = await users.findAll({
       where: { id: { [Op.or]: matchingUserIds } },
       include: [
         {
-          model: prefGames, include: [{ model: games }]
+          model: prefGames,
+          include: [{ model: games }]
         },
         { model: prefGenres, include: [{ model: genres }] },
         { model: locale },
         { model: region },
         { model: ratings },
-        { model: platformIds, include: [{ model: platforms }]}
+        { model: platformIds, include: [{ model: platforms }] }
       ]
     });
   }
+
   //transform the objects to a more reasonable form
-  for (var i = 0; i < matchingUsers.length; i++) {
+  for (let i = 0; i < matchingUsers.length; i++) {
     matchingUsers[i] = matchingUsers[i].toJSON();
 
     //add the date of the match, for sorting in the list.
-    for(var j = 0; j < findMatches.length; j++){
-      if(findMatches[j].matchId == matchingUsers[i].id || findMatches[j].userId == matchingUsers[i].id){
-        matchingUsers[i].sortingDate = findMatches[j].updatedAt
+    for (let j = 0; j < findMatches.length; j++) {
+      if (
+        findMatches[j].matchId == matchingUsers[i].id ||
+        findMatches[j].userId == matchingUsers[i].id
+      ) {
+        matchingUsers[i].sortingDate = findMatches[j].updatedAt;
       }
-    } 
-  } 
-
-  
-
-  matchingUsers.sort(sortByDate)
+    }
+  }
+  matchingUsers.sort(sortByDate);
 
   //return the matching users
   return matchingUsers;
 };
 
-var likeUser = async function(requestId, targetId) {
+/** Like a user. */
+const likeUser = async (requestId, targetId) => {
   //debugging test.
-  //var requestId = 1;
-  //var targetId = 14;
+  //let requestId = 1;
+  //let targetId = 14;
 
   //finds all matches the user has made, or made to him.
-  var findMatches = await matches.findAll({
+  let findMatches = await matches.findAll({
     where: { [Op.or]: [{ userId: requestId }, { matchId: requestId }] }
   });
   // console.log(findMatches);
   //extract the id values, from the matches
-  for (var loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
+  for (let loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
     var filterArray = findMatches[loopCounter];
     //If the current user, has already interacted with the target
     if (filterArray.userId == requestId && filterArray.matchId == targetId) {
@@ -204,18 +209,21 @@ var likeUser = async function(requestId, targetId) {
   await newMatch.save();
   return await getPendingMatches(requestId);
 };
-var dislikeUser = async function(requestId, targetId) {
+
+/** Dislike a user. */
+const dislikeUser = async (requestId, targetId) => {
   //debugging test.
-  //var requestId = 1;
-  //var targetId = 14;
+  //let requestId = 1;
+  //let targetId = 14;
 
   //finds all matches the user has made, or made to him.
-  var findMatches = await matches.findAll({
+  const findMatches = await matches.findAll({
     where: { [Op.or]: [{ userId: requestId }, { matchId: requestId }] }
   });
-  // console.log(findMatches);
+
+  //console.log(findMatches);
   //extract the id values, from the matches
-  for (var loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
+  for (let loopCounter = 0; loopCounter < findMatches.length; loopCounter++) {
     var filterArray = findMatches[loopCounter];
     //If the current user, has already interacted with the target, but now wishes to dislike them
     if (filterArray.userId == requestId && filterArray.matchId == targetId) {
@@ -236,9 +244,9 @@ var dislikeUser = async function(requestId, targetId) {
       );
       return await getPendingMatches(requestId);
     }
-
     //The match does not exist, either as created by the user requesting the match, or the targeted user.
   }
+
   //A new match is built
   const newMatch = matches.build({
     userId: requestId,
@@ -252,8 +260,7 @@ var dislikeUser = async function(requestId, targetId) {
   return await getPendingMatches(requestId);
 };
 
-var finishRegistration = async function(registrationForm, requestId) {
-  
+const finishRegistration = async (registrationForm, requestId) => {
   const NO_IMPORTANCE = 0;
   const LOW_IMPORTANCE = 1;
   const MED_IMPORTANCE = 2;
@@ -268,8 +275,8 @@ var finishRegistration = async function(registrationForm, requestId) {
 
   //Dummy form for testing
 
-  /*var requestId = 1001;
-  var registrationForm = {
+  /*let requestId = 1001;
+  let registrationForm = {
     answers: {1: "C", 2: "A", 3: "C", 4: "A", 5: "A", 6: "C", 7: "A", 8: "A", 9: "C", 10: "A"},
     importances: {1: "high", 2: "high", 3: "low", 4: "medium", 5: "low", 6: "low", 7: "high", 8: "medium", 9: "low", 10: "low"},
     preferences: {1: {C:false, A:false, B:true, D:true}, 2: {A:true, C:true, B:true}, 3: {C:true, D:true}, 4: {B:true, C: false, A: true},
@@ -285,10 +292,10 @@ var finishRegistration = async function(registrationForm, requestId) {
   platformIds.destroy({ where: { userId: requestId } });
 
   //array to hold a user's responses.
-  var registerResponses = [];
+  let registerResponses = [];
 
   //holds the importance values of all the questions
-  var importanceHolder = [];
+  let importanceHolder = [];
 
   //preloads an array of the users importance scores
   Object.values(registrationForm.importances).forEach(function(importance) {
@@ -306,18 +313,18 @@ var finishRegistration = async function(registrationForm, requestId) {
   });
 
   //preloads an array of the users responses
-  var responseHolder = [];
+  let responseHolder = [];
   Object.values(registrationForm.answers).forEach(function(answer) {
     responseHolder.push(answer);
   });
 
   //stores, the preferences, in a string for insertion
-  var preferenceHolder = [];
+  let preferenceHolder = [];
 
   //preloads an array of user's
   Object.values(registrationForm.preferences).forEach(function(preference) {
     //Preferences String to create
-    var preferenceString = '';
+    let preferenceString = '';
 
     //Check, if the user at any point select A
     if (preference.hasOwnProperty('A')) {
@@ -359,7 +366,7 @@ var finishRegistration = async function(registrationForm, requestId) {
   });
   //Check for all selected, sets importance to none
   for (
-    var loopCounter = 0;
+    let loopCounter = 0;
     loopCounter < preferenceHolder.length;
     loopCounter++
   ) {
@@ -369,25 +376,25 @@ var finishRegistration = async function(registrationForm, requestId) {
   }
 
   //create a genre holder to load into database.
-  var selectedGenrekeys = Object.keys(registrationForm.genres);
-  var selectedGenreValues = Object.values(registrationForm.genres);
-  var genresHolder = [];
+  let selectedGenrekeys = Object.keys(registrationForm.genres);
+  let selectedGenreValues = Object.values(registrationForm.genres);
+  let genresHolder = [];
 
   //Checks for existence and loads it.
   for (
-    var loopCounter = 0;
+    let loopCounter = 0;
     loopCounter < selectedGenrekeys.length;
     loopCounter++
   ) {
     if (selectedGenreValues[loopCounter] == true) {
-      var genreId = parseInt(selectedGenrekeys[loopCounter]);
+      let genreId = parseInt(selectedGenrekeys[loopCounter]);
       genresHolder.push(genreId);
     }
   }
 
   //populate the array of JSON objects for insertion via a bulk create (Responses).
-  for (var loopCounter = 0; loopCounter < NO_QUESTIONS; loopCounter++) {
-    var newResponse = {
+  for (let loopCounter = 0; loopCounter < NO_QUESTIONS; loopCounter++) {
+    let newResponse = {
       userId: requestId,
       questionId: loopCounter + 1,
       response: responseHolder[loopCounter],
@@ -400,10 +407,10 @@ var finishRegistration = async function(registrationForm, requestId) {
     registerResponses.push(newResponse);
   }
 
-  var registerGenres = [];
+  let registerGenres = [];
   //populate the array of JSON objects for insertion via a bulk create (Responses).
-  for (var loopCounter = 0; loopCounter < genresHolder.length; loopCounter++) {
-    var newPrefGenre = {
+  for (let loopCounter = 0; loopCounter < genresHolder.length; loopCounter++) {
+    let newPrefGenre = {
       userId: requestId,
       genreId: genresHolder[loopCounter],
       createdAt: new Date(),
@@ -413,14 +420,14 @@ var finishRegistration = async function(registrationForm, requestId) {
     registerGenres.push(newPrefGenre);
   }
 
-  var registerGames = [];
+  let registerGames = [];
   //populate the array of JSON objects for insertion via a bulk create (Responses).
   for (
-    var loopCounter = 0;
+    let loopCounter = 0;
     loopCounter < registrationForm.games.length;
     loopCounter++
   ) {
-    var newPrefGame = {
+    let newPrefGame = {
       userId: requestId,
       gameId: registrationForm.games[loopCounter].id,
       createdAt: new Date(),
@@ -430,24 +437,32 @@ var finishRegistration = async function(registrationForm, requestId) {
     registerGames.push(newPrefGame);
   }
 
-  var registerPlatforms = [];
-  const availablePlatforms = await platforms.findAll({ attributes: ['id', 'title'] });
+  let registerPlatforms = [];
+  const availablePlatforms = await platforms.findAll({
+    attributes: ['id', 'title']
+  });
   //populate the array of JSON objects for insertion via a bulk create (platformIds).
-  for(
-    var loopCounter = 0;
+  for (
+    let loopCounter = 0;
     loopCounter < registrationForm.platformIds.length;
     loopCounter++
   ) {
+    let filterObject = registrationForm.platformIds[loopCounter];
 
-    var filterObject = registrationForm.platformIds[loopCounter]
+    for (
+      let innerCounter = 0;
+      innerCounter < availablePlatforms.length;
+      innerCounter++
+    ) {
+      let platformIdKeys = Object.keys(filterObject);
 
-    for(var innerCounter = 0; innerCounter < availablePlatforms.length; innerCounter++){
-      var platformIdKeys = Object.keys(filterObject);
-      
-      if(availablePlatforms[innerCounter].title.toUpperCase() === platformIdKeys[0].toUpperCase()){
-        var platformIdHolder = Object.values(filterObject)
+      if (
+        availablePlatforms[innerCounter].title.toUpperCase() ===
+        platformIdKeys[0].toUpperCase()
+      ) {
+        let platformIdHolder = Object.values(filterObject);
 
-        var newPlatformId = {
+        let newPlatformId = {
           userId: requestId,
           platformId: availablePlatforms[innerCounter].id,
           platformDisplayName: platformIdHolder[0],
@@ -466,11 +481,11 @@ var finishRegistration = async function(registrationForm, requestId) {
   return;
 };
 
-var rateUser = async function(requestId, targetId, inputRating) {
+const rateUser = async function(requestId, targetId, inputRating) {
   //debugging test.
-  /*var requestId = 1;
-  var targetId = 14;
-  var inputRating = 4;*/
+  /*let requestId = 1;
+  let targetId = 14;
+  let inputRating = 4;*/
 
   if (inputRating > 5 || inputRating < 0) {
     // console.log('Invalid Rating of: ' + inputRating);
@@ -478,11 +493,11 @@ var rateUser = async function(requestId, targetId, inputRating) {
   }
 
   //finds all matches the user has made, or made to him.
-  var findRatings = await ratings.findAll({
+  let findRatings = await ratings.findAll({
     where: { reviewerId: requestId }
   });
   //extract the id values, from previous ratings
-  for (var loopCounter = 0; loopCounter < findRatings.length; loopCounter++) {
+  for (let loopCounter = 0; loopCounter < findRatings.length; loopCounter++) {
     var filterArray = findRatings[loopCounter];
     //If the current user, has already interacted with the target
     if (filterArray.userId == targetId && filterArray.reviewerId == requestId) {
@@ -511,36 +526,30 @@ var rateUser = async function(requestId, targetId, inputRating) {
   return;
 };
 
-var getAvgRating = async function(targetId) {
-  var matchingUser = await users.findOne({
+/** Get average rating for given user id. */
+const getAvgRating = async targetId => {
+  const matchingUser = await users.findOne({
     where: { id: targetId },
     include: [{ model: ratings }],
     plain: true
   });
 
-  var holdRatings = 0;
+  let holdRatings = 0;
 
   for (
-    var loopCounter = 0;
+    let loopCounter = 0;
     loopCounter < matchingUser.ratings.length;
     loopCounter++
   ) {
     holdRatings = matchingUser.ratings[loopCounter].rating + holdRatings;
   }
 
-  var newRating = holdRatings / matchingUser.ratings.length;
-
-  // console.log(newRating)
-
+  const newRating = holdRatings / matchingUser.ratings.length;
   await users.update({ avgRating: newRating }, { where: { id: targetId } });
-
-  return;
 };
 
-
-var sortByDate = function(a,b){
-  return b.sortingDate - a.sortingDate
-};
+/** Sort by date. */
+const sortByDate = (a, b) => b.sortingDate - a.sortingDate;
 
 module.exports = {
   getPendingMatches,
