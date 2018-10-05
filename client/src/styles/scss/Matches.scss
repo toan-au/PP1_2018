@@ -116,6 +116,7 @@
     margin: 5px;
   }
   .remove:hover {
+    cursor: pointer;
     border: solid $red;
     text-align: center;
     color: $white !important;

@@ -62,6 +62,7 @@
   .Home .FilterButtons .selected {
     background: #c82128; }
   .Home .FilterButtons button:hover {
+    background: #c82128;
     cursor: pointer; }
 
 .Home button {
