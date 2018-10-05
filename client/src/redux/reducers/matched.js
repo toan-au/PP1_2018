@@ -1,3 +1,9 @@
+/**
+ * Redux reducers for matched.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { GET_MATCHED, REMOVE_MATCHED } from '../actions/types';
 
 /** Reducer containing users user is successfully matched with. */

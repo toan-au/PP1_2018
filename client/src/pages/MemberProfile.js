@@ -1,3 +1,9 @@
+/**
+ * Member Profile page component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React, { Component } from 'react';
 import ReactLoading from 'react-loading';
 import axios from 'axios';

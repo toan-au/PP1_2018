@@ -1,3 +1,9 @@
+/**
+ * Redux actions for games.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { GET_GAMES } from './types';
 import axios from 'axios';
 

@@ -1,3 +1,9 @@
+/**
+ * Combines Redux reducers and exports.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 

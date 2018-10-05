@@ -1,3 +1,9 @@
+/**
+ * Match Meter component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React from 'react';
 
 /** Match meter component. A heart showing the compatibility. */

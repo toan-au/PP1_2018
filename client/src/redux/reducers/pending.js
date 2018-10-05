@@ -1,3 +1,9 @@
+/**
+ * Redux reducers for users pending.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import {
   GET_PENDING,
   USER_LIKED,

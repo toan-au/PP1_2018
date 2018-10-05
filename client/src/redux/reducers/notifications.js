@@ -1,3 +1,9 @@
+/**
+ * Redux reducers for notifications.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { ADD_NOTIFICATION, REMOVE_NOTIFICATION } from '../actions/types';
 
 /** Reducer containing notifications. */

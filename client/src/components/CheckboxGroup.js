@@ -1,3 +1,9 @@
+/**
+ * Checkbox Group component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React from 'react';
 import { Field } from 'redux-form';
 
