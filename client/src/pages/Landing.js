@@ -1,3 +1,9 @@
+/**
+ * Landing page component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React from 'react';
 
 import DocumentTitle from '../components/DocumentTitle';

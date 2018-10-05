@@ -1,3 +1,9 @@
+/**
+ * Registration page component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
