@@ -1,3 +1,9 @@
+/**
+ * Select Search component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React, { Component } from 'react';
 import SearchInput, { createFilter } from 'react-search-input';
 

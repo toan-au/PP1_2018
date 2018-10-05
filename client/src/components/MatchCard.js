@@ -1,3 +1,9 @@
+/**
+ * Mactch Card component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React from 'react';
 import ReactStars from 'react-stars';
 import { connect } from 'react-redux';

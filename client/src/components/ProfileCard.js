@@ -1,3 +1,9 @@
+/**
+ * Profile Card component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React from 'react';
 
 import defaultPfp from '../images/fortnite_drift_.png';
