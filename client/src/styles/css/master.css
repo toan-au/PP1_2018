@@ -150,7 +150,9 @@ a,
 form,
 .bio,
 table,
-button {
+button,
+.Notifications,
+.Matches {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #e8e8e8;
@@ -535,22 +537,20 @@ h3 {
     margin-right: auto;
     width: 1000px;
     text-align: center; }
-  .AboutUs .boldThis {
-    text-shadow: 0px 0.5px 0px; }
   .AboutUs .TeamImages {
-    display: block;
-    float: left;
-    margin-right: 5px;
-    width: 100%;
+    padding-top: 20px; }
+  .AboutUs table {
+    margin: 0px auto;
     text-align: center; }
+  .AboutUs td {
+    border: none; }
   .AboutUs .TeamImages img {
+    width: 170px;
     margin-left: 10px;
     margin-right: 10px;
-    width: 170px;
     border-bottom: 10px solid #de9e36;
-    border-radius: 5px; }
-  .AboutUs .MemberName {
-    display: block; }
+    border-radius: 5px;
+    background: #32323e; }
 
 /* Chuck your variables in here*/
 /* colors */
