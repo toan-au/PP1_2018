@@ -6,6 +6,11 @@
 
 import React from 'react';
 import image from '../images/fortnite_drift_.png';
+import Toan from '../images/Toan.png';
+import Martin from '../images/Martin.png';
+import Robert from '../images/Robert.png';
+import Ronald from '../images/Ronald.png';
+import Cindy from '../images/Cindy.png';
 
 import DocumentTitle from '../components/DocumentTitle';
 
@@ -22,20 +27,36 @@ const AboutUs = () => {
             GameSearchMatch was created by a group called The Terror Wrists. The
             Terror Wrists were formed for their Programming Project subject.
           </p>
-          <br /> <br />
-          <p className="boldThis">The Terror Wrists Members</p>
-          <br />
+
           <div className="TeamImages">
-            <img className="AboutUsImg" src={image} alt="Toan" />
-
-            <img className="AboutUsImg" src={image} alt="Martin" />
-
-            <img className="AboutUsImg" src={image} alt="Robert" />
-
-            <img className="AboutUsImg" src={image} alt="Ronald" />
-
-            <img className="AboutUsImg" src={image} alt="Cindy" />
+            <table>
+            <tr>
+              <td>
+                <img className="AboutUsImg" src={Toan} alt="Toan" />
+              </td>
+              <td>
+                <img className="AboutUsImg" src={Martin} alt="Martin" />
+              </td>
+              <td>
+                <img className="AboutUsImg" src={Robert} alt="Robert" />
+              </td>
+              <td>
+                <img className="AboutUsImg" src={Ronald} alt="Ronald" />
+              </td>
+              <td>
+                <img className="AboutUsImg" src={Cindy} alt="Cindy" />
+              </td>
+            </tr>
+            <tr>
+              <td>Toan</td>
+              <td>Martin</td>
+              <td>Robert</td>
+              <td>Ronald</td>
+              <td>Cindy</td>
+            </tr>
+            </table>
           </div>
+
         </div>
       </div>
     </div>
