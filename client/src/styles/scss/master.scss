@@ -4,7 +4,6 @@
 /* layout */
 @import 'App';
 @import 'Navbar';
-@import 'Form';
 @import 'Content';
 @import 'Footer';
 @import 'page-title';
@@ -21,6 +20,7 @@
 @import 'NotFound';
 
 /* components */
+@import 'Modal';
 @import 'MatchCard';
 @import 'MatchMeter';
 @import 'Registration';

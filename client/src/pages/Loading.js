@@ -1,9 +1,16 @@
+/**
+ * Loading page component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React from 'react';
 
 import DocumentTitle from '../components/DocumentTitle';
 
 import mascot from '../images/maskot.png';
 
+/** Loading page. */
 const Loading = () => {
   return (
     <div className="loading-screen">

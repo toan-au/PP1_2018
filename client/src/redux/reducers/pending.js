@@ -1,3 +1,9 @@
+/**
+ * Redux reducers for users pending.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import {
   GET_PENDING,
   USER_LIKED,
@@ -5,6 +11,7 @@ import {
   REMOVE_PENDING
 } from '../actions/types';
 
+/** Reducer containing user's pending matches. */
 export default (state = null, action) => {
   switch (action.type) {
     case GET_PENDING:

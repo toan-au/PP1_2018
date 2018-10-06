@@ -1,6 +1,13 @@
+/**
+ * Redux actions for app's user.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import axios from 'axios';
 import { GET_USER, LOGOUT_USER, UPDATE_USER } from './types';
 
+/** Get currently authenticated user. */
 export const getUser = () => {
   return async dispatch => {
     const response = await axios.get('/api/auth/current');
@@ -15,8 +22,11 @@ export const getUser = () => {
   };
 };
 
-// update the user
-// given user's id and object containing values to update
+/**
+ * Update the user's data.
+ * @param {number} id - The id of user to update.
+ * @param {object} newUser - User object wth updated values.
+ */
 export const updateUser = (id, newUser) => {
   return async dispatch => {
     const data = new FormData();
@@ -47,6 +57,7 @@ export const updateUser = (id, newUser) => {
   };
 };
 
+/** Logout user. */
 export const logoutUser = () => {
   return async dispatch => {
     // log out server side

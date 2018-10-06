@@ -1,11 +1,19 @@
+/**
+ * Navigation Bar component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import logo from '../images/Favicon.png';
+import logo from '../images/logo.png';
 
 import PendingDropdownMenu from './PendingDropdownMenu';
 
+/** Links of the navbar. */
 const NavbarLinks = ({ user }) => {
+  /** Nav links when user is logged in. */
   const NavRightLoggedIn = () => (
     <div className="navbar-nav ml-auto">
       <Link className="nav-item nav-link" to="/">
@@ -41,6 +49,7 @@ const NavbarLinks = ({ user }) => {
     </div>
   );
 
+  /** Nav links when user is logged out. */
   const NavRightLoggedOut = () => <div className="navbar-nav ml-auto" />;
 
   if (user === null) {
@@ -49,6 +58,7 @@ const NavbarLinks = ({ user }) => {
   return <NavRightLoggedIn />;
 };
 
+/** The Navbar component. */
 const Navbar = ({ loading, user }) => {
   return (
     <nav id="navbar" className="navbar navbar-expand-lg navbar-light">

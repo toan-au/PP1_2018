@@ -1,8 +1,15 @@
+/**
+ * Matches page component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReactStars from 'react-stars';
 import ReactLoading from 'react-loading';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { getMatched, removeUser } from '../redux/actions/matched';
 import { addNote } from '../redux/actions/notifications.js';
@@ -11,57 +18,115 @@ import DocumentTitle from '../components/DocumentTitle';
 
 import defaultPfp from '../images/fortnite_drift_.png';
 
+/**
+ * Format text for given games.
+ * @param {Array} perfGames - User's preferred games
+ */
+const gameFormatter = perfGames => {
+  return perfGames
+    .map(item => {
+      return item.game.title;
+    })
+    .join(', ');
+};
+
+/**
+ * Format text for given genres.
+ * @param {Array} perfGames - User's preferred games
+ */
+const genreFormatter = perfGenres => {
+  return perfGenres
+    .map(item => {
+      return item.genre.title;
+    })
+    .join(', ');
+};
+
+/** Card component of matched users. */
 const MatchedUsers = ({ matched, ratings, onChange, removeUser }) => {
   return matched.map(match => (
-    <li key={match.id}>
-      <img
-        className="profile-pic"
-        src={defaultPfp}
-        alt={match.displayName + "'s profile picture"}
-      />
-      <div className="UserDescription">
-        <h3>{match.displayName}</h3>
-        <span>Age: {match.age}</span>
-        <div>{match.bio}</div>
-      </div>
-      <a className="RemoveUser" onClick={() => removeUser(match)}>
-        Remove
-      </a>
-      <div className="rate-user">
-        Rate {match.displayName}:<br />
-        <div>
-          <ReactStars
-            count={5}
-            value={ratings[match.id]}
-            onChange={rating => onChange(match.id, rating)}
-            size={40}
+    <div className="result" key={match.id}>
+      <div className="MatchCard">
+        <div className="UserDescription">
+          <div className="display-name">
+            <h3>
+              <Link
+                to={{
+                  pathname: `/profile/${match.id}`,
+                  state: { displayName: match.displayName }
+                }}
+                query={{ displayName: match.displayName }}
+              >
+                {match.displayName}
+              </Link>
+
+              <label className={match.region.region}>
+                {' '}
+                {match.region.region}
+              </label>
+            </h3>
+          </div>
+          <div className="info">
+            Age:
+            <label> {match.age} </label>
+            <br />
+            Bio:
+            <label>{match.bio}</label>
+            <br />
+            Favorite Games:
+            <label>{gameFormatter(match.prefGames)}</label>
+            <br />
+            Favorite Genres:
+            <label>{genreFormatter(match.prefGenres)}</label>
+            <br />
+            Casual or Competitive?
+            <label>{match.playstyle}</label>
+          </div>
+        </div>
+        <div className="pic">
+          <img
+            className="profile-pic"
+            src={defaultPfp}
+            alt={match.displayName + "'s profile picture"}
           />
+          <div className="rate-user">
+            Rate {match.displayName}:<br />
+            <div>
+              <ReactStars
+                count={5}
+                value={parseFloat(ratings[match.id])}
+                onChange={rating => onChange(match.id, rating)}
+                size={40}
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </li>
+      <div className="remove" onClick={() => removeUser(match)}>
+        X
+      </div>
+    </div>
   ));
 };
 
+/** Matches page. */
 class Matches extends Component {
   state = {
     ratings: {},
     loading: true
   };
 
-  componentDidMount() {
-    const completeLoading = () => {
+  async componentDidMount() {
+    if (this.props.matched === null) {
+      await this.props.getMatched(this.props.user.id);
+    }
+    if (!this.isCancelled) {
+      // initiate ratings state if there is none
       let ratings = {};
       this.props.matched.forEach(match => {
         ratings[match.id] = match.userRating;
       });
       this.setState({ ratings, loading: false });
-    };
-
-    if (this.state.loading) {
-      this.props.getMatched(this.props.user.id).then(() => {
-        // initiate ratings state if there is none
-        !this.isCancelled && completeLoading();
-      });
     }
   }
 
@@ -69,6 +134,11 @@ class Matches extends Component {
     this.isCancelled = true;
   }
 
+  /**
+   * Rate a user. Patch given user via API.
+   * @param {number} matchId - The id of user to rate.
+   * @param {number} rating - The rating to set.
+   */
   rateUser = (matchId, rating) => {
     const ratings = this.state.ratings;
     ratings[matchId] = rating;
@@ -78,7 +148,10 @@ class Matches extends Component {
     axios.patch(`/api/user/rate/${this.props.user.id}/${matchId}`, { rating });
   };
 
-  // handles removing a user
+  /**
+   * Displays confirm window, if confirmed removes the user from the front-end and back-end.
+   * @param {object} target - A user object.
+   */
   handleRemoveUser = target => {
     const response = window.confirm(
       'Are you sure you want to remove this user?'
@@ -126,10 +199,12 @@ class Matches extends Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   matched: state.matched,
   user: state.user
 });
+
 export default connect(
   mapStateToProps,
   { getMatched, removeUser, addNote }

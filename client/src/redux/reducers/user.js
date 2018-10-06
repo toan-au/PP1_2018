@@ -1,5 +1,12 @@
+/**
+ * Redux reducers for app's user.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { GET_USER, LOGOUT_USER, UPDATE_USER } from '../actions/types';
 
+/** Reducer containing current user. */
 export default (state = null, action) => {
   switch (action.type) {
     case GET_USER:

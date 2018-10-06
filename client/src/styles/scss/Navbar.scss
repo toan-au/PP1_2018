@@ -22,6 +22,7 @@
 
   .nav-item:hover {
     color: $red !important;
+    cursor: pointer;
   }
 
   // right most item, padding on nav is 16px - for alignning with footer

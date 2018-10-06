@@ -10,11 +10,14 @@
   border-top-right-radius: 10px;
   position: relative;
 
+  // width: 263;
+  // height: 529;
+
   .button2 {
-      text-align: center;
-      margin: auto auto;
-      padding: 15px;
-      color: $gunmetal;
+    text-align: center;
+    margin: auto auto;
+    padding: 15px;
+    color: $gunmetal;
   }
   .button2:hover {
     color: $maroon;
@@ -23,7 +26,6 @@
     color: $red;
     transform: translateY(3px);
   }
-  
 
   .profile-pic {
     display: block;
@@ -49,6 +51,7 @@
     h3 {
       color: $light_red;
       text-align: center;
+      text-transform: uppercase;
     }
     label {
       text-align: center;

@@ -8,11 +8,11 @@
   },
   "main": "server.js",
   "scripts": {
-    "test": "mocha tests/",
+    "test": "mocha app/tests/",
     "client": "npm start --prefix client",
     "sass": "npm run sass --prefix client",
     "server": "nodemon server.js",
-    "setenv": "node ./config/setenv",
+    "setenv": "node ./app/config/setenv",
     "dev": "npm run setenv && concurrently \"npm run server\" \"npm run client\" \"npm run sass\"",
     "setup": "npm install && npm install --prefix client",
     "preinstall": "npm run setenv",

@@ -1,48 +1,131 @@
 @import 'variables';
-
+.result {
+  display: flex;
+}
 .Matches {
-  h3 {
-    text-transform: uppercase;
-  }
 
-  img {
-    align: left;
-    width: 150px;
-    border-radius: 4px 0px 0px 0px;
-  }
-
-  .UserDescription {
-    display: inline-block;
-    vertical-align: top;
-    padding-left: 10px;
-    padding-top: 10px;
-  }
-
-  .RemoveUser {
-    float: right;
-    color: $red !important;
-    padding-top: 10px;
-  }
-
-  .matches-list {
-    font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    padding-bottom: 40px;
-
-    li {
-      padding-right: 15px;
-      background: $light_grey;
-      border-bottom: 10px solid $dark_yellow;
-      border-radius: 5px;
-      margin-bottom: 20px;
+  .MatchCard {
+    width: 95%;
+    display: flex;
+    border-bottom: solid 10px $dark_yellow;
+    border-radius: 10px;
+    padding: 20px;
+    .pic {
+      text-align: left;
+      img {
+      }
     }
 
+    .display-name {
+      // padding: 20px 0px 0px 20px;
+      font-weight: bold;
+      font-size: $match_card_name_size;
+      padding-top: 5px;
+      text-transform: uppercase;
+
+      h3 {
+        color: $light_red;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      a {
+        color: $light_red;
+      }
+
+      label {
+        text-align: center;
+        padding: 5px;
+        border-radius: 5px;
+        color: $white;
+        margin-left: 5px;
+      }
+      label.CN {
+        background: $red;
+      }
+      label.NA {
+        background: $blue;
+      }
+      label.SEA {
+        background: $green;
+      }
+      label.JP {
+        background: white;
+        color: $red;
+      }
+      label.OCE {
+        background: $purple;
+      }
+    }
     .rate-user {
-      padding-left: 5px;
+      text-align: center;
+      padding-left: 20px;
+    }
+    img {
+      width: 250px;
+      border-radius: 4px 0px 0px 0px;
+    }
+    .info {
+      color: $gunmetal;
+      margin-right: 20px;
+      label {
+        border: solid $white;
+        padding: 5px;
+        background: $white;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 5px;
+      }
+    }
+    .UserDescription {
+      display: inline-block;
+      vertical-align: top;
+      padding-left: 10px;
+      padding-top: 10px;
+      height: 100%;
+      width: 80%;
     }
 
-    .rate {
-    display: inline-block;
+    .matches-list {
+      font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      padding-bottom: 40px;
+
+      li {
+        border: solid white;
+        padding-right: 15px;
+        background: $light_grey;
+        border-bottom: 10px solid $dark_yellow;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      .rate {
+        display: inline-block;
+      }
     }
+  }
+  .remove {
+    border: solid $maroon;
+    text-align: center;
+    color: $white !important;
+    border-radius: 5px;
+    background: $maroon;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin: 5px;
+  }
+  .remove:hover {
+    cursor: pointer;
+    border: solid $red;
+    text-align: center;
+    color: $white !important;
+    border-radius: 5px;
+    background: $red;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin: 5px;
   }
 }
