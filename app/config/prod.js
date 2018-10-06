@@ -1,3 +1,9 @@
+/**
+ * Production keys.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 // production keys
 // keys shold be saved in the environment NOT in this file
 const keys = {

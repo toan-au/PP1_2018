@@ -1,3 +1,9 @@
+/**
+ * Express server.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 const express = require('express');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
@@ -18,13 +24,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
 
-// test that model works
-// const Users = require('./models').users;
-// const users = Users.findAll().then(res => console.log(res));
-
 // routes
 const authRoutes = require('./app/routes/auth');
 const apiRoutes = require('./app/routes/api');
+
+// api endpoints
 app.use('/api', apiRoutes);
 app.use('/api/auth', authRoutes);
 
@@ -32,9 +36,11 @@ app.use('/api/auth', authRoutes);
 // so they want to actually VIEW our app (react app)
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
+
+  // makes the react build folder static
   app.use(express.static('./client/build'));
   app.get('*', (req, res) => {
-    // send them the react bundle
+    // send them the react bundle from static folder
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }

@@ -1,3 +1,9 @@
+/**
+ * API endpoint handlers.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 const express = require('express');
 const matching = require('../matchingAlgorithm/match');
 const Op = require('sequelize').Op;
