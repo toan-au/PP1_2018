@@ -39,12 +39,13 @@ const PlatformIds = require('../models').platformIds;
 
 const router = express.Router();
 
-//finds all matches for a user
+// Finds all matches for a user
 router.get('/match/:id', async (req, res) => {
   const matches = await matching.findMatches(req.params.id);
   res.send(matches);
 });
 
+// Return information about a user given their ID
 router.get('/user/:id', async (req, res) => {
   const user = await User.findById(req.params.id, {
     include: [
@@ -70,6 +71,8 @@ router.get('/user/:id', async (req, res) => {
   res.send(resUser);
 });
 
+// Updates a user with additional information after they finish
+// the registration form
 router.post('/user/update/:id', pfpUpload.single('pfp'), async (req, res) => {
   const user = await User.findById(req.params.id);
 
@@ -235,6 +238,7 @@ router.get('/user/dislike/:userId/:targetId', async (req, res) => {
   res.send(response);
 });
 
+// user A rates user B
 router.patch('/user/rate/:userId/:targetId', async (req, res) => {
   await userCalls.rateUser(
     req.params.userId,
