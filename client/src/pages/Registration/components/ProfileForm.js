@@ -36,7 +36,7 @@ class ProfileForm extends Component {
   }
 
   /** Validate select fields. */
-  selected = value => (value !== '-1' ? undefined : 'Please select an option');
+  selected = value => (value != '-1' ? undefined : 'Please select an option');
 
   /** Validate image. */
   validateImage = imageList => {
