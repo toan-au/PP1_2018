@@ -23,7 +23,7 @@ writeKeys = () => {
       client_x509_cert_url: process.env.GCS_CLIENT_X509_CERT_URL
     };
 
-    fs.writeFileSync('./config/gcs_keys.json', JSON.stringify(gcsKeys));
+    fs.writeFileSync('./app/config/gcs_keys.json', JSON.stringify(gcsKeys));
   }
 };
 
