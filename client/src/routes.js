@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 import Home from './pages/Home';
 import Landing from './pages/Landing';
-import Registration from './pages/registration';
+import Registration from './pages/Registration';
 import AboutUs from './pages/AboutUs';
 import Privacy from './pages/Privacy';
 import Contact from './pages/Contact';
