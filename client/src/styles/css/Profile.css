@@ -1,2 +1,94 @@
+/* Chuck your variables in here*/
+/* colors */
+/* sizes */
+/* backgrounds */
+/* paddings */
+/* border */
+/*notifications*/
+/* kittens */
 .Profile {
-  color: white; }
+  background: white;
+  border-bottom: 10px solid #de9e36;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  max-width: 520px;
+  text-align: center;
+  font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
+  font-weight: bold; }
+  .Profile .pfp {
+    min-width: 350px;
+    min-height: 350px; }
+  .Profile img {
+    border: solid #e8e8e8;
+    background: #e8e8e8;
+    border-radius: 5px;
+    width: 450px;
+    height: 450px; }
+  .Profile h1 {
+    color: #e8e8e8 !important; }
+  .Profile p {
+    color: #1e1e2b !important;
+    padding-bottom: 5px; }
+  .Profile span {
+    padding-bottom: 20px; }
+  .Profile .user-info {
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px; }
+  .Profile .profile-details {
+    padding-top: 2em;
+    padding-bottom: 2em; }
+  .Profile .display-name {
+    font-weight: bold;
+    font-size: 2em;
+    padding-top: 5px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #e8e8e8;
+    display: flex; }
+    .Profile .display-name h3 {
+      color: #c82128;
+      text-align: left;
+      text-transform: uppercase;
+      width: 50%;
+      padding-top: 10px; }
+    .Profile .display-name label {
+      padding: 5px;
+      border-radius: 5px;
+      color: #1e1e2b;
+      margin-left: 5px; }
+    .Profile .display-name label.CN {
+      background: #ab1e24; }
+    .Profile .display-name label.NA {
+      background: #4c68a1; }
+    .Profile .display-name label.SEA {
+      background: #2c7873; }
+    .Profile .display-name label.JP {
+      background: white;
+      color: #ab1e24; }
+    .Profile .display-name label.OCE {
+      background: #8b72be; }
+  .Profile .star-rating {
+    margin: 0 auto;
+    border-radius: 5px;
+    padding-top: 15px;
+    align-items: center;
+    justify-content: left;
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 35px; }
+  .Profile .reg {
+    text-align: right;
+    width: 50%; }
+  .Profile .group {
+    border: solid red;
+    display: flex; }
+  .Profile .item {
+    text-align: left;
+    width: 50%; }
+  .Profile .item2 {
+    text-align: right;
+    width: 50%; }
