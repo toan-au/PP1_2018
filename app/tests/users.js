@@ -27,7 +27,7 @@ const dummyUser = {
   regionId: 1,
   localeId: 1,
   age: 25,
-  playstyle: 'Casual'
+  playstyle: 'casual'
 };
 
 const TARGET_DUMMY_ID = 1;

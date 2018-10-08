@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       userId: DataTypes.INTEGER,
       platformId: DataTypes.INTEGER,
-      platformDisplayName: DataTypes.STRING
+      platformDisplayName: {type: DataTypes.STRING, validate: {notEmpty: true, isAlphanumeric: true}}
     },
     {}
   );
