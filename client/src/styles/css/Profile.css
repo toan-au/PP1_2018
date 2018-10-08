@@ -31,10 +31,12 @@
     padding-bottom: 5px; }
   .Profile span {
     padding-bottom: 20px; }
+  .Profile .info {
+    padding: 5px;
+    background: #e8e8e8; }
   .Profile .user-info {
     padding-top: 10px;
-    padding-left: 40px;
-    padding-right: 40px; }
+    padding: 5px; }
   .Profile .profile-details {
     padding-top: 2em;
     padding-bottom: 2em; }
@@ -57,7 +59,7 @@
     .Profile .display-name label {
       padding: 5px;
       border-radius: 5px;
-      color: #1e1e2b;
+      color: #e8e8e8;
       margin-left: 5px; }
     .Profile .display-name label.CN {
       background: #ab1e24; }
@@ -84,8 +86,11 @@
     text-align: right;
     width: 50%; }
   .Profile .group {
-    border: solid red;
-    display: flex; }
+    display: flex;
+    margin-top: 5px;
+    background: #e8e8e8;
+    padding: 5px;
+    border-radius: 5px; }
   .Profile .item {
     text-align: left;
     width: 50%; }

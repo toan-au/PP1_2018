@@ -39,13 +39,15 @@
   }
 
   .info {
-    
+    padding: 5px;
+    background: $white;
   }
 
   .user-info {
     padding-top: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
+    // padding-left: 40px;
+    // padding-right: 40px;
+    padding: 5px;
   }
 
   .profile-details {
@@ -76,7 +78,7 @@
       // text-align: center;
       padding: 5px;
       border-radius: 5px;
-      color: $gunmetal;
+      color: $white;
       margin-left: 5px;
     }
     label.CN {
@@ -112,8 +114,12 @@
     width: 50%;
   }
   .group {
-    border: solid red;
+    // border: solid red;
     display:flex;
+    margin-top:5px;
+    background: $white;
+    padding: 5px;
+    border-radius: 5px;
   }
   .item {
     text-align: left;

@@ -90,35 +90,44 @@ const ProfileCard = ({ user }) => {
               {user.locale.locale}
             </div>
           </div>
-          
-          <div className="info">
-            <label>Casual or Competitive:</label>
-            {user.playstyle}
-          </div>
-          
-          <div className="info">
-            <label>Biography:</label>
-            {user.bio}
-          </div>
-          
-          <div className="info">
-          <label>Social Platforms:</label>
-            <ProfilePlatformIds user={user} />
-          </div>
 
+          <div className="group">
+            <div className="item">
+              <div className="info">
+                <label>Casual or Competitive:</label>
+                {user.playstyle}
+              </div>
+              
+              <div className="info">
+                <label>Biography:</label>
+                {user.bio}
+              </div>
+            </div>
+            <div className="item">
+              <div className="info">
+              <label>Social Platforms:</label>
+                <ProfilePlatformIds user={user} />
+              </div>
+            </div>
+          </div>
           {/* <span>Your Answers:</span>
           <span className="info">
             <ProfileResponses user={user} />
           </span>
           <br /> */}
-
-          <label>Your Favourite Games:</label>
-          <div className="info">
-            <ProfileGames user={user} />
-          </div>
-          <label>Your Favourite Genres:</label>
-          <div className="info">
-            <ProfileGenres user={user} />
+          <div className="group">
+            <div className="item">
+              <label>Your Favourite Games:</label>
+              <div className="info">
+                <ProfileGames user={user} />
+              </div>
+            </div>
+            <div className="item">
+              <label>Your Favourite Genres:</label>
+              <div className="info">
+                <ProfileGenres user={user} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
