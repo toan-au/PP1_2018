@@ -1,10 +1,10 @@
-//Imports required functions and data.
+// Import required functions and data.
 const matchCalc = require('./matchCalculate.js');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const fn = Sequelize.fn;
+// const fn = Sequelize.fn; TODO: not used?
 
-//Imports db models
+// Import db models,
 const users = require('../models').users;
 const prefGames = require('../models').prefGames;
 const responses = require('../models').responses;
@@ -17,42 +17,46 @@ const ratings = require('../models').ratings;
 const games = require('../models').games;
 const genres = require('../models').genres;
 
-var findMatches = async function(id) {
-  //Test ID while writing algorithm
-  // var dummyId = 1;
+/** Find matches for user of given id. */
+const findMatches = async id => {
+  // Test ID while writing algorithm.
+  // const dummyId = 1;
 
-  //Queries for User searching for matches
-  var matchingUser = await users.findOne({
+  // Query for User searching for matches.
+  let matchingUser = await users.findOne({
     where: { id },
     include: [{ model: prefGames }, { model: responses }, { model: matches }],
     plain: true
   });
 
-  //Convert the user to JSON format
+  // Convert the user to JSON format
   matchingUser = matchingUser.toJSON();
 
-  //Create array for use in finding users with matching game preferences
-  var relevantGames = [];
-  for (var i = 0; i < matchingUser.prefGames.length; i++) {
+  // Create array for use in finding users with matching game preferences.
+  let relevantGames = [];
+  for (let i = 0; i < matchingUser.prefGames.length; i++) {
     var filterArray = matchingUser.prefGames[i].gameId;
     relevantGames.push(filterArray);
   }
 
-  var findMatches = await matches.findAll({
+  const foundMatches = await matches.findAll({
     where: {
       [Op.or]: [{ userId: matchingUser.id }, { matchId: matchingUser.id }]
     }
   });
 
-  var invalidMatches = [];
-  //Checks and stores the ids of existing matchings.
+  const invalidMatches = [];
+  // invalidMatches = 0;
+  // Check and stores the ids of existing matchings.
   for (var i = 0; i < matchingUser.matches.length; i++) {
-    var filterArray = findMatches[i];
-    //If the user Id is equal to the requesting Id they have already interacted with that user, and will not see them
+    var filterArray = foundMatches[i];
+    // If the user Id is equal to the requesting Id they have already interacted with
+    // that user, and will not see them.
     if (filterArray.userId == matchingUser.id) {
       invalidMatches.push(filterArray.matchId);
     }
-    //If the user was not the initiating member of the match, it stores the initating user's id instead, if they have not reacted to a match.
+    // If the user was not the initiating member of the match, it stores the initiating
+    // user's id instead, if they have not reacted to a match.
     if (
       filterArray.matchId == matchingUser.id &&
       filterArray.userResponse == 'L' &&
@@ -62,11 +66,11 @@ var findMatches = async function(id) {
     }
   }
 
-  //include the matching user as an invalid user to match with
+  // Include the matching user as an invalid user to match with.
   invalidMatches.push(matchingUser.id);
 
-  //Find all users who have at least one matching game to intiating user
-  var relevantUsers = await users.findAll({
+  // Find all users who have at least one matching game to initiating user.
+  const relevantUsers = await users.findAll({
     where: { id: { [Op.notIn]: invalidMatches } },
     limit: 30,
     include: [
@@ -84,25 +88,21 @@ var findMatches = async function(id) {
     ]
   });
 
-  //Converts all matches to JSON standard format.
-  for (var i = 0; i < relevantUsers.length; i++) {
+  // Converts all matches to JSON standard format.
+  for (let i = 0; i < relevantUsers.length; i++) {
     relevantUsers[i] = relevantUsers[i].toJSON();
   }
 
-  //calculate matching scores for all relevant users, and add them to each relevant user.
+  // Calculate matching scores for all relevant users, and add them to each relevant user.
   matchCalc.calculateMatches(matchingUser, relevantUsers);
 
-  //function to sort by matching scores.
-  function orderDesc(b, a) {
-    return a.matchingScore - b.matchingScore;
-  }
+  /** Sort by matching scores. */
+  const orderDesc = (b, a) => a.matchingScore - b.matchingScore;
 
-  //function to average ratings of users
-  //do later
+  // TODO: function to average ratings of users.
 
-  //sorts array by descending matching scores.
+  // Sort array by descending matching scores.
   relevantUsers.sort(orderDesc);
-
   return relevantUsers;
 };
 

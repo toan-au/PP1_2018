@@ -1,6 +1,7 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  var discordUsers = sequelize.define(
+  const discordUsers = sequelize.define(
     'discordUsers',
     {
       discordId: { type: DataTypes.STRING, primaryKey: true },

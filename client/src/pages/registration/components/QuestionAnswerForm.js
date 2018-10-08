@@ -1,8 +1,16 @@
+/**
+ * Question and Answers Form component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React, { Component } from 'react';
 import { reduxForm, Field, formValueSelector } from 'redux-form';
-import RadioGroup from '../../components/RadioGroup';
 import { connect } from 'react-redux';
 
+import RadioGroup from '../../../components/RadioGroup';
+
+/** Preference choices component. */
 const PreferenceChoices = ({ answers, questionId, error }) => {
   return (
     <div className="RadioGroup">
@@ -30,6 +38,7 @@ const PreferenceChoices = ({ answers, questionId, error }) => {
   );
 };
 
+/** Question Answer form component. */
 class QuestionAnswerForm extends Component {
   state = {
     error: '',
@@ -43,8 +52,8 @@ class QuestionAnswerForm extends Component {
   handleSubmit = values => {
     values.preventDefault();
     const { handleSubmit, question, preferences } = this.props;
-    // validate preferences
 
+    // validate preferences
     if (!(question.id in preferences)) {
       this.setState({ error: 'you must choose atleast 1 preference' });
       return false;

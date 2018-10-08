@@ -1,5 +1,7 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
+
   var responses = sequelize.define('responses', {
     userId: DataTypes.INTEGER,
     questionId: DataTypes.INTEGER,
@@ -7,9 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     importance: { type: DataTypes.INTEGER, validate: { min: 0, max: 4 }},
     preference: {type: DataTypes.STRING,  validate: {isAlpha: true, notEmpty: true, len:[1,4]}}
   }, {});
+
   responses.associate = function(models) {
-    responses.belongsTo(models.users, {foriegnKey: 'userId'})
-    responses.belongsTo(models.questions, {foreignKey: 'questionId'})
+    responses.belongsTo(models.users, { foriegnKey: 'userId' });
+    responses.belongsTo(models.questions, { foreignKey: 'questionId' });
   };
   return responses;
 };

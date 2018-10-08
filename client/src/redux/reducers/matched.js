@@ -1,6 +1,13 @@
+/**
+ * Redux reducers for matched.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { GET_MATCHED, REMOVE_MATCHED } from '../actions/types';
 
-export default (state = [], action) => {
+/** Reducer containing users user is successfully matched with. */
+export default (state = null, action) => {
   switch (action.type) {
     case GET_MATCHED:
       return action.matches;

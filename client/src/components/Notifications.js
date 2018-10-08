@@ -1,7 +1,14 @@
+/**
+ * Notifications component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { removeNote } from '../redux/actions/notifications';
 
+/** Notifications component. */
 const Notifications = ({ notifications, removeNote }) => {
   return (
     <div className="Notifications">

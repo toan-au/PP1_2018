@@ -26,6 +26,8 @@
       color: #c82128;
       text-align: center;
       text-transform: uppercase; }
+    .Matches .MatchCard .display-name a {
+      color: #c82128; }
     .Matches .MatchCard .display-name label {
       text-align: center;
       padding: 5px;
@@ -92,6 +94,7 @@
   margin: 5px; }
 
 .Matches .remove:hover {
+  cursor: pointer;
   border: solid #ab1e24;
   text-align: center;
   color: #e8e8e8 !important;

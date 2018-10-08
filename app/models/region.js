@@ -1,6 +1,7 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  var region = sequelize.define(
+  const region = sequelize.define(
     'region',
     {
       region: DataTypes.STRING

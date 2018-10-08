@@ -160,7 +160,7 @@ router.get('/questions', async (req, res) => {
 router.get('/locales', async (req, res) => {
   const locales = await Locale.findAll({ attributes: ['id', 'locale'] });
 
-  for (var i = 0; i < locales.length; i++) {
+  for (let i = 0; i < locales.length; i++) {
     locales[i] = locales[i].toJSON();
   }
   res.send(locales);
@@ -170,7 +170,7 @@ router.get('/locales', async (req, res) => {
 router.get('/regions', async (req, res) => {
   const regions = await Region.findAll({ attributes: ['id', 'region'] });
 
-  for (var i = 0; i < regions.length; i++) {
+  for (let i = 0; i < regions.length; i++) {
     regions[i] = regions[i].toJSON();
   }
   res.send(regions);
@@ -180,7 +180,7 @@ router.get('/regions', async (req, res) => {
 router.get('/games', async (req, res) => {
   const games = await Games.findAll({ attributes: ['id', 'title'] });
 
-  for (var i = 0; i < games.length; i++) {
+  for (let i = 0; i < games.length; i++) {
     games[i] = games[i].toJSON();
   }
   res.send(games);
@@ -190,7 +190,7 @@ router.get('/games', async (req, res) => {
 router.get('/genres', async (req, res) => {
   const genres = await Genres.findAll({ attributes: ['id', 'title'] });
 
-  for (var i = 0; i < genres.length; i++) {
+  for (let i = 0; i < genres.length; i++) {
     genres[i] = genres[i].toJSON();
   }
   res.send(genres);
@@ -200,7 +200,7 @@ router.get('/genres', async (req, res) => {
 router.get('/platforms', async (req, res) => {
   const platforms = await Platforms.findAll({ attributes: ['id', 'title'] });
 
-  for (var i = 0; i < platforms.length; i++) {
+  for (let i = 0; i < platforms.length; i++) {
     platforms[i] = platforms[i].toJSON();
   }
   res.send(platforms);

@@ -20,7 +20,9 @@ a,
 form,
 .bio,
 table,
-button {
+button,
+.Notifications,
+.Matches {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #e8e8e8;

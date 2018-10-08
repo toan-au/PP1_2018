@@ -1,5 +1,12 @@
+/**
+ * Trash Icon component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React from 'react';
 
+/** Trash icon SVG component. */
 const TrashIcon = ({ className, onClick }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

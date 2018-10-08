@@ -1,17 +1,44 @@
+/**
+ * Profile Form component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import axios from 'axios';
-import PfpInput from './PfpInput';
-import SelectWithError from '../../components/SelectWithError';
 
+import SelectWithError from '../../../components/SelectWithError';
+import PfpInput from './PfpInput';
+
+/** Profile form component. */
 class ProfileForm extends Component {
   state = {
     regions: [],
     locales: []
   };
 
-  // validation for select fields
+  componentDidMount() {
+    this.getRegionsList();
+    this.getLocalesList();
+  }
+
+  /** Fetch region list from API, and set state. */
+  async getRegionsList() {
+    const response = await axios.get('/api/regions');
+    this.setState({ regions: response.data });
+  }
+
+  /** Fetch locales list from API, and set state. */
+  async getLocalesList() {
+    const response = await axios.get('/api/locales');
+    this.setState({ locales: response.data });
+  }
+
+  /** Validate select fields. */
   selected = value => (value !== '-1' ? undefined : 'Please select an option');
+
+  /** Validate image. */
   validateImage = imageList => {
     if (imageList) {
       if (imageList.length !== 1) {
@@ -29,22 +56,7 @@ class ProfileForm extends Component {
     }
   };
 
-  componentDidMount() {
-    this.getRegionsList();
-    this.getLocalesList();
-  }
-
-  async getRegionsList() {
-    const response = await axios.get('/api/regions');
-    this.setState({ regions: response.data });
-  }
-
-  async getLocalesList() {
-    const response = await axios.get('/api/locales');
-    this.setState({ locales: response.data });
-  }
-
-  // renders a list of drop down options for locles from API
+  /** Render a list of drop down options for locales from API. */
   renderRegions() {
     const regionItems = this.state.regions.map(region => {
       return (
@@ -56,7 +68,7 @@ class ProfileForm extends Component {
     return regionItems;
   }
 
-  // renders a list of drop down options for locles from API
+  /** Render a list of drop down options for locales from API. */
   renderLocales() {
     const localeItems = this.state.locales.map(locale => {
       return (
@@ -68,6 +80,7 @@ class ProfileForm extends Component {
     return localeItems;
   }
 
+  /** Render a list of ages. */
   renderAges = () => {
     const ages = [...Array(100).keys()];
     const ageItems = ages.map(age => (
@@ -186,8 +199,8 @@ class ProfileForm extends Component {
   }
 }
 
-// hook up with red-form
-let profileForm = reduxForm({
+// hook up with red-form.
+const profileForm = reduxForm({
   form: 'registration',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,

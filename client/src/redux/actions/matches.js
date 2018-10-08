@@ -1,6 +1,16 @@
+/**
+ * Redux actions for matches.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import { GET_MATCHES } from './types';
 import axios from 'axios';
 
+/**
+ * Fetch user's matches, and save to state.
+ * @param {number} userId - The id of user.
+ */
 export const getMatches = userId => {
   return async dispatch => {
     const res = await axios.get('/api/match/' + userId);

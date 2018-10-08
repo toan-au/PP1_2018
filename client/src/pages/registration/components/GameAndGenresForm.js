@@ -1,11 +1,19 @@
+/**
+ * Game and Genres Form component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { getGames } from '../../redux/actions/games';
-import { getGenres } from '../../redux/actions/genres';
-import CheckboxGroup from '../../components/CheckboxGroup';
-import SelectSearch from '../../components/SelectSearch';
 
+import { getGames } from '../../../redux/actions/games';
+import { getGenres } from '../../../redux/actions/genres';
+import CheckboxGroup from '../../../components/CheckboxGroup';
+import SelectSearch from '../../../components/SelectSearch';
+
+/** Game and Genres form component. */
 class GameAndGenresForm extends Component {
   state = {
     searchTerm: '',
@@ -72,8 +80,10 @@ let gameAndGenresForm = reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
 })(GameAndGenresForm);
+
 gameAndGenresForm = connect(
   mapStateToProps,
   { getGames, getGenres }
 )(gameAndGenresForm);
+
 export default gameAndGenresForm;

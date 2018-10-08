@@ -78,6 +78,7 @@
   color: #1e1e2b; }
 
 .button2:hover {
+  cursor: pointer;
   color: #7b1115; }
 
 .button2:active {

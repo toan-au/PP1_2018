@@ -1,3 +1,9 @@
+/**
+ * Home page component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React, { Component } from 'react';
 import ReactStars from 'react-stars';
 import { connect } from 'react-redux';
@@ -8,20 +14,18 @@ import DocumentTitle from '../components/DocumentTitle';
 import MatchCard from '../components/MatchCard';
 import PacmanSpinner from '../components/PacmanSpinner';
 
+/** A series of match cards from given matches. */
 const MatchCards = ({ matches }) => {
   return matches.map(match => <MatchCard key={match.id} match={match} />);
 };
 
-const RegionButton = ({
-  regionFilter,
-  onRegionFilter,
-  filterReset
-}) => {
+/** Panel of buttons of regions which filters matches by region when region is pressed. */
+const RegionPanel = ({ regionFilter, onRegionFilter, filterReset }) => {
   const regions = ['OCE', 'JP', 'NA', 'CN'];
   return (
     <div className="FilterButtons">
       <div className="left">
-      <h2>Filter by Region:</h2>
+        <h2>Filter by Region:</h2>
         {regions.map(region => {
           const selected = region === regionFilter ? 'selected' : '';
           return (
@@ -40,10 +44,8 @@ const RegionButton = ({
   );
 };
 
-const StarButton = ({
-  starFilter,
-  onStarFilter
-}) => {
+/** Panel containing stars which filters matches by star rating. */
+const StarPanel = ({ starFilter, onStarFilter }) => {
   return (
     <div className="FilterButtons">
       <div className="mid">
@@ -55,15 +57,15 @@ const StarButton = ({
             size={40}
             onChange={onStarFilter}
           />
-          </div>
+        </div>
       </div>
-      );
-    })}
+      ); })}
     </div>
   );
 };
 
-const SortButtons = ({ sortBy, sortByChange }) => {
+/** Panel containing "Sort by" button choices. Filters matches by choice. */
+const SortPanel = ({ sortBy, sortByChange }) => {
   const sorts = [
     { name: 'avgRating', label: 'Average Ratings' },
     { name: 'matchingScore', label: 'Matching Percentage' }
@@ -89,6 +91,7 @@ const SortButtons = ({ sortBy, sortByChange }) => {
   );
 };
 
+/** Home page. */
 class Home extends Component {
   state = {
     loading: true,
@@ -98,25 +101,21 @@ class Home extends Component {
     filteredItems: []
   };
 
-  componentDidMount() {
-    const completeLoading = () => {
+  async componentDidMount() {
+    if (this.props.matches.length === 0) {
+      await this.props.getMatches(this.props.user.id);
+    }
+    if (!this.isCancelled) {
       this.filterMatches();
       this.setState({ loading: false });
-    };
-
-    if (this.props.matches.length === 0) {
-      this.props.getMatches(this.props.user.id).then(() => {
-        !this.isCancelled && completeLoading();
-      });
-      return;
     }
-    !this.isCancelled && completeLoading();
   }
 
   componentWillUnmount() {
     this.isCancelled = true;
   }
 
+  /** Filter matches by matching score, amount of stars, region, or average rating. */
   filterMatches = () => {
     const filteredItems = this.props.matches.filter(match => {
       const starPass = match.avgRating > this.state.starFilter;
@@ -128,21 +127,25 @@ class Home extends Component {
     this.setState({ filteredItems });
   };
 
+  /** Filter matches by amount of stars. */
   starFilter = async stars => {
     await this.setState({ starFilter: stars });
     this.filterMatches();
   };
 
+  /** Filter matches by region. */
   regionFilter = async region => {
     await this.setState({ regionFilter: region });
     this.filterMatches();
   };
 
+  /** Reset match filter. */
   filterReset = async () => {
     await this.setState({ regionFilter: '', starFilter: 0 });
     this.filterMatches();
   };
 
+  /** Filter matches by matching score or average rating. */
   sortByChange = sortBy => {
     const compare = (a, b) => {
       return a[sortBy] < b[sortBy] ? 1 : -1;
@@ -166,18 +169,17 @@ class Home extends Component {
         {!this.state.loading && (
           <div className="filter">
             <div className="sort">
-              
-              <StarButton
+              <StarPanel
                 starFilter={this.state.starFilter}
                 onStarFilter={this.starFilter}
               />
-              <RegionButton
+              <RegionPanel
                 regionFilter={this.state.regionFilter}
                 onRegionFilter={this.regionFilter}
                 filterReset={this.filterReset}
               />
 
-              <SortButtons
+              <SortPanel
                 sortBy={this.state.sortBy}
                 sortByChange={this.sortByChange}
               />

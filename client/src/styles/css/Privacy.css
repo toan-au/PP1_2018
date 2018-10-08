@@ -9,17 +9,16 @@
 .Privacy {
   display: table;
   height: 100%;
-  width: 100%; }
-
-.Privacy-middle {
-  display: table-cell;
-  vertical-align: middle; }
-
-.Privacy-inner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 1000px;
-  text-align: left; }
-
-.PrivacyTitle {
-  text-align: center; }
+  width: 100%;
+  padding-top: 1em;
+  padding-bottom: 1.5em; }
+  .Privacy .Privacy-middle {
+    display: table-cell;
+    vertical-align: middle; }
+  .Privacy .Privacy-inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    text-align: left; }
+  .Privacy .PrivacyTitle {
+    text-align: center; }

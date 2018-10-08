@@ -150,7 +150,9 @@ a,
 form,
 .bio,
 table,
-button {
+button,
+.Notifications,
+.Matches {
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
   color: #e8e8e8;
@@ -264,7 +266,8 @@ button {
     margin-top: 20px;
     padding-left: 1.5em !important; }
   .navbar .nav-item:hover {
-    color: #ab1e24 !important; }
+    color: #ab1e24 !important;
+    cursor: pointer; }
   .navbar .nav-rm-item {
     padding-right: 84px !important; }
   .navbar .nav-item,
@@ -426,6 +429,7 @@ h3 {
   .Home .FilterButtons .selected {
     background: #c82128; }
   .Home .FilterButtons button:hover {
+    background: #c82128;
     cursor: pointer; }
 
 .Home button {
@@ -524,37 +528,31 @@ h3 {
 .AboutUs {
   display: table;
   height: 100%;
-  width: 100%; }
-
-.AboutUs-middle {
-  display: table-cell;
-  vertical-align: middle; }
-
-.AboutUs-inner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 1000px;
-  text-align: center; }
-
-.boldThis {
-  text-shadow: 0px 0.5px 0px; }
-
-.TeamImages {
-  display: block;
-  float: left;
-  margin-right: 5px;
   width: 100%;
-  text-align: center; }
-
-.TeamImages img {
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 170px;
-  border-bottom: 10px solid #de9e36;
-  border-radius: 5px; }
-
-.MemberName {
-  display: block; }
+  padding-top: 1em;
+  padding-bottom: 1.5em; }
+  .AboutUs .AboutUs-middle {
+    display: table-cell;
+    vertical-align: middle; }
+  .AboutUs .AboutUs-inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    text-align: center; }
+  .AboutUs .TeamImages {
+    padding-top: 20px; }
+  .AboutUs table {
+    margin: 0px auto;
+    text-align: center; }
+  .AboutUs td {
+    border: none; }
+  .AboutUs .TeamImages img {
+    width: 170px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 10px solid #de9e36;
+    border-radius: 5px;
+    background: #32323e; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -567,20 +565,19 @@ h3 {
 .Privacy {
   display: table;
   height: 100%;
-  width: 100%; }
-
-.Privacy-middle {
-  display: table-cell;
-  vertical-align: middle; }
-
-.Privacy-inner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 1000px;
-  text-align: left; }
-
-.PrivacyTitle {
-  text-align: center; }
+  width: 100%;
+  padding-top: 1em;
+  padding-bottom: 1.5em; }
+  .Privacy .Privacy-middle {
+    display: table-cell;
+    vertical-align: middle; }
+  .Privacy .Privacy-inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    text-align: left; }
+  .Privacy .PrivacyTitle {
+    text-align: center; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -590,58 +587,54 @@ h3 {
 /* border */
 /*notifications*/
 /* kittens */
-.ContactForm form {
-  max-width: 720px;
-  padding: 20px;
-  margin: 0 auto;
-  background: #e8e8e8;
-  border-radius: 5px;
-  border-bottom: 10px solid #de9e36;
-  text-align: center; }
-
-.ContactForm .field {
-  width: 100%;
-  padding: 2px 5px;
-  margin-bottom: 7px;
-  text-align: left !important; }
-
-.ContactForm label {
-  color: #1e1e2b;
-  font-size: 1.3em;
-  text-align: left;
-  padding-bottom: 3px; }
-
-.ContactForm input {
-  border: solid #bfbdc1 1px;
-  border-radius: 5px;
-  font-size: 1.3em;
-  width: 100%;
-  padding: 1px; }
-
-.ContactForm textarea {
-  font-size: 1.3em;
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 200px;
-  padding-left: 1px;
-  padding-top: 1px;
-  border-radius: 5px;
-  border: solid #bfbdc1 1px;
-  resize: none; }
-
-.ContactForm .submit {
-  width: 150px;
-  border-radius: 5px;
-  color: #e8e8e8;
-  background: #ab1e24;
-  text-align: center; }
-
-.ContactForm .submit:hover {
-  background-color: #c82128;
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
-
-.ContactForm button:hover {
-  cursor: pointer; }
+.ContactForm {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em; }
+  .ContactForm form {
+    max-width: 720px;
+    padding: 20px;
+    margin: 0 auto;
+    background: #e8e8e8;
+    border-radius: 5px;
+    border-bottom: 10px solid #de9e36;
+    text-align: center; }
+  .ContactForm .field {
+    width: 100%;
+    padding: 2px 5px;
+    margin-bottom: 7px;
+    text-align: left !important; }
+  .ContactForm label {
+    color: #1e1e2b;
+    font-size: 1.3em;
+    text-align: left;
+    padding-bottom: 3px; }
+  .ContactForm input {
+    border: solid #bfbdc1 1px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    width: 100%;
+    padding: 1px; }
+  .ContactForm textarea {
+    font-size: 1.3em;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 200px;
+    padding-left: 1px;
+    padding-top: 1px;
+    border-radius: 5px;
+    border: solid #bfbdc1 1px;
+    resize: none; }
+  .ContactForm .submit {
+    width: 150px;
+    border-radius: 5px;
+    color: #e8e8e8;
+    background: #ab1e24;
+    text-align: center; }
+  .ContactForm .submit:hover {
+    background-color: #c82128;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
+  .ContactForm button:hover {
+    cursor: pointer; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -671,6 +664,8 @@ h3 {
       color: #c82128;
       text-align: center;
       text-transform: uppercase; }
+    .Matches .MatchCard .display-name a {
+      color: #c82128; }
     .Matches .MatchCard .display-name label {
       text-align: center;
       padding: 5px;
@@ -737,6 +732,7 @@ h3 {
   margin: 5px; }
 
 .Matches .remove:hover {
+  cursor: pointer;
   border: solid #ab1e24;
   text-align: center;
   color: #e8e8e8 !important;
@@ -899,6 +895,7 @@ h3 {
   color: #1e1e2b; }
 
 .button2:hover {
+  cursor: pointer;
   color: #7b1115; }
 
 .button2:active {

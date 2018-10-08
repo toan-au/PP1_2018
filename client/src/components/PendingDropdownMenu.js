@@ -1,19 +1,38 @@
+/**
+ * Pending Dropdown component.
+ *
+ * @author Toan Au, Cindy Tran, Robert Jeffs, Ronald Rinaldy, Martin Balakrishnan.
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { addNote } from '../redux/actions/notifications';
 import { getPending, removePending } from '../redux/actions/pending';
 import TrashIcon from './TrashIcon';
 
+/** A pending user. */
 const UserPending = ({ user, onClick }) => {
   return (
     <div className="dropdown-item">
-      <p className="pending-item-text">{user.displayName}</p>
+      <Link
+        id="user-match-link"
+        className="pending-item-text"
+        to={{
+          pathname: `/profile/${user.id}`,
+          state: { displayName: user.displayName }
+        }}
+        query={{ displayName: user.displayName }}
+      >
+        {user.displayName}
+      </Link>
       <TrashIcon className={'pending-item-remove'} onClick={onClick} />
     </div>
   );
 };
 
+/** Pending users. */
 const UsersPending = ({ users, removePending, appUser, addNote }) => {
   const removeUser = (appUser, user, removePending) => {
     return () => {
@@ -34,6 +53,7 @@ const UsersPending = ({ users, removePending, appUser, addNote }) => {
   ));
 };
 
+/** Content of pending dropdown. */
 const PendingDropdownContent = ({
   loading,
   pending,
@@ -78,9 +98,12 @@ class PendingDropdownMenu extends Component {
   };
 
   componentDidMount() {
-    // this will stop bootstrap dropdown menu from closing on click
+    // this will stop bootstrap dropdown menu from closing on click.
     global.$(document).on('click', '.dropdown-menu', function(e) {
       e.stopPropagation();
+    });
+    global.$(document).on('click', '#user-match-link', function(e) {
+      global.$('.dropdown-toggle').dropdown('toggle');
     });
 
     this.props.getPending(this.props.user.id).then(() => {

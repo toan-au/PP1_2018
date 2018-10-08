@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
-// passport strategys
+// Passport strategy's.
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const facebookStrategy = require('passport-facebook').Strategy;
 const discordStrategy = require('passport-discord').Strategy;
 
-// models
+// Models.
 const Users = require('../models').users;
 const GoogleUsers = require('../models').googleUsers;
 const FacebookUsers = require('../models').facebookUsers;
@@ -15,19 +15,19 @@ const DiscordUsers = require('../models').discordUsers;
 
 const keys = require('../config/keys');
 
-// serialize the user into the session
+// Serialize the user into the session.
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-// deserialize a user from the session
+// De-serialize a user from the session.
 passport.deserializeUser(async (id, done) => {
-  // ideally should find user from database with given id
+  // Ideally should find user from database with given id.
   const user = await Users.findById(id);
   done(null, user);
 });
 
-// setup passport to use the google OAuth2 strategy
+// Setup passport to use the google OAuth2 strategy.
 passport.use(
   new googleStrategy(
     {
@@ -38,7 +38,7 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       const { id, emails, displayName, language } = profile;
 
-      // search for existing user here
+      // Search for existing user here.
       const existingUser = await GoogleUsers.findOne({
         where: { googleId: id }
       });
@@ -51,7 +51,7 @@ passport.use(
         return done(null, user);
       }
 
-      // build a generic User object
+      // Build a generic User object.
       const user = Users.build({
         email: emails[0].value,
         displayName,
@@ -61,16 +61,16 @@ passport.use(
 
       await user.save();
 
-      // associate googleUser object with bew generic user object
+      // Associate googleUser object with new generic user object.
       const googleUser = GoogleUsers.build({
         googleId: id,
         userId: user.id
       });
 
-      // persist to DB
+      // Persist to DB.
       await googleUser.save();
 
-      // if no existing user, create new user here
+      // If no existing user, create new user here.
       console.log('new user created id:' + googleUser.googleId, ', ' + user.id);
       return done(null, user);
     }
@@ -86,7 +86,7 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       const { id, displayName, email } = profile;
-      // search if existing user
+      // Search for existing user.
       const existingUser = await FacebookUsers.findById(id);
       if (existingUser) {
         console.log(
@@ -98,7 +98,7 @@ passport.use(
         return done(null, user);
       }
 
-      // build a generic User object
+      // Build a generic User object.
       const user = Users.build({
         displayName,
         language: 'en'
@@ -106,13 +106,13 @@ passport.use(
 
       await user.save();
 
-      // associate googleUser object with bew generic user object
+      // Associate googleUser object with new generic user object.
       const facebookUser = FacebookUsers.build({
         facebookId: id,
         userId: user.id
       });
 
-      // persist to DB
+      // Persist to DB.
       await facebookUser.save();
 
       console.log(
@@ -133,7 +133,7 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       const { id, displayName, email } = profile;
-      // search if existing user
+      // Search for existing user.
       const existingUser = await DiscordUsers.findById(id);
       if (existingUser) {
         console.log(
@@ -145,7 +145,7 @@ passport.use(
         return done(null, user);
       }
 
-      // build a generic User object
+      // Build a generic User object.
       const user = Users.build({
         displayName,
         language: 'en'
@@ -153,13 +153,13 @@ passport.use(
 
       await user.save();
 
-      // associate googleUser object with bew generic user object
+      // Associate googleUser object with new generic user object.
       const discordUser = DiscordUsers.build({
         discordId: id,
         userId: user.id
       });
 
-      // persist to DB
+      // Persist to DB.
       await discordUser.save();
 
       console.log(
@@ -171,7 +171,7 @@ passport.use(
   )
 );
 
-// user authentication routes
+// User authentication routes.
 router.get(
   '/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
@@ -187,7 +187,7 @@ router.get(
   passport.authenticate('discord', { failureRedirect: '/' })
 );
 
-// callbacks
+// Callbacks.
 router.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
@@ -221,15 +221,15 @@ router.get(
   }
 );
 
-// logout the current user
+// Logout the current user.
 router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
 
-// returns the current user object
+// Return the current user object.
 router.get('/current', (req, res) => {
-  //console.log('user: ' + req.user);
+  // console.log('user: ' + req.user);
   res.send(req.user);
 });
 
