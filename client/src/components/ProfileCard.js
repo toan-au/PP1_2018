@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-
+import ReactStars from 'react-stars';
 import defaultPfp from '../images/fortnite_drift_.png';
 
 /** The responses of a user. */
@@ -49,77 +49,86 @@ const ProfilePlatformIds = ({ user }) => {
 
 /** Profile card showing user information. */
 const ProfileCard = ({ user }) => {
+  
   if (user !== null) {
     return (
       <div>
+        <div className="display-name">
+          <h3>
+            {user.displayName}
+          </h3>
+            <div className="reg">
+            <label className={user.region.region}>{user.region.region}</label>
+          </div>
+          
+        </div>
+        <div className="star-rating">
+            <ReactStars
+              count={parseFloat(user.avgRating)}
+              value={parseFloat(user.avgRating)}
+              edit={false}
+              size={40}
+              color1="rgba(0,0,0,0)"
+            />
+          </div>
         <div className="pfp">
           <img src={user.pfpUrl || defaultPfp} alt="profile dp" />
         </div>
-
         <div className="user-info">
-          <span>
+          {/* <span>
             Display Name:
             <span className="info"> {user.displayName}</span>
-          </span>
-          <br />
-          <br />
+          </span> */}
 
-          <span>
-            Age:
-            <span className="info"> {user.age}</span>
-          </span>
-          <br />
+          <div className="group">
+            <div className="item">
+              <label>Age:</label>
+              {user.age}
+            </div>
+            <div className="item2">
+              <label>Region:</label>
+              {user.locale.locale}
+            </div>
+          </div>
 
-          <span>
-            Region:
-            <span className="info"> {user.region.region}</span>
-          </span>
-          <br />
-
-          <span>
-            Locale:
-            <span className="info"> {user.locale.locale}</span>
-          </span>
-          <br />
-
-          <span>
-            Casual or Competitive:
-            <span className="info"> {user.playstyle}</span>
-          </span>
-          <br />
-          <br />
-
-          <span>
-            Biography:
-            <br />
-            <span className="info">{user.bio}</span>
-          </span>
-          <br />
-          <br />
-
-          <span>Social Platforms:</span>
-          <span className="info">
-            <ProfilePlatformIds user={user} />
-          </span>
-
-          <br />
-
-          <span>Your Answers:</span>
+          <div className="group">
+            <div className="item">
+              <div className="info">
+                <label>Casual or Competitive:</label>
+                {user.playstyle}
+              </div>
+              
+              <div className="info">
+                <label>Biography:</label>
+                {user.bio}
+              </div>
+            </div>
+            <div className="item">
+              <div className="info">
+              <label>Social Platforms:</label>
+                <ProfilePlatformIds user={user} />
+              </div>
+            </div>
+          </div>
+          {/* <span>Your Answers:</span>
           <span className="info">
             <ProfileResponses user={user} />
           </span>
-          <br />
-
-          <span>Your Favourite Games:</span>
-          <span className="info">
-            <ProfileGames user={user} />
-          </span>
-          <br />
-
-          <span>Your Favourite Genres:</span>
-          <span className="info">
-            <ProfileGenres user={user} />
-          </span>
+          <br /> */}
+          <div className="group">
+            <div className="item">
+              <label>Your Favourite Games:</label>
+              <div className="info">
+                <ProfileGames user={user} />
+              </div>
+            </div>
+            <div className="item">
+              <label>Your Favourite Genres:</label>
+              <div className="info">
+                <ProfileGenres user={user} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

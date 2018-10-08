@@ -45,6 +45,14 @@ class QuestionAnswerForm extends Component {
     showPreferences: false
   };
 
+  componentDidMount = () => {
+    const { answers, question } = this.props;
+
+    // show the preferences if an answer has already been selected
+    // this is useful for going back a question
+    if (question.id in answers) this.setState({ showPreferences: true });
+  };
+
   handleAnswerSelection = () => {
     this.setState({ showPreferences: true });
   };
@@ -136,6 +144,7 @@ class QuestionAnswerForm extends Component {
 
 const selector = formValueSelector('registration');
 const mapStateToProps = state => ({
+  answers: selector(state, 'answers'),
   preferences: selector(state, 'preferences')
 });
 
