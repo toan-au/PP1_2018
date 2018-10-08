@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     'users',
     {
       email: {type: DataTypes.STRING, validate: {isEmail: true}},
-      displayName: DataTypes.STRING,
+      displayName: {type: DataTypes.STRING, validate: {notEmpty: true, isAlphanumeric: true}},
       regionId: DataTypes.INTEGER,
       localeId: DataTypes.INTEGER,
       age: DataTypes.INTEGER,
