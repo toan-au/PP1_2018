@@ -655,6 +655,8 @@ h3 {
   padding: 20px; }
   .Matches .MatchCard .pic {
     text-align: left; }
+    .Matches .MatchCard .pic img {
+      border-radius: 5px; }
   .Matches .MatchCard .display-name {
     font-weight: bold;
     font-size: 2em;
@@ -685,7 +687,9 @@ h3 {
       background: #8b72be; }
   .Matches .MatchCard .rate-user {
     text-align: center;
-    padding-left: 20px; }
+    color: #1e1e2b;
+    text-align: center;
+    padding: 5px; }
   .Matches .MatchCard img {
     width: 250px;
     border-radius: 4px 0px 0px 0px; }
@@ -1270,6 +1274,7 @@ h3 {
   padding-bottom: 5px; }
 
 .SelectSearch {
+  cursor: pointer;
   padding-top: 10px;
   padding-bottom: 10px; }
   .SelectSearch input {
@@ -1278,6 +1283,7 @@ h3 {
     padding: 5px;
     width: 100%; }
   .SelectSearch .results {
+    cursor: pointer;
     border: solid #bfbdc1 1px;
     background: #7b1115;
     width: 50%;
@@ -1288,6 +1294,7 @@ h3 {
       padding: 3px;
       color: #e8e8e8; }
   .SelectSearch .select {
+    cursor: pointer;
     padding: 5px;
     border-radius: 2px;
     width: 50%;

@@ -108,18 +108,12 @@ const ProfileCard = ({ user }) => {
             </div>
 
             <div className="group">
-            <div className="item">
-              <div className="info">
-              <label>Social Platforms:</label>
-                <ProfilePlatformIds user={user} />
-              </div>
-            </div>
+           
           {/* <span>Your Answers:</span>
           <span className="info">
             <ProfileResponses user={user} />
           </span>
           <br /> */}
-  
               <div className="item">
                 <label>Your Favourite Games:</label>
                   <div className="info">
@@ -127,6 +121,12 @@ const ProfileCard = ({ user }) => {
                     <ProfileGames user={user} />
                   </div>
                   </div>
+              </div>
+              <div className="item">
+                <div className="info">
+                <label>Social Platforms:</label>
+                  <ProfilePlatformIds user={user} />
+                </div>
               </div>
             </div>
 
