@@ -769,7 +769,7 @@ h3 {
   border-bottom: 10px solid #de9e36;
   border-radius: 5px;
   margin-bottom: 40px;
-  max-width: 520px;
+  max-width: 570px;
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold; }
   .Profile .pfp {
@@ -777,11 +777,10 @@ h3 {
     min-height: 350px;
     text-align: center; }
   .Profile img {
-    border: solid #e8e8e8;
     background: #e8e8e8;
     border-radius: 5px;
-    width: 450px;
-    height: 450px; }
+    width: 520px;
+    height: 520px; }
   .Profile h1 {
     color: #e8e8e8 !important; }
   .Profile p {
@@ -796,7 +795,7 @@ h3 {
     padding-top: 10px;
     padding: 5px; }
   .Profile .profile-details {
-    padding-top: 2em;
+    padding-top: 1em;
     padding-bottom: 2em; }
   .Profile .display-name {
     font-weight: bold;
