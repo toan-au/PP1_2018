@@ -6,13 +6,14 @@
   border-radius: 5px;
   margin-bottom: 40px;
   max-width: 520px;
-  text-align: center;
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold;
 
   .pfp {
+    // border: solid green;
     min-width: 350px;
     min-height: 350px;
+    text-align: center;
     // background: white;
     // q1`
   }
@@ -39,8 +40,8 @@
   }
 
   .info {
-    padding: 5px;
     background: $white;
+    width: 100%;
   }
 
   .user-info {
@@ -120,6 +121,15 @@
     background: $white;
     padding: 5px;
     border-radius: 5px;
+
+    label {
+      border: solid white;
+      padding: 5px;
+      background: white;
+      border-radius: 10px;
+      margin-right: 5px;
+
+    }
   }
   .item {
     text-align: left;
@@ -128,5 +138,38 @@
   .item2 {
     text-align: right;
     width: 50%;
+  }
+  .tag {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+  }
+  .content {
+    width:100%;
+  }
+  .genre {
+    border: solid $light_discord;
+    padding: 5px;
+    border-radius: 10px;
+    background: $light_discord;
+    color: $white;
+    margin: 2px;
+  }
+  .games {
+    border: solid $maroon;
+    padding: 5px;
+    border-radius: 10px;
+    background: $maroon;
+    color: $white;
+    margin: 5px;
+  }
+  .id {
+    border: solid $red;
+    padding: 5px;
+    border-radius: 10px;
+    background: $red;
+    color: $white;
+    margin: 5px;
   }
 }

@@ -24,7 +24,7 @@ const ProfileResponses = ({ user }) => {
 /** The preferred games of a user. */
 const ProfileGames = ({ user }) => {
   const gamesList = user.prefGames.map(pref => {
-    return <div key={pref.id}>{pref.game.title}</div>;
+    return <div className="games" key={pref.id}>{pref.game.title}</div>;
   });
   return gamesList;
 };
@@ -32,7 +32,7 @@ const ProfileGames = ({ user }) => {
 /** The preferred genres of a user. */
 const ProfileGenres = ({ user }) => {
   const genresList = user.prefGenres.map(pref => {
-    return <div key={pref.id}>{pref.genre.title}</div>;
+    return <div className="genre" key={pref.id}>{pref.genre.title}</div>;
   });
   return genresList;
 };
@@ -40,7 +40,7 @@ const ProfileGenres = ({ user }) => {
 /** The platform id of a user. */
 const ProfilePlatformIds = ({ user }) => {
   const platformsList = user.platformIds.map(platform => (
-    <div>
+    <div className="id">
       {platform.platform.title} - {platform.platformDisplayName}
     </div>
   ));
@@ -86,51 +86,61 @@ const ProfileCard = ({ user }) => {
               {user.age}
             </div>
             <div className="item2">
-              <label>Region:</label>
+              <label>Locale:</label>
               {user.locale.locale}
             </div>
           </div>
 
-          <div className="group">
+            <div className="group">
             <div className="item">
               <div className="info">
-                <label>Casual or Competitive:</label>
+                <label>Type:</label>
                 {user.playstyle}
               </div>
-              
+            </div>
+            </div>
+
+            <div className="group">
               <div className="info">
                 <label>Biography:</label>
                 {user.bio}
               </div>
             </div>
+
+            <div className="group">
             <div className="item">
               <div className="info">
               <label>Social Platforms:</label>
                 <ProfilePlatformIds user={user} />
               </div>
             </div>
-          </div>
           {/* <span>Your Answers:</span>
           <span className="info">
             <ProfileResponses user={user} />
           </span>
           <br /> */}
-          <div className="group">
-            <div className="item">
-              <label>Your Favourite Games:</label>
-              <div className="info">
-                <ProfileGames user={user} />
+  
+              <div className="item">
+                <label>Your Favourite Games:</label>
+                  <div className="info">
+                  <div className="content">
+                    <ProfileGames user={user} />
+                  </div>
+                  </div>
               </div>
             </div>
-            <div className="item">
-              <label>Your Favourite Genres:</label>
-              <div className="info">
-                <ProfileGenres user={user} />
+
+            <div className="group">
+            <div className="content">
+            <label>Your Favourite Genres:</label>
+              <div className="tag">
+                  <ProfileGenres user={user} />
               </div>
             </div>
+            </div>
+
           </div>
         </div>
-      </div>
     );
   }
 };

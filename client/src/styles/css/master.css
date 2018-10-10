@@ -770,12 +770,12 @@ h3 {
   border-radius: 5px;
   margin-bottom: 40px;
   max-width: 520px;
-  text-align: center;
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold; }
   .Profile .pfp {
     min-width: 350px;
-    min-height: 350px; }
+    min-height: 350px;
+    text-align: center; }
   .Profile img {
     border: solid #e8e8e8;
     background: #e8e8e8;
@@ -790,8 +790,8 @@ h3 {
   .Profile span {
     padding-bottom: 20px; }
   .Profile .info {
-    padding: 5px;
-    background: #e8e8e8; }
+    background: #e8e8e8;
+    width: 100%; }
   .Profile .user-info {
     padding-top: 10px;
     padding: 5px; }
@@ -849,12 +849,46 @@ h3 {
     background: #e8e8e8;
     padding: 5px;
     border-radius: 5px; }
+    .Profile .group label {
+      border: solid white;
+      padding: 5px;
+      background: white;
+      border-radius: 10px;
+      margin-right: 5px; }
   .Profile .item {
     text-align: left;
     width: 50%; }
   .Profile .item2 {
     text-align: right;
     width: 50%; }
+  .Profile .tag {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px; }
+  .Profile .content {
+    width: 100%; }
+  .Profile .genre {
+    border: solid #7e93dd;
+    padding: 5px;
+    border-radius: 10px;
+    background: #7e93dd;
+    color: #e8e8e8;
+    margin: 2px; }
+  .Profile .games {
+    border: solid #7b1115;
+    padding: 5px;
+    border-radius: 10px;
+    background: #7b1115;
+    color: #e8e8e8;
+    margin: 5px; }
+  .Profile .id {
+    border: solid #ab1e24;
+    padding: 5px;
+    border-radius: 10px;
+    background: #ab1e24;
+    color: #e8e8e8;
+    margin: 5px; }
 
 /* Chuck your variables in here*/
 /* colors */
