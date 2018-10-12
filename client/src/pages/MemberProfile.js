@@ -21,6 +21,7 @@ class MemberProfile extends Component {
 
   componentDidMount() {
     if (this.state.user === null) {
+      // this.props.match is passed in by react router dom.
       const id = parseInt(this.props.match.params.id, 10);
       this.fetchUser(id);
     }
@@ -57,13 +58,24 @@ class MemberProfile extends Component {
   };
 
   render = () => {
-    const { displayName } = this.props.location.state;
+    const displayName = this.props.location.state
+      ? this.props.location.state.displayName
+      : null;
 
     return (
       <div>
-        <DocumentTitle>{`Profile | ${displayName}`}</DocumentTitle>
+        {displayName !== null ? (
+          <DocumentTitle>{`Profile | ${displayName}`}</DocumentTitle>
+        ) : (
+          <DocumentTitle>{`Member Profile`}</DocumentTitle>
+        )}
+
         <div className="banner">
-          <h1 className="text-center">{displayName}</h1>
+          {displayName !== null ? (
+            <h1 className="text-center">{displayName}</h1>
+          ) : (
+            <h1 className="text-center">Member Profile</h1>
+          )}
         </div>
 
         {this.state.loading ? (
