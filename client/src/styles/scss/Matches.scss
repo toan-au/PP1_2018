@@ -13,6 +13,7 @@
     .pic {
       text-align: left;
       img {
+        border-radius: 5px;
       }
     }
 
@@ -59,7 +60,9 @@
     }
     .rate-user {
       text-align: center;
-      padding-left: 20px;
+      color: $gunmetal;
+      text-align: center;
+      padding: 5px;
     }
     img {
       width: 250px;

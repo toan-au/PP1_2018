@@ -655,6 +655,8 @@ h3 {
   padding: 20px; }
   .Matches .MatchCard .pic {
     text-align: left; }
+    .Matches .MatchCard .pic img {
+      border-radius: 5px; }
   .Matches .MatchCard .display-name {
     font-weight: bold;
     font-size: 2em;
@@ -685,7 +687,9 @@ h3 {
       background: #8b72be; }
   .Matches .MatchCard .rate-user {
     text-align: center;
-    padding-left: 20px; }
+    color: #1e1e2b;
+    text-align: center;
+    padding: 5px; }
   .Matches .MatchCard img {
     width: 250px;
     border-radius: 4px 0px 0px 0px; }
@@ -769,19 +773,18 @@ h3 {
   border-bottom: 10px solid #de9e36;
   border-radius: 5px;
   margin-bottom: 40px;
-  max-width: 520px;
-  text-align: center;
+  max-width: 570px;
   font-family: 'Alegreya Sans', Helvetica, Arial, sans-serif;
   font-weight: bold; }
   .Profile .pfp {
     min-width: 350px;
-    min-height: 350px; }
+    min-height: 350px;
+    text-align: center; }
   .Profile img {
-    border: solid #e8e8e8;
     background: #e8e8e8;
     border-radius: 5px;
-    width: 450px;
-    height: 450px; }
+    width: 520px;
+    height: 520px; }
   .Profile h1 {
     color: #e8e8e8 !important; }
   .Profile p {
@@ -790,13 +793,13 @@ h3 {
   .Profile span {
     padding-bottom: 20px; }
   .Profile .info {
-    padding: 5px;
-    background: #e8e8e8; }
+    background: #e8e8e8;
+    width: 100%; }
   .Profile .user-info {
     padding-top: 10px;
     padding: 5px; }
   .Profile .profile-details {
-    padding-top: 2em;
+    padding-top: 1em;
     padding-bottom: 2em; }
   .Profile .display-name {
     font-weight: bold;
@@ -849,12 +852,46 @@ h3 {
     background: #e8e8e8;
     padding: 5px;
     border-radius: 5px; }
+    .Profile .group label {
+      border: solid white;
+      padding: 5px;
+      background: white;
+      border-radius: 10px;
+      margin-right: 5px; }
   .Profile .item {
     text-align: left;
     width: 50%; }
   .Profile .item2 {
     text-align: right;
     width: 50%; }
+  .Profile .tag {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px; }
+  .Profile .content {
+    width: 100%; }
+  .Profile .genre {
+    border: solid #7e93dd;
+    padding: 5px;
+    border-radius: 10px;
+    background: #7e93dd;
+    color: #e8e8e8;
+    margin: 2px; }
+  .Profile .games {
+    border: solid #7b1115;
+    padding: 5px;
+    border-radius: 10px;
+    background: #7b1115;
+    color: #e8e8e8;
+    margin: 5px; }
+  .Profile .id {
+    border: solid #ab1e24;
+    padding: 5px;
+    border-radius: 10px;
+    background: #ab1e24;
+    color: #e8e8e8;
+    margin: 5px; }
 
 /* Chuck your variables in here*/
 /* colors */
@@ -1237,6 +1274,7 @@ h3 {
   padding-bottom: 5px; }
 
 .SelectSearch {
+  cursor: pointer;
   padding-top: 10px;
   padding-bottom: 10px; }
   .SelectSearch input {
@@ -1245,6 +1283,7 @@ h3 {
     padding: 5px;
     width: 100%; }
   .SelectSearch .results {
+    cursor: pointer;
     border: solid #bfbdc1 1px;
     background: #7b1115;
     width: 50%;
@@ -1255,6 +1294,7 @@ h3 {
       padding: 3px;
       color: #e8e8e8; }
   .SelectSearch .select {
+    cursor: pointer;
     padding: 5px;
     border-radius: 2px;
     width: 50%;

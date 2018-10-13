@@ -12,6 +12,7 @@
   padding-bottom: 5px;
 }
 .SelectSearch {
+  cursor: pointer;
   padding-top: 10px;
   padding-bottom:10px;
 
@@ -23,6 +24,7 @@
   }
   
   .results {
+    cursor: pointer;
     border:solid $light_grey 1px;
     background: $maroon;
     width:50%;
@@ -36,6 +38,7 @@
   }
 
   .select {
+    cursor: pointer;
     padding: 5px;
     border-radius: 2px;
     width:50%;
