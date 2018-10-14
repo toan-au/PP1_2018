@@ -9,10 +9,10 @@ Homy - Amir Homayoon Ashrafzadeh
 
 ## Authors
 
-s3432752 - Martin Balakrishnan
-s3589104 - Duong Bao Toan Au
-s3600735 - Tuong Van Cindy Tran
-s3431693 - Robert Ludwig Jeffs
+s3432752 - Martin Balakrishnan  
+s3589104 - Duong Bao Toan Au  
+s3600735 - Tuong Van Cindy Tran  
+s3431693 - Robert Ludwig Jeffs  
 s3496839 - Ronald Rinaldy
 
 ### About
