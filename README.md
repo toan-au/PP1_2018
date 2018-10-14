@@ -31,9 +31,9 @@ Download and install Node at https://nodejs.org/en/download/
 
 #### Installing dependencies
 
-Navigate into your working directory from the terminal or bash
-Run the command: npm run setup
-Wait as npm installs all required packages for the project on both the front and backend apps
+Navigate into your working directory from the terminal or bash.  
+Run the command: `npm run setup`  
+Wait as npm installs all required packages for the project on both the front and back-end apps.
 
 #### Setting up keys files
 
