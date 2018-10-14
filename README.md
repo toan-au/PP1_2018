@@ -38,7 +38,7 @@ Wait as npm installs all required packages for the project on both the front and
 #### Setting up keys files
 
 Create a file called dev.js in /app/config/
-Copy and paste this code into dev.js: `https://gist.githubusercontent.com/DeftCorgi/7030c6704c1744b5575249364ff5b650/raw/a1f254a9d633f5816c320d87f860e23a0c105a13/dev.js`  
+Copy and paste this code into dev.js: https://gist.githubusercontent.com/DeftCorgi/7030c6704c1744b5575249364ff5b650/raw/a1f254a9d633f5816c320d87f860e23a0c105a13/dev.js  
 Replace the empty single quotations from the file with your actual keys obtained from google cloud console.
 
 #### Start the server!
