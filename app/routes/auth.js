@@ -10,8 +10,8 @@ const passport = require('passport');
 
 // Passport strategy's.
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const facebookStrategy = require('passport-facebook').Strategy;
-const discordStrategy = require('passport-discord').Strategy;
+// const facebookStrategy = require('passport-facebook').Strategy;
+// const discordStrategy = require('passport-discord').Strategy;
 
 // Models.
 const Users = require('../models').users;
@@ -83,99 +83,99 @@ passport.use(
   )
 );
 
-passport.use(
-  new facebookStrategy(
-    {
-      clientID: keys.facebookClientId,
-      clientSecret: keys.facebookClientSecret,
-      callbackURL: '/api/auth/facebook/callback'
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      const { id, displayName, email } = profile;
-      // Search for existing user.
-      const existingUser = await FacebookUsers.findById(id);
-      if (existingUser) {
-        console.log(
-          `existing user found: ${existingUser.facebookId} ${
-            existingUser.userId
-          }`
-        );
-        const user = await Users.findById(existingUser.userId);
-        return done(null, user);
-      }
+// passport.use(
+//   new facebookStrategy(
+//     {
+//       clientID: keys.facebookClientId,
+//       clientSecret: keys.facebookClientSecret,
+//       callbackURL: '/api/auth/facebook/callback'
+//     },
+//     async (accessToken, refreshToken, profile, done) => {
+//       const { id, displayName, email } = profile;
+//       // Search for existing user.
+//       const existingUser = await FacebookUsers.findById(id);
+//       if (existingUser) {
+//         console.log(
+//           `existing user found: ${existingUser.facebookId} ${
+//             existingUser.userId
+//           }`
+//         );
+//         const user = await Users.findById(existingUser.userId);
+//         return done(null, user);
+//       }
 
-      // Build a generic User object.
-      const user = Users.build({
-        displayName,
-        language: 'en'
-      });
+//       // Build a generic User object.
+//       const user = Users.build({
+//         displayName,
+//         language: 'en'
+//       });
 
-      await user.save();
+//       await user.save();
 
-      // Associate googleUser object with new generic user object.
-      const facebookUser = FacebookUsers.build({
-        facebookId: id,
-        userId: user.id
-      });
+//       // Associate googleUser object with new generic user object.
+//       const facebookUser = FacebookUsers.build({
+//         facebookId: id,
+//         userId: user.id
+//       });
 
-      // Persist to DB.
-      await facebookUser.save();
+//       // Persist to DB.
+//       await facebookUser.save();
 
-      console.log(
-        'new user created id:' + facebookUser.facebookId,
-        ', ' + facebookUser.userId
-      );
-      return done(null, user);
-    }
-  )
-);
+//       console.log(
+//         'new user created id:' + facebookUser.facebookId,
+//         ', ' + facebookUser.userId
+//       );
+//       return done(null, user);
+//     }
+//   )
+// );
 
-passport.use(
-  new discordStrategy(
-    {
-      clientID: keys.discordClientId,
-      clientSecret: keys.discordClientSecret,
-      callbackURL: '/api/auth/discord/callback'
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      const { id, displayName, email } = profile;
-      // Search for existing user.
-      const existingUser = await DiscordUsers.findById(id);
-      if (existingUser) {
-        console.log(
-          `existing user found: ${existingUser.discordId} ${
-            existingUser.userId
-          }`
-        );
-        const user = await Users.findById(existingUser.userId);
-        return done(null, user);
-      }
+// passport.use(
+//   new discordStrategy(
+//     {
+//       clientID: keys.discordClientId,
+//       clientSecret: keys.discordClientSecret,
+//       callbackURL: '/api/auth/discord/callback'
+//     },
+//     async (accessToken, refreshToken, profile, done) => {
+//       const { id, displayName, email } = profile;
+//       // Search for existing user.
+//       const existingUser = await DiscordUsers.findById(id);
+//       if (existingUser) {
+//         console.log(
+//           `existing user found: ${existingUser.discordId} ${
+//             existingUser.userId
+//           }`
+//         );
+//         const user = await Users.findById(existingUser.userId);
+//         return done(null, user);
+//       }
 
-      // Build a generic User object.
-      const user = Users.build({
-        displayName,
-        language: 'en'
-      });
+//       // Build a generic User object.
+//       const user = Users.build({
+//         displayName,
+//         language: 'en'
+//       });
 
-      await user.save();
+//       await user.save();
 
-      // Associate googleUser object with new generic user object.
-      const discordUser = DiscordUsers.build({
-        discordId: id,
-        userId: user.id
-      });
+//       // Associate googleUser object with new generic user object.
+//       const discordUser = DiscordUsers.build({
+//         discordId: id,
+//         userId: user.id
+//       });
 
-      // Persist to DB.
-      await discordUser.save();
+//       // Persist to DB.
+//       await discordUser.save();
 
-      console.log(
-        'new user created id:' + discordUser.discordId,
-        ', ' + discordUser.userId
-      );
-      return done(null, user);
-    }
-  )
-);
+//       console.log(
+//         'new user created id:' + discordUser.discordId,
+//         ', ' + discordUser.userId
+//       );
+//       return done(null, user);
+//     }
+//   )
+// );
 
 // User authentication routes.
 router.get(
@@ -183,15 +183,15 @@ router.get(
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-router.get(
-  '/facebook',
-  passport.authenticate('facebook', { scope: ['email'] })
-);
+// router.get(
+//   '/facebook',
+//   passport.authenticate('facebook', { scope: ['email'] })
+// );
 
-router.get(
-  '/discord',
-  passport.authenticate('discord', { failureRedirect: '/' })
-);
+// router.get(
+//   '/discord',
+//   passport.authenticate('discord', { failureRedirect: '/' })
+// );
 
 // Callbacks.
 router.get(
@@ -205,27 +205,27 @@ router.get(
   }
 );
 
-router.get(
-  '/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
-  (req, res) => {
-    if (!req.user.finishedRegistration) {
-      return res.redirect('/register');
-    }
-    res.redirect('/');
-  }
-);
+// router.get(
+//   '/facebook/callback',
+//   passport.authenticate('facebook', { failureRedirect: '/login' }),
+//   (req, res) => {
+//     if (!req.user.finishedRegistration) {
+//       return res.redirect('/register');
+//     }
+//     res.redirect('/');
+//   }
+// );
 
-router.get(
-  '/discord/callback',
-  passport.authenticate('discord', { failureRedirect: '/login' }),
-  (req, res) => {
-    if (!req.user.finishedRegistration) {
-      return res.redirect('/register');
-    }
-    res.redirect('/');
-  }
-);
+// router.get(
+//   '/discord/callback',
+//   passport.authenticate('discord', { failureRedirect: '/login' }),
+//   (req, res) => {
+//     if (!req.user.finishedRegistration) {
+//       return res.redirect('/register');
+//     }
+//     res.redirect('/');
+//   }
+// );
 
 // Logout the current user.
 router.get('/logout', (req, res) => {
