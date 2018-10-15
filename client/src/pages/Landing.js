@@ -28,15 +28,15 @@ const Landing = () => {
           </p>
           <br />
           <p>Register or log in now!</p>
-          <a href="/api/auth/facebook" className="facebook">
+          {/* <a href="/api/auth/facebook" className="facebook">
             Facebook
-          </a>
+          </a> */}
           <a href="/api/auth/google" className="button1">
             Google
           </a>
-          <a href="/api/auth/discord" className="discord">
+          {/* <a href="/api/auth/discord" className="discord">
             Discord
-          </a>
+          </a> */}
         </div>
         <img className="maskot" src={maskot} alt="TerrorWrist" />
       </div>
